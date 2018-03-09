@@ -1,0 +1,12 @@
+*.o
+*.out
+*.gcno
+*.gcda
+units
+*.a
+.vscode
+*~
+#*#
+lib/mysfml/html
+lib/mysfml/latex
+my_cook
