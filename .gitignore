@@ -1,12 +1,7 @@
+*.a
 *.o
-*.out
 *.gcno
 *.gcda
-units
-*.a
+*.out
 .vscode
-*~
-#*#
-lib/mysfml/html
-lib/mysfml/latex
-my_cook
+vscode
