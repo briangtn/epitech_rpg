@@ -22,9 +22,9 @@ void display(gameobject_t *obj, sfRectangleShape *shape, sf_engine_t *engine)
 		return;
 	free(engine->get_collisions_go(engine, obj, &nb));
 	if (nb != 0)
-		sfRectangleShape_setOutlineColor(shape, (sfColor){255, 0, 0, 255});
+		sfRectangleShape_setOutlineColor(shape, sfGreen);
 	else
-		sfRectangleShape_setOutlineColor(shape, (sfColor){0, 255, 0, 255});
+		sfRectangleShape_setOutlineColor(shape, sfRed);
 	sfRectangleShape_setPosition(shape, (sfVector2f){tr->position.x + \
 col->hitbox.left + 1, tr->position.y + col->hitbox.top + 1});
 	sfRectangleShape_setSize(shape, (sfVector2f){col->hitbox.width, \
