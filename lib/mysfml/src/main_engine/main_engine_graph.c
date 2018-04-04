@@ -22,6 +22,7 @@ int render_main_engine(sf_engine_t *engine)
 engine->current_scene->graphical_engine, engine->window);
 	if (DISPLAY_HITBOX)
 		display_hitbox(engine);
+	sfRenderWindow_display(engine->window);
 	return (return_value);
 }
 

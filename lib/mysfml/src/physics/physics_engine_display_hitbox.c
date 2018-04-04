@@ -44,6 +44,5 @@ int display_hitbox(sf_engine_t *engine)
 		curr_elem = curr_elem->next;
 	}
 	sfRectangleShape_destroy(shape);
-	sfRenderWindow_display(engine->window);
 	return (0);
 }

@@ -36,6 +36,5 @@ int render_frame(sf_graph_engine_t *graph_engine, sfRenderWindow *window)
 		curr_pos_list = curr_pos_list->next;
 	}
 	render_particles(graph_engine, window);
-	sfRenderWindow_display(window);
 	return (0);
 }
