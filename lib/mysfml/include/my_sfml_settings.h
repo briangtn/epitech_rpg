@@ -10,10 +10,15 @@
 #ifndef __SETTINGS__H_
 	#define __SETTINGS__H_
 
-	#define DISPLAY_HITBOX 1
+	#include <stdbool.h>
 
+	/* Should the engine throw debug messages(intern error and researchs) */
+	#define DEBUG_MSG_ACTIVE false
+
+	/* Should the engine draw a rectangle around all hitbox in the scene */
+	#define DISPLAY_HITBOX false
+
+	/* Gravity force on axis Y */
 	#define GRAVITY_FORCE 0
-
-	#define DEBUG_MSG_ACTIVE 0
 
 #endif /* !__SETTINGS__H_ */
