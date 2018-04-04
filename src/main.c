@@ -7,7 +7,71 @@
 
 /* File created the 22/03/2018 at 10:44:24 by julian.frabel@epitech.eu */
 
-int main(void)
+#include "my.h"
+#include "my_sfml.h"
+#include "rpg.h"
+
+int has_display_vars(char **env)
 {
+	char *key = "DISPLAY";
+	int key_len = my_strlen(key);
+
+	if (env == NULL || key == NULL) {
+		my_puterror("Environnement was NULL, couldn't find DISPLAY.\n");
+		return (0);
+	}
+	for (int i = 0; env[i] != NULL; i++) {
+		if (!my_strncmp(key, env[i], key_len) && env[i][key_len] == '=')
+			return (1);
+	}
+	my_puterror("Couldn't find DISPLAY in environnement.\n");
+	return (0);
+}
+
+sf_engine_t *get_new_engine(char **env)
+{
+	sfRenderWindow *window = NULL;
+	sf_engine_t *new_engine = NULL;
+
+	if (!has_display_vars(env))
+		return (NULL);
+	window = sfRenderWindow_create((sfVideoMode){WINDOW_SIZE_X, \
+WINDOW_SIZE_Y, 32}, WINDOW_NAME, sfClose, NULL);
+	if (window == NULL) {
+		my_puterror("[ERROR]Window could not be created!\n");
+		return (NULL);
+	}
+	sfRenderWindow_setFramerateLimit(window, FPS_LIMIT);
+	sfRenderWindow_setKeyRepeatEnabled(window, sfFalse);
+	new_engine = create_engine(window);
+	if (new_engine == NULL) {
+		my_puterror("[ERROR]Engine could not be created!\n");
+		sfRenderWindow_destroy(window);
+		return (NULL);
+	}
+	return (new_engine);
+}
+
+void load_scenes(UNUSED sf_engine_t *engine)
+{
+	return;
+}
+
+int main(UNUSED int ac, UNUSED char **av, char **env)
+{
+	sf_engine_t *engine = get_new_engine(env);
+
+	if (engine == NULL)
+		return (84);
+	srand((long)engine);
+	load_scenes(engine);
+	while (sfRenderWindow_isOpen(engine->window)) {
+		engine->update(engine);
+		if (engine->current_scene)
+			engine->current_scene->loop(engine, NULL);
+		engine->render(engine);
+	}
+	if (engine)
+		engine->destroy(engine);
 	return (0);
 }
