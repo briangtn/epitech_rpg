@@ -212,10 +212,11 @@ struct my_sfml_animation_2d {
 Refer to destroy_animation_2d() */
 	gameobject_t *parent; /**< Parent of the animation */
 	sfSprite *sprite; /**< The sprite of the gameobject */
-	sfIntRect view_rect; /**< The view rect of the texture */
+	sfIntRect view_rect; /**< The view rect of a frame */
 	sfIntRect max_rect; /**< The maximum and minimum position of view_rect*/
 	float speed; /**< The time between to frames */
 	float timer; /**< The current elapsed time since last frame */
+	int play; /**< Should the animation play */
 	int (*set_sprite)(struct my_sfml_animation_2d *animation, \
 sfSprite *sprite); /**< Set the animation sprite. \
 Refer to set_sprite_animation_2d() */

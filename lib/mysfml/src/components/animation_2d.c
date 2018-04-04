@@ -25,6 +25,7 @@ sf_animation_2d_t *create_animation_2d(gameobject_t *parent)
 	new_animation->update = &default_update_animation;
 	new_animation->set_sprite = &set_sprite_animation_2d;
 	new_animation->sprite = NULL;
+	new_animation->play = 0;
 	new_animation->max_rect = (sfIntRect){0, 0, 1, 1};
 	new_animation->view_rect = (sfIntRect){0, 0, 1, 1};
 	return (new_animation);
@@ -57,21 +58,27 @@ int set_sprite_animation_2d(sf_animation_2d_t *animation, sfSprite *sprite)
 	return (0);
 }
 
-int default_update_animation(sf_animation_2d_t *anim, int milliseconds)
+int default_update_animation(sf_animation_2d_t *anim, int elapsed_milliseconds)
 {
-	char *time_as_str = my_int_to_str(milliseconds);
+	int passed_frames = 0;
+	sf_transform_t *tr = NULL;
 
-	if (anim == NULL || time_as_str == NULL) {
-		my_putdebug("Default update animation:\n    ");
-		my_putdebug(MSG_MY_SFML_ERR_NULL);
-		if (time_as_str != NULL)
-			free(time_as_str);
-		return (84);
+	if (anim == NULL || anim->play == 0)
+		return (0);
+	tr = get_component(anim->parent, TRANSFORM);
+	anim->timer += (float)(elapsed_milliseconds / 1000.0);
+	if (anim->timer >= anim->speed) {
+		passed_frames = anim->timer / anim->speed;
+		anim->timer -= passed_frames * anim->speed;
+		anim->view_rect.left = (anim->view_rect.left + passed_frames * \
+anim->view_rect.width) % anim->max_rect.width + anim->max_rect.left;
+		anim->view_rect.top = (anim->view_rect.top + passed_frames * \
+anim->view_rect.height) % anim->max_rect.height + anim->max_rect.top;
 	}
-	my_putdebug("[INFO][UPDATE ANIMATION]This is the default update \
-animation that does nothing!\n    Probably not what you want!\n    Time:");
-	my_putdebug(time_as_str);
-	my_putdebug("\n");
-	free(time_as_str);
+	if (anim->sprite != NULL)
+		sfSprite_setTextureRect(anim->sprite, anim->view_rect);
+	if (anim->sprite != NULL && tr != NULL)
+		sfSprite_setPosition(anim->sprite, \
+(sfVector2f){tr->position.x, tr->position.y});
 	return (0);
 }

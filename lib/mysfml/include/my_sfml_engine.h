@@ -247,6 +247,16 @@ or errors can occure.
 ** Return 84 in case of an error, 0 otherwise.
 */
 int add_to_layer_main_engine(sf_engine_t *engine, int layer, void **data);
+/***
+** \brief Register an animation to the engine
+** @param engine the engine to register to
+** @param anim the animation to register
+** @param layer the layer to register on
+**
+** Register an animation to the engine (update and render)
+*/
+void register_animation(sf_engine_t *engine, sf_animation_2d_t *anim, \
+int layer);
 /**
 ** \brief Remove the data to the render list of the current graphical engine
 ** @param engine the engine to add to

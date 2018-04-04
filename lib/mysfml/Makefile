@@ -68,6 +68,7 @@ SRC_FILES_GRAPH	=	graphical_engine_add_to_layer.c			\
 SRC_DIR_ENGINE	=	$(realpath src/main_engine)
 
 SRC_FILES_ENGINE=	get_sprite.c					\
+			register_animation.c				\
 			main_engine_core.c				\
 			main_engine_gameobject.c			\
 			main_engine_graph.c				\
