@@ -17,4 +17,4 @@
 
 	#define WINDOW_NAME "RPG"
 
-#endif
+#endif /* !__RPG__H_ */
