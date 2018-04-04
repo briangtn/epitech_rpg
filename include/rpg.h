@@ -12,8 +12,8 @@
 
 	#define FPS_LIMIT 60
 
-	#define WINDOW_SIZE_X 800
-	#define WINDOW_SIZE_Y 600
+	#define WINDOW_SIZE_X 1600
+	#define WINDOW_SIZE_Y 900
 
 	#define WINDOW_NAME "RPG"
 
