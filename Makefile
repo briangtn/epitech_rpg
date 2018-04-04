@@ -13,8 +13,13 @@ SRC_SCENES_DIR	=	$(realpath src/scenes)
 
 SRC_SCENES_FILES=	scene_game.c
 
+SRC_PREFAB_DIR	=	$(realpath src/prefabs)
+
+SRC_PREFAB_FILES=	player/prefab_player_core.c
+
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
-			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES))
+			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
+			$(addprefix $(SRC_PREFAB_DIR)/, $(SRC_PREFAB_FILES))
 
 OBJ		=	$(SRC:%.c=%.o)
 
@@ -22,7 +27,7 @@ NAME		=	my_rpg
 
 INCLUDE		=	-I include -I lib/my/include -I lib/mysfml/include
 
-CFLAGS		=	-Wall -Wextra
+CFLAGS		=	-Wall -Wextra -Wno-unknown-pragmas
 CFLAGS		+=	$(INCLUDE)
 
 LIB_DIR		=	lib/

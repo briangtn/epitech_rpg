@@ -10,7 +10,6 @@
 #include "my.h"
 #include "my_sfml.h"
 #include "rpg.h"
-#include "scenes.h"
 
 int has_display_vars(char **env)
 {

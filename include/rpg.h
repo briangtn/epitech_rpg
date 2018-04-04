@@ -17,4 +17,10 @@
 
 	#define WINDOW_NAME "RPG"
 
+	#include "fight.h"
+	#include "parser.h"
+	#include "prefabs.h"
+	#include "scenes.h"
+	#include "scripts.h"
+
 #endif /* !__RPG__H_ */

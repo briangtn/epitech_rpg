@@ -14,7 +14,9 @@ gameobject_t *create_gameobject(char const *name)
 	gameobject_t *new_go = malloc(sizeof(*new_go));
 
 	if (new_go == NULL) {
-		my_putdebug("Create GO:\n    ");
+		my_putdebug("Create GO(");
+		my_putdebug(name);
+		my_putdebug("):\n    ");
 		my_putdebug(MSG_MY_SFML_MALLOC);
 		return (NULL);
 	}
