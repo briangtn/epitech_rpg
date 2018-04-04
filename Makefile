@@ -15,7 +15,7 @@ OBJ		=	$(SRC:%.c=%.o)
 
 NAME		=	my_rpg
 
-INCLUDE		=	-I include
+INCLUDE		=	-I include -I lib/my/include -I lib/mysfml/include
 
 CFLAGS		=	-Wall -Wextra
 CFLAGS		+=	$(INCLUDE)
@@ -23,7 +23,9 @@ CFLAGS		+=	$(INCLUDE)
 LIB_DIR		=	lib/
 
 LIB_FLAGS	=	-L $(LIB_DIR)my -lmy				\
-			-L $(LIB_DIR)mysfml -lmysfml
+			-L $(LIB_DIR)mysfml -lmysfml			\
+			-lm						\
+			-lc_graph_prog
 
 CC		=	gcc
 

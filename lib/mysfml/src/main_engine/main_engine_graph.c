@@ -11,7 +11,7 @@
 
 int render_main_engine(sf_engine_t *engine)
 {
-	if (engine == NULL) {
+	if (engine == NULL || engine->current_scene == NULL) {
 		my_putdebug("Render main engine:\n    ");
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
