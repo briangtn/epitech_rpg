@@ -19,10 +19,7 @@
 #include "my_sfml_gameobject.h"
 
 /* --------------------------------DEFINE-------------------------------- */
-#define HITBOX_TEX "assets/sprites/hitbox.png"
-#define DISPLAY_HITBOX 1
-
-#define GRAVITY_FORCE 0
+#include "my_sfml_settings.h"
 /* ------------------------------END-DEFINE------------------------------ */
 
 /* ----------------------------PHYSICS-ENGINE---------------------------- */

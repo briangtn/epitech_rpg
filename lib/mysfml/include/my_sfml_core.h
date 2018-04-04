@@ -16,8 +16,7 @@
 #define __MY_SFML_CORE_H_
 
 /* --------------------------------DEFINE-------------------------------- */
-
-#define DEBUG_MSG_ACTIVE 0
+#include "my_sfml_settings.h"
 
 #define MSG_MY_SFML_MALLOC "[ERROR] Malloc failed!\n"
 #define MSG_MY_SFML_ERR_NULL "[ERROR] Pointer given was NULL!\n"

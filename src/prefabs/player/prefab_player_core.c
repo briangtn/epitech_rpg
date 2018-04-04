@@ -28,6 +28,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *player)
 	setup_animation(engine, anim);
 	register_animation(engine, anim, GAME);
 	engine->add_gameobject(engine, player);
+	engine->add_physic_object(engine, player);
 	return (0);
 }
 
@@ -35,6 +36,18 @@ static int add_components(gameobject_t *player)
 {
 	if (player->add_component(player, ANIMATION_2D) == NULL) {
 		my_puterror("[ERROR]Player: Could not add animation!\n");
+		return (84);
+	}
+	if (player->add_component(player, TRANSFORM) == NULL) {
+		my_puterror("[ERROR]Player: Could not add transform!\n");
+		return (84);
+	}
+	if (player->add_component(player, RIGIDBODY_2D) == NULL) {
+		my_puterror("[ERROR]Player: Could not add rigidbody!\n");
+		return (84);
+	}
+	if (player->add_component(player, COLLIDER_2D) == NULL) {
+		my_puterror("[ERROR]Player: Could not add collider!\n");
 		return (84);
 	}
 	return (0);

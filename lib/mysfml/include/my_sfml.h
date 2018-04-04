@@ -18,5 +18,6 @@
 	#include "my_sfml_physics.h"
 	#include "my_sfml_prefab.h"
 	#include "my_sfml_scenes.h"
+	#include "my_sfml_settings.h"
 
 #endif /* !__MY_SFML_H_ */
