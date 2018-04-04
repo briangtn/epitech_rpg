@@ -11,13 +11,18 @@
 
 int render_main_engine(sf_engine_t *engine)
 {
+	int return_value = 0;
+
 	if (engine == NULL || engine->current_scene == NULL) {
 		my_putdebug("Render main engine:\n    ");
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
-	return (engine->current_scene->graphical_engine->render(\
-engine->current_scene->graphical_engine, engine->window));
+	return_value = engine->current_scene->graphical_engine->render(\
+engine->current_scene->graphical_engine, engine->window);
+	if (DISPLAY_HITBOX)
+		display_hitbox(engine);
+	return (return_value);
 }
 
 int add_to_layer_main_engine(sf_engine_t *engine, int layer, void **data)

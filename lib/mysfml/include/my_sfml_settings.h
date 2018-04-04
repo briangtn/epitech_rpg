@@ -10,7 +10,6 @@
 #ifndef __SETTINGS__H_
 	#define __SETTINGS__H_
 
-	#define HITBOX_TEX "assets/sprites/hitbox.png"
 	#define DISPLAY_HITBOX 1
 
 	#define GRAVITY_FORCE 0

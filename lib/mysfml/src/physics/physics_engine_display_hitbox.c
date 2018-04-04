@@ -8,39 +8,42 @@
 #include "my_sfml_engine.h"
 #include "my_sfml_gameobject.h"
 
-static void display(gameobject_t *obj, sfSprite *spr, sf_engine_t *engine);
+static void display(gameobject_t *obj, sfRectangleShape *shape, \
+sf_engine_t *engine);
 
-void display(gameobject_t *obj, sfSprite *spr, sf_engine_t *engine)
+void display(gameobject_t *obj, sfRectangleShape *shape, sf_engine_t *engine)
 {
 	sf_transform_t *tr = get_component(obj, TRANSFORM);
 	sf_collider_2d_t *col = get_component(obj, COLLIDER_2D);
 
 	if (tr == NULL || col == NULL)
 		return;
-	sfSprite_setPosition(spr, \
-(sfVector2f){tr->position.x + col->hitbox.left, \
-tr->position.y + col->hitbox.top});
-	sfSprite_setScale(spr, \
-(sfVector2f){col->hitbox.width, col->hitbox.height});
-	sfRenderWindow_drawSprite(engine->window, spr, NULL);
+	sfRectangleShape_setPosition(shape, (sfVector2f){tr->position.x + \
+col->hitbox.left + 1, tr->position.y + col->hitbox.top + 1});
+	sfRectangleShape_setSize(shape, (sfVector2f){col->hitbox.width, \
+col->hitbox.height});
+	sfRenderWindow_drawRectangleShape(engine->window, shape, NULL);
 }
 
 int display_hitbox(sf_engine_t *engine)
 {
-	sfSprite *spr = engine->get_sprite(engine, "assets/sprites/hitbox.png");
+	sfRectangleShape *shape = NULL;
 	sf_linked_list_t *curr_elem = NULL;
 
-	if (DISPLAY_HITBOX == 0 || spr == NULL) {
-		if (spr)
-			sfSprite_destroy(spr);
+	if (DISPLAY_HITBOX == 0)
 		return (0);
-	}
+	shape = sfRectangleShape_create();
+	if (shape == NULL)
+		return (84);
+	sfRectangleShape_setOutlineColor(shape, (sfColor){255, 20, 147, 255});
+	sfRectangleShape_setFillColor(shape, (sfColor){0, 0, 0, 0});
+	sfRectangleShape_setOutlineThickness(shape, 1);
 	curr_elem = engine->current_scene->physic_engine->physics_objects;
 	for (int i = 0; curr_elem != NULL; i++) {
-		display(curr_elem->data, spr, engine);
+		display(curr_elem->data, shape, engine);
 		curr_elem = curr_elem->next;
 	}
-	sfSprite_destroy(spr);
+	sfRectangleShape_destroy(shape);
 	sfRenderWindow_display(engine->window);
 	return (0);
 }
