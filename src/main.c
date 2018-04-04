@@ -10,6 +10,7 @@
 #include "my.h"
 #include "my_sfml.h"
 #include "rpg.h"
+#include "scenes.h"
 
 int has_display_vars(char **env)
 {
@@ -49,12 +50,17 @@ WINDOW_SIZE_Y, 32}, WINDOW_NAME, sfClose, NULL);
 		sfRenderWindow_destroy(window);
 		return (NULL);
 	}
+	srand((long)new_engine);
 	return (new_engine);
 }
 
-void load_scenes(UNUSED sf_engine_t *engine)
+int load_scenes(sf_engine_t *engine)
 {
-	return;
+	if (create_game_scene(engine) == NULL) {
+		my_puterror("[ERROR]Could not create game scene!\n");
+		return (84);
+	}
+	return (0);
 }
 
 int main(UNUSED int ac, UNUSED char **av, char **env)
@@ -63,15 +69,17 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 
 	if (engine == NULL)
 		return (84);
-	srand((long)engine);
-	load_scenes(engine);
+	if (load_scenes(engine) == 84) {
+		engine->destroy(engine);
+		return (84);
+	}
+	engine->change_scene(engine, "game", NULL);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
 			engine->current_scene->loop(engine, NULL);
 		engine->render(engine);
 	}
-	if (engine)
-		engine->destroy(engine);
+	engine->destroy(engine);
 	return (0);
 }

@@ -9,7 +9,12 @@ SRC_DIR		=	$(realpath src)
 
 SRC_FILES	=	main.c
 
-SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
+SRC_SCENES_DIR	=	$(realpath src/scenes)
+
+SRC_SCENES_FILES=	scene_game.c
+
+SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
+			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES))
 
 OBJ		=	$(SRC:%.c=%.o)
 
