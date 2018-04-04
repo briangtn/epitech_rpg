@@ -17,6 +17,7 @@
 
 	#define WINDOW_NAME "RPG"
 
+	#include "assets.h"
 	#include "fight.h"
 	#include "parser.h"
 	#include "prefabs.h"
