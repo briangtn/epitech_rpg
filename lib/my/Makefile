@@ -81,3 +81,6 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
+
+debug:	CFLAGS += -g
+debug:	re

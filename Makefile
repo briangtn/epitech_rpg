@@ -48,6 +48,10 @@ make_libs:
 		$(MAKE) -C $(LIB_DIR)my
 		$(MAKE) -C $(LIB_DIR)mysfml
 
+make_libs_debug:
+		$(MAKE) debug -C $(LIB_DIR)my
+		$(MAKE) debug -C $(LIB_DIR)mysfml
+
 clean:
 		$(RM) $(OBJ)
 		$(MAKE) clean -C $(LIB_DIR)my
@@ -61,4 +65,5 @@ fclean:		clean
 re:		fclean all
 
 debug:		CFLAGS += -g
-debug:		re
+debug:		fclean make_libs_debug $(OBJ)
+		$(CC) -o $(NAME) $(OBJ) $(LIB_FLAGS)

@@ -17,6 +17,8 @@
 
 	#define WINDOW_NAME "RPG"
 
+	#define TILE_SIZE 32
+
 	#include "assets.h"
 	#include "fight.h"
 	#include "parser.h"

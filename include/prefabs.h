@@ -13,8 +13,14 @@
 	#include "my_sfml.h"
 
 	#pragma region Player
-		gameobject_t *create_prefab_player(sf_engine_t *engine);
-		void destroy_prefab_player(gameobject_t *player);
+
+	#define PLAYER_ANIMATION_SPEED 0.5
+	#define PLAYER_NB_FRAME_ANIMATION 3
+	#define PLAYER_SPRITE_SHEET SPRITESHEET_PLAYER
+
+	gameobject_t *create_prefab_player(sf_engine_t *engine);
+	void destroy_prefab_player(gameobject_t *player);
+
 	#pragma endregion /* !Player */
 
 #endif /* !__PREFABS__H_ */

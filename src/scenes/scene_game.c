@@ -9,11 +9,13 @@
 
 #include "my.h"
 #include "my_sfml.h"
+#include "rpg.h"
 
 static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	if (engine == NULL)
 		return (84);
+	create_prefab_player(engine);
 	return (0);
 }
 
