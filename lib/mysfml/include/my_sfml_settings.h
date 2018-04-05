@@ -13,7 +13,7 @@
 	#include <stdbool.h>
 
 	/* Should the engine throw debug messages(intern error and researchs) */
-	#define DEBUG_MSG_ACTIVE false
+	#define DEBUG_MSG_ACTIVE true
 
 	/* Should the engine draw a rectangle around all hitbox in the scene */
 	#define DISPLAY_HITBOX true
