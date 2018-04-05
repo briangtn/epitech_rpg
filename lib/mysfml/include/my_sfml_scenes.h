@@ -25,6 +25,11 @@
 
 /* ------------------------------END-DEFINE------------------------------ */
 
+/* Typedefs */
+typedef struct updater updater_t;
+typedef struct sf_camera_s sf_camera_t;
+typedef struct scene sf_scene_t;
+
 /* --------------------------------UPDATE-------------------------------- */
 
 struct updater {
@@ -32,9 +37,26 @@ struct updater {
 	int (*update)(void *object, int time_milliseconds);
 };
 
-typedef struct updater updater_t;
-
 /* ------------------------------END-UPDATE------------------------------ */
+
+/* --------------------------------CAMERAS------------------------------- */
+
+struct sf_camera_s {
+	void *target;
+	bool follow_target;
+	sfVector2f position;
+	sfVector2f view_size;
+	sfIntRect scene_size;
+	sfView *camera_view;
+	sfRenderWindow *window;
+	void (*destroy)(struct sf_camera_s *camera);
+	int (*update)(struct sf_camera_s *camera, int delta_time);
+};
+
+sf_camera_t *create_new_camera(sfRenderWindow *window);
+void destroy_camera(sf_camera_t *camera);
+
+/* ------------------------------END-CAMERAS----------------------------- */
 
 /* --------------------------------SCENES-------------------------------- */
 
@@ -43,14 +65,13 @@ struct scene {
 	int (*load)();
 	int (*loop)();
 	int (*unload)();
+	sf_camera_t *camera;
 	sf_graph_engine_t *graphical_engine;
 	sf_audio_engine_t *audio_engine;
 	sf_physics_engine_t *physic_engine;
 	sf_linked_list_t *updaters;
 	sf_linked_list_t *gameobjects;
 };
-
-typedef struct scene sf_scene_t;
 
 sf_scene_t *create_scene(char *name);
 void destroy_scene(sf_scene_t *scene);

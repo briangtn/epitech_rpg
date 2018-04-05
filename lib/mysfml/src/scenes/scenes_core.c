@@ -25,6 +25,7 @@ sf_scene_t *create_scene(char *name)
 	scene->load = NULL;
 	scene->loop = NULL;
 	scene->unload = NULL;
+	scene->camera = NULL;
 	return (scene);
 }
 
@@ -59,9 +60,12 @@ void reset_scene(sf_scene_t *scene)
 		return;
 	clean_updaters(scene);
 	clean_gameobjects(scene);
-	scene->graphical_engine->destroy(scene->graphical_engine);
-	scene->audio_engine->destroy(scene->audio_engine);
-	scene->physic_engine->destroy(scene->physic_engine);
+	if (scene->graphical_engine)
+		scene->graphical_engine->destroy(scene->graphical_engine);
+	if (scene->audio_engine)
+		scene->audio_engine->destroy(scene->audio_engine);
+	if (scene->physic_engine)
+		scene->physic_engine->destroy(scene->physic_engine);
 	scene->graphical_engine = create_graphical_engine();
 	scene->audio_engine = create_audio_engine();
 	scene->physic_engine = create_physics_engine();
@@ -73,9 +77,15 @@ void destroy_scene(sf_scene_t *scene)
 		return;
 	clean_updaters(scene);
 	clean_gameobjects(scene);
-	scene->graphical_engine->destroy(scene->graphical_engine);
-	scene->audio_engine->destroy(scene->audio_engine);
-	scene->physic_engine->destroy(scene->physic_engine);
-	free(scene->name);
+	if (scene->graphical_engine)
+		scene->graphical_engine->destroy(scene->graphical_engine);
+	if (scene->audio_engine)
+		scene->audio_engine->destroy(scene->audio_engine);
+	if (scene->physic_engine)
+		scene->physic_engine->destroy(scene->physic_engine);
+	if (scene->name)
+		free(scene->name);
+	if (scene->camera)
+		scene->camera->destroy(scene->camera);
 	free(scene);
 }
