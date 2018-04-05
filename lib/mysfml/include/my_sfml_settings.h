@@ -19,7 +19,7 @@
 	#define DISPLAY_HITBOX false
 
 	/* Display the bounds of cameras (inner and outer) */
-	/* Scene bounds: blue/Camera bounds: white/Camera center: white point */
+	/* Scene bounds: blue/Camera bounds: white/Camera center: yellow point*/
 	#define DISPLAY_CAMERA_DEBUG false
 	/* Gravity force on axis Y */
 	#define GRAVITY_FORCE 0

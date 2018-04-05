@@ -30,23 +30,16 @@ static int handle_key_pressed(sf_engine_t *engine)
 {
 	gameobject_t *player = engine->get_gameobject(engine, "player");
 	sf_rigidbody_2d_t *rb = get_component(player, RIGIDBODY_2D);
+	sfVector2f axis = (sfVector2f){0, 0};
 
 	if (player == NULL || rb == NULL) {
 		my_puterror("PLAYER NOT FOUND!\n");
 		return (84);
 	}
-	if (sfKeyboard_isKeyPressed(sfKeyLeft))
-		rb->speed.x = -32 * 2;
-	else if (sfKeyboard_isKeyPressed(sfKeyRight))
-		rb->speed.x = 32 * 2;
-	else
-		rb->speed.x = 0;
-	if (sfKeyboard_isKeyPressed(sfKeyUp))
-		rb->speed.y = -32 * 2;
-	else if (sfKeyboard_isKeyPressed(sfKeyDown))
-		rb->speed.y = 32 * 2;
-	else
-		rb->speed.y = 0;
+	axis.x = sfKeyboard_isKeyPressed(72) - sfKeyboard_isKeyPressed(71);
+		rb->speed.x = 32 * axis.x * 2;
+	axis.y = sfKeyboard_isKeyPressed(74) - sfKeyboard_isKeyPressed(73);
+		rb->speed.y = 32 * axis.y * 2;
 	return (0);
 }
 
