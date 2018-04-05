@@ -10,6 +10,13 @@
 #ifndef __ASSETS__H_
 	#define __ASSETS__H_
 
-	#define SPRITESHEET_PLAYER "assets/sprites/player.png"
+	#pragma region Spritesheets
+	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
+	#pragma endregion
+
+	#pragma region Tilesets
+	#define TILESET_OUTSIDE_B "assets/tilesets/outside_b.png"
+	#define TILESET_OUTSIDE_C "assets/tilesets/outside_c.png"
+	#pragma endregion
 
 #endif /* !__ASSETS__H_ */
