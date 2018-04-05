@@ -22,7 +22,7 @@ static int my_clamp(float *value, int min, int max)
 	return (*value);
 }
 
-static int update_camera(sf_camera_t *camera, int delta_time)
+static void update_camera(sf_camera_t *camera, int delta_time)
 {
 	sf_transform_t *tr = NULL;
 	int min_x = 0;
@@ -31,7 +31,7 @@ static int update_camera(sf_camera_t *camera, int delta_time)
 	int max_y = 0;
 
 	if (!camera || !camera->window || !camera->camera_view)
-		return (84);
+		return;
 	tr = get_component((gameobject_t *)camera->target, TRANSFORM);
 	if (camera->follow_target && tr != NULL) {
 		camera->position = (sfVector2f){tr->position.x, tr->position.y};
@@ -44,7 +44,7 @@ static int update_camera(sf_camera_t *camera, int delta_time)
 	}
 	sfView_setCenter(camera->camera_view, camera->position);
 	sfView_setSize(camera->camera_view, camera->view_size);
-	return (0);
+	sfRenderWindow_setView(camera->window, camera->camera_view);
 }
 
 sf_camera_t *create_new_camera(sfRenderWindow *window)

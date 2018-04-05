@@ -29,12 +29,16 @@ static void set_camera_scene(sf_engine_t *engine)
 {
 	if (!engine->current_scene || !engine->current_scene->camera)
 		return;
-	if (engine->current_scene->camera->update != NULL)
+	if (engine->current_scene->camera->update != NULL) {
 		engine->add_update(engine, (void *)engine->current_scene->\
 camera, (UPDATER)engine->current_scene->camera->update);
-	if (engine->current_scene->camera->camera_view != NULL)
+		my_putdebug("[DEBUG]Added camera Updater!\n");
+	}
+	if (engine->current_scene->camera->camera_view != NULL) {
 		sfRenderWindow_setView(engine->window, \
 engine->current_scene->camera->camera_view);
+		my_putdebug("[DEBUG]View Set!\n");
+	}
 }
 
 int update_selected_scene(sf_engine_t *engine)

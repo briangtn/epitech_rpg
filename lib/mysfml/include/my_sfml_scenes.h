@@ -50,7 +50,7 @@ struct sf_camera_s {
 	sfView *camera_view;
 	sfRenderWindow *window;
 	void (*destroy)(struct sf_camera_s *camera);
-	int (*update)(struct sf_camera_s *camera, int delta_time);
+	void (*update)(struct sf_camera_s *camera, int delta_time);
 };
 
 sf_camera_t *create_new_camera(sfRenderWindow *window);

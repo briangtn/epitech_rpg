@@ -13,15 +13,14 @@
 	#include <stdbool.h>
 
 	/* Should the engine throw debug messages(intern error and researchs) */
-	#define DEBUG_MSG_ACTIVE true
+	#define DEBUG_MSG_ACTIVE false
 
 	/* Should the engine draw a rectangle around all hitbox in the scene */
-	#define DISPLAY_HITBOX true
+	#define DISPLAY_HITBOX false
 
 	/* Display the bounds of cameras (inner and outer) */
 	/* Scene bounds: blue/Camera bounds: white/Camera center: white point */
-	#define DISPLAY_CAMERA_DEBUG true
-
+	#define DISPLAY_CAMERA_DEBUG false
 	/* Gravity force on axis Y */
 	#define GRAVITY_FORCE 0
 

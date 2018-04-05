@@ -19,7 +19,7 @@ static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
 	if (engine == NULL || camera == NULL)
 		return (84);
 	player = create_prefab_player(engine);
-	camera->scene_size = (sfIntRect){0, 0, 2000, 1100};
+	camera->scene_size = (sfIntRect){0, 0, 2000, 2000};
 	camera->target = player;
 	camera->follow_target = true;
 	initialize_physic_state(engine);
