@@ -65,6 +65,8 @@ sf_camera_t *create_new_camera(sfRenderWindow *window)
 	new_camera->scene_size = (sfIntRect){0, 0, w_size.x, w_size.y};
 	new_camera->destroy = &destroy_camera;
 	new_camera->update = &update_camera;
+	sfView_setCenter(new_camera->camera_view, new_camera->position);
+	sfView_setSize(new_camera->camera_view, new_camera->view_size);
 	return (new_camera);
 }
 
