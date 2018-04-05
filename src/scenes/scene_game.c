@@ -37,9 +37,9 @@ static int handle_key_pressed(sf_engine_t *engine)
 		return (84);
 	}
 	axis.x = sfKeyboard_isKeyPressed(72) - sfKeyboard_isKeyPressed(71);
-		rb->speed.x = 32 * axis.x * 2;
+		rb->speed.x = 32 * axis.x * PLAYER_MOVEMENT_SPEED_MUL;
 	axis.y = sfKeyboard_isKeyPressed(74) - sfKeyboard_isKeyPressed(73);
-		rb->speed.y = 32 * axis.y * 2;
+		rb->speed.y = 32 * axis.y * PLAYER_MOVEMENT_SPEED_MUL;
 	return (0);
 }
 

@@ -22,7 +22,7 @@ static int my_clamp(float *value, int min, int max)
 	return (*value);
 }
 
-static void update_camera(sf_camera_t *camera, int delta_time)
+static void update_camera(sf_camera_t *camera, UNUSED int delta_time)
 {
 	sf_transform_t *tr = NULL;
 	int min_x = 0;

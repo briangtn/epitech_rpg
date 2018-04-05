@@ -25,6 +25,8 @@
 
 #define MSG_MY_SFML_DATA_NOT_FOUND "[INFO] Data wasn't found!\n"
 
+#define UNUSED __attribute__((unused))
+
 /* ------------------------------END-DEFINE------------------------------ */
 
 /* ------------------------------LINKEDLIST------------------------------ */
