@@ -55,6 +55,7 @@ struct sf_camera_s {
 
 sf_camera_t *create_new_camera(sfRenderWindow *window);
 void destroy_camera(sf_camera_t *camera);
+void display_camera_debug(sf_camera_t *camera);
 
 /* ------------------------------END-CAMERAS----------------------------- */
 

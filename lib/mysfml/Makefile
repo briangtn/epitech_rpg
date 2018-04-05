@@ -95,7 +95,8 @@ SRC_FILES_PREFAB=	prefab_button.c					\
 SRC_DIR_SCENES	=	$(realpath src/scenes)
 
 SRC_FILES_SCENES=	scenes_core.c					\
-			camera_core.c
+			camera_core.c					\
+			camera_debug.c
 
 SRC		=	$(addprefix $(SRC_DIR_AUDIO)/, $(SRC_FILES_AUDIO)) \
 			$(addprefix $(SRC_DIR_COMP)/, $(SRC_FILES_COMP)) \
