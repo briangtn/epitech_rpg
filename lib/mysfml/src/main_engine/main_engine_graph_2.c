@@ -21,3 +21,15 @@ int remove_from_layers_main_engine(sf_engine_t *engine, void **data)
 	return (engine->current_scene->graphical_engine->remove_from_layers(\
 engine->current_scene->graphical_engine, data));
 }
+
+int add_particle_system_main_engine(sf_engine_t *engine, \
+sf_particle_system_t *p_sys)
+{
+	if (engine == NULL || p_sys == NULL) {
+		my_putdebug("Add particle system main engine:\n    ");
+		my_putdebug(MSG_MY_SFML_ERR_NULL);
+		return (84);
+	}
+	return (engine->current_scene->graphical_engine->particle_manager->\
+add_system(engine->current_scene->graphical_engine->particle_manager, p_sys));
+}

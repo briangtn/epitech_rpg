@@ -44,6 +44,7 @@ void set_physics_functions(sf_engine_t *engine)
 	engine->set_layer_type = &main_engine_set_layer_type;
 	engine->remove_from_layers = &remove_from_layers_main_engine;
 	engine->destroy_gameobject = &destroy_gameobject_main_engine;
+	engine->add_particle_system = &add_particle_system_main_engine;
 }
 
 void set_functions(sf_engine_t *engine)
