@@ -14,8 +14,8 @@
 
 	#pragma region Player
 
-	#define PLAYER_ANIMATION_SPEED 0.5
-	#define PLAYER_NB_FRAME_ANIMATION 3
+	#define PLAYER_ANIMATION_SPEED .2
+	#define PLAYER_NB_FRAME_ANIMATION 4
 	#define PLAYER_SPRITE_SHEET SPRITESHEET_PLAYER
 
 	gameobject_t *create_prefab_player(sf_engine_t *engine);
