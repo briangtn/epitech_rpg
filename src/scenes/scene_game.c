@@ -13,9 +13,40 @@
 
 static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
 {
-	if (engine == NULL)
+	sf_camera_t *camera = engine->current_scene->camera;
+	gameobject_t *player = NULL;
+
+	if (engine == NULL || camera == NULL)
 		return (84);
-	create_prefab_player(engine);
+	player = create_prefab_player(engine);
+	camera->scene_size = (sfIntRect){0, 0, 2000, 1100};
+	camera->target = player;
+	camera->follow_target = true;
+	initialize_physic_state(engine);
+	return (0);
+}
+
+static int handle_key_pressed(sf_engine_t *engine)
+{
+	gameobject_t *player = engine->get_gameobject(engine, "player");
+	sf_rigidbody_2d_t *rb = get_component(player, RIGIDBODY_2D);
+
+	if (player == NULL || rb == NULL) {
+		my_puterror("PLAYER NOT FOUND!\n");
+		return (84);
+	}
+	if (sfKeyboard_isKeyPressed(sfKeyLeft))
+		rb->speed.x = -32 * 2;
+	else if (sfKeyboard_isKeyPressed(sfKeyRight))
+		rb->speed.x = 32 * 2;
+	else
+		rb->speed.x = 0;
+	if (sfKeyboard_isKeyPressed(sfKeyUp))
+		rb->speed.y = -32 * 2;
+	else if (sfKeyboard_isKeyPressed(sfKeyDown))
+		rb->speed.y = 32 * 2;
+	else
+		rb->speed.y = 0;
 	return (0);
 }
 
@@ -29,6 +60,7 @@ static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
 	}
+	handle_key_pressed(engine);
 	return (0);
 }
 
