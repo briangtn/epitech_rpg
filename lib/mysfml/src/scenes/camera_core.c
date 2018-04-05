@@ -39,8 +39,8 @@ static int update_camera(sf_camera_t *camera, int delta_time)
 		max_x = min_x + camera->scene_size.width - camera->view_size.x;
 		min_y = camera->scene_size.top + camera->view_size.y / 2;
 		max_y = min_y + camera->scene_size.height - camera->view_size.y;
-		my_clamp(&(camera->position.x), min_x, max_x);
-		my_clamp(&(camera->position.y), min_y, max_y);
+		my_clamp((int *)&(camera->position.x), min_x, max_x);
+		my_clamp((int *)&(camera->position.y), min_y, max_y);
 	}
 	sfView_setCenter(camera->camera_view, camera->position);
 	sfView_setSize(camera->camera_view, camera->view_size);

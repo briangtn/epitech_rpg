@@ -32,9 +32,14 @@ engine->current_scene->updaters);
 int remove_update(sf_engine_t *engine, void *object)
 {
 	char *curr_id = my_int_to_str((long)object);
-	updater_t **array = (updater_t **)get_data_array(curr_id, \
-engine->current_scene->updaters);
+	updater_t **array = NULL;
 
+	if (engine == NULL || engine->current_scene == NULL) {
+		free(curr_id);
+		return (84);
+	}
+	array = (updater_t **)get_data_array(curr_id, \
+engine->current_scene->updaters);
 	if (array) {
 		for (int i = 0; array[i]; i++)
 			free(array[i]);

@@ -12,6 +12,8 @@ int add_scene(sf_engine_t *engine, sf_scene_t *scene)
 {
 	if (engine == NULL || scene == NULL)
 		return (84);
+	if (scene->camera == NULL)
+		scene->camera = create_new_camera(engine->window);
 	engine->scenes = sf_push(scene, my_strdup(scene->name), engine->scenes);
 	return (0);
 }
@@ -21,6 +23,18 @@ sf_scene_t *get_scene(sf_engine_t *engine, const char *name)
 	if (engine == NULL || name == NULL)
 		return (NULL);
 	return ((sf_scene_t *)get_data(name, engine->scenes));
+}
+
+static void set_camera_scene(sf_engine_t *engine)
+{
+	if (!engine->current_scene || !engine->current_scene->camera)
+		return;
+	if (engine->current_scene->camera->update != NULL)
+		engine->add_update(engine, (void *)engine->current_scene->\
+camera, (UPDATER)engine->current_scene->camera->update);
+	if (engine->current_scene->camera->camera_view != NULL)
+		sfRenderWindow_setView(engine->window, \
+engine->current_scene->camera->camera_view);
 }
 
 int update_selected_scene(sf_engine_t *engine)
@@ -37,9 +51,12 @@ int update_selected_scene(sf_engine_t *engine)
 	}
 	if (engine->current_scene && engine->current_scene->unload)
 		engine->current_scene->unload(engine, engine->data);
+	engine->remove_update(engine, (engine->current_scene) ? \
+(void *)engine->current_scene->camera : NULL);
 	engine->current_scene = new_scene;
 	if (engine->current_scene && engine->current_scene->load)
 		engine->current_scene->load(engine, engine->data);
+	set_camera_scene(engine);
 	free(engine->next_scene);
 	engine->next_scene = NULL;
 	return (0);

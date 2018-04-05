@@ -91,7 +91,7 @@ refer to remove_from_layers_main_engine()*/
 	int (*set_layer_type)(struct main_engine *engine, int priority, \
 layer_render_type_t new_type); /**< Set the type of the asked layer to \
 new_type. Refer to main_engine_set_layer_type() */
-	int (*add_particle_system)(struct main_engine engine, \
+	int (*add_particle_system)(struct main_engine *engine, \
 sf_particle_system_t *system); /**< Add a particle system to the current scene*/
 	int (*load_texture)(struct main_engine *engine, const char *path);\
 /**< Load a texture to the current render engine. \
