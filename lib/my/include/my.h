@@ -10,6 +10,7 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include "match.h"
 
 #define HEXA_BASE_MIN "0123456789abcdef"
 #define HEXA_BASE_MAJ "0123456789ABCDEF"
