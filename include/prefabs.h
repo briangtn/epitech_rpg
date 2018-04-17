@@ -24,4 +24,12 @@
 
 	#pragma endregion /* !Player */
 
+	#pragma region Fight
+
+	gameobject_t *create_prefab_fbackground(sf_engine_t *engine,\
+fight_t *fight);
+
+
+	#pragma endregion
+
 #endif /* !__PREFABS__H_ */

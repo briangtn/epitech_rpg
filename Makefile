@@ -11,11 +11,13 @@ SRC_FILES	=	main.c
 
 SRC_SCENES_DIR	=	$(realpath src/scenes)
 
-SRC_SCENES_FILES=	scene_game.c
+SRC_SCENES_FILES=	scene_game.c	\
+			scene_fight.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
-SRC_PREFAB_FILES=	player/prefab_player_core.c
+SRC_PREFAB_FILES=	player/prefab_player_core.c		\
+			fight/prefab_fight_background.c		\
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
