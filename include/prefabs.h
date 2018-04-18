@@ -28,6 +28,9 @@
 
 	gameobject_t *create_prefab_fbackground(sf_engine_t *engine,\
 fight_t *fight);
+	gameobject_t *create_prefab_fplayer(sf_engine_t *engine,\
+fight_t *fight);
+
 
 
 	#pragma endregion

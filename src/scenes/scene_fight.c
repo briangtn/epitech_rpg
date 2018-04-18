@@ -10,6 +10,7 @@
 static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 {
 	create_prefab_fbackground(engine, fight);
+	create_prefab_fplayer(engine, fight);
 	return (0);
 }
 
@@ -34,7 +35,7 @@ static int unload_fight_scene(sf_engine_t *engine, UNUSED void *data)
 	return (0);
 }
 
-sf_scene_t *create_fight_scene(sf_engine_t *engine, fight_t *fight)
+sf_scene_t *create_fight_scene(sf_engine_t *engine, UNUSED fight_t *fight)
 {
 	sf_scene_t *new_scene = create_scene("fight");
 
