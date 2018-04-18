@@ -32,6 +32,7 @@
 	typedef struct my_fight {
 		char *background_path;
 		fight_player_t player;
+		sf_linked_list_t *ennemies;
 	} fight_t;
 
 #endif /* !__FIGHT__H_ */

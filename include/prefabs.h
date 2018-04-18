@@ -30,8 +30,8 @@
 fight_t *fight);
 	gameobject_t *create_prefab_fplayer(sf_engine_t *engine,\
 fight_t *fight);
-
-
+	gameobject_t *create_prefab_fenemy(sf_engine_t *engine,\
+fight_enemy_t *enemy, sf_vector_2d_t position);
 
 	#pragma endregion
 

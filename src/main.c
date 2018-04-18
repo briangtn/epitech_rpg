@@ -69,7 +69,8 @@ int load_scenes(sf_engine_t *engine)
 int main(UNUSED int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
-	fight_t *fight = malloc(sizeof(fight_t));
+	fight_t *fight = malloc(sizeof(*fight));
+	fight_enemy_t *enemy = malloc(sizeof(*enemy));
 
 	if (engine == NULL)
 		return (84);
@@ -79,7 +80,13 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 	}
 	fight->background_path = "assets/test.png";
 	fight->player = (fight_player_t){10, "assets/spritesheets/player.png",\
-{100, 10}};
+{600, 600}};
+	fight->ennemies = NULL;
+	enemy->life = 10;
+	enemy->sprite_path = "assets/dragon.png";
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
 	engine->change_scene(engine, "fight", fight);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);

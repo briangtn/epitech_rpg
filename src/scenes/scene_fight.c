@@ -9,8 +9,16 @@
 
 static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 {
+	sf_linked_list_t *current = fight->ennemies;
+	sf_vector_2d_t pos = {100, 100};
+
 	create_prefab_fbackground(engine, fight);
 	create_prefab_fplayer(engine, fight);
+	while (current) {
+		create_prefab_fenemy(engine, current->data, pos);
+		pos.x += 50;
+		current = current->next;
+	}
 	return (0);
 }
 

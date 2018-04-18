@@ -26,7 +26,7 @@ fight->background_path));
 	sfSprite_setScale(anim->sprite,\
 (sfVector2f){window_sizes.x / sprite_size.width,\
 window_sizes.y / sprite_size.height});
-	engine->add_to_layer(engine, GAME, (void **)&(anim->sprite));
+	engine->add_to_layer(engine, GAME - 1, (void **)&(anim->sprite));
 	return (0);
 }
 
