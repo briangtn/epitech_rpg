@@ -56,11 +56,11 @@ static int add_components(gameobject_t *new_npc)
 		return (84);
 	if (new_npc->add_component(new_npc, COLLIDER_2D) == NULL)
 		return (84);
-	if (new_npc->add_custom_component(new_npc, &create_interaction, \
-INTERACTION) == NULL)
+	if (new_npc->add_custom_component(new_npc, (void *(*)(gameobject_t *))\
+&create_interaction, INTERACTION) == NULL)
 		return (84);
-	if (new_npc->add_custom_component(new_npc, &create_npc_comp, \
-NPC) == NULL)
+	if (new_npc->add_custom_component(new_npc, (void *(*)(gameobject_t *))\
+&create_npc_comp, NPC) == NULL)
 		return (84);
 	return (0);
 }

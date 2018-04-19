@@ -7,6 +7,7 @@
 
 /* File created the 19/04/2018 at 14:15:45 by julian.frabel@epitech.eu */
 
+#include <stdlib.h>
 #include "my_sfml.h"
 #include "rpg.h"
 

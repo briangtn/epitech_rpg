@@ -10,7 +10,7 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-void npc_interaction(gameobject_t *npc, sf_engine_t *engine)
+void npc_interaction(UNUSED gameobject_t *npc, UNUSED sf_engine_t *engine)
 {
 
 }
