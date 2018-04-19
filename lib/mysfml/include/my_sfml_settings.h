@@ -16,11 +16,11 @@
 	#define DEBUG_MSG_ACTIVE false
 
 	/* Should the engine draw a rectangle around all hitbox in the scene */
-	#define DISPLAY_HITBOX false
+	#define DISPLAY_HITBOX true
 
 	/* Display the bounds of cameras (inner and outer) */
 	/* Scene bounds: blue/Camera bounds: white/Camera center: yellow point*/
-	#define DISPLAY_CAMERA_DEBUG false
+	#define DISPLAY_CAMERA_DEBUG true
 	/* Gravity force on axis Y */
 	#define GRAVITY_FORCE 0
 

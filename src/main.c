@@ -59,12 +59,18 @@ int load_scenes(sf_engine_t *engine)
 		my_puterror("[ERROR]Could not create game scene!\n");
 		return (84);
 	}
+	if (create_fight_scene(engine, NULL) == NULL) {
+		my_puterror("[ERROR]Could not create fight scene!\n");
+		return (84);
+	}
 	return (0);
 }
 
 int main(UNUSED int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
+	fight_t *fight = malloc(sizeof(*fight));
+	fight_enemy_t *enemy = malloc(sizeof(*enemy));
 
 	if (engine == NULL)
 		return (84);
@@ -72,7 +78,16 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	engine->change_scene(engine, "game", NULL);
+	fight->background_path = "assets/test.png";
+	fight->player = (fight_player_t){10, "assets/spritesheets/player.png",\
+{600, 600}};
+	fight->ennemies = NULL;
+	enemy->life = 10;
+	enemy->sprite_path = "assets/dragon.png";
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	engine->change_scene(engine, "fight", fight);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
