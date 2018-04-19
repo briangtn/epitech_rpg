@@ -31,6 +31,13 @@
 
 	#pragma endregion /* !Player */
 
+	#pragma region NpcPrefab
+
+	gameobject_t *create_prefab_npc(sf_engine_t *engine);
+	void npc_interaction(gameobject_t *npc, sf_engine_t *engine);
+
+	#pragma endregion
+
 	#pragma region CustomComponent
 
 	enum custom_component_s {

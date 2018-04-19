@@ -34,9 +34,12 @@ static int setup_components(sf_engine_t *engine, gameobject_t *new_npc)
 {
 	sf_animation_2d_t *anim = get_component(new_npc, ANIMATION_2D);
 	sf_interaction_t *inte = get_component(new_npc, INTERACTION);
+	sf_npc_t *npc = get_component(new_npc, NPC);
 
 	setup_animation(engine, anim);
 	inte->engine = engine;
+	inte->interaction = &npc_interaction;
+	npc->text = my_strdup("Test text\n");
 	register_animation(engine, anim, GAME);
 	engine->add_gameobject(engine, new_npc);
 	engine->add_physic_object(engine, new_npc);
@@ -55,6 +58,9 @@ static int add_components(gameobject_t *new_npc)
 		return (84);
 	if (new_npc->add_custom_component(new_npc, &create_interaction, \
 INTERACTION) == NULL)
+		return (84);
+	if (new_npc->add_custom_component(new_npc, &create_npc_comp, \
+NPC) == NULL)
 		return (84);
 	return (0);
 }

@@ -14,13 +14,20 @@ SRC_SCENES_DIR	=	$(realpath src/scenes)
 SRC_SCENES_FILES=	scene_game.c	\
 			scene_fight.c
 
+SRC_COMP_DIR	=	$(realpath src/custom_component)
+
+SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
+			npc/component_npc.c
+
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
 SRC_PREFAB_FILES=	player/prefab_player_core.c		\
+			player/behaviour_player_movement.c	\
 			fight/prefab_fight_background.c		\
 			fight/prefab_fight_player.c		\
 			fight/prefab_fight_enemy.c		\
-			player/behaviour_player_movement.c
+			npc/npc_interaction.c			\
+			npc/prefab_npc_core.c
 SRC_UTILS_DIR	=	$(realpath src/utils)
 
 SRC_UTILS_FILES	=	fight_utils.c				\
@@ -28,7 +35,8 @@ SRC_UTILS_FILES	=	fight_utils.c				\
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
 			$(addprefix $(SRC_PREFAB_DIR)/, $(SRC_PREFAB_FILES)) \
-			$(addprefix $(SRC_UTILS_DIR)/, 	$(SRC_UTILS_FILES))
+			$(addprefix $(SRC_UTILS_DIR)/, 	$(SRC_UTILS_FILES)) \
+			$(addprefix $(SRC_COMP_DIR)/, $(SRC_COMP_FILES))
 
 OBJ		=	$(SRC:%.c=%.o)
 
