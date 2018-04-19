@@ -17,5 +17,5 @@ void npc_interaction(UNUSED gameobject_t *npc, UNUSED sf_engine_t *engine)
 
 	if (npc_comp == NULL || npc_comp->text == NULL)
 		return;
-	dprintf(2, npc_comp->text);
+	my_printf(npc_comp->text);
 }
