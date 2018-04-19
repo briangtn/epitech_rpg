@@ -22,9 +22,9 @@ static sfIntRect get_rect_in_front(gameobject_t *from)
 	rect.left += tr->position.x;
 	rect.top += tr->position.y;
 	if (rb->speed.x > 0.0)
-		rect.top += 1 * TILE_SIZE;
+		rect.left += 1 * TILE_SIZE;
 	if (rb->speed.x < 0.0)
-		rect.top += -1 * TILE_SIZE;
+		rect.left += -1 * TILE_SIZE;
 	if (rb->speed.y > 0.0)
 		rect.top += 1 * TILE_SIZE;
 	if (rb->speed.y < 0.0)

@@ -19,6 +19,7 @@ static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
 	if (engine == NULL || camera == NULL)
 		return (84);
 	player = create_prefab_player(engine);
+	((sf_transform_t *)get_component(player, TRANSFORM))->position.x = 100;
 	create_prefab_npc(engine);
 	camera->scene_size = (sfIntRect){0, 0, 2000, 2000};
 	camera->target = player;
