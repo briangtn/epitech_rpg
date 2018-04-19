@@ -26,12 +26,17 @@ fight_enemy_t *fenemy)
 {
 	sf_animation_2d_t *anim = get_component(enemy, ANIMATION_2D);
 	sf_transform_t *transform = get_component(enemy, TRANSFORM);
+	sfFloatRect sizes;
 
 	if (anim == NULL || transform == NULL)
 		return (84);
 	anim->update = fenemy_animation_update;
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 fenemy->sprite_path));
+	sizes = sfSprite_getGlobalBounds(anim->sprite);
+	sfSprite_setScale(anim->sprite,\
+(sfVector2f){FIGHT_ELEMENT_SIZE / sizes.width,\
+FIGHT_ELEMENT_SIZE / sizes.height});
 	register_animation(engine, anim, GAME);
 	return (0);
 }
@@ -50,13 +55,16 @@ static int add_components(gameobject_t *enemy)
 }
 
 gameobject_t *create_prefab_fenemy(sf_engine_t *engine, fight_enemy_t *enemy,\
-sf_vector_2d_t position)
+int pos, int enemy_count)
 {
 	gameobject_t *new_enemy = create_gameobject("fight_enemy");
 	sf_transform_t *tr = NULL;
+	sfVector2u window_sizes;
+	int pos_center = 0;
 
-	if (new_enemy == NULL)
+	if (engine == NULL || new_enemy == NULL)
 		return (NULL);
+	window_sizes = sfRenderWindow_getSize(engine->window);
 	if (add_components(new_enemy) == 84) {
 		new_enemy->destroy(new_enemy);
 		my_puterror("[ERROR]enemy: Could not add components!\n");
@@ -70,6 +78,8 @@ sf_vector_2d_t position)
 	tr = get_component(new_enemy, TRANSFORM);
 	if (tr == NULL)
 		return (NULL);
-	tr->position = (sf_vector_3d_t){position.x, position.y, 0};
+	tr->position =\
+(sf_vector_3d_t){(window_sizes.x / 2 - (enemy_count * (64 + 50)) / 2), 300, 0};
+	tr->position.x += pos * (64 + 50) + 50;
 	return (new_enemy);
 }

@@ -11,6 +11,8 @@
 	#define __FIGHT__H_
 
 	#include "my_sfml.h"
+	#define FIGHT_ELEMENT_SIZE 64
+	#define FIGHT_ENEMY_SPACE 50
 
 	typedef struct attack {
 		char *name;
