@@ -19,11 +19,22 @@ static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
 	if (engine == NULL || camera == NULL)
 		return (84);
 	player = create_prefab_player(engine);
+	create_prefab_npc(engine);
 	camera->scene_size = (sfIntRect){0, 0, 2000, 2000};
 	camera->target = player;
 	camera->follow_target = true;
 	initialize_physic_state(engine);
 	return (0);
+}
+
+static void handle_key_pressed(sf_engine_t *engine, sfEvent evt)
+{
+	gameobject_t *player = engine->get_gameobject(engine, "player");
+
+	if (player == NULL)
+		return;
+	if (evt.key.code == sfKeySpace)
+		run_interactions(engine, player);
 }
 
 static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
@@ -35,6 +46,8 @@ static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
 	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
+		if (evt.type == sfEvtKeyPressed)
+			handle_key_pressed(engine, evt);
 	}
 	return (0);
 }

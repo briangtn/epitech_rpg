@@ -17,6 +17,7 @@ SRC_SCENES_FILES=	scene_game.c	\
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
 SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
+			interaction/interact.c				\
 			npc/component_npc.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
