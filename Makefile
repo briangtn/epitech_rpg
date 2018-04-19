@@ -34,6 +34,7 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 SRC_UTILS_DIR	=	$(realpath src/utils)
 
 SRC_UTILS_FILES	=	fight_utils.c				\
+			keyboard_utils.c			\
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
