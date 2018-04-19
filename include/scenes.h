@@ -13,5 +13,7 @@
 	#include "my_sfml.h"
 
 	sf_scene_t *create_game_scene(sf_engine_t *engine);
+	sf_scene_t *create_fight_scene(sf_engine_t *engine, fight_t *fight);
+
 
 #endif /* !__SCENES__H_ */

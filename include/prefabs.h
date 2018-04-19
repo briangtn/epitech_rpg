@@ -11,6 +11,7 @@
 	#define __PREFABS__H_
 
 	#include "my_sfml.h"
+	#include "fight.h"
 
 	#pragma region Player
 
@@ -49,6 +50,15 @@
 	void destroy_interaction(sf_interaction_t *interaction);
 
 	#pragma endregion
+
+	#pragma region Fight
+
+	gameobject_t *create_prefab_fbackground(sf_engine_t *engine,\
+fight_t *fight);
+	gameobject_t *create_prefab_fplayer(sf_engine_t *engine,\
+fight_t *fight);
+	gameobject_t *create_prefab_fenemy(sf_engine_t *engine,\
+fight_enemy_t *enemy, int position, int enemy_count);
 
 	#pragma endregion
 
