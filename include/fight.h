@@ -39,5 +39,7 @@
 
 	int get_enemy_center_position(sf_engine_t *engine, int enemy_count);
 	int get_total_elem_size(void);
+	int get_enemy_posx(sf_engine_t *engine, int enemy_count, int pos);
+	void scale_elem_to_size(sfSprite *sprite);
 
 #endif /* !__FIGHT__H_ */

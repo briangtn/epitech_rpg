@@ -26,17 +26,13 @@ fight_enemy_t *fenemy)
 {
 	sf_animation_2d_t *anim = get_component(enemy, ANIMATION_2D);
 	sf_transform_t *transform = get_component(enemy, TRANSFORM);
-	sfFloatRect sizes;
 
 	if (anim == NULL || transform == NULL)
 		return (84);
 	anim->update = fenemy_animation_update;
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 fenemy->sprite_path));
-	sizes = sfSprite_getGlobalBounds(anim->sprite);
-	sfSprite_setScale(anim->sprite,\
-(sfVector2f){FIGHT_ELEMENT_SIZE / sizes.width,\
-FIGHT_ELEMENT_SIZE / sizes.height});
+	scale_elem_to_size(anim->sprite);
 	register_animation(engine, anim, GAME);
 	return (0);
 }
@@ -79,7 +75,6 @@ int pos, int enemy_count)
 	if (tr == NULL)
 		return (NULL);
 	tr->position =\
-(sf_vector_3d_t){get_enemy_center_position(engine, enemy_count), 300, 0};
-	tr->position.x += pos * (get_total_elem_size()) + FIGHT_ENEMY_SPACE;
+(sf_vector_3d_t){get_enemy_posx(engine, enemy_count, pos), 300, 0};
 	return (new_enemy);
 }

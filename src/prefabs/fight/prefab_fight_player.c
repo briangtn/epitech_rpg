@@ -33,6 +33,7 @@ fight_t *fight)
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 fight->player.sprite_path));
 	register_animation(engine, anim, GAME);
+	scale_elem_to_size(anim->sprite);
 	transform->position =\
 (sf_vector_3d_t){fight->player.position.x, fight->player.position.y, 0};
 	return (0);

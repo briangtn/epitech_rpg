@@ -20,6 +20,7 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			fight/prefab_fight_background.c		\
 			fight/prefab_fight_player.c		\
 			fight/prefab_fight_enemy.c		\
+			fight/prefab_fight_arrow.c		\
 			player/behaviour_player_movement.c
 SRC_UTILS_DIR	=	$(realpath src/utils)
 
