@@ -20,6 +20,7 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			fight/prefab_fight_background.c		\
 			fight/prefab_fight_player.c		\
 			fight/prefab_fight_enemy.c		\
+			player/behaviour_player_movement.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
