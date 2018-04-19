@@ -8,6 +8,7 @@
 #include "my.h"
 #include "my_sfml.h"
 #include "rpg.h"
+#include "utils.h"
 
 static int farrow_animation_update(sf_animation_2d_t *anim,\
 UNUSED int elapsed_milliseconds)
@@ -16,6 +17,11 @@ UNUSED int elapsed_milliseconds)
 
 	if (anim == NULL || transform == NULL)
 		return (84);
+	if (is_key_just_pressed(sfKeyLeft)) {
+		transform->position.x -= get_total_elem_size();
+	} else if (is_key_just_pressed(sfKeyRight)){
+		transform->position.x += get_total_elem_size();
+	}
 	sfSprite_setPosition(anim->sprite,\
 (sfVector2f){transform->position.x, transform->position.y});
 	return (0);
