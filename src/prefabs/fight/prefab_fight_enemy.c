@@ -79,7 +79,7 @@ int pos, int enemy_count)
 	if (tr == NULL)
 		return (NULL);
 	tr->position =\
-(sf_vector_3d_t){(window_sizes.x / 2 - (enemy_count * (64 + 50)) / 2), 300, 0};
-	tr->position.x += pos * (64 + 50) + 50;
+(sf_vector_3d_t){get_enemy_center_position(engine, enemy_count), 300, 0};
+	tr->position.x += pos * (get_total_elem_size()) + FIGHT_ENEMY_SPACE;
 	return (new_enemy);
 }

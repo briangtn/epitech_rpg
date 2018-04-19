@@ -37,4 +37,7 @@
 		sf_linked_list_t *ennemies;
 	} fight_t;
 
+	int get_enemy_center_position(sf_engine_t *engine, int enemy_count);
+	int get_total_elem_size(void);
+
 #endif /* !__FIGHT__H_ */

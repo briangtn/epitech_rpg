@@ -70,7 +70,6 @@ int position)
 	tr = get_component(new_arrow, TRANSFORM);
 	if (tr == NULL)
 		return (NULL);
-	// TODO Change position system
 	tr->position.x = position;
 	return (new_arrow);
 }
