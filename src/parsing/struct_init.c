@@ -8,6 +8,21 @@
 #include "my.h"
 #include "parsing.h"
 
+scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
+game_info_t *game_info)
+{
+	scene = get_tileset(scene, fd, game_info);
+	if (scene == NULL)
+		return (NULL);
+	scene = get_background(scene, fd, game_info);
+	if (scene == NULL)
+		return (NULL);
+	scene = parse_tile_info(scene, fd, game_info);
+	if (scene == NULL)
+		return (NULL);
+	return (scene);
+}
+
 tile_info_t **realloc_tile(tile_info_t **tile, int nb_arg)
 {
 	tile_info_t **new_tile = malloc(sizeof(tile_info_t*) * (nb_arg + 1));

@@ -17,6 +17,8 @@ else
 	do
 		echo >> $1
 		echo SCENE $scene: >> $1
+		echo TILESET : \"\" >> $1
+		echo BACKGROUND : \"\" >> $1
 		while [ $column -lt $3 ]
 		do
 			while [ $line -lt $4 ]

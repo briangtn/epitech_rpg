@@ -41,6 +41,8 @@ struct tile_info {
 typedef struct scene_info scene_info_t;
 
 struct scene_info {
+	char *tileset;
+	char *background;
 	tile_info_t **tile;
 };
 
@@ -57,6 +59,8 @@ extern char *error_messages [];
 #define NB_SCENE	"NB_SCENE : \"*\""
 #define TILE_PER_SCENE	"TILE_PER_SCENE (COL * LINES) : \"*\" x \"*\""
 #define SCENE		"SCENE *:"
+#define TILESET		"TILESET : \"*\""
+#define BACKGROUND	"BACKGROUND : \"*\""
 #define TILE_INFO	"TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT_ID : \"*\" ; TILE_TYPE : \"*\" ; LAYER : \"*\""
 
 /*parsing.c*/
@@ -71,6 +75,10 @@ tile_info_t *get_tile(tile_info_t *tile, char *buffer, game_info_t *game_info);
 /*scene_parsing.c*/
 
 int get_nb_scene(int fd);
+scene_info_t *get_tileset(scene_info_t *scene_info, int fd, \
+game_info_t *game_info);
+scene_info_t *get_background(scene_info_t *scene_info, int fd, \
+game_info_t *game_info);
 sfVector2i get_nb_tile(int fd);
 int check_tile(tile_info_t *tile);
 
@@ -87,7 +95,9 @@ int get_tile_layer(char *buffer);
 game_info_t *init_game_info(void);
 scene_info_t **init_scene(int nb_scene);
 tile_info_t **realloc_tile(tile_info_t **tile, int nb_arg);
-
+scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
+game_info_t *game_info);
+	
 /*free_game_info.c*/
 
 void free_game_info(game_info_t *game_info);

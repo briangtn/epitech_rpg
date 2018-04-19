@@ -49,6 +49,54 @@ sfVector2i get_nb_tile(int fd)
 	return (nb_tile);
 }
 
+scene_info_t *get_background(scene_info_t *scene_info, int fd, \
+game_info_t *game_info)
+{
+	char *buffer = get_next_line(fd);
+	int j;
+
+	if (!(match(buffer, BACKGROUND))) {
+		my_puterror(error_messages[10]);
+		free(buffer);
+		return (NULL);
+	}
+	for (j = 14; buffer[j] != '\0' && buffer[j] != '"'; j++);
+	scene_info->background = malloc(sizeof(char) * (j - 13));
+	if (scene_info->background == NULL) {
+		free_game_info(game_info);
+		return (NULL);
+	}
+	scene_info->background[j - 14] = '\0';
+	for (int i = 14; buffer[i] != '\0' && buffer[i] != '"'; i++) {
+		scene_info->background[i - 14] = buffer[i];
+	}
+	free(buffer);
+	return (scene_info);
+}
+
+scene_info_t *get_tileset(scene_info_t *scene_info, int fd, \
+game_info_t *game_info)
+{
+	char *buffer = get_next_line(fd);
+	int j;
+
+	if (!(match(buffer, TILESET))) {
+		my_puterror(error_messages[10]);
+		free(buffer);
+		return (NULL);
+	}
+	for (j = 11; buffer[j] != '\0' && buffer[j] != '"'; j++);
+	scene_info->tileset = malloc(sizeof(char) * (j - 10));
+	if (scene_info->tileset == NULL)
+		return (NULL);
+	scene_info->tileset[j - 11] = '\0';
+	for (int i = 11; buffer[i] != '\0' && buffer[i] != '"'; i++) {
+		scene_info->tileset[i - 11] = buffer[i];
+	}
+	free(buffer);
+	return (scene_info);
+}
+
 int get_nb_scene(int fd)
 {
 	char *buffer = get_next_line(fd);

@@ -31,6 +31,8 @@ void free_scene(scene_info_t **scene)
 	i--;
 	while (i >= 0) {
 		free_tile(scene[i]->tile);
+		free(scene[i]->tileset);
+		free(scene[i]->background);
 		free(scene[i]);
 		i--;
 	}

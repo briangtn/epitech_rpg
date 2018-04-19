@@ -2,6 +2,8 @@ NB_SCENE : "1"
 TILE_PER_SCENE (COL x LINES) : "32" x "32"
 
 SCENE 1:
+TILESET : ""
+BACKGROUND : ""
 TILE_ID : "1" ; TILE_POS : "1" x "1" ; EVENT_ID : "1" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "2" ; TILE_POS : "1" x "2" ; EVENT_ID : "1" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "3" ; TILE_POS : "1" x "3" ; EVENT_ID : "1" ; TILE_TYPE : "1" ; LAYER : "1"

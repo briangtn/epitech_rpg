@@ -91,11 +91,11 @@ game_info_t *parse_scene_info(game_info_t *game_info, int fd)
 			my_puterror(error_messages[10]);
 			return (NULL);
 		}
-		game_info->scene[i] = parse_tile_info(game_info->scene[i], fd, \
+		game_info->scene[i] = get_scene_info(game_info->scene[i], fd, \
 game_info);
+		free(buffer);
 		if (game_info->scene[i] == NULL)
 			return (NULL);
-		free(buffer);
 	}
 	return (game_info);
 }
