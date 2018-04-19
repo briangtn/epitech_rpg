@@ -29,6 +29,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *player)
 	register_animation(engine, anim, GAME);
 	engine->add_gameobject(engine, player);
 	engine->add_physic_object(engine, player);
+	engine->add_update(engine, player, (UPDATER)&player_movement);
 	return (0);
 }
 

@@ -26,23 +26,6 @@ static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
 	return (0);
 }
 
-static int handle_key_pressed(sf_engine_t *engine)
-{
-	gameobject_t *player = engine->get_gameobject(engine, "player");
-	sf_rigidbody_2d_t *rb = get_component(player, RIGIDBODY_2D);
-	sfVector2f axis = (sfVector2f){0, 0};
-
-	if (player == NULL || rb == NULL) {
-		my_puterror("PLAYER NOT FOUND!\n");
-		return (84);
-	}
-	axis.x = sfKeyboard_isKeyPressed(72) - sfKeyboard_isKeyPressed(71);
-		rb->speed.x = 32 * axis.x * PLAYER_MOVEMENT_SPEED_MUL;
-	axis.y = sfKeyboard_isKeyPressed(74) - sfKeyboard_isKeyPressed(73);
-		rb->speed.y = 32 * axis.y * PLAYER_MOVEMENT_SPEED_MUL;
-	return (0);
-}
-
 static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	sfEvent evt;
@@ -53,7 +36,6 @@ static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
 	}
-	handle_key_pressed(engine);
 	return (0);
 }
 

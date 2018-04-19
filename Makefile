@@ -15,7 +15,8 @@ SRC_SCENES_FILES=	scene_game.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
-SRC_PREFAB_FILES=	player/prefab_player_core.c
+SRC_PREFAB_FILES=	player/prefab_player_core.c			\
+			player/behaviour_player_movement.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
