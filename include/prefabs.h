@@ -34,7 +34,8 @@
 	#pragma region CustomComponent
 
 	enum custom_component_s {
-		INTERACTION
+		INTERACTION,
+		NPC
 	};
 
 	#pragma region Interaction
@@ -48,6 +49,19 @@
 
 	sf_interaction_t *create_interaction(gameobject_t *parent);
 	void destroy_interaction(sf_interaction_t *interaction);
+
+	#pragma endregion
+
+	#pragma region Npc
+
+	typedef struct npc_component_s {
+		void (*destroy)();
+		gameobject_t *parent;
+		char *text;
+	} sf_npc_t;
+
+	sf_npc_t *create_npc_comp(gameobject_t *parent);
+	void destroy_npc_comp(sf_npc_t *comp);
 
 	#pragma endregion
 
