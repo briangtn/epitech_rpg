@@ -31,6 +31,26 @@
 
 	#pragma endregion /* !Player */
 
+	#pragma region CustomComponent
+
+	enum custom_component_s {
+		INTERACTION
+	};
+
+	#pragma region Interaction
+
+	typedef struct interaction_s {
+		void (*destroy)();
+		gameobject_t *parent;
+		void (*interaction)(gameobject_t *go, sf_engine_t *engine);
+		sf_engine_t *engine;
+	} sf_interaction_t;
+
+	sf_interaction_t *create_interaction(gameobject_t *parent);
+	void destroy_interaction(sf_interaction_t *interaction);
+
+	#pragma endregion
+
 	#pragma region Fight
 
 	gameobject_t *create_prefab_fbackground(sf_engine_t *engine,\
