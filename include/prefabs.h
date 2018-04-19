@@ -80,6 +80,8 @@ fight_t *fight);
 fight_t *fight);
 	gameobject_t *create_prefab_fenemy(sf_engine_t *engine,\
 fight_enemy_t *enemy, int position, int enemy_count);
+	gameobject_t *create_prefab_farrow(sf_engine_t *engine,\
+int enemy_count, int pos);
 
 	#pragma endregion
 

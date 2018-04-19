@@ -23,3 +23,26 @@ int get_total_elem_size(void)
 {
 	return (FIGHT_ELEMENT_SIZE + FIGHT_ENEMY_SPACE);
 }
+
+int get_enemy_posx(sf_engine_t *engine, int enemy_count, int pos)
+{
+	int res = 0;
+
+	if (engine == NULL)
+		return (0);
+	res = get_enemy_center_position(engine, enemy_count);
+	res += pos * (get_total_elem_size()) + FIGHT_ENEMY_SPACE;
+	return (res);
+}
+
+void scale_elem_to_size(sfSprite *sprite)
+{
+	sfFloatRect sizes;
+
+	if (sprite == NULL)
+		return;
+	sizes = sfSprite_getGlobalBounds(sprite);
+	sfSprite_setScale(sprite,\
+(sfVector2f){FIGHT_ELEMENT_SIZE / sizes.width,\
+FIGHT_ELEMENT_SIZE / sizes.height});
+}
