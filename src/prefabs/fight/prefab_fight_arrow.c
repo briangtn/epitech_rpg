@@ -26,7 +26,7 @@ UNUSED int elapsed_milliseconds)
 get_elem_at_index(farrow->enemy_index + 1, enemies) != NULL) {
 		farrow->enemy_index++;
 	} else if (is_key_just_pressed(sfKeyReturn)) {
-		printf("%s\n", ((fight_enemy_t *)(get_elem_at_index(farrow->enemy_index, enemies)->data))->name);
+		//TODO
 	}
 	enemies = get_elem_at_index(farrow->enemy_index, enemies);
 	enemy_tr = get_component(((fight_enemy_t *)(enemies->data))->go,\

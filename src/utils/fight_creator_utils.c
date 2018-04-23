@@ -5,6 +5,7 @@
 ** Fight creator utils
 */
 
+#include <stdlib.h>
 #include "rpg.h"
 
 fight_enemy_t *create_enemy(int life, char *path, char *name)

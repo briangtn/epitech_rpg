@@ -55,11 +55,9 @@ int pos, int enemy_count)
 {
 	gameobject_t *new_enemy = create_gameobject("fight_enemy");
 	sf_transform_t *tr = NULL;
-	sfVector2u window_sizes;
 
 	if (engine == NULL || new_enemy == NULL)
 		return (NULL);
-	window_sizes = sfRenderWindow_getSize(engine->window);
 	if (add_components(new_enemy) == 84) {
 		new_enemy->destroy(new_enemy);
 		my_puterror("[ERROR]enemy: Could not add components!\n");
