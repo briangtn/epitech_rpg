@@ -47,7 +47,8 @@
 
 	enum custom_component_s {
 		INTERACTION,
-		NPC
+		NPC,
+		FARROW
 	};
 
 	#pragma region Interaction
@@ -86,7 +87,7 @@ fight_t *fight);
 	gameobject_t *create_prefab_fenemy(sf_engine_t *engine,\
 fight_enemy_t *enemy, int position, int enemy_count);
 	gameobject_t *create_prefab_farrow(sf_engine_t *engine,\
-int enemy_count, int pos);
+int enemy_count, int pos, fight_t *fight);
 
 	#pragma endregion
 

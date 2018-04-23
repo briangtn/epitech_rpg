@@ -56,7 +56,6 @@ int pos, int enemy_count)
 	gameobject_t *new_enemy = create_gameobject("fight_enemy");
 	sf_transform_t *tr = NULL;
 	sfVector2u window_sizes;
-	int pos_center = 0;
 
 	if (engine == NULL || new_enemy == NULL)
 		return (NULL);

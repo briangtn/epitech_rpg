@@ -17,7 +17,8 @@ SRC_SCENES_FILES=	scene_game.c	\
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
 SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
-			npc/component_npc.c
+			npc/component_npc.c				\
+			fight/fight_arrow_component.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
@@ -34,6 +35,8 @@ SRC_UTILS_DIR	=	$(realpath src/utils)
 
 SRC_UTILS_FILES	=	fight_utils.c				\
 			keyboard_utils.c			\
+			fight_creator_utils.c			\
+			linked_list_utils.c			\
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \

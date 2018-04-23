@@ -10,6 +10,7 @@
 #include "my.h"
 #include "my_sfml.h"
 #include "rpg.h"
+#include "utils.h"
 
 int has_display_vars(char **env)
 {
@@ -69,8 +70,9 @@ int load_scenes(sf_engine_t *engine)
 int main(UNUSED int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
-	fight_t *fight = malloc(sizeof(*fight));
-	fight_enemy_t *enemy = malloc(sizeof(*enemy));
+	fight_t *fight = NULL;
+	fight_enemy_t *enemy = NULL;
+	fight_player_t player;
 
 	if (engine == NULL)
 		return (84);
@@ -78,14 +80,16 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	fight->background_path = "assets/test.png";
-	fight->player = (fight_player_t){10, "assets/spritesheets/player.png",\
-{600, 600}};
-	fight->ennemies = NULL;
-	enemy->life = 10;
-	enemy->sprite_path = "assets/dragon.png";
+	player = (fight_player_t){10, "assets/spritesheets/player.png",\
+{600, 600}, NULL};
+	fight = create_fight("assets/test.png", player);
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy1");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy2");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy3");
+	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy4");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
 	engine->change_scene(engine, "fight", fight);
 	while (sfRenderWindow_isOpen(engine->window)) {
