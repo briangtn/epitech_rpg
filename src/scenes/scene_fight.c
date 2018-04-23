@@ -15,9 +15,10 @@ static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 
 	create_prefab_fbackground(engine, fight);
 	create_prefab_fplayer(engine, fight);
-	create_prefab_farrow(engine, count, 0);
+	create_prefab_farrow(engine, count, 0, fight);
 	while (current) {
-		create_prefab_fenemy(engine, current->data, pos, count);
+		((fight_enemy_t *)(current->data))->go =\
+create_prefab_fenemy(engine, current->data, pos, count);
 		pos++;
 		current = current->next;
 	}
