@@ -11,7 +11,7 @@ sf_linked_list_t *get_elem_at_index(int index, sf_linked_list_t *list)
 {
 	sf_linked_list_t *copy = list;
 
-	for (int i = 0; copy && copy->next && i < index; i++)
+	for (int i = 0; copy && i < index; i++)
 		copy = copy->next;
 	return (copy);
 }

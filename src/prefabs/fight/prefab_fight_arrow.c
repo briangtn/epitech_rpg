@@ -22,7 +22,8 @@ UNUSED int elapsed_milliseconds)
 		return (84);
 	if (is_key_just_pressed(sfKeyLeft) && farrow->enemy_index > 0) {
 		farrow->enemy_index--;
-	} else if (is_key_just_pressed(sfKeyRight)) {
+	} else if (is_key_just_pressed(sfKeyRight) &&\
+get_elem_at_index(farrow->enemy_index + 1, enemies) != NULL) {
 		farrow->enemy_index++;
 	} else if (is_key_just_pressed(sfKeyReturn)) {
 		printf("%s\n", ((fight_enemy_t *)(get_elem_at_index(farrow->enemy_index, enemies)->data))->name);
