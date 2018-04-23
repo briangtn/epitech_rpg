@@ -80,8 +80,8 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	player = (fight_player_t){10, "assets/spritesheets/player.png",\
-{600, 600}, NULL};
+	player = (fight_player_t){NULL, 10, "assets/spritesheets/player.png",\
+{600, 600}};
 	fight = create_fight("assets/test.png", player);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy1");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
