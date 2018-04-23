@@ -19,8 +19,8 @@ char *error_messages[] = {
 	"Error: unknown parameter\n",
 	"Error: there must be at least one scene\n",
 	"Error: there must be at least one tile per column and line\n",
-	"Error: wrong tile ID\n",
-	"Error: wrong tile position\n",
+	"Error: wrong ID\n",
+	"Error: wrong position\n",
 	"Error: wrong event ID\n",
 	"Error: wrong tile type\n",
 	"Error: wrong tile layer\n",
@@ -37,8 +37,8 @@ tile_info_t *get_tile(tile_info_t *tile, char *buffer, game_info_t *game_info)
 		my_puterror(error_messages[10]);
 		return (NULL);
 	}
-	tile->tile_id = get_tile_id(buffer);
-	tile->tile_pos = get_tile_pos(buffer);
+	tile->tile_id = get_id(buffer);
+	tile->tile_pos = get_pos(buffer);
 	tile->event_id = get_event_id(buffer);
 	tile->tile_type = get_tile_type(buffer);
 	tile->layer = get_tile_layer(buffer);

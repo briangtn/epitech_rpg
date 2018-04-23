@@ -9,21 +9,6 @@
 #include "get_next_line.h"
 #include "parsing.h"
 
-int check_tile(tile_info_t *tile)
-{
-	if (tile->tile_id < 0)
-		return (tile->tile_id * -1);
-	if (tile->tile_pos.x < 0)
-		return (tile->tile_pos.x * -1);
-	if (tile->event_id < 0)
-		return (tile->event_id * -1);
-	if (tile->tile_type < 0)
-		return (tile->tile_type * -1);
-	if (tile->layer < 0)
-		return (tile->tile_type * -1);
-	return (0);
-}
-
 sfVector2i get_nb_tile(int fd)
 {
 	char *buffer = get_next_line(fd);

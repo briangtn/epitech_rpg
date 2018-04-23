@@ -19,9 +19,40 @@ else
 		echo SCENE $scene: >> $1
 		echo TILESET : \"\" >> $1
 		echo BACKGROUND : \"\" >> $1
-		while [ $column -lt $3 ]
+		echo >> $1
+		while [ $column -le $3 ] && [ $id -le $5 ]
 		do
-			while [ $line -lt $4 ]
+			while [ $line -le $4 ] && [ $id -le $5 ]
+			do
+				echo NPC_ID : \"$id\" \; NPC_POS : \"$column\" x \"$line\" \; EVENT_ID : \"1\" >> $1
+				((line++))
+				((id++))
+			done
+			((column++))
+			line=1
+		done
+		echo >> $1
+		id=1
+		column=1
+		line=1
+		while [ $column -le $3 ] && [ $id -le $6 ]
+		do
+			while [ $line -le $4 ] && [ $id -le $6 ]
+			do
+				echo LOOT_ID : \"$id\" \; LOOT_POS : \"$column\" x \"$line\" \; EVENT_ID : \"1\" >> $1
+				((line++))
+				((id++))
+			done
+			((column++))
+			line=1
+		done
+		echo >> $1
+		id=1
+		column=1
+		line=1
+		while [ $column -le $3 ]
+		do
+			while [ $line -le $4 ]
 			do
 				echo TILE_ID : \"$id\" \; TILE_POS : \"$column\" x \"$line\" \; EVENT_ID : \"1\" \; TILE_TYPE : \"1\" \; LAYER : \"1\" >> $1
 				((line++))

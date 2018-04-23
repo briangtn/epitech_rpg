@@ -63,7 +63,7 @@ int get_event_id(char *buffer)
 	return (event_id);
 }
 
-sfVector2i get_tile_pos(char *buffer)
+sfVector2i get_pos(char *buffer)
 {
 	int n = 0;
 	sfVector2i tile_pos = {0, 0};
@@ -83,7 +83,7 @@ sfVector2i get_tile_pos(char *buffer)
 	return (tile_pos);
 }
 
-int get_tile_id(char *buffer)
+int get_id(char *buffer)
 {
 	int n = 0;
 	int tile_id = 0;

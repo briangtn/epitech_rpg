@@ -28,6 +28,22 @@ enum tile_interactions {
 	HIDE
 };
 
+typedef struct npc_info npc_info_t;
+
+struct npc_info {
+	int npc_id;
+	sfVector2i npc_pos;
+	int event_id;
+};
+
+typedef struct loot_info loot_info_t;
+
+struct loot_info {
+	int loot_id;
+	sfVector2i loot_pos;
+	int event_id;
+};
+
 typedef struct tile_info tile_info_t;
 
 struct tile_info {
@@ -44,6 +60,8 @@ struct scene_info {
 	char *tileset;
 	char *background;
 	tile_info_t **tile;
+	npc_info_t **npc;
+	loot_info_t **loot;
 };
 
 typedef struct game_info game_info_t;
@@ -61,7 +79,12 @@ extern char *error_messages [];
 #define SCENE		"SCENE *:"
 #define TILESET		"TILESET : \"*\""
 #define BACKGROUND	"BACKGROUND : \"*\""
-#define TILE_INFO	"TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT_ID : \"*\" ; TILE_TYPE : \"*\" ; LAYER : \"*\""
+#define NPC_INFO	"NPC_ID : \"*\" ; NPC_POS : \"*\" x \"*\" ; EVENT_ID : \
+\"*\""
+#define LOOT_INFO	"LOOT_ID : \"*\" ; LOOT_POS : \"*\" x \"*\" ; EVENT_ID \
+: \"*\""
+#define TILE_INFO	"TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT_ID \
+: \"*\" ; TILE_TYPE : \"*\" ; LAYER : \"*\""
 
 /*parsing.c*/
 
@@ -80,12 +103,21 @@ game_info_t *game_info);
 scene_info_t *get_background(scene_info_t *scene_info, int fd, \
 game_info_t *game_info);
 sfVector2i get_nb_tile(int fd);
-int check_tile(tile_info_t *tile);
+
+/*npc_loot_parsing.c*/
+
+scene_info_t *parse_npc_info(scene_info_t *scene, int fd, \
+game_info_t *game_info);
+npc_info_t *get_npc(npc_info_t *npc, char *buffer, game_info_t *game_info);
+scene_info_t *parse_loot_info(scene_info_t *scene, int fd, \
+game_info_t *game_info);
+loot_info_t *get_loot(loot_info_t *loot, char *buffer, game_info_t *game_info);
+loot_info_t **realloc_loot(loot_info_t **loot, int nb_arg);
 
 /*tile_parsing.c*/
 
-int get_tile_id(char *buffer);
-sfVector2i get_tile_pos(char *buffer);
+int get_id(char *buffer);
+sfVector2i get_pos(char *buffer);
 int get_event_id(char *buffer);
 int get_tile_type(char *buffer);
 int get_tile_layer(char *buffer);
@@ -95,8 +127,15 @@ int get_tile_layer(char *buffer);
 game_info_t *init_game_info(void);
 scene_info_t **init_scene(int nb_scene);
 tile_info_t **realloc_tile(tile_info_t **tile, int nb_arg);
+npc_info_t **realloc_npc(npc_info_t **npc, int nb_arg);
 scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
 game_info_t *game_info);
+
+/*check.c*/
+
+int check_tile(tile_info_t *tile);
+int check_npc(npc_info_t *npc);
+int check_loot(loot_info_t *loot);
 
 /*free_game_info.c*/
 
