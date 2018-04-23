@@ -123,9 +123,9 @@ game_info_t *parse_game_info(game_info_t *game_info, int fd)
 	return (game_info);
 }
 
-game_info_t *parse_config(void)
+game_info_t *parse_config(const char *file)
 {
-	int fd = open("config_file", O_RDONLY);
+	int fd = open(file, O_RDONLY);
 	game_info_t *game_info = NULL;
 
 	if (fd == -1)

@@ -75,7 +75,7 @@ game_info_t *game_info)
 }
 
 scene_info_t *get_tileset(scene_info_t *scene_info, int fd, \
-game_info_t *game_info)
+UNUSED game_info_t *game_info)
 {
 	char *buffer = get_next_line(fd);
 	int j;
