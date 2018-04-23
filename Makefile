@@ -18,7 +18,8 @@ SRC_COMP_DIR	=	$(realpath src/custom_component)
 
 SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			npc/component_npc.c				\
-			fight/fight_arrow_component.c
+			fight/fight_arrow_component.c			\
+			interaction/interact.c				\
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 

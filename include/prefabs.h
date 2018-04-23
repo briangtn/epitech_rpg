@@ -62,6 +62,7 @@
 
 	sf_interaction_t *create_interaction(gameobject_t *parent);
 	void destroy_interaction(sf_interaction_t *interaction);
+	void run_interactions(sf_engine_t *engine, gameobject_t *from);
 
 	#pragma endregion
 
