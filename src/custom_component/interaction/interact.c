@@ -16,7 +16,6 @@ static sfIntRect get_rect_in_front(gameobject_t *from)
 {
 	sf_collider_2d_t *col = get_component(from, COLLIDER_2D);
 	sf_transform_t *tr = get_component(from, TRANSFORM);
-	sf_rigidbody_2d_t *rb = get_component(from, RIGIDBODY_2D);
 	sf_animation_2d_t *anim = get_component(from, ANIMATION_2D);
 	sfIntRect rect = col->hitbox;
 
