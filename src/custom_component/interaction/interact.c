@@ -17,17 +17,18 @@ static sfIntRect get_rect_in_front(gameobject_t *from)
 	sf_collider_2d_t *col = get_component(from, COLLIDER_2D);
 	sf_transform_t *tr = get_component(from, TRANSFORM);
 	sf_rigidbody_2d_t *rb = get_component(from, RIGIDBODY_2D);
+	sf_animation_2d_t *anim = get_component(from, ANIMATION_2D);
 	sfIntRect rect = col->hitbox;
 
 	rect.left += tr->position.x;
 	rect.top += tr->position.y;
-	if (rb->speed.x > 0.0)
-		rect.left += 1 * TILE_SIZE;
-	if (rb->speed.x < 0.0)
-		rect.left += -1 * TILE_SIZE;
-	if (rb->speed.y > 0.0)
+	if (anim->view_rect.top == 0 * TILE_SIZE)
 		rect.top += 1 * TILE_SIZE;
-	if (rb->speed.y < 0.0)
+	if (anim->view_rect.top == 1 * TILE_SIZE)
+		rect.left += -1 * TILE_SIZE;
+	if (anim->view_rect.top == 2 * TILE_SIZE)
+		rect.left += 1 * TILE_SIZE;
+	if (anim->view_rect.top == 3 * TILE_SIZE)
 		rect.top += -1 * TILE_SIZE;
 	return (rect);
 }
