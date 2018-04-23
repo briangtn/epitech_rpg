@@ -9,6 +9,7 @@
 	#define UTILS
 
 	#include "my_sfml.h"
+	#include "fight.h"
 
 	bool is_key_just_pressed(sfKeyCode key_code);
 	fight_enemy_t *create_enemy(int life, char *path, char *name);

@@ -58,11 +58,16 @@
 		int elem_size;
 		direction_t dir;
 		sf_linked_list_t *list;
+		void *callback_param;
 		sf_linked_list_t *(*get_elem)(struct fight_arrow *);
 		int (*update)(struct fight_arrow *, int);
 		int (*display_update)(sf_animation_2d_t *, int);
+		int (*callback)(void *, sf_linked_list_t *);
 	} sf_fight_arrow_t;
 
+	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);
+	int arrow_update(sf_fight_arrow_t *arrow, int delta_time);
+	int arrow_display_update(sf_animation_2d_t *anim, int delta_time);
 	sf_fight_arrow_t *create_farrow_comp(gameobject_t *parent);
 
 	#pragma endregion

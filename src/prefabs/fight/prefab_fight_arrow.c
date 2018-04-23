@@ -43,7 +43,8 @@ static int add_components(gameobject_t *arrow)
 	return (0);
 }
 
-gameobject_t *create_prefab_farrow(sf_engine_t *engine, fight_t *fight)
+gameobject_t *create_prefab_farrow(sf_engine_t *engine, fight_t *fight,\
+int (*callback)(void *, sf_linked_list_t *), void *callback_val)
 {
 	gameobject_t *new_arrow = create_gameobject("fight_arrow");
 	sf_fight_arrow_t *farrow = NULL;
@@ -63,6 +64,8 @@ gameobject_t *create_prefab_farrow(sf_engine_t *engine, fight_t *fight)
 	farrow = get_component(new_arrow, FARROW);
 	if (farrow == NULL)
 		return (NULL);
+	farrow->callback = callback;
+	farrow->callback_param = callback_val;
 	engine->add_update(engine, farrow, (UPDATER)farrow->update);
 	return (new_arrow);
 }
