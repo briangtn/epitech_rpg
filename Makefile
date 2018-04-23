@@ -38,13 +38,23 @@ SRC_UTILS_DIR	=	$(realpath src/utils)
 SRC_UTILS_FILES	=	fight_utils.c				\
 			keyboard_utils.c			\
 			fight_creator_utils.c			\
-			linked_list_utils.c			\
+			linked_list_utils.c
+
+SRC_PARSING_DIR	=	$(realpath src/parsing)
+
+SRC_PARSING_FILES=	free_game_info.c			\
+			parser_to_game.c			\
+			parsing.c				\
+			scene_parsing.c				\
+			struct_init.c				\
+			tile_parsing.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \
 			$(addprefix $(SRC_PREFAB_DIR)/, $(SRC_PREFAB_FILES)) \
 			$(addprefix $(SRC_UTILS_DIR)/, 	$(SRC_UTILS_FILES)) \
-			$(addprefix $(SRC_COMP_DIR)/, $(SRC_COMP_FILES))
+			$(addprefix $(SRC_COMP_DIR)/, $(SRC_COMP_FILES)) \
+			$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_FILES))
 
 OBJ		=	$(SRC:%.c=%.o)
 

@@ -65,7 +65,7 @@ extern char *error_messages [];
 
 /*parsing.c*/
 
-game_info_t *parse_config(void);
+game_info_t *parse_config(const char *file);
 game_info_t *parse_game_info(game_info_t *game_info, int fd);
 game_info_t *parse_scene_info(game_info_t *game_info, int fd);
 scene_info_t *parse_tile_info(scene_info_t *scene, int fd, \
@@ -97,7 +97,7 @@ scene_info_t **init_scene(int nb_scene);
 tile_info_t **realloc_tile(tile_info_t **tile, int nb_arg);
 scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
 game_info_t *game_info);
-	
+
 /*free_game_info.c*/
 
 void free_game_info(game_info_t *game_info);
