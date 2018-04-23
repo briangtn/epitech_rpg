@@ -28,6 +28,7 @@ TILE_SIZE, TILE_SIZE};
 	anim->set_sprite(anim, engine->get_sprite(engine, NPC_SPRITE_SHEET));
 	anim->speed = NPC_ANIMATION_SPEED;
 	anim->view_rect = (sfIntRect){0, 0, TILE_SIZE, TILE_SIZE};
+	sfSprite_setTextureRect(anim->sprite, anim->view_rect);
 }
 
 static int setup_components(sf_engine_t *engine, gameobject_t *new_npc)
