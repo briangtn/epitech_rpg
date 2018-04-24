@@ -13,6 +13,9 @@
 	#include "my_sfml.h"
 
 	sf_scene_t *create_game_scene(sf_engine_t *engine);
+	void load_parsing_to_game_scene(parser_to_game_t *ptg, \
+sf_engine_t *engine);
+
 	sf_scene_t *create_fight_scene(sf_engine_t *engine, fight_t *fight);
 
 

@@ -59,7 +59,7 @@ char *tileset)
 
 	if (engine == NULL || info == NULL || tileset == NULL)
 		return (NULL);
-	go = get_gameobject(engine, "tile");
+	go = create_gameobject("tile");
 	if (go == NULL)
 		return (NULL);
 	if (setup_image(go, engine, info, tileset) || \

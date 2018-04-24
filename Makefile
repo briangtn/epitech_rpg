@@ -11,7 +11,8 @@ SRC_FILES	=	main.c
 
 SRC_SCENES_DIR	=	$(realpath src/scenes)
 
-SRC_SCENES_FILES=	scene_game.c	\
+SRC_SCENES_FILES=	scene_game.c					\
+			scene_game_load_scene.c				\
 			scene_fight.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)

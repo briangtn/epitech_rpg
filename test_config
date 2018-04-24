@@ -1,0 +1,12 @@
+NB_SCENE : "1"
+TILE_PER_SCENE (COL x LINES) : "32" x "32"
+
+SCENE 1:
+TILESET : "assets/tilesets/outside_b.png"
+BACKGROUND : ""
+
+NPC_ID : "1" ; NPC_POS : "1" x "1" ; EVENT_ID : "1"
+
+LOOT_ID : "1" ; LOOT_POS : "1" x "1" ; EVENT_ID : "1"
+
+TILE_ID : "177" ; TILE_POS : "1" x "1" ; EVENT_ID : "1" ; TILE_TYPE : "1" ; LAYER : "1"

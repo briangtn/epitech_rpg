@@ -23,7 +23,7 @@ enum errors {
 };
 
 enum tile_interactions {
-	STANDARD,
+	STANDARD = 1,
 	COLLIDE,
 	HIDE
 };
