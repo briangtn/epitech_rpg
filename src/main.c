@@ -72,7 +72,8 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 	sf_engine_t *engine = get_new_engine(env);
 	fight_t *fight = NULL;
 	fight_enemy_t *enemy = NULL;
-	fight_player_t player;
+	fight_player_t *player = NULL;
+	sf_linked_list_t *attacks = NULL;
 
 	if (engine == NULL)
 		return (84);
@@ -80,8 +81,10 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	player = (fight_player_t){NULL, 10, "assets/spritesheets/player.png",\
-{600, 600}};
+	add_attack(&attacks, "SuperAttack", 2);
+	add_attack(&attacks, "MegaAttack", 4);
+	add_attack(&attacks, "AttaqueKiTuTou", 10);
+	player = create_fight_player("assets/faces/player.png", attacks);
 	fight = create_fight("assets/test.png", player);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy1");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
@@ -91,7 +94,7 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy4");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
-	engine->change_scene(engine, "game", fight);
+	engine->change_scene(engine, "fight", fight);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
