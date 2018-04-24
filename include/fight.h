@@ -22,7 +22,6 @@
 	typedef struct attack {
 		char *name;
 		float damage;
-		float power;
 	} attack_t;
 
 	typedef struct fight_enemy {
@@ -30,6 +29,7 @@
 		char *name;
 		float life;
 		char *sprite_path;
+		sf_linked_list_t *attacks;
 	} fight_enemy_t;
 
 	typedef struct fight_player {
@@ -37,11 +37,12 @@
 		float life;
 		char *sprite_path;
 		sf_vector_2d_t position;
+		sf_linked_list_t *attacks;
 	} fight_player_t;
 
 	typedef struct my_fight {
 		char *background_path;
-		fight_player_t player;
+		fight_player_t *player;
 		sf_linked_list_t *ennemies;
 	} fight_t;
 
