@@ -11,7 +11,7 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-static int load_game_scene(sf_engine_t *engine, UNUSED void *data)
+static int load_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 {
 	sf_camera_t *camera = engine->current_scene->camera;
 	gameobject_t *player = NULL;
@@ -38,7 +38,7 @@ static void handle_key_pressed(sf_engine_t *engine, sfEvent evt)
 		run_interactions(engine, player);
 }
 
-static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
+static int loop_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 {
 	sfEvent evt;
 
@@ -53,7 +53,7 @@ static int loop_game_scene(sf_engine_t *engine, UNUSED void *data)
 	return (0);
 }
 
-static int unload_game_scene(sf_engine_t *engine, UNUSED void *data)
+static int unload_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 {
 	if (engine == NULL)
 		return (84);

@@ -31,7 +31,8 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			fight/prefab_fight_enemy.c		\
 			fight/prefab_fight_arrow.c		\
 			npc/npc_interaction.c			\
-			npc/prefab_npc_core.c
+			npc/prefab_npc_core.c			\
+			tiles/prefab_tile_core.c
 
 SRC_UTILS_DIR	=	$(realpath src/utils)
 
