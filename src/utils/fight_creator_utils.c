@@ -40,6 +40,8 @@ void add_attack(sf_linked_list_t **list, char *name, float damage)
 
 	if (attack == NULL)
 		return;
+	attack->name = name;
+	attack->damage = damage;
 	*list = sf_push(attack, name, *list);
 }
 
