@@ -37,14 +37,21 @@ get_elem_at_index(arrow->elem_index + 1, arrow->list) != NULL) {
 	return (0);
 }
 
-static sfVector2f get_position(sf_fight_arrow_t *arrow, sf_transform_t *tr)
+static sfVector2f get_position(sf_fight_arrow_t *arrow, sf_transform_t *tr,\
+sf_animation_2d_t *anim)
 {
+	sfFloatRect rect;
+
+	if (anim == NULL)
+		return ((sfVector2f){0, 0});
+	rect = sfSprite_getGlobalBounds(anim->sprite);
 	if (arrow->dir == HORIZONTAL)
-		return ((sfVector2f){tr->position.x + arrow->elem_size / 4,\
-tr->position.y - 100});
+		return ((sfVector2f){\
+tr->position.x + arrow->elem_size / 2 - rect.width / 2,\
+tr->position.y - arrow->elem_offset});
 	if (arrow->dir == VERTICAL)
-		return ((sfVector2f){tr->position.x - 100,\
-tr->position.y + arrow->elem_size / 4});
+		return ((sfVector2f){tr->position.x - arrow->elem_offset,\
+tr->position.y + arrow->elem_size / 2 - rect.height / 2});
 	return ((sfVector2f){0, 0});
 }
 
@@ -64,6 +71,7 @@ int arrow_display_update(sf_animation_2d_t *anim, UNUSED int delta_time)
 ((arrow_elem_base_t *)arrow_elem->data)->go, TRANSFORM);
 	if (other_tr == NULL)
 		return (84);
-	sfSprite_setPosition(anim->sprite, get_position(arrow, other_tr));
+	sfSprite_setPosition(anim->sprite, get_position(arrow, other_tr,\
+anim));
 	return (0);
 }

@@ -62,7 +62,7 @@ sf_linked_list_t *attacks)
 	sf_linked_list_t *copy = attacks;
 	sf_vector_3d_t pos = {100, WINDOW_SIZE_Y - 400, 0};
 	gameobject_t *arrow_go =\
-create_prefab_farrow(engine, attacks, NULL, NULL);;
+create_prefab_farrow(engine, attacks, NULL, "assets/spritesheets/arrow_mattack.png");
 	sf_fight_arrow_t *arrow = NULL;
 	int i = 0;
 
@@ -75,8 +75,11 @@ create_prefab_farrow(engine, attacks, NULL, NULL);;
 		copy = copy->next;
 	}
 	arrow = get_component(arrow_go, FARROW);
-	if (arrow)
+	if (arrow) {
+		arrow->elem_size = 40;
 		arrow->dir = VERTICAL;
+		arrow->elem_offset = 20;
+	}
 	if (add_components(new_menu) == 84) {
 		new_menu->destroy(new_menu);
 		my_puterror("[ERROR]menu: Could not add components!\n");

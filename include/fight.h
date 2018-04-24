@@ -57,6 +57,7 @@
 		void (*destroy)();
 		gameobject_t *parent;
 		int elem_index;
+		int elem_offset;
 		int elem_size;
 		direction_t dir;
 		sf_linked_list_t *list;

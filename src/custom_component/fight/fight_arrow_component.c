@@ -31,6 +31,7 @@ sf_fight_arrow_t *create_farrow_comp(gameobject_t *parent)
 	farrow->parent = parent;
 	farrow->destroy = &destroy_farrow_comp;
 	farrow->elem_index = 0;
+	farrow->elem_offset = 100;
 	farrow->elem_size = FIGHT_ELEMENT_SIZE;
 	farrow->list = NULL;
 	farrow->callback_param = NULL;
