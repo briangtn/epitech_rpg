@@ -94,7 +94,8 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy4");
 	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
-	engine->change_scene(engine, "fight", fight);
+	parser_to_game_t *ptg = create_parser_to_game("test_config");
+	engine->change_scene(engine, "game", ptg);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
