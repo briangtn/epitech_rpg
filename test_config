@@ -3,7 +3,7 @@ TILE_PER_SCENE (COL x LINES) : "32" x "32"
 
 SCENE 1:
 TILESET : "assets/tilesets/outside_b.png"
-BACKGROUND : ""
+BACKGROUND : "assets/tilesets/outside_c.png"
 
 NPC_ID : "1" ; NPC_POS : "1" x "1" ; EVENT_ID : "1"
 

@@ -15,6 +15,7 @@ void load_parsing_to_game_scene(parser_to_game_t *ptg, sf_engine_t *engine)
 
 	if (scene == NULL)
 		return;
+	create_prefab_image(engine, scene->background, 0);
 	for (int i = 0; scene->tile != NULL && scene->tile[i] != NULL; i++) {
 		create_prefab_tile(engine, scene->tile[i], scene->tileset);
 	}
