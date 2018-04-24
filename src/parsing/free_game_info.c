@@ -30,9 +30,12 @@ void free_scene(scene_info_t **scene)
 		i++;
 	i--;
 	while (i >= 0) {
-		free_tile(scene[i]->tile);
-		free(scene[i]->tileset);
-		free(scene[i]->background);
+		if (scene[i]->tile != NULL)
+			free_tile(scene[i]->tile);
+		if (scene[i]->tileset != NULL)
+			free(scene[i]->tileset);
+		if (scene[i]->background != NULL)
+			free(scene[i]->background);
 		free(scene[i]);
 		i--;
 	}

@@ -92,6 +92,11 @@ scene_info_t **init_scene(int nb_scene)
 		scene[i] = malloc(sizeof(scene_info_t));
 		if (scene[i] == NULL)
 			return (NULL);
+		scene[i]->tileset = NULL;
+		scene[i]->background = NULL;
+		scene[i]->tile = NULL;
+		scene[i]->npc = NULL;
+		scene[i]->loot = NULL;
 	}
 	scene[nb_scene] = NULL;
 	return (scene);
