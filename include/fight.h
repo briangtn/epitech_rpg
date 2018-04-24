@@ -20,6 +20,7 @@
 	} direction_t;
 
 	typedef struct attack {
+		gameobject_t *go;
 		char *name;
 		float damage;
 	} attack_t;

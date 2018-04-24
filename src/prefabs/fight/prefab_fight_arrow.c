@@ -11,7 +11,7 @@
 #include "utils.h"
 
 static int setup_components(sf_engine_t *engine, gameobject_t *enemy,\
-fight_t *fight)
+sf_linked_list_t *list)
 {
 	sf_animation_2d_t *anim = get_component(enemy, ANIMATION_2D);
 	sf_transform_t *transform = get_component(enemy, TRANSFORM);
@@ -23,7 +23,7 @@ fight_t *fight)
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 "assets/spritesheets/arrow.png"));
 	register_animation(engine, anim, GAME);
-	arrow->list = fight->ennemies;
+	arrow->list = list;
 	return (0);
 }
 
@@ -43,7 +43,7 @@ static int add_components(gameobject_t *arrow)
 	return (0);
 }
 
-gameobject_t *create_prefab_farrow(sf_engine_t *engine, fight_t *fight,\
+gameobject_t *create_prefab_farrow(sf_engine_t *engine, sf_linked_list_t *list,\
 int (*callback)(void *, sf_linked_list_t *), void *callback_val)
 {
 	gameobject_t *new_arrow = create_gameobject("fight_arrow");
@@ -56,7 +56,7 @@ int (*callback)(void *, sf_linked_list_t *), void *callback_val)
 		my_puterror("[ERROR]arrow: Could not add components!\n");
 		return (NULL);
 	}
-	if (setup_components(engine, new_arrow, fight) == 84) {
+	if (setup_components(engine, new_arrow, list) == 84) {
 		new_arrow->destroy(new_arrow);
 		my_puterror("[ERROR]arrow: Could not setup components!\n");
 		return (NULL);

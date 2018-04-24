@@ -31,7 +31,7 @@ int arrow_update(sf_fight_arrow_t *arrow, UNUSED int delta_time)
 	} else if (key_pressed(arrow, false) &&\
 get_elem_at_index(arrow->elem_index + 1, arrow->list) != NULL) {
 		arrow->elem_index++;
-	} else if (is_key_just_pressed(sfKeyReturn)) {
+	} else if (is_key_just_pressed(sfKeyReturn) && arrow->callback) {
 		arrow->callback(arrow->callback_param, get_arrow_elem(arrow));
 	}
 	return (0);

@@ -24,7 +24,7 @@ static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 
 	create_prefab_fbackground(engine, fight);
 	create_prefab_fplayer(engine, fight);
-	create_prefab_farrow(engine, fight, &arrow_validated, engine);
+	create_prefab_fattack_menu(engine, fight->player->attacks);
 	while (current) {
 		((fight_enemy_t *)(current->data))->go =\
 create_prefab_fenemy(engine, current->data, pos, count);
@@ -49,8 +49,11 @@ static int loop_fight_scene(sf_engine_t *engine, UNUSED void *data)
 
 static int unload_fight_scene(sf_engine_t *engine, UNUSED void *data)
 {
-	if (engine == NULL)
+	fight_t *fight = (fight_t *)data;
+
+	if (engine == NULL || fight == NULL)
 		return (84);
+	//TODO Free fight
 	reset_scene(engine->current_scene);
 	return (0);
 }
