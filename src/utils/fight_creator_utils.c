@@ -56,4 +56,5 @@ fight_player_t *create_fight_player(char *path, sf_linked_list_t *attacks)
 	player->sprite_path = path;
 	player->position = (sf_vector_2d_t){600, 600};
 	player->attacks = attacks;
+	return (player);
 }
