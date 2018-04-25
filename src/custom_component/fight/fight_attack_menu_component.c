@@ -52,6 +52,7 @@ sf_fight_arrow_t *arrow)
 	if (menu == NULL)
 		return (84);
 	menu->fight->last_attack = (attack_t *)elem->data;
+	select_enemy(menu->engine, menu->fight);
 	destroy_fattack_menu(menu);
  	return (0);
 }
