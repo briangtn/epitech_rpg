@@ -68,10 +68,18 @@
 		int (*callback)(void *, sf_linked_list_t *);
 	} sf_fight_arrow_t;
 
+	typedef struct attack_menu {
+		void (*destroy)();
+		gameobject_t *parent;
+		gameobject_t *arrow;
+		sf_engine_t *engine;
+	} sf_attack_menu_t;
+
 	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);
 	int arrow_update(sf_fight_arrow_t *arrow, int delta_time);
 	int arrow_display_update(sf_animation_2d_t *anim, int delta_time);
 	sf_fight_arrow_t *create_farrow_comp(gameobject_t *parent);
+	sf_attack_menu_t *create_fattack_menu_comp(gameobject_t *parent);
 
 	#pragma endregion
 
@@ -79,5 +87,6 @@
 	int get_total_elem_size(void);
 	int get_enemy_posx(sf_engine_t *engine, int enemy_count, int pos);
 	void scale_elem_to_size(sfSprite *sprite);
+	void destroy_fattack_menu(sf_attack_menu_t *comp);
 
 #endif /* !__FIGHT__H_ */

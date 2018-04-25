@@ -26,6 +26,8 @@ static bool key_pressed(sf_fight_arrow_t *arrow, bool back)
 
 int arrow_update(sf_fight_arrow_t *arrow, UNUSED int delta_time)
 {
+	if (arrow == NULL)
+		return (84);
 	if (key_pressed(arrow, true) && arrow->elem_index > 0) {
 		arrow->elem_index--;
 	} else if (key_pressed(arrow, false) &&\

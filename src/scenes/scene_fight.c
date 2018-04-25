@@ -7,14 +7,6 @@
 
 #include "rpg.h"
 
-static int arrow_validated(UNUSED void *val, UNUSED sf_linked_list_t *elem)
-{
-	sf_engine_t *engine = (sf_engine_t *)val;
-
-	if (engine == NULL)
-		return (84);
- 	return (0);
-}
 
 static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 {

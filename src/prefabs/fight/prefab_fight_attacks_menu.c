@@ -23,18 +23,21 @@ UNUSED int elapsed_milliseconds)
 }
 
 static int setup_components(sf_engine_t *engine, gameobject_t *go,\
-UNUSED sf_linked_list_t *attacks)
+UNUSED sf_linked_list_t *attacks, gameobject_t *arrow_go)
 {
 	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
 	sf_transform_t *transform = get_component(go, TRANSFORM);
+	sf_attack_menu_t *menu = get_component(go, FATTACKMENU);
 
-	if (anim == NULL || transform == NULL)
+	if (anim == NULL || transform == NULL || menu == NULL)
 		return (84);
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 "assets/spritesheets/attack_menu.png"));
 	anim->update = &animation_update;
 	transform->position = (sf_vector_3d_t){100, WINDOW_SIZE_Y - 400, 0};
 	sfSprite_setScale(anim->sprite, (sfVector2f){2, 2});
+	menu->arrow = arrow_go;
+	menu->engine = engine;
 	register_animation(engine, anim, GAME);
 	return (0);
 }
@@ -50,9 +53,23 @@ static int add_components(gameobject_t *menu)
 		return (84);
 	}
 	if (add_custom_component(menu, (void *(*)(gameobject_t *))\
-&create_farrow_comp, FARROW) == NULL)
+&create_fattack_menu_comp, FATTACKMENU) == NULL)
 		return (84);
 	return (0);
+}
+
+static int arrow_validated(void *data, UNUSED sf_linked_list_t *elem)
+{
+	gameobject_t *go = (gameobject_t *)data;
+	sf_attack_menu_t *menu = NULL;
+
+	if (go == NULL)
+		return (84);
+	menu = get_component(go, FATTACKMENU);
+	if (menu == NULL)
+		return (84);
+	destroy_fattack_menu(menu);
+ 	return (0);
 }
 
 gameobject_t *create_prefab_fattack_menu(sf_engine_t *engine,\
@@ -62,7 +79,7 @@ sf_linked_list_t *attacks)
 	sf_linked_list_t *copy = attacks;
 	sf_vector_3d_t pos = {100, WINDOW_SIZE_Y - 400, 0};
 	gameobject_t *arrow_go =\
-create_prefab_farrow(engine, attacks, NULL, "assets/spritesheets/arrow_mattack.png");
+create_prefab_farrow(engine, attacks, &arrow_validated, "assets/spritesheets/arrow.png");
 	sf_fight_arrow_t *arrow = NULL;
 	int i = 0;
 
@@ -79,16 +96,18 @@ create_prefab_farrow(engine, attacks, NULL, "assets/spritesheets/arrow_mattack.p
 		arrow->elem_size = 40;
 		arrow->dir = VERTICAL;
 		arrow->elem_offset = 20;
+		arrow->callback_param = new_menu;
 	}
 	if (add_components(new_menu) == 84) {
 		new_menu->destroy(new_menu);
 		my_puterror("[ERROR]menu: Could not add components!\n");
 		return (NULL);
 	}
-	if (setup_components(engine, new_menu, attacks) == 84) {
+	if (setup_components(engine, new_menu, attacks, arrow_go) == 84) {
 		new_menu->destroy(new_menu);
 		my_puterror("[ERROR]menu: Could not setup components!\n");
 		return (NULL);
 	}
 	return (new_menu);
 }
+

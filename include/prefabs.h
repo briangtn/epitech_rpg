@@ -49,7 +49,8 @@
 	enum custom_component_s {
 		INTERACTION,
 		NPC,
-		FARROW
+		FARROW,
+		FATTACKMENU
 	};
 
 	#pragma region Interaction
