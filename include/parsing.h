@@ -24,8 +24,23 @@ enum errors {
 
 enum tile_interactions {
 	STANDARD = 1,
-	COLLIDE,
-	HIDE
+	COLLIDE = 2,
+	HIDE = 3
+};
+
+enum event_id {
+	TELEPORT = 1,
+	DIALOG = 2,
+	FIGHT = 3
+};
+
+typedef struct event_info event_info_t;
+
+struct event_info {
+	int event_id;
+	sfVector2i teleport;
+	char *text;
+	int fight_id;
 };
 
 typedef struct npc_info npc_info_t;
@@ -33,7 +48,7 @@ typedef struct npc_info npc_info_t;
 struct npc_info {
 	int npc_id;
 	sfVector2i npc_pos;
-	int event_id;
+	event_info_t *event;
 };
 
 typedef struct loot_info loot_info_t;
@@ -41,7 +56,7 @@ typedef struct loot_info loot_info_t;
 struct loot_info {
 	int loot_id;
 	sfVector2i loot_pos;
-	int event_id;
+	event_info_t *event;
 };
 
 typedef struct tile_info tile_info_t;
@@ -49,7 +64,7 @@ typedef struct tile_info tile_info_t;
 struct tile_info {
 	int tile_id;
 	sfVector2i tile_pos;
-	int event_id;
+	event_info_t *event;
 	int tile_type;
 	int layer;
 };
@@ -72,6 +87,12 @@ struct game_info {
 	scene_info_t **scene;
 };
 
+struct functions
+{
+	event_info_t* (*ptrfunc)(event_info_t*, char*);
+};
+
+extern struct functions functions [];
 extern char *error_messages [];
 
 #define NB_SCENE	"NB_SCENE : \"*\""
@@ -79,12 +100,12 @@ extern char *error_messages [];
 #define SCENE		"SCENE *:"
 #define TILESET		"TILESET : \"*\""
 #define BACKGROUND	"BACKGROUND : \"*\""
-#define NPC_INFO	"NPC_ID : \"*\" ; NPC_POS : \"*\" x \"*\" ; EVENT_ID : \
-\"*\""
-#define LOOT_INFO	"LOOT_ID : \"*\" ; LOOT_POS : \"*\" x \"*\" ; EVENT_ID \
-: \"*\""
-#define TILE_INFO	"TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT_ID \
-: \"*\" ; TILE_TYPE : \"*\" ; LAYER : \"*\""
+#define NPC_INFO	"NPC_ID : \"*\" ; NPC_POS : \"*\" x \"*\" ; EVENT : \
+\"*\"*"
+#define LOOT_INFO	"LOOT_ID : \"*\" ; LOOT_POS : \"*\" x \"*\" ; EVENT : \
+\"*\"*"
+#define TILE_INFO	"TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT : \
+\"*\"* ; TILE_TYPE : \"*\" ; LAYER : \"*\""
 
 /*parsing.c*/
 
@@ -118,9 +139,9 @@ loot_info_t **realloc_loot(loot_info_t **loot, int nb_arg);
 
 int get_id(char *buffer);
 sfVector2i get_pos(char *buffer);
-int get_event_id(char *buffer);
-int get_tile_type(char *buffer);
-int get_tile_layer(char *buffer);
+event_info_t *get_event(char *buffer);
+int get_tile_type(char *buffer, event_info_t *event);
+int get_tile_layer(char *buffer, event_info_t *event);
 
 /*struct_init.c*/
 
@@ -128,19 +149,29 @@ game_info_t *init_game_info(void);
 scene_info_t **init_scene(int nb_scene);
 tile_info_t **realloc_tile(tile_info_t **tile, int nb_arg);
 npc_info_t **realloc_npc(npc_info_t **npc, int nb_arg);
-scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
-game_info_t *game_info);
+event_info_t *init_event(event_info_t *event);
+
+/*get_event.c*/
+
+event_info_t *get_event(char *buffer);
+event_info_t *get_teleport_id(event_info_t *event, char *buffer);
+event_info_t *get_text_id(event_info_t *event, char *buffer);
+event_info_t *get_fight_id(event_info_t *event, char *buffer);
 
 /*check.c*/
 
 int check_tile(tile_info_t *tile);
 int check_npc(npc_info_t *npc);
 int check_loot(loot_info_t *loot);
+scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
+game_info_t *game_info);
 
 /*free_game_info.c*/
 
 void free_game_info(game_info_t *game_info);
 void free_scene(scene_info_t **scene);
 void free_tile(tile_info_t **tile);
+void free_npc(npc_info_t **npc);
+void free_loot(loot_info_t **loot);
 
 #endif

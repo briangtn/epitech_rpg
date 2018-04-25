@@ -39,9 +39,9 @@ tile_info_t *get_tile(tile_info_t *tile, char *buffer, game_info_t *game_info)
 	}
 	tile->tile_id = get_id(buffer);
 	tile->tile_pos = get_pos(buffer);
-	tile->event_id = get_event_id(buffer);
-	tile->tile_type = get_tile_type(buffer);
-	tile->layer = get_tile_layer(buffer);
+	tile->event = get_event(buffer);
+	tile->tile_type = get_tile_type(buffer, tile->event);
+	tile->layer = get_tile_layer(buffer, tile->event);
 	if ((error = check_tile(tile)) != 0) {
 		my_puterror(error_messages[error]);
 		free_game_info(game_info);

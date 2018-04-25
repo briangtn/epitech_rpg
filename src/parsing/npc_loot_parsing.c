@@ -21,7 +21,7 @@ loot_info_t **realloc_loot(loot_info_t **loot, int nb_arg)
 		if (loot != NULL && loot[i] != NULL) {
 			new_loot[i]->loot_id = loot[i]->loot_id;
 			new_loot[i]->loot_pos = loot[i]->loot_pos;
-			new_loot[i]->event_id = loot[i]->event_id;
+			new_loot[i]->event = loot[i]->event;
 		}
 	}
 	new_loot[nb_arg] = NULL;
@@ -34,8 +34,6 @@ loot_info_t **realloc_loot(loot_info_t **loot, int nb_arg)
 
 npc_info_t *get_npc(npc_info_t *npc, char *buffer, game_info_t *game_info)
 {
-	int error = 0;
-
 	if (!(match(buffer, NPC_INFO))) {
 		free(buffer);
 		free_game_info(game_info);
@@ -44,13 +42,7 @@ npc_info_t *get_npc(npc_info_t *npc, char *buffer, game_info_t *game_info)
 	}
 	npc->npc_id = get_id(buffer);
 	npc->npc_pos = get_pos(buffer);
-	npc->event_id = get_event_id(buffer);
-	if ((error = check_npc(npc)) != 0) {
-		my_puterror(error_messages[error]);
-		free_game_info(game_info);
-		free(buffer);
-		return (NULL);
-	}
+	npc->event = get_event(buffer);
 	return (npc);
 }
 
@@ -82,8 +74,6 @@ game_info_t *game_info)
 
 loot_info_t *get_loot(loot_info_t *loot, char *buffer, game_info_t *game_info)
 {
-	int error = 0;
-
 	if (!(match(buffer, LOOT_INFO))) {
 		free(buffer);
 		free_game_info(game_info);
@@ -92,13 +82,7 @@ loot_info_t *get_loot(loot_info_t *loot, char *buffer, game_info_t *game_info)
 	}
 	loot->loot_id = get_id(buffer);
 	loot->loot_pos = get_pos(buffer);
-	loot->event_id = get_event_id(buffer);
-	if ((error = check_loot(loot)) != 0) {
-		my_puterror(error_messages[error]);
-		free_game_info(game_info);
-		free(buffer);
-		return (NULL);
-	}
+	loot->event = get_event(buffer);
 	return (loot);
 }
 

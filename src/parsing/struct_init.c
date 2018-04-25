@@ -9,29 +9,16 @@
 #include "parsing.h"
 #include "get_next_line.h"
 
-scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
-game_info_t *game_info)
+event_info_t *init_event(event_info_t *event)
 {
-	char *buffer = NULL;
-
-	scene = get_tileset(scene, fd, game_info);
-	if (scene == NULL)
+	event = malloc(sizeof(event_info_t));
+	if (event == NULL)
 		return (NULL);
-	scene = get_background(scene, fd, game_info);
-	if (scene == NULL)
-		return (NULL);
-	buffer = get_next_line(fd);
-	free(buffer);
-	scene = parse_npc_info(scene, fd, game_info);
-	if (scene == NULL)
-		return (NULL);
-	scene = parse_loot_info(scene, fd, game_info);
-	if (scene == NULL)
-		return (NULL);
-	scene = parse_tile_info(scene, fd, game_info);
-	if (scene == NULL)
-		return (NULL);
-	return (scene);
+	event->event_id = 0;
+	event->teleport = (sfVector2i){0, 0};
+	event->text = NULL;
+	event->fight_id = 0;
+	return (event);
 }
 
 npc_info_t **realloc_npc(npc_info_t **npc, int nb_arg)
@@ -46,7 +33,7 @@ npc_info_t **realloc_npc(npc_info_t **npc, int nb_arg)
 		if (npc != NULL && npc[i] != NULL) {
 			new_npc[i]->npc_id = npc[i]->npc_id;
 			new_npc[i]->npc_pos = npc[i]->npc_pos;
-			new_npc[i]->event_id = npc[i]->event_id;
+			new_npc[i]->event = npc[i]->event;
 		}
 	}
 	new_npc[nb_arg] = NULL;
@@ -69,7 +56,7 @@ tile_info_t **realloc_tile(tile_info_t **tile, int nb_arg)
 		if (tile != NULL && tile[i] != NULL) {
 			new_tile[i]->tile_id = tile[i]->tile_id;
 			new_tile[i]->tile_pos = tile[i]->tile_pos;
-			new_tile[i]->event_id = tile[i]->event_id;
+			new_tile[i]->event = tile[i]->event;
 			new_tile[i]->tile_type = tile[i]->tile_type;
 			new_tile[i]->layer = tile[i]->layer;
 		}

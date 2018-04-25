@@ -51,7 +51,8 @@ SRC_PARSING_FILES=	free_game_info.c			\
 			struct_init.c				\
 			tile_parsing.c				\
 			npc_loot_parsing.c			\
-			check.c
+			check.c					\
+			get_event.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES)) \

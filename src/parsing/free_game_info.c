@@ -8,6 +8,34 @@
 #include "my.h"
 #include "parsing.h"
 
+void free_loot(loot_info_t **loot)
+{
+	int i = 0;
+
+	while (loot[i] != NULL)
+		i++;
+	i--;
+	while (i >= 0) {
+		free(loot[i]);
+		i--;
+	}
+	free(loot);
+}
+
+void free_npc(npc_info_t **npc)
+{
+	int i = 0;
+
+	while (npc[i] != NULL)
+		i++;
+	i--;
+	while (i >= 0) {
+		free(npc[i]);
+		i--;
+	}
+	free(npc);
+}
+
 void free_tile(tile_info_t **tile)
 {
 	int i = 0;
@@ -32,6 +60,10 @@ void free_scene(scene_info_t **scene)
 	while (i >= 0) {
 		if (scene[i]->tile != NULL)
 			free_tile(scene[i]->tile);
+		if (scene[i]->npc != NULL)
+			free_npc(scene[i]->npc);
+		if (scene[i]->loot != NULL)
+			free_loot(scene[i]->loot);
 		if (scene[i]->tileset != NULL)
 			free(scene[i]->tileset);
 		if (scene[i]->background != NULL)

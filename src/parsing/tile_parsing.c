@@ -9,15 +9,20 @@
 #include "get_next_line.h"
 #include "parsing.h"
 
-int get_tile_layer(char *buffer)
+int get_tile_layer(char *buffer, event_info_t *event)
 {
 	int n = 0;
 	int tile_layer = 0;
+	int event_id = 0;
 
+	if (event != NULL)
+		event_id = event->event_id;
 	for (int i = 0; buffer[i] != '\0'; i++) {
 		if (buffer[i] == '"')
 			n++;
-		if (buffer[i] == '"' && n == 11) {
+		if ((event_id == 0 && buffer[i] == '"' && n == 11) \
+|| (event_id > 1 && buffer[i] == '"' && n == 13) \
+|| (event_id == 1 && buffer[i] == '"' && n == 15)) {
 			tile_layer = my_getnbr(&buffer[i + 1]);
 			break;
 		}
@@ -27,15 +32,20 @@ int get_tile_layer(char *buffer)
 	return (tile_layer);
 }
 
-int get_tile_type(char *buffer)
+int get_tile_type(char *buffer, event_info_t *event)
 {
 	int n = 0;
 	int tile_type = 0;
+	int event_id = 0;
 
+	if (event != NULL)
+		event_id = event->event_id;
 	for (int i = 0; buffer[i] != '\0'; i++) {
 		if (buffer[i] == '"')
 			n++;
-		if (buffer[i] == '"' && n == 9) {
+		if ((event_id == 0 && buffer[i] == '"' && n == 9) \
+|| (event_id > 1 && buffer[i] == '"' && n == 11) \
+|| (event_id == 1 && buffer[i] == '"' && n == 13)) {
 			tile_type = my_getnbr(&buffer[i + 1]);
 			break;
 		}
@@ -43,24 +53,6 @@ int get_tile_type(char *buffer)
 	if (tile_type <= 0)
 		return (WRONG_TYPE);
 	return (tile_type);
-}
-
-int get_event_id(char *buffer)
-{
-	int n = 0;
-	int event_id = 0;
-
-	for (int i = 0; buffer[i] != '\0'; i++) {
-		if (buffer[i] == '"')
-			n++;
-		if (buffer[i] == '"' && n == 7) {
-			event_id = my_getnbr(&buffer[i + 1]);
-			break;
-		}
-	}
-	if (event_id <= 0)
-		return (WRONG_EVENT);
-	return (event_id);
 }
 
 sfVector2i get_pos(char *buffer)
