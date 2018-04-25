@@ -64,16 +64,16 @@ int load_scenes(sf_engine_t *engine)
 		my_puterror("[ERROR]Could not create fight scene!\n");
 		return (84);
 	}
+	if (create_menu_scene(engine) == NULL) {
+		my_puterror("[ERROR]Could not create menu scene!\n");
+		return (84);
+	}
 	return (0);
 }
 
 int main(UNUSED int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
-	fight_t *fight = NULL;
-	fight_enemy_t *enemy = NULL;
-	fight_player_t *player = NULL;
-	sf_linked_list_t *attacks = NULL;
 
 	if (engine == NULL)
 		return (84);
@@ -81,21 +81,7 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	add_attack(&attacks, "SuperAttack", 2);
-	add_attack(&attacks, "MegaAttack", 4);
-	add_attack(&attacks, "AttaqueKiTuTou", 10);
-	player = create_fight_player("assets/faces/player.png", attacks);
-	fight = create_fight("assets/test.png", player);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy1");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy2");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy3");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy4");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
-	parser_to_game_t *ptg = create_parser_to_game("test_config");
-	engine->change_scene(engine, "game", ptg);
+	engine->change_scene(engine, "menu", NULL);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
