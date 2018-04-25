@@ -18,5 +18,9 @@ sf_engine_t *engine);
 
 	sf_scene_t *create_fight_scene(sf_engine_t *engine, fight_t *fight);
 
+	sf_scene_t *create_menu_scene(sf_engine_t *engine);
+	void launch_game(sf_button_t *button);
+	void launch_fight(sf_button_t *button);
+	void quit_app(sf_button_t *button);
 
 #endif /* !__SCENES__H_ */

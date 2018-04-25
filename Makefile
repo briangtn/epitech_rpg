@@ -13,7 +13,9 @@ SRC_SCENES_DIR	=	$(realpath src/scenes)
 
 SRC_SCENES_FILES=	scene_game.c					\
 			scene_game_load_scene.c				\
-			scene_fight.c
+			scene_fight.c					\
+			scene_menu.c					\
+			scene_menu_buttons.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
