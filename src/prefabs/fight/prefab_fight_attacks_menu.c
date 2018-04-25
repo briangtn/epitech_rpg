@@ -102,7 +102,7 @@ fight_t *fight)
 		new_menu->destroy(new_menu);
 		return (NULL);
 	}
-	menu = get_component(new_menu, AMENU_SELECTOR);
+	menu = get_component(new_menu, FATTACKMENU);
 	if (menu == NULL)
 		return (NULL);
 	menu->fight = fight;

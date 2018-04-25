@@ -13,7 +13,7 @@
 	#include "my_sfml.h"
 	#define FIGHT_ELEMENT_SIZE 64
 	#define FIGHT_ENEMY_SPACE 50
-	#define AMENU_SELECTOR "assets/spritesheets/arrow.png"
+	#define AMENU_SELECTOR "assets/spritesheets/arrow_mattack.png"
 
 	typedef enum direction {
 		HORIZONTAL,
