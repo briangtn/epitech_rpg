@@ -65,6 +65,6 @@ int (*callback)(void *, sf_linked_list_t *), char *sprite)
 	if (farrow == NULL)
 		return (NULL);
 	farrow->callback = callback;
-	engine->add_update(engine, farrow, (UPDATER)farrow->update);
+	engine->add_update(engine, new_arrow, (UPDATER)farrow->update);
 	return (new_arrow);
 }

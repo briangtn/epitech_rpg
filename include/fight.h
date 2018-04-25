@@ -76,7 +76,7 @@
 	} sf_attack_menu_t;
 
 	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);
-	int arrow_update(sf_fight_arrow_t *arrow, int delta_time);
+	int arrow_update(gameobject_t *arrow_go, UNUSED int delta_time);
 	int arrow_display_update(sf_animation_2d_t *anim, int delta_time);
 	sf_fight_arrow_t *create_farrow_comp(gameobject_t *parent);
 	sf_attack_menu_t *create_fattack_menu_comp(gameobject_t *parent);

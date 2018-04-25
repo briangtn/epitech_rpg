@@ -24,8 +24,10 @@ static bool key_pressed(sf_fight_arrow_t *arrow, bool back)
 	return (false);
 }
 
-int arrow_update(sf_fight_arrow_t *arrow, UNUSED int delta_time)
+int arrow_update(gameobject_t *arrow_go, UNUSED int delta_time)
 {
+	sf_fight_arrow_t *arrow = get_component(arrow_go, FARROW);
+
 	if (arrow == NULL)
 		return (84);
 	if (key_pressed(arrow, true) && arrow->elem_index > 0) {
