@@ -31,6 +31,7 @@ fight_t *create_fight(char *path, fight_player_t *player)
 	fight->background_path = path;
 	fight->player = player;
 	fight->ennemies = NULL;
+	fight->last_attack = NULL;
 	return (fight);
 }
 

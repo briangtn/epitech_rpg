@@ -44,7 +44,7 @@ static int add_components(gameobject_t *arrow)
 }
 
 gameobject_t *create_prefab_farrow(sf_engine_t *engine, sf_linked_list_t *list,\
-int (*callback)(void *, sf_linked_list_t *), char *sprite)
+int (*callback)(void *, sf_linked_list_t *, sf_fight_arrow_t *), char *sprite)
 {
 	gameobject_t *new_arrow = create_gameobject("fight_arrow");
 	sf_fight_arrow_t *farrow = NULL;

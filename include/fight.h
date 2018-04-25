@@ -13,6 +13,7 @@
 	#include "my_sfml.h"
 	#define FIGHT_ELEMENT_SIZE 64
 	#define FIGHT_ENEMY_SPACE 50
+	#define AMENU_SELECTOR "assets/spritesheets/arrow.png"
 
 	typedef enum direction {
 		HORIZONTAL,
@@ -45,6 +46,7 @@
 		char *background_path;
 		fight_player_t *player;
 		sf_linked_list_t *ennemies;
+		attack_t *last_attack;
 	} fight_t;
 
 	#pragma region components
@@ -63,13 +65,15 @@
 		sf_linked_list_t *list;
 		void *callback_param;
 		sf_linked_list_t *(*get_elem)(struct fight_arrow *);
-		int (*update)(struct fight_arrow *, int);
+		int (*update)(gameobject_t *, int);
 		int (*display_update)(sf_animation_2d_t *, int);
-		int (*callback)(void *, sf_linked_list_t *);
+		int (*callback)(void *, sf_linked_list_t *,\
+struct fight_arrow *);
 	} sf_fight_arrow_t;
 
 	typedef struct attack_menu {
 		void (*destroy)();
+		fight_t *fight;
 		gameobject_t *parent;
 		gameobject_t *arrow;
 		sf_engine_t *engine;
@@ -80,6 +84,8 @@
 	int arrow_display_update(sf_animation_2d_t *anim, int delta_time);
 	sf_fight_arrow_t *create_farrow_comp(gameobject_t *parent);
 	sf_attack_menu_t *create_fattack_menu_comp(gameobject_t *parent);
+	int menu_arrow_val(void *data, UNUSED sf_linked_list_t *elem,\
+sf_fight_arrow_t *arrow);
 
 	#pragma endregion
 

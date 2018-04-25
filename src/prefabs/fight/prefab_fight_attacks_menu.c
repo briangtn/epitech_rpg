@@ -58,56 +58,54 @@ static int add_components(gameobject_t *menu)
 	return (0);
 }
 
-static int arrow_validated(void *data, UNUSED sf_linked_list_t *elem)
+static gameobject_t *prepare_arrow(sf_linked_list_t *attacks,
+sf_engine_t *engine, gameobject_t *new_menu)
 {
-	gameobject_t *go = (gameobject_t *)data;
-	sf_attack_menu_t *menu = NULL;
-
-	if (go == NULL)
-		return (84);
-	menu = get_component(go, FATTACKMENU);
-	if (menu == NULL)
-		return (84);
-	destroy_fattack_menu(menu);
- 	return (0);
-}
-
-gameobject_t *create_prefab_fattack_menu(sf_engine_t *engine,\
-sf_linked_list_t *attacks)
-{
-	gameobject_t *new_menu = create_gameobject("fight_attacks_menu");
-	sf_linked_list_t *copy = attacks;
-	sf_vector_3d_t pos = {100, WINDOW_SIZE_Y - 400, 0};
 	gameobject_t *arrow_go =\
-create_prefab_farrow(engine, attacks, &arrow_validated, "assets/spritesheets/arrow.png");
-	sf_fight_arrow_t *arrow = NULL;
-	int i = 0;
+create_prefab_farrow(engine, attacks, &menu_arrow_val, AMENU_SELECTOR);
+	sf_fight_arrow_t *arrow = get_component(arrow_go, FARROW);
+	sf_vector_3d_t pos = {100, WINDOW_SIZE_Y - 400, 0};
+	sf_linked_list_t *copy = attacks;
 
-	if (new_menu == NULL || arrow_go == NULL)
+	if (arrow == NULL)
 		return (NULL);
-	while (copy) {
+	for (int i = 0; copy; i++) {
 		((attack_t *)copy->data)->go = create_prefab_ftext(engine,\
 (sf_vector_3d_t){pos.x + 30, pos.y + i * 40, 0}, copy->id);
-		i++;
 		copy = copy->next;
 	}
 	arrow = get_component(arrow_go, FARROW);
-	if (arrow) {
-		arrow->elem_size = 40;
-		arrow->dir = VERTICAL;
-		arrow->elem_offset = 20;
-		arrow->callback_param = new_menu;
-	}
+	if (arrow == NULL)
+		return (NULL);
+	arrow->elem_size = 40;
+	arrow->dir = VERTICAL;
+	arrow->elem_offset = 20;
+	arrow->callback_param = new_menu;
+	return (arrow_go);
+}
+
+gameobject_t *create_prefab_fattack_menu(sf_engine_t *engine,\
+fight_t *fight)
+{
+	gameobject_t *new_menu = create_gameobject("fight_attacks_menu");
+	sf_linked_list_t *attacks = fight->player->attacks;
+	gameobject_t *arrow_go = prepare_arrow(attacks, engine, new_menu);
+	sf_attack_menu_t *menu = NULL;
+
+	if (new_menu == NULL || arrow_go == NULL)
+		return (NULL);
 	if (add_components(new_menu) == 84) {
 		new_menu->destroy(new_menu);
-		my_puterror("[ERROR]menu: Could not add components!\n");
 		return (NULL);
 	}
 	if (setup_components(engine, new_menu, attacks, arrow_go) == 84) {
 		new_menu->destroy(new_menu);
-		my_puterror("[ERROR]menu: Could not setup components!\n");
 		return (NULL);
 	}
+	menu = get_component(new_menu, AMENU_SELECTOR);
+	if (menu == NULL)
+		return (NULL);
+	menu->fight = fight;
 	return (new_menu);
 }
 
