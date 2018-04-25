@@ -20,7 +20,6 @@ static int load_game_scene(sf_engine_t *engine, parser_to_game_t *data)
 		return (84);
 	player = create_prefab_player(engine);
 	((sf_transform_t *)get_component(player, TRANSFORM))->position.x = 100;
-	camera->scene_size = (sfIntRect){0, 0, 2000, 2000};
 	camera->target = player;
 	camera->follow_target = true;
 	initialize_physic_state(engine);
