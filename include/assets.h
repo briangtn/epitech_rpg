@@ -20,4 +20,10 @@
 	#define TILESET_OUTSIDE_C "assets/tilesets/outside_c.png"
 	#pragma endregion
 
+	#pragma region Buttons
+	#define BUTTON_GAME "assets/buttons/button_game.png"
+	#define BUTTON_FIGHT "assets/buttons/button_fight.png"
+	#define BUTTON_QUIT "assets/buttons/button_quit.png"
+	#pragma endregion
+
 #endif /* !__ASSETS__H_ */

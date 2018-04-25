@@ -12,6 +12,13 @@
 
 static int my_clamp(float *value, int min, int max)
 {
+	int tmp = 0;
+
+	if (min > max) {
+		tmp = min;
+		min = max;
+		max = tmp;
+	}
 	if (*value < min) {
 		*value = min;
 		return (min);

@@ -26,7 +26,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *player)
 	sf_animation_2d_t *anim = get_component(player, ANIMATION_2D);
 
 	setup_animation(engine, anim);
-	register_animation(engine, anim, GAME);
+	register_animation(engine, anim, 10);
 	engine->add_gameobject(engine, player);
 	engine->add_physic_object(engine, player);
 	engine->add_update(engine, player, (UPDATER)&player_movement);

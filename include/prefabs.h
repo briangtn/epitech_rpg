@@ -49,7 +49,8 @@
 	enum custom_component_s {
 		INTERACTION,
 		NPC,
-		FARROW
+		FARROW,
+		FATTACKMENU
 	};
 
 	#pragma region Interaction
@@ -88,8 +89,13 @@ fight_t *fight);
 fight_t *fight);
 	gameobject_t *create_prefab_fenemy(sf_engine_t *engine,\
 fight_enemy_t *enemy, int position, int enemy_count);
-	gameobject_t *create_prefab_farrow(sf_engine_t *engine, fight_t *fight,\
-int (*callback)(void *, sf_linked_list_t *), void *callback_val);
+	gameobject_t *create_prefab_farrow(sf_engine_t *engine,\
+sf_linked_list_t *list,\
+int (*callback)(void *, sf_linked_list_t *, sf_fight_arrow_t *), char *sprite);
+	gameobject_t *create_prefab_fattack_menu(sf_engine_t *engine,\
+fight_t *fight);
+	gameobject_t *create_prefab_ftext(sf_engine_t *engine,\
+sf_vector_3d_t pos, char *content);
 
 	#pragma endregion
 
