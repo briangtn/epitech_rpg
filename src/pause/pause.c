@@ -16,6 +16,8 @@ int goto_pause(sf_engine_t *engine)
 	engine->pause.scene_before_pause = engine->current_scene;
 	engine->current_scene = engine->get_scene(engine, "pause");
 	load_pause_scene(engine, NULL);
+	sfRenderWindow_setView(engine->window, \
+engine->current_scene->camera->camera_view);
 	return (0);
 }
 
@@ -25,5 +27,7 @@ int quit_pause(sf_engine_t *engine)
 	engine->current_scene = engine->pause.scene_before_pause;
 	engine->pause.scene_before_pause = NULL;
 	engine->pause.is_paused = false;
+	sfRenderWindow_setView(engine->window, \
+engine->current_scene->camera->camera_view);
 	return (0);
 }
