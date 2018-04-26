@@ -18,6 +18,10 @@ int render_main_engine(sf_engine_t *engine)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	sfRenderWindow_clear(engine->window, sfBlack);
+	if (engine->pause.is_paused && engine->pause.scene_before_pause != NULL)
+		engine->pause.scene_before_pause->graphical_engine->render(\
+engine->pause.scene_before_pause->graphical_engine, engine->window);
 	return_value = engine->current_scene->graphical_engine->render(\
 engine->current_scene->graphical_engine, engine->window);
 	if (DISPLAY_HITBOX)

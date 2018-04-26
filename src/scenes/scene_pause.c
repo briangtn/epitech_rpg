@@ -24,8 +24,6 @@ int loop_pause_scene(sf_engine_t *engine, UNUSED void *data)
 
 	if (engine == NULL)
 		return (84);
-	engine->pause.scene_before_pause->graphical_engine->render(\
-engine->pause.scene_before_pause->graphical_engine, engine->window);
 	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);

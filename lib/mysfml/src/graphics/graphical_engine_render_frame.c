@@ -23,7 +23,6 @@ int render_frame(sf_graph_engine_t *graph_engine, sfRenderWindow *window)
 
 	if (graph_engine == NULL)
 		return (84);
-	sfRenderWindow_clear(window, sfBlack);
 	sort_layers(&(graph_engine->layers_list));
 	curr_pos_list = graph_engine->layers_list;
 	while (curr_pos_list != NULL) {
