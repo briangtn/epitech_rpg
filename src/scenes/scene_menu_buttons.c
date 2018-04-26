@@ -34,13 +34,13 @@ void launch_fight(sf_button_t *button)
 	player = create_fight_player("assets/faces/player.png", attacks);
 	fight = create_fight("assets/test.png", player);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy1");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy2");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy3");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy4");
-	fight->ennemies = sf_push(enemy, "enemy", fight->ennemies);
+	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	engine->change_scene(engine, "fight", fight);
 }
 

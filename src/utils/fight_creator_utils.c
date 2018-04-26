@@ -43,7 +43,7 @@ void add_attack(sf_linked_list_t **list, char *name, float damage)
 		return;
 	attack->name = name;
 	attack->damage = damage;
-	*list = sf_push(attack, name, *list);
+	*list = sf_push(attack, my_strdup(name), *list);
 }
 
 fight_player_t *create_fight_player(char *path, sf_linked_list_t *attacks)

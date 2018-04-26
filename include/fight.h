@@ -65,6 +65,7 @@
 		sf_linked_list_t *list;
 		void *callback_param;
 		sf_linked_list_t *(*get_elem)(struct fight_arrow *);
+		sf_engine_t *engine;
 		int (*update)(gameobject_t *, int);
 		int (*display_update)(sf_animation_2d_t *, int);
 		int (*callback)(void *, sf_linked_list_t *,\

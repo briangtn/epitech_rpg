@@ -12,11 +12,18 @@ static int when_enemy_selected(void *data, sf_linked_list_t *elem,\
 sf_fight_arrow_t *arrow) {
 	fight_t *fight = (fight_t *)data;
 	fight_enemy_t *enemy = (fight_enemy_t *)elem->data;
+	sf_engine_t *engine = NULL;
 
 	if (fight == NULL || enemy == NULL)
 		return (84);
-	my_printf("Player attacked %s using %s\n", enemy->name, fight->last_attack->name);
-	//select_attack(arrow->engine)
+	engine = arrow->engine;
+	enemy->life -= fight->last_attack->damage;
+	if (enemy->life <= 0) {
+		engine->destroy_gameobject(engine, enemy->go);
+		sf_remove_node(elem, &fight->ennemies);
+	}
+	select_attack(engine, fight);
+	engine->destroy_gameobject(engine, arrow->parent);
 	return (0);
 }
 

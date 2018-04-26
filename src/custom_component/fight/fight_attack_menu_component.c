@@ -41,7 +41,7 @@ void destroy_fattack_menu(sf_attack_menu_t *comp)
 }
 
 int menu_arrow_val(void *data, UNUSED sf_linked_list_t *elem,\
-sf_fight_arrow_t *arrow)
+UNUSED sf_fight_arrow_t *arrow)
 {
 	gameobject_t *go = (gameobject_t *)data;
 	sf_attack_menu_t *menu = NULL;

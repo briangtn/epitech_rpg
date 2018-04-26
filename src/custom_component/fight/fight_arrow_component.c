@@ -38,6 +38,7 @@ sf_fight_arrow_t *create_farrow_comp(gameobject_t *parent)
 	farrow->get_elem = &get_arrow_elem;
 	farrow->update = &arrow_update;
 	farrow->dir = HORIZONTAL;
+	farrow->engine = NULL;
 	farrow->display_update = &arrow_display_update;
 	farrow->callback = NULL;
 	return (farrow);
