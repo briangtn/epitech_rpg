@@ -48,6 +48,10 @@ SRC_UTILS_FILES	=	fight_utils.c				\
 			fight_creator_utils.c			\
 			linked_list_utils.c
 
+SRC_PAUSE_DIR	=	$(realpath src/pause)
+
+SRC_PAUSE_FILES	=	pause.c
+
 SRC_PARSING_DIR	=	$(realpath src/parsing)
 
 SRC_PARSING_FILES=	free_game_info.c			\
@@ -65,7 +69,8 @@ SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES)) \
 			$(addprefix $(SRC_PREFAB_DIR)/, $(SRC_PREFAB_FILES)) \
 			$(addprefix $(SRC_UTILS_DIR)/, 	$(SRC_UTILS_FILES)) \
 			$(addprefix $(SRC_COMP_DIR)/, $(SRC_COMP_FILES)) \
-			$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_FILES))
+			$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_FILES)) \
+			$(addprefix $(SRC_PAUSE_DIR)/, $(SRC_PAUSE_FILES))
 
 OBJ		=	$(SRC:%.c=%.o)
 

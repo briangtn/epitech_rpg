@@ -10,4 +10,6 @@
 #ifndef __RPG_PAUSE__H_
 	#define __RPG_PAUSE__H_
 
+	int goto_pause(sf_engine_t *engine);
+
 #endif /* !__RPG_PAUSE__H_ */
