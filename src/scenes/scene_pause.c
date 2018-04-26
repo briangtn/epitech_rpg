@@ -36,21 +36,20 @@ int load_pause_scene(sf_engine_t *engine, UNUSED void *data)
 	gameobject_t *button_res = NULL;
 	gameobject_t *button_quit = NULL;
 	gameobject_t *border = NULL;
+	sfVector2f center = engine->pause.scene_before_pause->camera->position;
 
 	if (engine == NULL)
 		return (84);
 	border = create_prefab_image(engine, SPRITE_BORDER, 0);
 	calc_go_to_old_camera(engine, border);
 	button_res = create_prefab_button(engine, "resume button", \
-BUTTON_RESUME, (sfIntRect){800 - 150, 480 - 160, 300, 150});
+BUTTON_RESUME, (sfIntRect){center.x - 150, center.y - 160, 300, 150});
 	((sf_button_t *)get_component(button_res, BUTTON))->on_clicked = \
 &button_resume;
 	button_quit = create_prefab_button(engine, "quit button", \
-BUTTON_QUIT, (sfIntRect){800 - 150, 480 + 10, 300, 150});
+BUTTON_QUIT, (sfIntRect){center.x - 150, center.y + 10, 300, 150});
 	((sf_button_t *)get_component(button_quit, BUTTON))->on_clicked = \
 &quit_app;
-	calc_go_to_old_camera(engine, button_res);
-	calc_go_to_old_camera(engine, button_quit);
 	return (0);
 }
 
