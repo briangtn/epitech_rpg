@@ -22,7 +22,7 @@ int get_tile_layer(char *buffer, event_info_t *event)
 			n++;
 		if ((event_id == 0 && buffer[i] == '"' && n == 11) \
 || (event_id > 1 && buffer[i] == '"' && n == 13) \
-|| (event_id == 1 && buffer[i] == '"' && n == 15)) {
+|| (event_id == 1 && buffer[i] == '"' && n == 17)) {
 			tile_layer = my_getnbr(&buffer[i + 1]);
 			break;
 		}
@@ -45,7 +45,7 @@ int get_tile_type(char *buffer, event_info_t *event)
 			n++;
 		if ((event_id == 0 && buffer[i] == '"' && n == 9) \
 || (event_id > 1 && buffer[i] == '"' && n == 11) \
-|| (event_id == 1 && buffer[i] == '"' && n == 13)) {
+|| (event_id == 1 && buffer[i] == '"' && n == 15)) {
 			tile_type = my_getnbr(&buffer[i + 1]);
 			break;
 		}

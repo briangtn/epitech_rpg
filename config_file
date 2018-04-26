@@ -7,7 +7,7 @@ BACKGROUND : ""
 
 NPC_ID : "1" ; NPC_POS : "1" x "1" ; EVENT : "2" : "Hello World"
 
-LOOT_ID : "1" ; LOOT_POS : "1" x "1" ; EVENT : "1" : "10" x "10"
+LOOT_ID : "1" ; LOOT_POS : "1" x "1" ; EVENT : "1" : "1" : "10" x "10"
 
 TILE_ID : "1" ; TILE_POS : "1" x "1" ; EVENT : "3" : "1" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "2" ; TILE_POS : "1" x "2" ; EVENT : "0" ; TILE_TYPE : "1" ; LAYER : "1"

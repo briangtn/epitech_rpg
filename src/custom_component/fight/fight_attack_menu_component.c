@@ -41,7 +41,7 @@ void destroy_fattack_menu(sf_attack_menu_t *comp)
 }
 
 int menu_arrow_val(void *data, UNUSED sf_linked_list_t *elem,\
-sf_fight_arrow_t *arrow)
+UNUSED sf_fight_arrow_t *arrow)
 {
 	gameobject_t *go = (gameobject_t *)data;
 	sf_attack_menu_t *menu = NULL;
@@ -52,6 +52,7 @@ sf_fight_arrow_t *arrow)
 	if (menu == NULL)
 		return (84);
 	menu->fight->last_attack = (attack_t *)elem->data;
+	select_enemy(menu->engine, menu->fight);
 	destroy_fattack_menu(menu);
  	return (0);
 }

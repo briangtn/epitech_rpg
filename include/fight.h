@@ -65,6 +65,7 @@
 		sf_linked_list_t *list;
 		void *callback_param;
 		sf_linked_list_t *(*get_elem)(struct fight_arrow *);
+		sf_engine_t *engine;
 		int (*update)(gameobject_t *, int);
 		int (*display_update)(sf_animation_2d_t *, int);
 		int (*callback)(void *, sf_linked_list_t *,\
@@ -94,5 +95,7 @@ sf_fight_arrow_t *arrow);
 	int get_enemy_posx(sf_engine_t *engine, int enemy_count, int pos);
 	void scale_elem_to_size(sfSprite *sprite);
 	void destroy_fattack_menu(sf_attack_menu_t *comp);
+	void select_attack(sf_engine_t *engine, fight_t *fight);
+	void select_enemy(sf_engine_t *engine, fight_t *fight);
 
 #endif /* !__FIGHT__H_ */
