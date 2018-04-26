@@ -18,4 +18,5 @@ int goto_pause(sf_engine_t *engine)
 int quit_pause(sf_engine_t *engine)
 {
 	unload_pause_scene(engine, NULL);
+	return (0);
 }

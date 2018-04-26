@@ -43,8 +43,14 @@
 #include "my_sfml_scenes.h"
 #include <SFML/Graphics.h>
 
-/* --------------------------------DEFINE-------------------------------- */
-/* ------------------------------END-DEFINE------------------------------ */
+/* --------------------------------PAUSES-------------------------------- */
+
+typedef struct pause_data_s {
+	bool is_paused;
+	sf_scene_t *scene_before_pause;
+} pause_data_t;
+
+/* ------------------------------END-PAUSES------------------------------ */
 
 /* --------------------------------ENGINE-------------------------------- */
 
@@ -60,6 +66,7 @@ struct main_engine {
 	sf_scene_t *current_scene; /**< Current playing scene */
 	char *next_scene; /**< Next scene name to be loaded */
 	void *data; /**< The data to give to the next scene */
+	pause_data_t pause; /**< Data used to pause a scene */
 	sf_linked_list_t *scenes; /**< List of existing scenes */
 	void (*destroy)(struct main_engine *engine);\
 /**< destroy the engine. Refer to destroy_engine() */
