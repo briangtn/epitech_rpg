@@ -19,6 +19,11 @@ int goto_pause(sf_engine_t *engine)
 	return (0);
 }
 
+void button_resume(sf_button_t *button)
+{
+	quit_pause(button->engine);
+}
+
 int quit_pause(sf_engine_t *engine)
 {
 	unload_pause_scene(engine, NULL);
