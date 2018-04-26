@@ -10,14 +10,6 @@
 #include "my_sfml.h"
 #include "pause.h"
 
-int goto_pause(sf_engine_t *engine)
-{
-	while (!loop_pause_scene(engine)) {
-		continue;
-	}
-	sfClock_restart(engine->main_clock);
-}
-
 int loop_pause_scene(sf_engine_t *engine)
 {
 	sfEvent evt;
@@ -31,5 +23,14 @@ int loop_pause_scene(sf_engine_t *engine)
 			return (1);
 	}
 	engine->render(engine);
+	return (0);
+}
+
+int goto_pause(sf_engine_t *engine)
+{
+	while (!loop_pause_scene(engine)) {
+		continue;
+	}
+	sfClock_restart(engine->main_clock);
 	return (0);
 }
