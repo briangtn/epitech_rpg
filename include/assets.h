@@ -13,6 +13,7 @@
 	#pragma region Spritesheets
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
 	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
+	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#pragma endregion
 
 	#pragma region Tilesets

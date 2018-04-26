@@ -16,7 +16,8 @@ SRC_SCENES_FILES=	scene_game.c					\
 			scene_fight.c					\
 			fight/fight.c					\
 			scene_menu.c					\
-			scene_menu_buttons.c
+			scene_menu_buttons.c				\
+			scene_pause.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 

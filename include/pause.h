@@ -12,4 +12,8 @@
 
 	int goto_pause(sf_engine_t *engine);
 
+	int load_pause_scene(sf_engine_t *engine, UNUSED void *data);
+	int loop_pause_scene(sf_engine_t *engine, UNUSED void *data);
+	int unload_pause_scene(sf_engine_t *engine, UNUSED void *data);
+
 #endif /* !__RPG_PAUSE__H_ */
