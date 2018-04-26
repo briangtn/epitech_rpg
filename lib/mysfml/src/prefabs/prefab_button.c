@@ -54,13 +54,17 @@ char *textures_path, sfIntRect position)
 
 int is_over_button(sf_button_t *button)
 {
+	sfRenderWindow *window = button->engine->window;
 	sfVector2i mouse_pos;
+	sfVector2f mouse_pos_world;
 
-	mouse_pos = sfMouse_getPositionRenderWindow(button->engine->window);
-	if (mouse_pos.x >= button->position.left \
-&& mouse_pos.x <= button->position.left + button->position.width \
-&& mouse_pos.y >= button->position.top \
-&& mouse_pos.y <= button->position.top + button->position.height)
+	mouse_pos = sfMouse_getPositionRenderWindow(window);
+	mouse_pos_world = sfRenderWindow_mapPixelToCoords(window, mouse_pos, \
+sfRenderWindow_getView(window));
+	if (mouse_pos_world.x >= button->position.left \
+&& mouse_pos_world.x <= button->position.left + button->position.width \
+&& mouse_pos_world.y >= button->position.top \
+&& mouse_pos_world.y <= button->position.top + button->position.height)
 		return (1);
 	return (0);
 }

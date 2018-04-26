@@ -23,4 +23,6 @@ sf_engine_t *engine);
 	void launch_fight(sf_button_t *button);
 	void quit_app(sf_button_t *button);
 
+	sf_scene_t *create_pause_scene(sf_engine_t *engine);
+
 #endif /* !__SCENES__H_ */

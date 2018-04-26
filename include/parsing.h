@@ -95,16 +95,16 @@ struct functions
 extern struct functions functions [];
 extern char *error_messages [];
 
-#define NB_SCENE	"NB_SCENE : \"*\""
-#define TILE_PER_SCENE	"TILE_PER_SCENE (COL * LINES) : \"*\" x \"*\""
-#define SCENE		"SCENE *:"
-#define TILESET		"TILESET : \"*\""
-#define BACKGROUND	"BACKGROUND : \"*\""
-#define NPC_INFO	"NPC_ID : \"*\" ; NPC_POS : \"*\" x \"*\" ; EVENT : \
+#define NB_SCENE "NB_SCENE : \"*\""
+#define TILE_PER_SCENE "TILE_PER_SCENE (COL * LINES) : \"*\" x \"*\""
+#define SCENE "SCENE *:"
+#define TILESET "TILESET : \"*\""
+#define BACKGROUND "BACKGROUND : \"*\""
+#define NPC_INFO "NPC_ID : \"*\" ; NPC_POS : \"*\" x \"*\" ; EVENT : \
 \"*\"*"
-#define LOOT_INFO	"LOOT_ID : \"*\" ; LOOT_POS : \"*\" x \"*\" ; EVENT : \
+#define LOOT_INFO "LOOT_ID : \"*\" ; LOOT_POS : \"*\" x \"*\" ; EVENT : \
 \"*\"*"
-#define TILE_INFO	"TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT : \
+#define TILE_INFO "TILE_ID : \"*\" ; TILE_POS : \"*\" x \"*\" ; EVENT : \
 \"*\"* ; TILE_TYPE : \"*\" ; LAYER : \"*\""
 
 /*parsing.c*/

@@ -10,4 +10,12 @@
 #ifndef __RPG_PAUSE__H_
 	#define __RPG_PAUSE__H_
 
+	int goto_pause(sf_engine_t *engine);
+	int quit_pause(sf_engine_t *engine);
+	void button_resume(sf_button_t *button);
+
+	int load_pause_scene(sf_engine_t *engine, UNUSED void *data);
+	int loop_pause_scene(sf_engine_t *engine, UNUSED void *data);
+	int unload_pause_scene(sf_engine_t *engine, UNUSED void *data);
+
 #endif /* !__RPG_PAUSE__H_ */

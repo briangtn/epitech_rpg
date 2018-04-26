@@ -13,6 +13,7 @@
 	#pragma region Spritesheets
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
 	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
+	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#pragma endregion
 
 	#pragma region Tilesets
@@ -24,6 +25,7 @@
 	#define BUTTON_GAME "assets/buttons/button_game.png"
 	#define BUTTON_FIGHT "assets/buttons/button_fight.png"
 	#define BUTTON_QUIT "assets/buttons/button_quit.png"
+	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#pragma endregion
 
 #endif /* !__ASSETS__H_ */

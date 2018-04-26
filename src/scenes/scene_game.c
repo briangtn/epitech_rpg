@@ -35,6 +35,8 @@ static void handle_key_pressed(sf_engine_t *engine, sfEvent evt)
 		return;
 	if (evt.key.code == sfKeySpace)
 		run_interactions(engine, player);
+	if (evt.key.code == sfKeyEscape)
+		goto_pause(engine);
 }
 
 static int loop_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
