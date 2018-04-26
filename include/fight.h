@@ -85,6 +85,8 @@ struct fight_arrow *);
 		gameobject_t *parent;
 		fight_t *fight;
 		fight_enemy_t *datas;
+		gameobject_t *life_bar_go;
+		sf_engine_t *engine;
 	} sf_enemy_t;
 
 	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);
@@ -97,6 +99,8 @@ sf_fight_arrow_t *arrow);
 	sf_attack_menu_t *create_fattack_menu_comp(gameobject_t *parent);
 
 	sf_enemy_t *create_enemy_comp(gameobject_t *parent);
+	int update_enemy(void *datas, UNUSED int delta_time);
+	void destroy_enemy(sf_engine_t *engine, gameobject_t *go);
 
 	#pragma endregion
 

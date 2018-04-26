@@ -22,9 +22,12 @@
 			float current_value;
 			sfColor fore_color;
 			sfColor back_color;
+			sf_vector_2d_t sizes;
+			gameobject_t *back_go;
 		} sf_loadbar_t;
 
 	sf_loadbar_t *create_loadbar_comp(gameobject_t *go);
+	int loadbar_update(void *obj, UNUSED int delta_time);
 
 	#pragma endregion
 

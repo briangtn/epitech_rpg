@@ -19,7 +19,7 @@ sf_fight_arrow_t *arrow) {
 	engine = arrow->engine;
 	enemy->life -= fight->last_attack->damage;
 	if (enemy->life <= 0) {
-		engine->destroy_gameobject(engine, enemy->go);
+		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
 	select_attack(engine, fight);

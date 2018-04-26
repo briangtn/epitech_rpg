@@ -56,11 +56,30 @@ static int add_components(gameobject_t *enemy)
 	return (0);
 }
 
+static void after_init(gameobject_t *go, sf_engine_t *engine,\
+fight_enemy_t *enemy, int pos_x)
+{
+	const int offset = (100 - FIGHT_ELEMENT_SIZE) / 2;
+	sf_transform_t *tr = NULL;
+	sf_enemy_t *enemy_comp = NULL;
+	sfFloatRect rect = {0, 0, 0, 0};
+
+	tr = get_component(go, TRANSFORM);
+	enemy_comp = get_component(go, FENEMY);
+	if (tr == NULL || enemy_comp == NULL)
+		return;
+	tr->position =\
+(sf_vector_3d_t){pos_x, 300, 0};
+	rect = (sfFloatRect){tr->position.x - offset, tr->position.y - 15,\
+100, 10};
+	enemy_comp->life_bar_go = create_prefab_loadbar(engine, rect,\
+enemy->life);
+}
+
 gameobject_t *create_prefab_fenemy(sf_engine_t *engine, fight_enemy_t *enemy,\
 int pos, fight_t *fight)
 {
 	gameobject_t *new_enemy = create_gameobject("fight_enemy");
-	sf_transform_t *tr = NULL;
 	int enemy_count = my_sf_list_size(fight->ennemies);
 
 	if (engine == NULL || new_enemy == NULL)
@@ -75,10 +94,8 @@ int pos, fight_t *fight)
 		my_puterror("[ERROR]enemy: Could not setup components!\n");
 		return (NULL);
 	}
-	tr = get_component(new_enemy, TRANSFORM);
-	if (tr == NULL)
-		return (NULL);
-	tr->position =\
-(sf_vector_3d_t){get_enemy_posx(engine, enemy_count, pos), 300, 0};
+	after_init(new_enemy, engine, enemy,\
+get_enemy_posx(engine, enemy_count, pos));
+	engine->add_update(engine, new_enemy, update_enemy);
 	return (new_enemy);
 }

@@ -12,7 +12,6 @@ static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 	sf_linked_list_t *current = fight->ennemies;
 	int pos = 0;
 
-	create_prefab_loadbar(engine, (sfFloatRect){100, 100, 200, 20}, 100);
 	create_prefab_fbackground(engine, fight);
 	create_prefab_fplayer(engine, fight);
 	select_attack(engine, fight);
