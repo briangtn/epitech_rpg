@@ -20,7 +20,8 @@ bool is_key_just_pressed(sfKeyCode key_code)
 		copy = copy->next;
 	}
 	if (!find_in_list && sfKeyboard_isKeyPressed(key_code)) {
-		codes = sf_push((void *)key_code, my_int_to_str(key_code), codes);
+		codes = sf_push((void *)key_code, my_int_to_str(key_code),\
+codes);
 		return (true);
 	} else if (find_in_list && !sfKeyboard_isKeyPressed(key_code)) {
 		sf_remove(my_int_to_str(key_code), &codes);

@@ -50,7 +50,9 @@
 		INTERACTION,
 		NPC,
 		FARROW,
-		FATTACKMENU
+		FATTACKMENU,
+		FENEMY,
+		LOADBAR
 	};
 
 	#pragma region Interaction
@@ -88,7 +90,7 @@ fight_t *fight);
 	gameobject_t *create_prefab_fplayer(sf_engine_t *engine,\
 fight_t *fight);
 	gameobject_t *create_prefab_fenemy(sf_engine_t *engine,\
-fight_enemy_t *enemy, int position, int enemy_count);
+fight_enemy_t *enemy, int position, fight_t *fight);
 	gameobject_t *create_prefab_farrow(sf_engine_t *engine,\
 sf_linked_list_t *list,\
 int (*callback)(void *, sf_linked_list_t *, sf_fight_arrow_t *), char *sprite);
@@ -96,6 +98,8 @@ int (*callback)(void *, sf_linked_list_t *, sf_fight_arrow_t *), char *sprite);
 fight_t *fight);
 	gameobject_t *create_prefab_ftext(sf_engine_t *engine,\
 sf_vector_3d_t pos, char *content);
+	gameobject_t *create_prefab_loadbar(sf_engine_t *engine, sfFloatRect rect,\
+float max);
 
 	#pragma endregion
 

@@ -25,5 +25,6 @@
 	#include "prefabs.h"
 	#include "scenes.h"
 	#include "scripts.h"
+	#include "ui.h"
 
 #endif /* !__RPG__H_ */

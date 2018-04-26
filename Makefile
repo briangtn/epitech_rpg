@@ -25,7 +25,9 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/fight_arrow_component.c			\
 			fight/fight_arrow_updaters.c			\
 			fight/fight_attack_menu_component.c		\
+			fight/enemy_component.c				\
 			interaction/interact.c				\
+			ui/load_bar_component.c				\
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
@@ -39,7 +41,8 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			fight/fight_text_prefab.c		\
 			npc/npc_interaction.c			\
 			npc/prefab_npc_core.c			\
-			tiles/prefab_tile_core.c
+			tiles/prefab_tile_core.c		\
+			ui/loadbar_prefab.c			\
 
 SRC_UTILS_DIR	=	$(realpath src/utils)
 

@@ -22,18 +22,21 @@ UNUSED int elapsed_milliseconds)
 }
 
 static int setup_components(sf_engine_t *engine, gameobject_t *enemy,\
-fight_enemy_t *fenemy)
+fight_enemy_t *fenemy, fight_t *fight)
 {
 	sf_animation_2d_t *anim = get_component(enemy, ANIMATION_2D);
 	sf_transform_t *transform = get_component(enemy, TRANSFORM);
+	sf_enemy_t *enemy_comp = get_component(enemy, FENEMY);
 
-	if (anim == NULL || transform == NULL)
+	if (anim == NULL || transform == NULL || enemy_comp == NULL)
 		return (84);
 	anim->update = fenemy_animation_update;
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 fenemy->sprite_path));
 	scale_elem_to_size(anim->sprite);
 	register_animation(engine, anim, GAME);
+	enemy_comp->datas = fenemy;
+	enemy_comp->fight = fight;
 	return (0);
 }
 
@@ -47,14 +50,18 @@ static int add_components(gameobject_t *enemy)
 		my_puterror("[ERROR]enemy: Could not add tranform\n");
 		return (84);
 	}
+	if (add_custom_component(enemy, (void *(*)(gameobject_t *))\
+&create_enemy_comp, FENEMY) == NULL)
+		return (84);
 	return (0);
 }
 
 gameobject_t *create_prefab_fenemy(sf_engine_t *engine, fight_enemy_t *enemy,\
-int pos, int enemy_count)
+int pos, fight_t *fight)
 {
 	gameobject_t *new_enemy = create_gameobject("fight_enemy");
 	sf_transform_t *tr = NULL;
+	int enemy_count = my_sf_list_size(fight->ennemies);
 
 	if (engine == NULL || new_enemy == NULL)
 		return (NULL);
@@ -63,7 +70,7 @@ int pos, int enemy_count)
 		my_puterror("[ERROR]enemy: Could not add components!\n");
 		return (NULL);
 	}
-	if (setup_components(engine, new_enemy, enemy) == 84) {
+	if (setup_components(engine, new_enemy, enemy, fight) == 84) {
 		new_enemy->destroy(new_enemy);
 		my_puterror("[ERROR]enemy: Could not setup components!\n");
 		return (NULL);
