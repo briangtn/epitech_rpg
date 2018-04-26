@@ -38,7 +38,7 @@ typedef struct event_info event_info_t;
 
 struct event_info {
 	int event_id;
-	sfVector2i teleport;
+	int teleport [3];
 	char *text;
 	int fight_id;
 };

@@ -15,7 +15,8 @@ event_info_t *init_event(event_info_t *event)
 	if (event == NULL)
 		return (NULL);
 	event->event_id = 0;
-	event->teleport = (sfVector2i){0, 0};
+	for (int i = 0; i < 3; i++)
+		event->teleport[i] = 0;
 	event->text = NULL;
 	event->fight_id = 0;
 	return (event);
