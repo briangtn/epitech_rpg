@@ -22,8 +22,11 @@
 	#include "assets.h"
 	#include "fight.h"
 	#include "parser.h"
+	#include "parsing.h"
 	#include "prefabs.h"
 	#include "scenes.h"
 	#include "scripts.h"
+	#include "utils.h"
+	#include "pause.h"
 
 #endif /* !__RPG__H_ */
