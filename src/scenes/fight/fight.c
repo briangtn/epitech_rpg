@@ -9,7 +9,8 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-void enemy_attack(sf_engine_t *engine, fight_t *fight, fight_enemy_t *enemy)
+void enemy_attack(UNUSED sf_engine_t *engine,\
+fight_t *fight, fight_enemy_t *enemy)
 {
 	int attack_count = my_sf_list_size(enemy->attacks);
 	int attack_index = rand() % attack_count;
