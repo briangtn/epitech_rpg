@@ -9,7 +9,8 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-fight_enemy_t *create_enemy(int life, char *path, char *name)
+fight_enemy_t *create_enemy(int life, char *path, char *name,\
+sf_linked_list_t *attacks)
 {
 	fight_enemy_t *enemy = malloc(sizeof(*enemy));
 
@@ -19,6 +20,7 @@ fight_enemy_t *create_enemy(int life, char *path, char *name)
 	enemy->sprite_path = path;
 	enemy->name = name;
 	enemy->go = NULL;
+	enemy->attacks = attacks;
 	return (enemy);
 }
 

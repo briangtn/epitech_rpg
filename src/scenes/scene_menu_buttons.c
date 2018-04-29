@@ -27,19 +27,23 @@ void launch_fight(sf_button_t *button)
 	fight_enemy_t *enemy = NULL;
 	fight_player_t *player = NULL;
 	sf_linked_list_t *attacks = NULL;
+	sf_linked_list_t *eattacks = NULL;
 
 	add_attack(&attacks, "SuperAttack", 2);
 	add_attack(&attacks, "MegaAttack", 4);
 	add_attack(&attacks, "AttaqueKiTuTou", 10);
 	player = create_fight_player("assets/faces/player.png", attacks);
 	fight = create_fight("assets/test.png", player);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy1");
+	add_attack(&eattacks, "EnnemyAttack3", 3);
+	add_attack(&eattacks, "EnnemyAttack2", 2);
+	add_attack(&eattacks, "EnnemyAttack1", 1);
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy1", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy2");
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy2", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy3");
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy3", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy4");
+	enemy = create_enemy(10, "assets/dragon.png", "Enemy4", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	engine->change_scene(engine, "fight", fight);
 }

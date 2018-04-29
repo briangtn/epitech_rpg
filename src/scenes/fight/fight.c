@@ -5,8 +5,32 @@
 ** Fighting file
 */
 
+#include <stdlib.h>
 #include "my_sfml.h"
 #include "rpg.h"
+
+void enemy_attack(sf_engine_t *engine, fight_t *fight, fight_enemy_t *enemy)
+{
+	int attack_count = my_sf_list_size(enemy->attacks);
+	int attack_index = rand() % attack_count;
+	sf_linked_list_t *elem = get_elem_at_index(attack_index,\
+enemy->attacks);
+
+	if (elem == NULL)
+		return;
+	fight->player->life -= ((attack_t *)elem->data)->damage;
+}
+
+void enemy_turn(sf_engine_t *engine, fight_t *fight)
+{
+	sf_linked_list_t *copy = fight->ennemies;
+
+	while (copy) {
+		enemy_attack(engine, fight, (fight_enemy_t *)copy->data);
+		copy = copy->next;
+	}
+	select_attack(engine, fight);
+}
 
 static int when_enemy_selected(void *data, sf_linked_list_t *elem,\
 sf_fight_arrow_t *arrow) {
@@ -22,7 +46,7 @@ sf_fight_arrow_t *arrow) {
 		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
-	select_attack(engine, fight);
+	enemy_turn(engine, fight);
 	engine->destroy_gameobject(engine, arrow->parent);
 	return (0);
 }
@@ -42,3 +66,4 @@ fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 		return;
 	arrow->callback_param = fight;
 }
+
