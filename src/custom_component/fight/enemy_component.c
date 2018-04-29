@@ -5,13 +5,6 @@
 ** Rpg enemy component
 */
 
-/*
-** EPITECH PROJECT, 2017
-** My rpg
-** File description:
-** Fight arrow component
-*/
-
 #include <stdlib.h>
 #include "my_sfml.h"
 #include "rpg.h"

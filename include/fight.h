@@ -89,6 +89,15 @@ struct fight_arrow *);
 		sf_engine_t *engine;
 	} sf_enemy_t;
 
+	typedef struct player_comp {
+		void (*destroy)();
+		gameobject_t *parent;
+		fight_t *fight;
+		fight_player_t *datas;
+		gameobject_t *life_bar_go;
+		sf_engine_t *engine;
+	} sf_player_t;
+
 	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);
 	int arrow_update(gameobject_t *arrow_go, UNUSED int delta_time);
 	int arrow_display_update(sf_animation_2d_t *anim, int delta_time);
@@ -101,6 +110,9 @@ sf_fight_arrow_t *arrow);
 	sf_enemy_t *create_enemy_comp(gameobject_t *parent);
 	int update_enemy(void *datas, UNUSED int delta_time);
 	void destroy_enemy(sf_engine_t *engine, gameobject_t *go);
+
+	sf_player_t *create_player_comp(gameobject_t *parent);
+	int update_player(void *datas, UNUSED int delta_time);
 
 	#pragma endregion
 

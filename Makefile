@@ -27,6 +27,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/fight_arrow_updaters.c			\
 			fight/fight_attack_menu_component.c		\
 			fight/enemy_component.c				\
+			fight/player_component.c				\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
 

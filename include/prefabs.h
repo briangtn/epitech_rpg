@@ -52,7 +52,8 @@
 		FARROW,
 		FATTACKMENU,
 		FENEMY,
-		LOADBAR
+		LOADBAR,
+		FPLAYER
 	};
 
 	#pragma region Interaction
