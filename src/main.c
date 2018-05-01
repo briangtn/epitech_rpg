@@ -72,6 +72,10 @@ int load_scenes(sf_engine_t *engine)
 		my_puterror("[ERROR]Could not create pause scene!\n");
 		return (84);
 	}
+	if (create_speak_scene(engine) == NULL) {
+		my_puterror("[ERROR]Could not create speak scene!\n");
+		return (84);
+	}
 	return (0);
 }
 

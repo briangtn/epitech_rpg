@@ -25,4 +25,6 @@ sf_engine_t *engine);
 
 	sf_scene_t *create_pause_scene(sf_engine_t *engine);
 
+	sf_scene_t *create_speak_scene(sf_engine_t *engine);
+
 #endif /* !__SCENES__H_ */

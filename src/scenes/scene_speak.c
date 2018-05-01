@@ -2,12 +2,13 @@
 ** EPITECH PROJECT, 2017
 ** rpg
 ** File description:
-** Pause scene
+** Scene when player speaking
 */
 
-/* File created the 26/04/2018 at 14:15:02 by julian.frabel@epitech.eu */
+/* File created the 01/05/2018 at 14:09:21 by julian.frabel@epitech.eu */
 
 #include "my_sfml.h"
+#include <stdlib.h>
 #include "rpg.h"
 
 static void calc_go_to_old_camera(sf_engine_t *engine, gameobject_t *go)
@@ -31,29 +32,18 @@ static void calc_go_to_old_camera(sf_engine_t *engine, gameobject_t *go)
 	}
 }
 
-int load_pause_scene(sf_engine_t *engine, UNUSED void *data)
+int load_speak_scene(sf_engine_t *engine, UNUSED void *data)
 {
-	gameobject_t *button_res = NULL;
-	gameobject_t *button_quit = NULL;
 	gameobject_t *border = NULL;
-	sfVector2f center = engine->pause.scene_before_pause->camera->position;
 
 	if (engine == NULL)
 		return (84);
-	border = create_prefab_image(engine, SPRITE_BORDER, 0);
+	border = create_prefab_image(engine, SPRITE_SPEAK_BORDER, 0);
 	calc_go_to_old_camera(engine, border);
-	button_res = create_prefab_button(engine, "resume button", \
-BUTTON_RESUME, (sfIntRect){center.x - 150, center.y - 160, 300, 150});
-	((sf_button_t *)get_component(button_res, BUTTON))->on_clicked = \
-&button_resume;
-	button_quit = create_prefab_button(engine, "quit button", \
-BUTTON_QUIT, (sfIntRect){center.x - 150, center.y + 10, 300, 150});
-	((sf_button_t *)get_component(button_quit, BUTTON))->on_clicked = \
-&quit_app;
 	return (0);
 }
 
-int loop_pause_scene(sf_engine_t *engine, UNUSED void *data)
+int loop_speak_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	sfEvent evt;
 
@@ -62,13 +52,11 @@ int loop_pause_scene(sf_engine_t *engine, UNUSED void *data)
 	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
-		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeyEscape)
-			quit_pause(engine);
 	}
 	return (0);
 }
 
-int unload_pause_scene(sf_engine_t *engine, UNUSED void *data)
+int unload_speak_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	if (engine == NULL)
 		return (84);
@@ -76,15 +64,15 @@ int unload_pause_scene(sf_engine_t *engine, UNUSED void *data)
 	return (0);
 }
 
-sf_scene_t *create_pause_scene(sf_engine_t *engine)
+sf_scene_t *create_speak_scene(sf_engine_t *engine)
 {
-	sf_scene_t *new_scene = create_scene("pause");
+	sf_scene_t *new_scene = create_scene("speak");
 
 	if (new_scene == NULL || engine == NULL)
 		return (NULL);
-	new_scene->load = &load_pause_scene;
-	new_scene->loop = &loop_pause_scene;
-	new_scene->unload = &unload_pause_scene;
+	new_scene->load = &load_speak_scene;
+	new_scene->loop = &loop_speak_scene;
+	new_scene->unload = &unload_speak_scene;
 	engine->add_scene(engine, new_scene);
 	return (new_scene);
 }
