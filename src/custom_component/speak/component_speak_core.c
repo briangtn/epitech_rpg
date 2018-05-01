@@ -13,13 +13,16 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-static void set_text(sf_speak_t *speak, const char *text)
+static void set_info(sf_speak_t *speak, const char *text, const char *portrait)
 {
-	if (speak == NULL || text == NULL)
+	if (speak == NULL || text == NULL || portrait == NULL)
 		return;
 	if (speak->text != NULL)
 		free(speak->text);
+	if (speak->portrait != NULL)
+		free(speak->portrait);
 	speak->text = strdup(text);
+	speak->portrait = strdup(portrait);
 	if (speak->text != NULL) {
 		sfText_setString(speak->text_comp, speak->text);
 		sfText_setColor(speak->text_comp, sfBlack);
@@ -61,6 +64,8 @@ void destroy_speak_component(sf_speak_t *speak)
 		return;
 	if (speak->text != NULL)
 		free(speak->text);
+	if (speak->portrait != NULL)
+		free(speak->portrait);
 	if (speak->font != NULL)
 		sfFont_destroy(speak->font);
 	if (speak->text_comp != NULL)
@@ -76,10 +81,11 @@ sf_speak_t *create_speak_component(gameobject_t *parent)
 	speak->font = NULL;
 	speak->parent = parent;
 	speak->text = NULL;
+	speak->portrait = NULL;
 	speak->line = -1;
 	speak->text_comp = sfText_create();
 	speak->set_font = &set_font;
-	speak->set_text = &set_text;
+	speak->set_info = &set_info;
 	speak->show = &show;
 	return (speak);
 }

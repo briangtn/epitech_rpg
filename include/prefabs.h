@@ -80,9 +80,11 @@
 		char *text;
 		sfText *text_comp;
 		sfFont *font;
+		char *portrait;
 		void (*show)(struct speak_s *speak, sf_engine_t *engine);
 		void (*set_font)(struct speak_s *speak, const char *font);
-		void (*set_text)(struct speak_s *speak, const char *text);
+		void (*set_info)(struct speak_s *speak, const char *text, \
+const char *portrait);
 	} sf_speak_t;
 
 	void display_next_line(sf_speak_t *speak, sf_engine_t *engine);

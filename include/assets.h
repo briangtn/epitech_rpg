@@ -29,6 +29,10 @@
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#pragma endregion
 
+	#pragma region Face
+	#define FACE_SOLDIER "assets/faces/guard.png"
+	#pragma endregion
+
 	#pragma region Font
 	#define FONT_SPEAK "assets/crazy_krabs.otf"
 	#pragma endregion
