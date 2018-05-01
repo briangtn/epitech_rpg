@@ -71,6 +71,21 @@
 
 	#pragma endregion
 
+	#pragma region Speak
+
+	typedef struct speak_s {
+		void (*destroy)();
+		gameobject_t *parent;
+		char *text;
+		sfText *text_comp;
+		sfFont *font;
+		void (*show)(struct speak_s *speak, sf_engine_t *engine);
+		void (*set_font)(struct speak_s *speak, const char *font);
+		void (*set_text)(struct speak_s *speak, const char *text);
+	} sf_speak_t;
+
+	#pragma endregion
+
 	#pragma region Npc
 
 	typedef struct npc_component_s {

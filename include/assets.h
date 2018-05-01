@@ -14,6 +14,7 @@
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
 	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
+	#define SPRITE_SPEAK_BORDER "assets/spritesheets/speak_border.png"
 	#pragma endregion
 
 	#pragma region Tilesets

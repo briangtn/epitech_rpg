@@ -36,17 +36,34 @@ tile_info_t *info, char *tileset)
 	return (0);
 }
 
+static void set_trigger_func(UNUSED sf_collider_2d_t *col, \
+tile_info_t *info, UNUSED sf_engine_t *engine)
+{
+	switch (info->event->event_id) {
+	case TELEPORT:
+		break;
+	case DIALOG:
+		break;
+	case FIGHT:
+		break;
+	};
+}
+
 static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info)
 {
 	sf_rigidbody_2d_t *rb = NULL;
 	sf_collider_2d_t *col = NULL;
 
-	if (info->tile_type != COLLIDE)
+	if (info->tile_type != COLLIDE && info->event->event_id != 0)
 		return (0);
 	rb = go->add_component(go, RIGIDBODY_2D);
 	col = go->add_component(go, COLLIDER_2D);
 	if (rb == NULL || col == NULL)
 		return (84);
+	if (info->event->event_id != 0) {
+		col->trigger = 1;
+		set_trigger_func(col, info, engine);
+	}
 	engine->add_physic_object(engine, go);
 	return (0);
 }
