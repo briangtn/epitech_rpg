@@ -10,7 +10,7 @@
 #ifndef __RPG_PAUSE__H_
 	#define __RPG_PAUSE__H_
 
-	int goto_pause(sf_engine_t *engine);
+	int goto_pause(sf_engine_t *engine, const char *scene);
 	int quit_pause(sf_engine_t *engine);
 	void button_resume(sf_button_t *button);
 
