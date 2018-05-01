@@ -16,6 +16,10 @@ void free_loot(loot_info_t **loot)
 		i++;
 	i--;
 	while (i >= 0) {
+		if (loot[i]->event != NULL && loot[i]->event->text != NULL)
+			free(loot[i]->event->text);
+		if (loot[i]->event != NULL)
+			free(loot[i]->event);
 		free(loot[i]);
 		i--;
 	}
@@ -30,6 +34,10 @@ void free_npc(npc_info_t **npc)
 		i++;
 	i--;
 	while (i >= 0) {
+		if (npc[i]->event != NULL && npc[i]->event->text != NULL)
+			free(npc[i]->event->text);
+		if (npc[i]->event != NULL)
+			free(npc[i]->event);
 		free(npc[i]);
 		i--;
 	}
@@ -44,6 +52,10 @@ void free_tile(tile_info_t **tile)
 		i++;
 	i--;
 	while (i >= 0) {
+		if (tile[i]->event != NULL && tile[i]->event->text != NULL)
+			free(tile[i]->event->text);
+		if (tile[i]->event != NULL)
+			free(tile[i]->event);
 		free(tile[i]);
 		i--;
 	}
