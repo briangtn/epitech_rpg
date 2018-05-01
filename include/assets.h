@@ -29,4 +29,8 @@
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#pragma endregion
 
+	#pragma region Font
+	#define FONT_SPEAK "assets/crazy_krabs.otf"
+	#pragma endregion
+
 #endif /* !__ASSETS__H_ */

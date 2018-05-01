@@ -19,7 +19,7 @@ sf_npc_t *create_npc_comp(gameobject_t *parent)
 		return (NULL);
 	new_npc->parent = parent;
 	new_npc->destroy = &destroy_npc_comp;
-	new_npc->text = NULL;
+	new_npc->speak = create_speak_component(parent);
 	return (new_npc);
 }
 
@@ -27,7 +27,7 @@ void destroy_npc_comp(sf_npc_t *comp)
 {
 	if (comp == NULL)
 		return;
-	if (comp->text != NULL)
-		free(comp->text);
+	if (comp->speak != NULL)
+		comp->speak->destroy(comp->speak);
 	free(comp);
 }

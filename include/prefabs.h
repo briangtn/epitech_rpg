@@ -95,7 +95,7 @@
 	typedef struct npc_component_s {
 		void (*destroy)();
 		gameobject_t *parent;
-		char *text;
+		struct speak_s *speak;
 	} sf_npc_t;
 
 	sf_npc_t *create_npc_comp(gameobject_t *parent);
