@@ -14,11 +14,14 @@
 int load_speak_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	gameobject_t *border = NULL;
+	gameobject_t *background = NULL;
 
 	if (engine == NULL)
 		return (84);
 	border = create_prefab_image(engine, SPRITE_SPEAK_BORDER, UI_IMAGE);
 	calc_go_to_old_camera(engine, border);
+	background = create_prefab_image(engine, SPRITE_SPEAK_BG, UI_IMAGE - 2);
+	calc_go_to_old_camera(engine, background);
 	return (0);
 }
 

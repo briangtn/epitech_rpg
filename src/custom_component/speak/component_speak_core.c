@@ -44,10 +44,11 @@ static void set_font(sf_speak_t *speak, const char *font)
 
 static void show(sf_speak_t *speak, sf_engine_t *engine)
 {
-	sfVector2i pos_pixel_cord = {350, 775};
 	sfVector2f pos_world_pos = sfRenderWindow_mapPixelToCoords(\
-engine->window, pos_pixel_cord, sfRenderWindow_getView(engine->window));
+engine->window, (sfVector2i){350, 775}, sfRenderWindow_getView(engine->window));
+	sfVector2f face_pos = {160, 800};
 	gameobject_t *face = NULL;
+	sfSprite *sp = NULL;
 
 	goto_pause(engine, "speak");
 	if (speak->font != NULL && speak->text != NULL && \
@@ -57,7 +58,11 @@ speak->text_comp != NULL) {
 		display_next_line(speak, engine);
 		sfText_setPosition(speak->text_comp, pos_world_pos);
 	}
-	face = create_prefab_image(engine, speak->portrait, 5);
+	face = create_prefab_image(engine, speak->portrait, UI_IMAGE - 1);
+	sp = ((sf_animation_2d_t *)get_component(face, ANIMATION_2D))->sprite;
+	sfSprite_setOrigin(sp, (sfVector2f){sfSprite_getLocalBounds(sp).width \
+/ 2, sfSprite_getLocalBounds(sp).height / 2});
+	sfSprite_setPosition(sp, face_pos);
 	calc_go_to_old_camera(engine, face);
 }
 
