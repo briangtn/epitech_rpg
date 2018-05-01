@@ -30,6 +30,7 @@ void display_next_line(sf_speak_t *new_speak, sf_engine_t *engine)
 		my_free_array((void **)tab);
 		speak->line = -1;
 		quit_pause(engine);
+		return;
 	}
 	my_free_array((void **)tab);
 }

@@ -12,11 +12,11 @@
 #include "rpg.h"
 #include "my.h"
 
-void npc_interaction(UNUSED gameobject_t *npc, UNUSED sf_engine_t *engine)
+void npc_interaction(gameobject_t *npc, sf_engine_t *engine)
 {
 	sf_npc_t *npc_comp = get_component(npc, NPC);
 
 	if (npc_comp == NULL || npc_comp->speak == NULL)
 		return;
-	my_printf(npc_comp->speak->text);
+	npc_comp->speak->show(npc_comp->speak, engine);
 }

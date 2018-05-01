@@ -42,7 +42,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *new_npc)
 	inte->interaction = &npc_interaction;
 	npc->speak->set_text(npc->speak, "test text");
 	npc->speak->set_font(npc->speak, FONT_SPEAK);
-	register_animation(engine, anim, GAME);
+	register_animation(engine, anim, 9);
 	engine->add_gameobject(engine, new_npc);
 	engine->add_physic_object(engine, new_npc);
 	return (0);

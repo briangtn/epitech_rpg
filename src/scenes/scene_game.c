@@ -24,6 +24,8 @@ static int load_game_scene(sf_engine_t *engine, parser_to_game_t *data)
 	camera->follow_target = true;
 	initialize_physic_state(engine);
 	load_parsing_to_game_scene(data, engine);
+	create_prefab_npc(engine);
+	destroy_parser_to_game(data);
 	return (0);
 }
 
