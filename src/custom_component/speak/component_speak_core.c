@@ -15,8 +15,6 @@
 
 static void set_text(sf_speak_t *speak, const char *text)
 {
-	sfVector2f pos = {350, 735};
-
 	if (speak == NULL || text == NULL)
 		return;
 	if (speak->text != NULL)
@@ -24,7 +22,7 @@ static void set_text(sf_speak_t *speak, const char *text)
 	speak->text = strdup(text);
 	if (speak->text != NULL) {
 		sfText_setString(speak->text_comp, speak->text);
-		sfText_setPosition(speak->text_comp, pos);
+		sfText_setColor(speak->text_comp, sfBlack);
 	}
 }
 
@@ -43,12 +41,17 @@ static void set_font(sf_speak_t *speak, const char *font)
 
 static void show(sf_speak_t *speak, sf_engine_t *engine)
 {
+	sfVector2i pos_pixel_cord = {350, 775};
+	sfVector2f pos_world_pos = sfRenderWindow_mapPixelToCoords(\
+engine->window, pos_pixel_cord, sfRenderWindow_getView(engine->window));
+
 	goto_pause(engine, "speak");
 	if (speak->font != NULL && speak->text != NULL && \
 speak->text_comp != NULL) {
 		engine->add_to_layer(engine, UI_TEXT, \
 (void **)&(speak->text_comp));
 		display_next_line(speak, engine);
+		sfText_setPosition(speak->text_comp, pos_world_pos);
 	}
 }
 

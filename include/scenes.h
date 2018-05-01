@@ -23,6 +23,8 @@ sf_engine_t *engine);
 	void launch_fight(sf_button_t *button);
 	void quit_app(sf_button_t *button);
 
+	void calc_go_to_old_camera(sf_engine_t *engine, gameobject_t *go);
+
 	sf_scene_t *create_pause_scene(sf_engine_t *engine);
 
 	sf_scene_t *create_speak_scene(sf_engine_t *engine);

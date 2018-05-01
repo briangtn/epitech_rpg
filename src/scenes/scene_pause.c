@@ -10,7 +10,7 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-static void calc_go_to_old_camera(sf_engine_t *engine, gameobject_t *go)
+void calc_go_to_old_camera(sf_engine_t *engine, gameobject_t *go)
 {
 	sf_transform_t *tr = get_component(go, TRANSFORM);
 	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
