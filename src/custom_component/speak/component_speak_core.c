@@ -47,6 +47,7 @@ static void show(sf_speak_t *speak, sf_engine_t *engine)
 	sfVector2i pos_pixel_cord = {350, 775};
 	sfVector2f pos_world_pos = sfRenderWindow_mapPixelToCoords(\
 engine->window, pos_pixel_cord, sfRenderWindow_getView(engine->window));
+	gameobject_t *face = NULL;
 
 	goto_pause(engine, "speak");
 	if (speak->font != NULL && speak->text != NULL && \
@@ -56,6 +57,8 @@ speak->text_comp != NULL) {
 		display_next_line(speak, engine);
 		sfText_setPosition(speak->text_comp, pos_world_pos);
 	}
+	face = create_prefab_image(engine, speak->portrait, 5);
+	calc_go_to_old_camera(engine, face);
 }
 
 void destroy_speak_component(sf_speak_t *speak)
