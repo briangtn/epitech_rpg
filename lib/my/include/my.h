@@ -14,6 +14,8 @@
 #define HEXA_BASE_MIN "0123456789abcdef"
 #define HEXA_BASE_MAJ "0123456789ABCDEF"
 
+#define UNUSED __attribute__((unused))
+
 #define ABS(value) (value < 0) ? -value : value
 #define IS_ALPHA_NUMERICAL(value) ((value >= 'A' && value <= 'Z') || \
 (value >= 'a' && value <= 'z') || (value >= '0' && value <= '9')) ? 1 : 0
