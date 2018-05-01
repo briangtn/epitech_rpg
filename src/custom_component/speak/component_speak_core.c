@@ -15,13 +15,17 @@
 
 static void set_text(sf_speak_t *speak, const char *text)
 {
+	sfVector2f pos = {350, 735};
+
 	if (speak == NULL || text == NULL)
 		return;
 	if (speak->text != NULL)
 		free(speak->text);
 	speak->text = strdup(text);
-	if (speak->text != NULL)
+	if (speak->text != NULL) {
 		sfText_setString(speak->text_comp, speak->text);
+		sfText_setPosition(speak->text_comp, pos);
+	}
 }
 
 static void set_font(sf_speak_t *speak, const char *font)
@@ -37,10 +41,12 @@ static void set_font(sf_speak_t *speak, const char *font)
 		sfText_setFont(speak->text_comp, speak->font);
 }
 
-static void show(sf_speak_t *speak, UNUSED sf_engine_t *engine)
+static void show(sf_speak_t *speak, sf_engine_t *engine)
 {
-	dprintf(2, "Should display %s\n", (speak->text != NULL) ? \
-speak->text : "NULL");
+	goto_pause(engine, "speak");
+	if (speak->font != NULL && speak->text != NULL && \
+speak->text_comp != NULL)
+		engine->add_to_layer(engine, UI_TEXT, &(speak->text_comp));
 }
 
 void destroy_speak_component(sf_speak_t *speak)
@@ -64,6 +70,7 @@ sf_speak_t *create_speak_component(gameobject_t *parent)
 	speak->font = NULL;
 	speak->parent = parent;
 	speak->text = NULL;
+	speak->line = -1;
 	speak->text_comp = sfText_create();
 	speak->set_font = &set_font;
 	speak->set_text = &set_text;

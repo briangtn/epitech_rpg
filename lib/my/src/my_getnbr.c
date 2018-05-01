@@ -18,7 +18,7 @@ int	my_getnbr(char const *str)
 	int	should_return = 0;
 	int	is_too_long = 0;
 
-	if (str == (void *)0)
+	if (str == 0)
 		return (0);
 	while (str[i] != '\0' && should_return == 0) {
 		if (is_digit(str[i]) && is_too_long < 11) {

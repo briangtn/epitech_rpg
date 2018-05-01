@@ -27,7 +27,7 @@ int	nb_size(int nb)
 char	*my_int_to_str(int nb)
 {
 	int pos = 0;
-	int div = my_pow(10, nb_size(nb) - (nb < 0) - 1);
+	int div = my_compute_power_rec(10, nb_size(nb) - (nb < 0) - 1);
 	char *nb_str = malloc(sizeof(*nb_str) * (nb_size(nb) + 1));
 
 	if (nb < 0) {

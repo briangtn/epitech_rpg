@@ -10,13 +10,19 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
-#include "match.h"
 
 #define HEXA_BASE_MIN "0123456789abcdef"
 #define HEXA_BASE_MAJ "0123456789ABCDEF"
 
 #define ABS(value) (value < 0) ? -value : value
+#define IS_ALPHA_NUMERICAL(value) ((value >= 'A' && value <= 'Z') || \
+(value >= 'a' && value <= 'z') || (value >= '0' && value <= '9')) ? 1 : 0
+#define IS_NUM(value) ((value >= '0' && value <= '9') || \
+value == '+' || value == '-') ? 1 : 0
 
+void	my_free_array(void **array);
+int	my_array_len(void **array);
+int	my_str_contains(const char *str, char c);
 int	my_putchar(char c);
 int	my_isneg(int nb);
 int	my_put_nbr(int nb);
@@ -26,8 +32,8 @@ int	my_puterror(char const *error);
 int	my_strlen(char const *str);
 int	my_getnbr(char const *str);
 void	my_sort_int_array(int *tab, int size);
-int	my_pow(int nb, int power);
-int	my_sqrt(int nb);
+int	my_compute_power_rec(int nb, int power);
+int	my_compute_square_root(int nb);
 int	my_is_prime(int nb);
 int	my_find_prime_sup(int nb);
 char	*my_strcpy(char *dest, char const *src);
@@ -54,8 +60,13 @@ char	*my_strncat(char *dest, char const *src, int nb);
 char	*my_strdup(char const *src);
 int	my_show_word_array(char * const *tab);
 char	**my_str_to_word_array(char const *str);
+char 	**my_parse_str_to_array(const char *str, const char *delim, \
+const char *ignore_start, const char *ignore_end);
 char	*my_convert_base(char const *nbr, char const *base_from, \
 char const *base_to);
+char	*get_next_line(int fd);
+int	my_strdupcat(char **dest, char *src);
+int	match(char const *s1, char const *s2);
 
 int	my_printf(const char *format, ...);
 int	display_uint_base(unsigned int nbr, char const *base, int dummy);
@@ -112,7 +123,5 @@ const char ALLOWED_WIDTH[11];
 const char ALLOWED_PRECISION[12];
 
 const char ALLOWED_TYPES[13];
-
-#define UNUSED __attribute__((unused))
 
 #endif

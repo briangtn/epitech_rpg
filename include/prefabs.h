@@ -76,6 +76,7 @@
 	typedef struct speak_s {
 		void (*destroy)();
 		gameobject_t *parent;
+		int line;
 		char *text;
 		sfText *text_comp;
 		sfFont *font;

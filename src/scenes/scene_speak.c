@@ -38,7 +38,7 @@ int load_speak_scene(sf_engine_t *engine, UNUSED void *data)
 
 	if (engine == NULL)
 		return (84);
-	border = create_prefab_image(engine, SPRITE_SPEAK_BORDER, 0);
+	border = create_prefab_image(engine, SPRITE_SPEAK_BORDER, UI_IMAGE);
 	calc_go_to_old_camera(engine, border);
 	return (0);
 }

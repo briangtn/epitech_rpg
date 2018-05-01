@@ -29,8 +29,11 @@ int my_strdupcat(char **dest, char *src)
 	int i = 0;
 	int j = 0;
 
-	if (new_str == NULL || dest == NULL || *dest == NULL || src == NULL)
+	if (new_str == NULL || dest == NULL || *dest == NULL || src == NULL) {
+		if (new_str)
+			free(new_str);
 		return (84);
+	}
 	for (; i < dest_len; i++)
 		new_str[i] = (*dest)[i];
 	for (j = 0; j < src_len; j++)
@@ -45,21 +48,22 @@ int my_read(char **dest, int fd)
 {
 	int char_read = 0;
 	int total_read = 0;
-	char buffer[READ_SIZE + 1] = {'\0'};
+	char *buffer = malloc(sizeof(*buffer) * (READ_SIZE + 1));
 
-	if (dest == NULL || *dest == NULL)
+	if (buffer == NULL || dest == NULL || *dest == NULL)
 		return (-1);
-	do {
-		if (my_limit_strlen(*dest, '\n') < my_limit_strlen(*dest, 0))
-			break;
-		char_read = read(fd, buffer, READ_SIZE);
+	char_read = read(fd, buffer, READ_SIZE);
+	while (char_read) {
 		if (char_read == -1)
 			return (-1);
 		buffer[char_read] = '\0';
 		total_read += char_read;
-		if (my_strdupcat(dest, buffer) == 84)
-			return (-1);
-	} while (char_read);
+		my_strdupcat(dest, buffer);
+		if (my_limit_strlen(buffer, '\n') < my_limit_strlen(buffer, 0))
+			break;
+		char_read = read(fd, buffer, READ_SIZE);
+	}
+	free(buffer);
 	return (total_read);
 }
 
@@ -93,11 +97,13 @@ char *get_next_line(int fd)
 
 	if (line == NULL) {
 		line = malloc(sizeof(*line) * 1);
-		if (line)
-			line[0] = '\0';
+		line[0] = '\0';
 	}
-	if (fd < 0 || line == NULL || READ_SIZE <= 0)
+	if (fd < 0 || line == NULL) {
+		if (line)
+			free(line);
 		return (NULL);
+	}
 	char_read = my_read(&line, fd);
 	result = extract_result(line);
 	if (char_read == -1 || result == NULL) {

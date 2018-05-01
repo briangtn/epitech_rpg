@@ -69,7 +69,7 @@ int count_words_in_str(char const *str)
 
 int is_alphanumeric(char c)
 {
-	if (c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z')
+	if (c == ' ' || c == '\t' || c == '\0')
 		return (0);
 	return (1);
 }

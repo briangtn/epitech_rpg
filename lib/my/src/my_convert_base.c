@@ -5,8 +5,8 @@
 ** convert a nb in base_from to a nb in base_to
 */
 
-#include "my.h"
 #include <stdlib.h>
+#include "my.h"
 
 static char *return_nbr_base(int nbr, char const *base);
 static char *compute_new_str_and_free_last(char *, char, int);

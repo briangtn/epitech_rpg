@@ -6,13 +6,15 @@
 ##
 SRC_DIR		=	$(realpath ./src)
 
-SRC_FILES	=	my_convert_base.c \
+SRC_FILES	=	my_compute_power_rec.c \
+			my_compute_square_root.c \
+			match.c	\
+			my_convert_base.c \
 			my_int_to_str.c \
 			my_find_prime_sup.c \
 			my_getnbr_base.c \
 			my_getnbr.c \
 			my_isneg.c \
-			my_pow.c \
 			my_printf.c \
 			my_is_prime.c \
 			my_putchar.c \
@@ -24,7 +26,6 @@ SRC_FILES	=	my_convert_base.c \
 			my_showstr.c \
 			my_show_word_array.c \
 			my_sort_int_array.c \
-			my_sqrt.c \
 			my_strcapitalize.c \
 			my_strcat.c \
 			my_strcmp.c \
@@ -41,10 +42,14 @@ SRC_FILES	=	my_convert_base.c \
 			my_strncmp.c \
 			my_strncpy.c \
 			my_strstr.c \
+			my_array_len.c \
+			my_free_array.c \
 			my_str_to_word_array.c \
+			my_str_contains.c \
 			my_strupcase.c \
 			my_swap.c \
-			match.c \
+			my_parse_str_to_array.c \
+			get_next_line.c \
 			printf_funcs/chars.c \
 			printf_funcs/display_funcs.c \
 			printf_funcs/numbers.c \
@@ -53,8 +58,7 @@ SRC_FILES	=	my_convert_base.c \
 			printf_funcs/precision.c \
 			printf_funcs/run_options.c \
 			printf_funcs/constants.c \
-			printf_funcs/str_contains.c \
-			get_next_line.c
+			printf_funcs/str_contains.c
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
