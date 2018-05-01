@@ -31,7 +31,8 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/player_component.c			\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
-			speak/component_speak_core.c
+			speak/component_speak_core.c			\
+			speak/speak_update.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 

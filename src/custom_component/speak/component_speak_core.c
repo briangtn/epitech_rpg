@@ -45,8 +45,10 @@ static void show(sf_speak_t *speak, sf_engine_t *engine)
 {
 	goto_pause(engine, "speak");
 	if (speak->font != NULL && speak->text != NULL && \
-speak->text_comp != NULL)
+speak->text_comp != NULL) {
 		engine->add_to_layer(engine, UI_TEXT, &(speak->text_comp));
+		display_next_line(speak, engine);
+	}
 }
 
 void destroy_speak_component(sf_speak_t *speak)

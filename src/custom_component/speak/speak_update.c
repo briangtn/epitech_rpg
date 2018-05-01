@@ -12,9 +12,24 @@
 #include "my.h"
 #include "rpg.h"
 
-void display_next_line(sf_speak_t *speak)
+void display_next_line(sf_speak_t *new_speak, sf_engine_t *engine)
 {
-	char **tab = ;
+	static sf_speak_t *speak = NULL;
+	char **tab = NULL;
 
+	if (new_speak != NULL)
+		speak = new_speak;
+	if (speak == NULL)
+		return;
+	tab = my_parse_str_to_array(speak->text, "\n", "", "");
+	if (tab == NULL)
+		return;
 	speak->line += 1;
+	sfText_setString(speak->text_comp, tab[speak->line]);
+	if (tab[speak->line] == NULL) {
+		my_free_array((void **)tab);
+		speak->line = -1;
+		quit_pause(engine);
+	}
+	my_free_array((void **)tab);
 }

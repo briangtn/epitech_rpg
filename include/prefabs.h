@@ -85,6 +85,9 @@
 		void (*set_text)(struct speak_s *speak, const char *text);
 	} sf_speak_t;
 
+	void display_next_line(sf_speak_t *speak, sf_engine_t *engine);
+	sf_speak_t *create_speak_component(gameobject_t *parent);
+
 	#pragma endregion
 
 	#pragma region Npc

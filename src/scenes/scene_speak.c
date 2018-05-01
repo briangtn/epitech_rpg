@@ -52,6 +52,8 @@ int loop_speak_scene(sf_engine_t *engine, UNUSED void *data)
 	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
 		if (evt.type == sfEvtClosed)
 			sfRenderWindow_close(engine->window);
+		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeySpace)
+			display_next_line(NULL, engine);
 	}
 	return (0);
 }
