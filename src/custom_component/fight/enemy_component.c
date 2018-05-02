@@ -27,7 +27,6 @@ void destroy_enemy(sf_engine_t *engine, gameobject_t *go)
 	loadbar = get_component(enemy->life_bar_go, LOADBAR);
 	if (loadbar == NULL)
 		return;
-	engine->destroy_gameobject(engine, loadbar->back_go);
 	engine->destroy_gameobject(engine, enemy->life_bar_go);
 	engine->destroy_gameobject(engine, go);
 }

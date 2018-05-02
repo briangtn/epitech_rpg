@@ -24,6 +24,7 @@ float max, sfFloatRect rect)
 	loadbar->sizes = (sf_vector_2d_t){rect.width, rect.height};
 	loadbar->back_go = create_prefab_loadbar_back(engine, rect,\
 loadbar->back_color);
+	loadbar->engine = engine;
 	register_animation(engine, anim, UI_IMAGE);
 	return (0);
 }

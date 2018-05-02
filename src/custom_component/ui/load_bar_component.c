@@ -32,8 +32,9 @@ ANIMATION_2D);
 
 static void destroy_loadbar_comp(sf_loadbar_t *comp)
 {
-	if (comp == NULL)
+	if (comp == NULL || comp->engine == NULL)
 		return;
+	comp->engine->destroy_gameobject(comp->engine, comp->back_go);
 	free(comp);
 }
 
@@ -51,5 +52,6 @@ sf_loadbar_t *create_loadbar_comp(gameobject_t *go)
 	loadbar->back_color = sfRed;
 	loadbar->sizes = (sf_vector_2d_t){100, 10};
 	loadbar->back_go = NULL;
+	loadbar->engine = NULL;
 	return (loadbar);
 }

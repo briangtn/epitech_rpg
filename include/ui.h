@@ -24,6 +24,7 @@
 			sfColor back_color;
 			sf_vector_2d_t sizes;
 			gameobject_t *back_go;
+			sf_engine_t *engine;
 		} sf_loadbar_t;
 
 	sf_loadbar_t *create_loadbar_comp(gameobject_t *go);
