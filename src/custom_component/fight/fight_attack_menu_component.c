@@ -51,6 +51,8 @@ UNUSED sf_fight_arrow_t *arrow)
 	menu = get_component(go, FATTACKMENU);
 	if (menu == NULL)
 		return (84);
+	if (menu->fight->player->mana < ((attack_t *)elem->data)->mana_cost)
+		return (0);
 	menu->fight->last_attack = (attack_t *)elem->data;
 	select_enemy(menu->engine, menu->fight);
 	destroy_fattack_menu(menu);

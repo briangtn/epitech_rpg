@@ -37,7 +37,7 @@ fight_t *create_fight(char *path, fight_player_t *player)
 	return (fight);
 }
 
-void add_attack(sf_linked_list_t **list, char *name, float damage)
+void add_attack(sf_linked_list_t **list, char *name, float damage, int cost)
 {
 	attack_t *attack = malloc(sizeof(*attack));
 
@@ -45,6 +45,7 @@ void add_attack(sf_linked_list_t **list, char *name, float damage)
 		return;
 	attack->name = name;
 	attack->damage = damage;
+	attack->mana_cost = cost;
 	*list = sf_push(attack, my_strdup(name), *list);
 }
 

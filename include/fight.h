@@ -24,6 +24,7 @@
 		gameobject_t *go;
 		char *name;
 		float damage;
+		int mana_cost;
 	} attack_t;
 
 	typedef struct fight_enemy {

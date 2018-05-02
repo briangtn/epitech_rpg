@@ -24,7 +24,7 @@ UNUSED int elapsed_milliseconds)
 }
 
 static int setup_components(sf_engine_t *engine, gameobject_t *go,\
-sf_vector_3d_t pos, char *content)
+sf_vector_3d_t pos, attack_t *attack)
 {
 	sf_text_t *text = get_component(go, TEXT);
 	sf_transform_t *transform = get_component(go, TRANSFORM);
@@ -34,7 +34,7 @@ sf_vector_3d_t pos, char *content)
 	text->font = sfFont_createFromFile("assets/fonts/crazy_krabs.otf");
 	sfText_setCharacterSize(text->text, 30);
 	sfText_setColor(text->text, sfGreen);
-	sfText_setString(text->text, content);
+	sfText_setString(text->text, attack->name);
 	sfText_setFont(text->text, text->font);
 	transform->position = pos;
 	engine->add_to_layer(engine, UI_TEXT, (void **)&text->text);
@@ -56,21 +56,25 @@ static int add_components(gameobject_t *text)
 }
 
 gameobject_t *create_prefab_ftext(sf_engine_t *engine,\
-sf_vector_3d_t pos, char *content)
+sf_vector_3d_t pos, attack_t *attack, fight_t *fight)
 {
 	gameobject_t *new_text = create_gameobject("fight_text");
+	sf_text_t *text = NULL;
 
 	if (new_text == NULL)
 		return (NULL);
 	if (add_components(new_text) == 84) {
 		new_text->destroy(new_text);
-		my_puterror("[ERROR]text: Could not add components!\n");
 		return (NULL);
 	}
-	if (setup_components(engine, new_text, pos, content) == 84) {
+	if (setup_components(engine, new_text, pos, attack) == 84) {
 		new_text->destroy(new_text);
-		my_puterror("[ERROR]text: Could not setup components!\n");
 		return (NULL);
 	}
+	text = get_component(new_text, TEXT);
+	if (text == NULL)
+		return (NULL);
+	if (fight->player->mana < attack->mana_cost)
+		sfText_setColor(text->text, sfBlack);
 	return (new_text);
 }

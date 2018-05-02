@@ -58,20 +58,20 @@ static int add_components(gameobject_t *menu)
 	return (0);
 }
 
-static gameobject_t *prepare_arrow(sf_linked_list_t *attacks,
-sf_engine_t *engine, gameobject_t *new_menu)
+static gameobject_t *prepare_arrow(sf_engine_t *engine,\
+gameobject_t *new_menu, fight_t *fight)
 {
-	gameobject_t *arrow_go =\
-create_prefab_farrow(engine, attacks, &menu_arrow_val, AMENU_SELECTOR);
+	gameobject_t *arrow_go = create_prefab_farrow(engine,\
+fight->player->attacks, &menu_arrow_val, AMENU_SELECTOR);
 	sf_fight_arrow_t *arrow = get_component(arrow_go, FARROW);
 	sf_vector_3d_t pos = {100, WINDOW_SIZE_Y - 400, 0};
-	sf_linked_list_t *copy = attacks;
+	sf_linked_list_t *copy = fight->player->attacks;
 
 	if (arrow == NULL)
 		return (NULL);
 	for (int i = 0; copy; i++) {
 		((attack_t *)copy->data)->go = create_prefab_ftext(engine,\
-(sf_vector_3d_t){pos.x + 30, pos.y + i * 40, 0}, copy->id);
+(sf_vector_3d_t){pos.x + 30, pos.y + i * 40, 0}, copy->data, fight);
 		copy = copy->next;
 	}
 	arrow = get_component(arrow_go, FARROW);
@@ -89,7 +89,7 @@ fight_t *fight)
 {
 	gameobject_t *new_menu = create_gameobject("fight_attacks_menu");
 	sf_linked_list_t *attacks = fight->player->attacks;
-	gameobject_t *arrow_go = prepare_arrow(attacks, engine, new_menu);
+	gameobject_t *arrow_go = prepare_arrow(engine, new_menu, fight);
 	sf_attack_menu_t *menu = NULL;
 
 	if (new_menu == NULL || arrow_go == NULL)

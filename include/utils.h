@@ -16,8 +16,9 @@
 sf_linked_list_t *attacks);
 	fight_t *create_fight(char *path, fight_player_t *player);
 	sf_linked_list_t *get_elem_at_index(int index, sf_linked_list_t *list);
-	void add_attack(sf_linked_list_t **list, char *name, float damage);
 	fight_player_t *create_fight_player(char *path,\
 sf_linked_list_t *attacks);
+	void add_attack(sf_linked_list_t **list, char *name, float damage,\
+int cost);
 
 #endif

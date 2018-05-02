@@ -119,7 +119,7 @@ int (*callback)(void *, sf_linked_list_t *, sf_fight_arrow_t *), char *sprite);
 	gameobject_t *create_prefab_fattack_menu(sf_engine_t *engine,\
 fight_t *fight);
 	gameobject_t *create_prefab_ftext(sf_engine_t *engine,\
-sf_vector_3d_t pos, char *content);
+sf_vector_3d_t pos, attack_t *attack, fight_t *fight);
 	gameobject_t *create_prefab_loadbar(sf_engine_t *engine,\
 sfFloatRect rect, float max);
 	gameobject_t *create_prefab_loadbar_back(sf_engine_t *engine,\
