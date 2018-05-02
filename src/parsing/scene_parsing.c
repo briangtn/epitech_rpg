@@ -28,7 +28,7 @@ sfVector2i get_nb_tile(int fd)
 		else if (buffer[i] == '"' && n == 3)
 			nb_tile.y = my_getnbr(&buffer[i + 1]);
 	}
-	free (buffer);
+	free(buffer);
 	if (nb_tile.x <= 0 || nb_tile.y <= 0)
 		return ((sfVector2i){TOO_FEW_TILES, 0});
 	return (nb_tile);
