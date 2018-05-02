@@ -34,6 +34,8 @@ fight_t *create_fight(char *path, fight_player_t *player)
 	fight->player = player;
 	fight->ennemies = NULL;
 	fight->last_attack = NULL;
+	fight->end_callback = NULL;
+	fight->end_datas = NULL;
 	return (fight);
 }
 
@@ -56,7 +58,7 @@ fight_player_t *create_fight_player(char *path, sf_linked_list_t *attacks)
 	if (player == NULL)
 		return (NULL);
 	player->go = NULL;
-	player->life = 30;
+	player->life = 10;
 	player->sprite_path = path;
 	player->position = (sf_vector_2d_t){600, 600};
 	player->attacks = attacks;

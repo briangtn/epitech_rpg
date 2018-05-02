@@ -30,6 +30,10 @@ void enemy_turn(sf_engine_t *engine, fight_t *fight)
 		enemy_attack(engine, fight, (fight_enemy_t *)copy->data);
 		copy = copy->next;
 	}
+	if (fight->player->life <= 0) {
+		end_fight(fight, engine);
+		return;
+	}
 	select_attack(engine, fight, true);
 }
 

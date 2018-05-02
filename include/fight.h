@@ -51,6 +51,9 @@
 		fight_player_t *player;
 		sf_linked_list_t *ennemies;
 		attack_t *last_attack;
+		void *end_datas;
+		int (*end_callback)(struct my_fight *fight, void *datas,\
+bool win, sf_engine_t *engine);
 	} fight_t;
 
 	#pragma region components
@@ -128,5 +131,6 @@ sf_fight_arrow_t *arrow);
 	void destroy_fattack_menu(sf_attack_menu_t *comp);
 	void select_attack(sf_engine_t *engine, fight_t *fight, bool new_round);
 	void select_enemy(sf_engine_t *engine, fight_t *fight);
+	void end_fight(fight_t *fight, sf_engine_t *engine);
 
 #endif /* !__FIGHT__H_ */

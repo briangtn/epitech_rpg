@@ -21,4 +21,6 @@ sf_linked_list_t *attacks);
 	void add_attack(sf_linked_list_t **list, char *name, float damage,\
 int cost);
 
+	void destroy_list(sf_linked_list_t *list);
+
 #endif
