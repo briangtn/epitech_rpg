@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "my.h"
 #include "my_sfml.h"
 #include "rpg.h"
 #include "utils.h"
@@ -37,11 +38,20 @@ int update_player(void *datas, UNUSED int delta_time)
 	gameobject_t *go = (gameobject_t *)datas;
 	sf_player_t *player = get_component(go, FPLAYER);
 	sf_loadbar_t *life_bar = NULL;
+	sf_text_t *mana_text = NULL;
+	char *mana_content = "";
 
 	if (player == NULL)
 		return (84);
 	life_bar = get_component(player->life_bar_go, LOADBAR);
+	mana_text = get_component(player->mana_text_go, TEXT);
+	if (life_bar == NULL || mana_text == NULL)
+		return (84);
 	life_bar->current_value = player->datas->life;
+	mana_content = my_int_to_str(player->datas->mana);
+	my_strdupcat(&mana_content, "/");
+	my_strdupcat(&mana_content, my_int_to_str(player->datas->max_mana));
+	sfText_setString(mana_text->text, mana_content);
 	return (0);
 }
 
@@ -56,5 +66,6 @@ sf_player_t *create_player_comp(gameobject_t *parent)
 	player->fight = NULL;
 	player->datas = NULL;
 	player->life_bar_go = NULL;
+	player->mana_text_go = NULL;
 	return (player);
 }

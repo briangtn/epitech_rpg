@@ -124,6 +124,8 @@ sf_vector_3d_t pos, char *content);
 sfFloatRect rect, float max);
 	gameobject_t *create_prefab_loadbar_back(sf_engine_t *engine,\
 sfFloatRect rect, sfColor color);
+	gameobject_t *create_prefab_mana_text(sf_engine_t *engine,\
+fight_player_t *player);
 
 	#pragma endregion
 

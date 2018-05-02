@@ -54,6 +54,9 @@ sf_fight_arrow_t *arrow) {
 
 void select_attack(sf_engine_t *engine, fight_t *fight)
 {
+	if (fight->player->curr_max_mana < fight->player->max_mana)
+		fight->player->curr_max_mana++;
+	fight->player->mana = fight->player->curr_max_mana;
 	create_prefab_fattack_menu(engine, fight);
 }
 

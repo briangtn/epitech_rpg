@@ -37,6 +37,9 @@
 	typedef struct fight_player {
 		gameobject_t *go;
 		float life;
+		int max_mana;
+		int curr_max_mana;
+		int mana;
 		char *sprite_path;
 		sf_vector_2d_t position;
 		sf_linked_list_t *attacks;
@@ -96,6 +99,7 @@ struct fight_arrow *);
 		fight_player_t *datas;
 		gameobject_t *life_bar_go;
 		sf_engine_t *engine;
+		gameobject_t *mana_text_go;
 	} sf_player_t;
 
 	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);

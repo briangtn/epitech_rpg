@@ -28,7 +28,6 @@ fight_t *fight)
 	sf_transform_t *transform = get_component(player, TRANSFORM);
 	sf_player_t *player_comp = get_component(player, FPLAYER);
 
-
 	if (anim == NULL || transform == NULL || player_comp == NULL)
 		return (84);
 	anim->update = fplayer_animation_update;
@@ -40,6 +39,8 @@ fight->player->sprite_path));
 (sf_vector_3d_t){fight->player->position.x, fight->player->position.y, 0};
 	player_comp->datas = fight->player;
 	player_comp->fight = fight;
+	player_comp->mana_text_go = create_prefab_mana_text(engine,\
+fight->player);
 	return (0);
 }
 
