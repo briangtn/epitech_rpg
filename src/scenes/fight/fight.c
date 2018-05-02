@@ -30,7 +30,7 @@ void enemy_turn(sf_engine_t *engine, fight_t *fight)
 		enemy_attack(engine, fight, (fight_enemy_t *)copy->data);
 		copy = copy->next;
 	}
-	select_attack(engine, fight);
+	select_attack(engine, fight, true);
 }
 
 static int when_enemy_selected(void *data, sf_linked_list_t *elem,\
@@ -43,20 +43,26 @@ sf_fight_arrow_t *arrow) {
 		return (84);
 	engine = arrow->engine;
 	enemy->life -= fight->last_attack->damage;
+	fight->player->mana -= fight->last_attack->mana_cost;
 	if (enemy->life <= 0) {
 		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
-	enemy_turn(engine, fight);
+	if (fight->player->mana > 0)
+		select_attack(engine, fight, false);
+	else
+		enemy_turn(engine, fight);
 	engine->destroy_gameobject(engine, arrow->parent);
 	return (0);
 }
 
-void select_attack(sf_engine_t *engine, fight_t *fight)
+void select_attack(sf_engine_t *engine, fight_t *fight, bool new_round)
 {
-	if (fight->player->curr_max_mana < fight->player->max_mana)
-		fight->player->curr_max_mana++;
-	fight->player->mana = fight->player->curr_max_mana;
+	if (new_round) {
+		if (fight->player->curr_max_mana < fight->player->max_mana)
+			fight->player->curr_max_mana++;
+		fight->player->mana = fight->player->curr_max_mana;
+	}
 	create_prefab_fattack_menu(engine, fight);
 }
 
