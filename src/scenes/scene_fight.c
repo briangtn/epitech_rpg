@@ -43,7 +43,6 @@ static int unload_fight_scene(sf_engine_t *engine, UNUSED void *data)
 
 	if (engine == NULL || fight == NULL)
 		return (84);
-	//TODO Free fight
 	reset_scene(engine->current_scene);
 	return (0);
 }

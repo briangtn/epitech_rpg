@@ -80,4 +80,3 @@ fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 		return;
 	arrow->callback_param = fight;
 }
-

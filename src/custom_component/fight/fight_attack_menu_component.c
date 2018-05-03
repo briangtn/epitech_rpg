@@ -56,7 +56,7 @@ UNUSED sf_fight_arrow_t *arrow)
 	menu->fight->last_attack = (attack_t *)elem->data;
 	select_enemy(menu->engine, menu->fight);
 	destroy_fattack_menu(menu);
- 	return (0);
+	return (0);
 }
 
 sf_attack_menu_t *create_fattack_menu_comp(gameobject_t *parent)
