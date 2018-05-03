@@ -59,13 +59,13 @@ game_info_t *game_info)
 		return (NULL);
 	buffer = get_next_line(fd);
 	free(buffer);
-	scene = parse_npc_info(scene, fd, game_info);
+	scene = parse_npc_info(scene, fd, game_info, &buffer);
 	if (scene == NULL)
 		return (NULL);
-	scene = parse_loot_info(scene, fd, game_info);
+	scene = parse_loot_info(scene, fd, game_info, &buffer);
 	if (scene == NULL)
 		return (NULL);
-	scene = parse_tile_info(scene, fd, game_info);
+	scene = parse_tile_info(scene, fd, game_info, &buffer);
 	if (scene == NULL)
 		return (NULL);
 	return (scene);
