@@ -112,7 +112,7 @@ game_info_t *parse_config(const char *file);
 game_info_t *parse_game_info(game_info_t *game_info, int fd);
 game_info_t *parse_scene_info(game_info_t *game_info, int fd);
 scene_info_t *parse_tile_info(scene_info_t *scene, int fd, \
-game_info_t *game_info);
+game_info_t *game_info, char **buffer);
 tile_info_t *get_tile(tile_info_t *tile, char *buffer, game_info_t *game_info);
 
 /*scene_parsing.c*/
@@ -127,11 +127,11 @@ sfVector2i get_nb_tile(int fd);
 /*npc_loot_parsing.c*/
 
 scene_info_t *parse_npc_info(scene_info_t *scene, int fd, \
-game_info_t *game_info);
-npc_info_t *get_npc(npc_info_t *npc, char *buffer, game_info_t *game_info);
+game_info_t *game_info, char **buffer);
+npc_info_t *get_npc(npc_info_t *npc, char *buffer);
 scene_info_t *parse_loot_info(scene_info_t *scene, int fd, \
-game_info_t *game_info);
-loot_info_t *get_loot(loot_info_t *loot, char *buffer, game_info_t *game_info);
+game_info_t *game_info, char **buffer);
+loot_info_t *get_loot(loot_info_t *loot, char *buffer);
 loot_info_t **realloc_loot(loot_info_t **loot, int nb_arg);
 
 /*tile_parsing.c*/
