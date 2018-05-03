@@ -37,11 +37,19 @@ tile_info_t *info, char *tileset)
 }
 
 static void set_trigger_func(sf_collider_2d_t *col, \
-tile_info_t *info, UNUSED sf_engine_t *engine)
+tile_info_t *info, sf_engine_t *engine)
 {
+	gameobject_t *go = col->parent;
+	sf_tile_effect_t *effect = go->add_custom_component(go, \
+(void *(*)(gameobject_t *))&create_tile_effect, TILE_EFFECT);
+
 	switch (info->event->event_id) {
 	case TELEPORT:
-		//col->triggered_func = &teleport;
+		col->triggered_func = &teleport;
+		effect->engine = engine;
+		effect->teleport_scene = info->event->teleport[0];
+		effect->teleport_coords = (sfVector2i){info->event->teleport[1]\
+, info->event->teleport[2]};
 		break;
 	case DIALOG:
 		break;

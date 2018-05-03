@@ -9,7 +9,7 @@
 
 #include "my_sfml.h"
 
-int teleport(gameobject_t *tile, gameobject_t *player)
+int teleport(UNUSED gameobject_t *tile, UNUSED gameobject_t *player)
 {
-
+	return (0);
 }

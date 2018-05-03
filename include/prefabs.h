@@ -53,7 +53,8 @@
 		FATTACKMENU,
 		FENEMY,
 		LOADBAR,
-		FPLAYER
+		FPLAYER,
+		TILE_EFFECT
 	};
 
 	#pragma region Interaction
@@ -138,6 +139,9 @@ fight_player_t *player);
 		int teleport_scene;
 		sfVector2i teleport_coords;
 	} sf_tile_effect_t;
+
+	sf_tile_effect_t *create_tile_effect(gameobject_t *parent);
+	void destroy_tile_effect(sf_tile_effect_t *effect);
 
 	gameobject_t *create_prefab_tile(sf_engine_t *engine, \
 tile_info_t *info, char *tileset);

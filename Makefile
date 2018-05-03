@@ -34,7 +34,8 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
 			speak/component_speak_core.c			\
-			speak/speak_update.c
+			speak/speak_update.c				\
+			tiles/tile_effect_component.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
@@ -50,6 +51,7 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			npc/npc_interaction.c			\
 			npc/prefab_npc_core.c			\
 			tiles/prefab_tile_core.c		\
+			tiles/tile_teleport.c			\
 			ui/loadbar_prefab.c			\
 			ui/loadbar_back_prefab.c		\
 
