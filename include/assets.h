@@ -46,6 +46,6 @@
 
 	#define NB_NPC_ID 1
 
-	extern const npc_id_info_t NPC_IDS[];
+	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 
 #endif /* !__ASSETS__H_ */

@@ -5,7 +5,7 @@ SCENE 1:
 TILESET : "assets/tilesets/outside_b.png"
 BACKGROUND : "assets/tilesets/outside_c.png"
 
-NPC_ID : "0" ; NPC_POS : "1" x "1" ; EVENT : "2" : "Hello World"
+NPC_ID : "1" ; NPC_POS : "100" x "100" ; EVENT : "2" : "Hello World"
 
 LOOT_ID : "1" ; LOOT_POS : "1" x "1" ; EVENT : "1" : "1" : "10" x "10"
 

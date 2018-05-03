@@ -22,9 +22,8 @@
 
 static void setup_animation(sf_engine_t *engine, sf_animation_2d_t *anim)
 {
-	anim->max_rect = (sfIntRect){0, 0, NPC_NB_FRAME_ANIMATION * \
-TILE_SIZE, TILE_SIZE};
-	anim->play = 0;
+	anim->max_rect = (sfIntRect){0, 0, TILE_SIZE, TILE_SIZE};
+	anim->play = 1;
 	anim->set_sprite(anim, engine->get_sprite(engine, NPC_SPRITE_SHEET));
 	anim->speed = NPC_ANIMATION_SPEED;
 	anim->view_rect = (sfIntRect){0, 0, TILE_SIZE, TILE_SIZE};

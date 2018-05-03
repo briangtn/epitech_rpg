@@ -23,10 +23,10 @@ void create_npc(sf_engine_t *engine, npc_info_t *info)
 		return;
 	}
 	anim->set_sprite(anim, engine->get_sprite(engine, \
-NPC_IDS[info->npc_id].npc_visual));
+NPC_IDS[info->npc_id - 1].npc_visual));
 	tr->position = (sf_vector_3d_t){info->npc_pos.x, info->npc_pos.y, 0};
 	npc->speak->set_info(npc->speak, info->event->text, \
-NPC_IDS[info->npc_id].npc_face);
+NPC_IDS[info->npc_id - 1].npc_face);
 }
 
 void load_parsing_to_game_scene(parser_to_game_t *ptg, sf_engine_t *engine)

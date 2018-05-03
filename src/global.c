@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include "assets.h"
 
-const npc_id_info_t NPC_IDS[] = {
+const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 	{1, SPRITESHEET_GUARD, FACE_SOLDIER},
 	{0, NULL, NULL}
 };
