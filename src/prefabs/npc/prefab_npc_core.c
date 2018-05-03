@@ -22,9 +22,8 @@
 
 static void setup_animation(sf_engine_t *engine, sf_animation_2d_t *anim)
 {
-	anim->max_rect = (sfIntRect){0, 0, NPC_NB_FRAME_ANIMATION * \
-TILE_SIZE, TILE_SIZE};
-	anim->play = 0;
+	anim->max_rect = (sfIntRect){0, 0, TILE_SIZE, TILE_SIZE};
+	anim->play = 1;
 	anim->set_sprite(anim, engine->get_sprite(engine, NPC_SPRITE_SHEET));
 	anim->speed = NPC_ANIMATION_SPEED;
 	anim->view_rect = (sfIntRect){0, 0, TILE_SIZE, TILE_SIZE};
@@ -40,7 +39,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *new_npc)
 	setup_animation(engine, anim);
 	inte->engine = engine;
 	inte->interaction = &npc_interaction;
-	npc->speak->set_info(npc->speak, "test text1\ntesttext2", FACE_SOLDIER);
+	npc->speak->set_info(npc->speak, "DefaultText", FACE_SOLDIER);
 	npc->speak->set_font(npc->speak, FONT_SPEAK);
 	register_animation(engine, anim, 9);
 	engine->add_gameobject(engine, new_npc);

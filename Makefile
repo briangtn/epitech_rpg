@@ -7,7 +7,8 @@
 
 SRC_DIR		=	$(realpath src)
 
-SRC_FILES	=	main.c
+SRC_FILES	=	main.c						\
+			global.c
 
 SRC_SCENES_DIR	=	$(realpath src/scenes)
 
