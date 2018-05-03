@@ -108,4 +108,3 @@ fight_t *fight)
 	menu->fight = fight;
 	return (new_menu);
 }
-

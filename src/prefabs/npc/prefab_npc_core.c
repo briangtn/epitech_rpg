@@ -75,12 +75,12 @@ gameobject_t *create_prefab_npc(sf_engine_t *engine)
 		return (NULL);
 	if (add_components(new_npc) == 84) {
 		new_npc->destroy(new_npc);
-		my_puterror("[ERROR]Player: could not add components!\n");
+		my_puterror("[ERROR]Npc: could not add components!\n");
 		return (NULL);
 	}
 	if (setup_components(engine, new_npc) == 84) {
 		new_npc->destroy(new_npc);
-		my_puterror("[ERROR]Player: could not setup components!\n");
+		my_puterror("[ERROR]Npc: could not setup components!\n");
 		return (NULL);
 	}
 	return (new_npc);

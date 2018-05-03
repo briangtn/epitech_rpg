@@ -87,8 +87,7 @@ struct game_info {
 	scene_info_t **scene;
 };
 
-struct functions
-{
+struct functions {
 	event_info_t* (*ptrfunc)(event_info_t*, char*);
 };
 

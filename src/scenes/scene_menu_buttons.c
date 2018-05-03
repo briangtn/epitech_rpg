@@ -17,6 +17,8 @@ void launch_game(sf_button_t *button)
 	sf_engine_t *engine = button->engine;
 	parser_to_game_t *ptg = create_parser_to_game("config_file");
 
+	if (ptg == NULL)
+		return;
 	engine->change_scene(engine, "game", ptg);
 }
 
