@@ -36,11 +36,12 @@ tile_info_t *info, char *tileset)
 	return (0);
 }
 
-static void set_trigger_func(UNUSED sf_collider_2d_t *col, \
+static void set_trigger_func(sf_collider_2d_t *col, \
 tile_info_t *info, UNUSED sf_engine_t *engine)
 {
 	switch (info->event->event_id) {
 	case TELEPORT:
+		//col->triggered_func = &teleport;
 		break;
 	case DIALOG:
 		break;

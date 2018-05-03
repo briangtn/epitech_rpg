@@ -19,6 +19,7 @@ void launch_game(sf_button_t *button)
 
 	if (ptg == NULL)
 		return;
+	ptg->active_scene = 1;
 	engine->change_scene(engine, "game", ptg);
 }
 

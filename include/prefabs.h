@@ -131,8 +131,18 @@ fight_player_t *player);
 
 	#pragma region Tiles
 
+	typedef struct tile_effect {
+		void (*destroy)();
+		gameobject_t *parent;
+		sf_engine_t *engine;
+		int teleport_scene;
+		sfVector2i teleport_coords;
+	} sf_tile_effect_t;
+
 	gameobject_t *create_prefab_tile(sf_engine_t *engine, \
 tile_info_t *info, char *tileset);
+
+	int teleport(gameobject_t *tile, gameobject_t *player);
 
 	#pragma endregion
 

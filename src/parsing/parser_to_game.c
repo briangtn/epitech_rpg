@@ -16,7 +16,7 @@ parser_to_game_t *create_parser_to_game(char *file_to_parse)
 
 	if (ptg == NULL)
 		return (NULL);
-	ptg->active_scene = 0;
+	ptg->active_scene = 1;
 	ptg->dont_destroy_on_unload = NULL;
 	ptg->game_info = parse_config(file_to_parse);
 	if (ptg->game_info == NULL) {

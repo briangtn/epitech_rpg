@@ -32,7 +32,7 @@ NPC_IDS[info->npc_id - 1].npc_face);
 void load_parsing_to_game_scene(parser_to_game_t *ptg, sf_engine_t *engine)
 {
 	sf_camera_t *camera = engine->current_scene->camera;
-	scene_info_t *scene = ptg->game_info->scene[ptg->active_scene];
+	scene_info_t *scene = ptg->game_info->scene[ptg->active_scene - 1];
 	sfVector2u size = {ptg->game_info->tile_per_scene.x * TILE_SIZE, \
 ptg->game_info->tile_per_scene.y * TILE_SIZE};
 
