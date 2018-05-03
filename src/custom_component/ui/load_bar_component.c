@@ -24,6 +24,8 @@ ANIMATION_2D);
 	sfSprite_setColor(anim->sprite, loadbar->fore_color);
 	sizes = (sfVector2f){loadbar->sizes.x, loadbar->sizes.y};
 	sizes.x *= (loadbar->current_value / loadbar->max_value);
+	if (sizes.x <= 0)
+		sizes.x = 0;
 	sfSprite_setScale(anim->sprite, sizes);
 	if (back_anim)
 		sfSprite_setColor(back_anim->sprite, loadbar->back_color);
