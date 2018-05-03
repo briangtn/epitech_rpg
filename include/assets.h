@@ -38,4 +38,14 @@
 	#define FONT_SPEAK "assets/crazy_krabs.otf"
 	#pragma endregion
 
+	typedef struct npc_id_info {
+		int npc_id;
+		char *npc_visual;
+		char *npc_face;
+	} npc_id_info_t;
+
+	#define NB_NPC_ID 1
+
+	extern const npc_id_info_t NPC_IDS[];
+
 #endif /* !__ASSETS__H_ */

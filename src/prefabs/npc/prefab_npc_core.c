@@ -40,7 +40,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *new_npc)
 	setup_animation(engine, anim);
 	inte->engine = engine;
 	inte->interaction = &npc_interaction;
-	npc->speak->set_info(npc->speak, "test text1\ntesttext2", FACE_SOLDIER);
+	npc->speak->set_info(npc->speak, "DefaultText", FACE_SOLDIER);
 	npc->speak->set_font(npc->speak, FONT_SPEAK);
 	register_animation(engine, anim, 9);
 	engine->add_gameobject(engine, new_npc);
