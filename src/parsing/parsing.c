@@ -33,7 +33,6 @@ tile_info_t *get_tile(tile_info_t *tile, char *buffer, game_info_t *game_info)
 
 	if (!(match(buffer, TILE_INFO))) {
 		free(buffer);
-		free_game_info(game_info);
 		my_puterror(error_messages[10]);
 		return (NULL);
 	}

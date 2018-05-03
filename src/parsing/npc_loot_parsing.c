@@ -36,7 +36,6 @@ npc_info_t *get_npc(npc_info_t *npc, char *buffer, game_info_t *game_info)
 {
 	if (!(match(buffer, NPC_INFO))) {
 		free(buffer);
-		free_game_info(game_info);
 		my_puterror(error_messages[10]);
 		return (NULL);
 	}
@@ -76,7 +75,6 @@ loot_info_t *get_loot(loot_info_t *loot, char *buffer, game_info_t *game_info)
 {
 	if (!(match(buffer, LOOT_INFO))) {
 		free(buffer);
-		free_game_info(game_info);
 		my_puterror(error_messages[10]);
 		return (NULL);
 	}

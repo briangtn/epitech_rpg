@@ -48,6 +48,8 @@ void free_tile(tile_info_t **tile)
 {
 	int i = 0;
 
+	if (tile == NULL)
+		return;
 	while (tile[i] != NULL)
 		i++;
 	i--;
