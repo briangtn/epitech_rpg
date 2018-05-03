@@ -21,8 +21,8 @@ static void set_info(sf_speak_t *speak, const char *text, const char *portrait)
 		free(speak->text);
 	if (speak->portrait != NULL)
 		free(speak->portrait);
-	speak->text = strdup(text);
-	speak->portrait = strdup(portrait);
+	speak->text = my_strdup(text);
+	speak->portrait = my_strdup(portrait);
 	if (speak->text != NULL) {
 		sfText_setString(speak->text_comp, speak->text);
 		sfText_setColor(speak->text_comp, sfBlack);
