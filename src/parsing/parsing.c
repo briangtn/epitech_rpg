@@ -51,28 +51,28 @@ tile_info_t *get_tile(tile_info_t *tile, char *buffer, game_info_t *game_info)
 }
 
 scene_info_t *parse_tile_info(scene_info_t *scene, int fd, \
-game_info_t *game_info)
+game_info_t *game_info, char **buffer)
 {
-	char *buffer = NULL;
 	int i = 0;
 
 	scene->tile = NULL;
-	buffer = get_next_line(fd);
-	while (buffer != NULL && buffer[0] != '\0') {
+	if (scene->loot != NULL)
+		*buffer = get_next_line(fd);
+	while (*buffer != NULL && *buffer[0] != '\0') {
 		scene->tile = realloc_tile(scene->tile, i + 1);
 		if (scene->tile == NULL) {
 			free_game_info(game_info);
 			return (NULL);
 		}
-		scene->tile[i] = get_tile(scene->tile[i], buffer, game_info);
+		scene->tile[i] = get_tile(scene->tile[i], *buffer, game_info);
 		if (scene->tile[i] == NULL)
 			return (NULL);
 		i++;
-		free(buffer);
-		buffer = get_next_line(fd);
+		free(*buffer);
+		*buffer = get_next_line(fd);
 	}
-	if (buffer != NULL)
-		free(buffer);
+	if (*buffer != NULL)
+		free(*buffer);
 	return (scene);
 }
 
