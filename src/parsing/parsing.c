@@ -84,6 +84,8 @@ game_info_t *parse_scene_info(game_info_t *game_info, int fd)
 	free(buffer);
 	for (int i = 0; game_info->scene[i] != NULL; i++) {
 		buffer = get_next_line(fd);
+		if (buffer == NULL)
+			return (NULL);
 		if (!(match(buffer, SCENE))) {
 			free(buffer);
 			free_game_info(game_info);
