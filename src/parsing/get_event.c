@@ -63,7 +63,6 @@ event_info_t *get_teleport_id(event_info_t *event, char *buffer)
 			event->teleport[0] = my_getnbr(&buffer[i + 1]);
 		} else if (buffer[i] == '"' && n == 11) {
 			event->teleport[1] = my_getnbr(&buffer[i + 1]);
-			break;
 		} else if (buffer[i] == '"' && n == 13) {
 			event->teleport[2] = my_getnbr(&buffer[i + 1]);
 		}
