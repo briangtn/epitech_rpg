@@ -15,7 +15,7 @@
 void launch_game(sf_button_t *button)
 {
 	sf_engine_t *engine = button->engine;
-	parser_to_game_t *ptg = create_parser_to_game("config_file");
+	parser_to_game_t *ptg = engine->data;
 
 	if (ptg == NULL)
 		return;

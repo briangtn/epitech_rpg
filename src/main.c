@@ -82,20 +82,22 @@ int load_scenes(sf_engine_t *engine)
 int main(UNUSED int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
+	parser_to_game_t *ptg = create_parser_to_game("config_file");
 
 	if (engine == NULL)
 		return (84);
-	if (load_scenes(engine) == 84) {
+	if (load_scenes(engine) == 84 || ptg == NULL) {
 		engine->destroy(engine);
 		return (84);
 	}
-	engine->change_scene(engine, "menu", NULL);
+	engine->change_scene(engine, "menu", ptg);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
-			engine->current_scene->loop(engine, NULL);
+			engine->current_scene->loop(engine, ptg);
 		engine->render(engine);
 	}
 	engine->destroy(engine);
+	destroy_parser_to_game(ptg);
 	return (0);
 }

@@ -19,12 +19,12 @@ static int load_game_scene(sf_engine_t *engine, parser_to_game_t *data)
 	if (engine == NULL || camera == NULL || data == NULL)
 		return (84);
 	player = create_prefab_player(engine);
-	((sf_transform_t *)get_component(player, TRANSFORM))->position.x = 100;
+	((sf_transform_t *)get_component(player, TRANSFORM))->position = \
+data->player_start_pos;
 	camera->target = player;
 	camera->follow_target = true;
 	initialize_physic_state(engine);
 	load_parsing_to_game_scene(data, engine);
-	destroy_parser_to_game(data);
 	return (0);
 }
 
