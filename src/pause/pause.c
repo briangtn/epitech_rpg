@@ -20,7 +20,7 @@ int goto_pause(sf_engine_t *engine, const char *scene)
 	return (0);
 }
 
-void button_resume(sf_button_t *button)
+void button_res(sf_button_t *button)
 {
 	quit_pause(button->engine);
 }

@@ -12,7 +12,7 @@
 
 	int goto_pause(sf_engine_t *engine, const char *scene);
 	int quit_pause(sf_engine_t *engine);
-	void button_resume(sf_button_t *button);
+	void button_res(sf_button_t *button);
 
 	int load_pause_scene(sf_engine_t *engine, UNUSED void *data);
 	int loop_pause_scene(sf_engine_t *engine, UNUSED void *data);

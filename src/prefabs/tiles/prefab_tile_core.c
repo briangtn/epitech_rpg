@@ -50,7 +50,6 @@ tile_info_t *info, sf_engine_t *engine)
 		effect->teleport_scene = info->event->teleport[0];
 		effect->teleport_coords = (sfVector2i){info->event->teleport[1]\
 , info->event->teleport[2]};
-		dprintf(2, "Teleport scene: %i, coords: x=%i,y=%i\n", effect->teleport_scene, effect->teleport_coords.x, effect->teleport_coords.y);
 		break;
 	case DIALOG:
 		break;
