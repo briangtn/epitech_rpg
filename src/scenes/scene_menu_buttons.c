@@ -55,3 +55,11 @@ void quit_app(sf_button_t *button)
 {
 	sfRenderWindow_close(button->engine->window);
 }
+
+void goto_menu(sf_button_t *button)
+{
+	sf_engine_t *engine = button->engine;
+
+	quit_pause(engine);
+	engine->change_scene(engine, "menu", engine->data);
+}

@@ -51,10 +51,14 @@ static int loop_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 	if (engine == NULL)
 		return (84);
 	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
-		if (evt.type == sfEvtClosed)
+		if (evt.type == sfEvtClosed) {
 			sfRenderWindow_close(engine->window);
+			break;
+		}
 		if (evt.type == sfEvtKeyPressed)
 			handle_key_pressed(engine, evt);
+		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeyEscape)
+			break;
 	}
 	return (0);
 }
