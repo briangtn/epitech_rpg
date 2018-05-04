@@ -15,12 +15,16 @@ static int load_game_scene(sf_engine_t *engine, parser_to_game_t *data)
 {
 	sf_camera_t *camera = engine->current_scene->camera;
 	gameobject_t *player = NULL;
+	sf_animation_2d_t *anim = NULL;
 
 	if (engine == NULL || camera == NULL || data == NULL)
 		return (84);
 	player = create_prefab_player(engine);
 	((sf_transform_t *)get_component(player, TRANSFORM))->position = \
 data->player_start_pos;
+	anim = ((sf_animation_2d_t *)get_component(player, ANIMATION_2D));
+	sfSprite_setPosition(anim->sprite, \
+(sfVector2f){data->player_start_pos.x, data->player_start_pos.y});
 	camera->target = player;
 	camera->follow_target = true;
 	initialize_physic_state(engine);
