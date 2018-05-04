@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char *error_messages[] = {
+const char *error_messages[] = {
 	"No error\n",
 	"Error: empty config file\n",
 	"Error: unknown parameter\n",

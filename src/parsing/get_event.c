@@ -8,7 +8,7 @@
 #include "my.h"
 #include "parsing.h"
 
-struct functions functions [] = {
+const struct functions functions [] = {
 	{&get_teleport_id},
 	{&get_text_id},
 	{&get_fight_id}

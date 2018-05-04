@@ -17,7 +17,7 @@ parser_to_game_t *create_parser_to_game(char *file_to_parse)
 	if (ptg == NULL)
 		return (NULL);
 	ptg->active_scene = 1;
-	ptg->player_start_pos = (sf_vector_3d_t){0, 0, 0};
+	ptg->player_start_pos = (sf_vector_3d_t){300, 300, 0};
 	ptg->dont_destroy_on_unload = NULL;
 	ptg->game_info = parse_config(file_to_parse);
 	if (ptg->game_info == NULL) {

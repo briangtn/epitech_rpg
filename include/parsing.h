@@ -91,8 +91,8 @@ struct functions {
 	event_info_t* (*ptrfunc)(event_info_t*, char*);
 };
 
-extern struct functions functions [];
-extern char *error_messages [];
+extern const struct functions functions [];
+extern const char *error_messages [];
 
 #define NB_SCENE "NB_SCENE : \"*\""
 #define TILE_PER_SCENE "TILE_PER_SCENE (COL * LINES) : \"*\" x \"*\""

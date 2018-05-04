@@ -50,6 +50,7 @@ tile_info_t *info, sf_engine_t *engine)
 		effect->teleport_scene = info->event->teleport[0];
 		effect->teleport_coords = (sfVector2i){info->event->teleport[1]\
 , info->event->teleport[2]};
+		dprintf(2, "Teleport scene: %i, coords: x=%i,y=%i\n", effect->teleport_scene, effect->teleport_coords.x, effect->teleport_coords.y);
 		break;
 	case DIALOG:
 		break;
@@ -63,7 +64,7 @@ static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info)
 	sf_rigidbody_2d_t *rb = NULL;
 	sf_collider_2d_t *col = NULL;
 
-	if (info->tile_type != COLLIDE && info->event->event_id != 0)
+	if (info->tile_type != COLLIDE && info->event->event_id == 0)
 		return (0);
 	rb = go->add_component(go, RIGIDBODY_2D);
 	col = go->add_component(go, COLLIDER_2D);
@@ -71,6 +72,7 @@ static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info)
 		return (84);
 	if (info->event->event_id != 0) {
 		col->trigger = 1;
+		col->collides = 0;
 		set_trigger_func(col, info, engine);
 	}
 	engine->add_physic_object(engine, go);
