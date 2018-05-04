@@ -57,8 +57,10 @@ game_info_t *game_info, char **buffer)
 			return (NULL);
 		}
 		scene->npc[i] = get_npc(scene->npc[i], *buffer);
-		if (scene->npc[i] == NULL)
+		if (scene->npc[i] == NULL) {
+			scene->npc = NULL;
 			return (scene);
+		}
 		i++;
 		free(*buffer);
 		*buffer = get_next_line(fd);
@@ -73,7 +75,6 @@ game_info_t *game_info, char **buffer)
 loot_info_t *get_loot(loot_info_t *loot, char *buffer)
 {
 	if (!(match(buffer, LOOT_INFO))) {
-		free(buffer);
 		return (NULL);
 	}
 	loot->loot_id = get_id(buffer);
@@ -97,8 +98,10 @@ game_info_t *game_info, char **buffer)
 			return (NULL);
 		}
 		scene->loot[i] = get_loot(scene->loot[i], *buffer);
-		if (scene->loot[i] == NULL)
+		if (scene->loot[i] == NULL) {
+			scene->loot = NULL;
 			return (scene);
+		}
 		i++;
 		free(*buffer);
 		*buffer = get_next_line(fd);
