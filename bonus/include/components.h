@@ -11,18 +11,17 @@
 #include "my_sfml.h"
 
 enum component_types {
-	TEST
+	GRID
 };
 
-typedef struct grid_component sf_grid_t;
-
-struct test_component {
+typedef struct grid_component {
 	void (*destroy)();
 	gameobject_t *parent;
-	gameobject_t ***grid;
-};
+	sf_linked_list_t *elements;
+	sf_vector_2d_t offset;
+} sf_grid_t;
 
-int update_test_comp(sf_test_t *component, UNUSED int delta_time);
-sf_test_t *create_test_comp(gameobject_t *gameobject);
+sf_grid_t *create_grid_comp(gameobject_t *parent);
+void init_grid(sf_engine_t *engine, sf_grid_t *comp);
 
 #endif

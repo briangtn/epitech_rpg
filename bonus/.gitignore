@@ -1,0 +1,8 @@
+*.a
+*.o
+*.gcno
+*.gcda
+*.out
+.vscode
+vscode
+my_editor

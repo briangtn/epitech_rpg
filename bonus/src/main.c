@@ -62,13 +62,13 @@ int load_scenes(sf_engine_t *engine)
 	return (0);
 }
 
-int main(int ac, char **av, char **env)
+int main(int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
 
 	if (engine == NULL)
 		return (84);
-	if (ac != 3 || load_scenes(engine) == 84) {
+	if (load_scenes(engine) == 84) {
 		engine->destroy(engine);
 		return (84);
 	}

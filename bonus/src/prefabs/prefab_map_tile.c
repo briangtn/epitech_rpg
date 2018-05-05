@@ -1,0 +1,37 @@
+/*
+** EPITECH PROJECT, 2017
+** RPG map editor
+** File description:
+** Map tile prefab
+*/
+
+#include "my_sfml.h"
+
+static int setup_components(sf_engine_t *engine, gameobject_t *go)
+{
+	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
+
+	if (anim == NULL)
+		return (84);
+	anim->sprite = get_sprite(engine, "assets/grid.png");
+	register_animation(engine, anim, GAME);
+	return (0);
+}
+
+static int add_components(gameobject_t *go)
+{
+	if (go->add_component(go, ANIMATION_2D) == NULL)
+		return (84);
+	return (0);
+}
+
+gameobject_t *create_prefab_map_tile(sf_engine_t *engine)
+{
+	gameobject_t *go = create_gameobject("map_tile");
+
+	if (go == NULL)
+		return (NULL);
+	if (add_components(go) == 84 || setup_components(engine, go) == 84)
+		return (NULL);
+	return (go);
+}

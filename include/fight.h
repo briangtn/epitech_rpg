@@ -106,6 +106,10 @@ struct fight_arrow *);
 		gameobject_t *mana_text_go;
 	} sf_player_t;
 
+	typedef struct fight_id {
+		int id;
+	} fight_id_t;
+
 	sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow);
 	int arrow_update(gameobject_t *arrow_go, UNUSED int delta_time);
 	int arrow_display_update(sf_animation_2d_t *anim, int delta_time);

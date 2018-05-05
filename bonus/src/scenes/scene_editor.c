@@ -27,8 +27,7 @@ static int loop_editor_scene(sf_engine_t *engine, UNUSED void *data)
 
 static int load_editor_scene(sf_engine_t *engine, UNUSED void *data)
 {
-	if (create_test_prefab(engine) == NULL)
-		return (84);
+	create_prefab_grid(engine);
 	return (0);
 }
 

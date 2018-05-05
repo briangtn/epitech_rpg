@@ -17,6 +17,9 @@
 
 #define TILE_SIZE 32
 
+#define MAP_WIDTH 10
+#define MAP_HEIGHT 10
+
 #include "scenes.h"
 #include "prefabs.h"
 #include "components.h"
