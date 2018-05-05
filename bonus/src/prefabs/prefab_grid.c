@@ -32,7 +32,7 @@ gameobject_t *create_prefab_grid(UNUSED sf_engine_t *engine)
 
 	if (go == NULL)
 		return (NULL);
-	if (add_components(go) == 84 ||setup_components(engine, go) == 84)
+	if (add_components(go) == 84 || setup_components(engine, go) == 84)
 		return (NULL);
 	return (go);
 }

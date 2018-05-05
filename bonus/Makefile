@@ -20,7 +20,8 @@ SRC_PREFABS_FILES	=	prefab_grid.c		\
 
 SRC_COMPONENTS_DIR	=	$(realpath src/components)
 
-SRC_COMPONENTS_FILES	=	grid_component.c
+SRC_COMPONENTS_FILES	=	grid_component.c	\
+				map_tile_component.c	\
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))\
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES))\

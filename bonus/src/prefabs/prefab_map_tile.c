@@ -6,6 +6,7 @@
 */
 
 #include "my_sfml.h"
+#include "components.h"
 
 static int setup_components(sf_engine_t *engine, gameobject_t *go)
 {
@@ -21,6 +22,9 @@ static int setup_components(sf_engine_t *engine, gameobject_t *go)
 static int add_components(gameobject_t *go)
 {
 	if (go->add_component(go, ANIMATION_2D) == NULL)
+		return (84);
+	if (go->add_custom_component(go,\
+	(void *(*)(gameobject_t *))&create_map_tile_comp, GRID) == NULL)
 		return (84);
 	return (0);
 }
