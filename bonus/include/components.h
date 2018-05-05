@@ -31,8 +31,10 @@ typedef struct map_tile_component {
 	int x;
 	int y;
 	int tile_id;
+	sf_engine_t *engine;
 } sf_map_tile_t;
 
 sf_map_tile_t *create_map_tile_comp(gameobject_t *parent);
+int map_tile_update(gameobject_t *go, UNUSED int delta_time);
 
 #endif

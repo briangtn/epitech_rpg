@@ -27,7 +27,7 @@ void init_grid(sf_engine_t *engine, sf_grid_t *comp)
 	for (int i = 0; i < MAP_WIDTH * MAP_HEIGHT; i++) {
 		x = i % MAP_WIDTH;
 		y = i / MAP_WIDTH;
-		new_go = create_prefab_map_tile(engine);
+		new_go = create_prefab_map_tile(engine, x, y);
 		anim = get_component(new_go, ANIMATION_2D);
 		if (new_go == NULL || anim == NULL)
 			continue;
