@@ -62,7 +62,7 @@ int load_scenes(sf_engine_t *engine)
 	return (0);
 }
 
-int main(int ac, UNUSED char **av, char **env)
+int main(UNUSED int ac, UNUSED char **av, char **env)
 {
 	sf_engine_t *engine = get_new_engine(env);
 

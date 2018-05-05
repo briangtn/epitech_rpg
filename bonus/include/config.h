@@ -13,12 +13,13 @@
 #define WINDOW_SIZE_X 1600
 #define WINDOW_SIZE_Y 960
 
-#define WINDOW_NAME "Editor"
+#define WINDOW_NAME "Map editor"
 
-
-#define MAP_WIDTH 10
-#define MAP_HEIGHT 10
+#define MAP_WIDTH 20
+#define MAP_HEIGHT 20
 #define TILE_SIZE 32
+
+#define MAX_SIZE 500
 
 #include "scenes.h"
 #include "prefabs.h"

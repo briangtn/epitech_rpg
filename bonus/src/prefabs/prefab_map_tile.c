@@ -20,7 +20,6 @@ static int setup_components(sf_engine_t *engine, gameobject_t *go, int x, int y)
 	tile->engine = engine;
 	tile->x = x;
 	tile->y = y;
-	tile->tile_id = 10;
 	return (0);
 }
 

@@ -17,23 +17,23 @@ static void destroy_grid_comp(sf_grid_t *comp)
 	free(comp);
 }
 
-void init_grid(sf_engine_t *engine, sf_grid_t *comp)
+void init_grid(sf_engine_t *engine, sf_grid_t *comp, sf_vector_2d_t sizes)
 {
 	int x = 0;
 	int y = 0;
 	gameobject_t *new_go = NULL;
-	sf_animation_2d_t *anim = NULL;
+	sf_map_tile_t *tile = NULL;
 
-	for (int i = 0; i < MAP_WIDTH * MAP_HEIGHT; i++) {
-		x = i % MAP_WIDTH;
-		y = i / MAP_WIDTH;
+	for (int i = 0; i < sizes.x * sizes.y; i++) {
+		x = i % (int)sizes.x;
+		y = i / sizes.x;
 		new_go = create_prefab_map_tile(engine, x, y);
-		anim = get_component(new_go, ANIMATION_2D);
-		if (new_go == NULL || anim == NULL)
+		tile = get_component(new_go, MAP_TILE);
+		if (new_go == NULL || tile == NULL)
 			continue;
-		sfSprite_setPosition(anim->sprite, (sfVector2f){x * 50, y * 50});
 		comp->elements = sf_push(new_go, my_strdup("map_elem"),\
 		comp->elements);
+		tile->grid = comp;
 	}
 }
 

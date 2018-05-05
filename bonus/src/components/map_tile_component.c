@@ -27,6 +27,7 @@ int map_tile_update(gameobject_t *go, UNUSED int delta_time)
 	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
 	float scale = (float)TILE_SIZE/50;
 	sfVector2f tile_pos = {0, 0};
+	sf_vector_2d_t off = tile->grid->offset;
 
 	if (tile == NULL || anim == NULL || tile->engine == NULL)
 		return (84);
@@ -38,7 +39,8 @@ int map_tile_update(gameobject_t *go, UNUSED int delta_time)
 		tile_pos = tile_id_to_pos(tile->tile_id, anim->sprite);
 		sfSprite_setTextureRect(anim->sprite, (sfIntRect){tile_pos.x * TILE_SIZE, tile_pos.y * TILE_SIZE, TILE_SIZE, TILE_SIZE});
 	}
-	sfSprite_setPosition(anim->sprite, (sfVector2f){tile->x * TILE_SIZE, tile->y * TILE_SIZE});
+	sfSprite_setPosition(anim->sprite,\
+	(sfVector2f){off.x + tile->x * TILE_SIZE, off.y + tile->y * TILE_SIZE});
 	return (0);
 }
 
@@ -60,6 +62,7 @@ sf_map_tile_t *create_map_tile_comp(gameobject_t *parent)
 	tile->x = 0;
 	tile->y = 0;
 	tile->tile_id = -1;
+	tile->grid = NULL;
 	tile->engine = NULL;
 	return (tile);
 }

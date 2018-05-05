@@ -23,11 +23,12 @@ typedef struct grid_component {
 } sf_grid_t;
 
 sf_grid_t *create_grid_comp(gameobject_t *parent);
-void init_grid(sf_engine_t *engine, sf_grid_t *comp);
+void init_grid(sf_engine_t *engine, sf_grid_t *comp, sf_vector_2d_t sizes);
 
 typedef struct map_tile_component {
 	void (*destroy)();
 	gameobject_t *parent;
+	sf_grid_t *grid;
 	int x;
 	int y;
 	int tile_id;
