@@ -42,13 +42,12 @@ void create_invisible_walls(sf_engine_t *engine, game_info_t *info)
 		tr = wall->add_component(wall, TRANSFORM);
 		wall->add_component(wall, RIGIDBODY_2D);
 		col = wall->add_component(wall, COLLIDER_2D);
-		col->hitbox = (sfIntRect){0, 0, TILE_SIZE * \
-info->tile_per_scene.x * (i % 2) + TILE_SIZE, TILE_SIZE * \
-info->tile_per_scene.y * !(i % 2) + TILE_SIZE};
-		tr->position.x = TILE_SIZE * (info->tile_per_scene.x + 1) * \
-(i == 2) - (TILE_SIZE * !(i % 2));
-		tr->position.y = TILE_SIZE * (info->tile_per_scene.y + 1) * \
-(i == 3) - (TILE_SIZE * (i % 2));
+		col->hitbox = (sfIntRect){0, 0, TILE_SIZE * info->\
+tile_per_scene.x * (i % 2), TILE_SIZE * info->tile_per_scene.y * !(i % 2)};
+		tr->position.x = TILE_SIZE * (info->tile_per_scene.x) * \
+(i == 2);
+		tr->position.y = TILE_SIZE * (info->tile_per_scene.y) * \
+(i == 3);
 		engine->add_gameobject(engine, wall);
 		engine->add_physic_object(engine, wall);
 	}
