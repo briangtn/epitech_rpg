@@ -12,5 +12,6 @@
 
 const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 	{1, SPRITESHEET_GUARD, FACE_SOLDIER},
+	{2, SPRITESHEET_SIGN, FACE_SIGN},
 	{0, NULL, NULL}
 };
