@@ -16,6 +16,7 @@ sfIntRect bounds)
 	if (grid == NULL)
 		return (84);
 	grid->offset = (sf_vector_2d_t){bounds.left, bounds.top};
+	grid->engine = engine;
 	init_grid(engine, grid, (sf_vector_2d_t){bounds.width, bounds.height});
 	return (0);
 }

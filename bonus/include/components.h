@@ -21,6 +21,7 @@ typedef struct grid_component {
 	gameobject_t *parent;
 	sf_linked_list_t *elements;
 	sf_vector_2d_t offset;
+	sf_engine_t *engine;
 } sf_grid_t;
 
 sf_grid_t *create_grid_comp(gameobject_t *parent);

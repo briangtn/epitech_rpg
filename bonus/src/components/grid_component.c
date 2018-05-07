@@ -47,5 +47,6 @@ sf_grid_t *create_grid_comp(gameobject_t *parent)
 	comp->parent = parent;
 	comp->elements = NULL;
 	comp->offset = (sf_vector_2d_t){0, 0};
+	comp->engine = NULL;
 	return (comp);
 }
