@@ -39,6 +39,7 @@ static void update_animation(gameobject_t *player, sfVector2f axis)
 int player_movement(gameobject_t *player, UNUSED int delta_time)
 {
 	sf_rigidbody_2d_t *rb = get_component(player, RIGIDBODY_2D);
+	sf_animation_2d_t *anim = get_component(player, ANIMATION_2D);
 	sfVector2f axis = (sfVector2f){0, 0};
 
 	if (player == NULL || rb == NULL) {
@@ -46,9 +47,16 @@ int player_movement(gameobject_t *player, UNUSED int delta_time)
 		return (84);
 	}
 	axis.x = sfKeyboard_isKeyPressed(72) - sfKeyboard_isKeyPressed(71);
-		rb->speed.x = 32 * axis.x * PLAYER_MOVEMENT_SPEED_MUL;
+	if (sfKeyboard_isKeyPressed(38) || sfKeyboard_isKeyPressed(42))
+		axis.x *= PLAYER_SPRINT_MUL;
+	rb->speed.x = 32 * axis.x * PLAYER_MOVEMENT_SPEED_MUL;
 	axis.y = sfKeyboard_isKeyPressed(74) - sfKeyboard_isKeyPressed(73);
-		rb->speed.y = 32 * axis.y * PLAYER_MOVEMENT_SPEED_MUL;
+	if (sfKeyboard_isKeyPressed(38) || sfKeyboard_isKeyPressed(42))
+		axis.y *= PLAYER_SPRINT_MUL;
+	rb->speed.y = 32 * axis.y * PLAYER_MOVEMENT_SPEED_MUL;
+	anim->speed = PLAYER_ANIMATION_SPEED;
+	if (sfKeyboard_isKeyPressed(38) || sfKeyboard_isKeyPressed(42))
+		anim->speed /= PLAYER_SPRINT_MUL;
 	update_animation(player, axis);
 	return (0);
 }
