@@ -9,6 +9,14 @@
 #include "components.h"
 #include "config.h"
 
+sfIntRect get_default_rect(sfSprite *sprite)
+{
+	sfFloatRect bounds = sfSprite_getGlobalBounds(sprite);
+	sfIntRect res = {0, 0, bounds.width, bounds.height};
+
+	return (res);
+}
+
 sfVector2f tile_id_to_pos(int tile_id, sfSprite *sprite)
 {
 	sfFloatRect bounds = sfSprite_getGlobalBounds(sprite);
@@ -25,14 +33,14 @@ int map_tile_update(gameobject_t *go, UNUSED int delta_time)
 {
 	sf_map_tile_t *tile = get_component(go, MAP_TILE);
 	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
-	float scale = (float)TILE_SIZE/50;
+	float scale = (float)TILE_SIZE / 50;
 	sfVector2f tile_pos = {0, 0};
 	sf_vector_2d_t off = tile->grid->offset;
 
 	if (tile == NULL || anim == NULL || tile->engine == NULL)
 		return (84);
 	if (tile->tile_id == -1) {
-		anim->sprite = get_sprite(tile->engine, "assets/grid.png");
+		anim->sprite = tile->sprite_none;
 		sfSprite_setScale(anim->sprite, (sfVector2f){scale, scale});
 	} else {
 		anim->sprite = get_sprite(tile->engine, "assets/tilesets/outside_b.png");
@@ -64,5 +72,7 @@ sf_map_tile_t *create_map_tile_comp(gameobject_t *parent)
 	tile->tile_id = -1;
 	tile->grid = NULL;
 	tile->engine = NULL;
+	tile->sprite_none = NULL;
+	tile->sprite_tileset = NULL;
 	return (tile);
 }

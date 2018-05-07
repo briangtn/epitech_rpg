@@ -12,7 +12,8 @@
 
 enum component_types {
 	GRID,
-	MAP_TILE
+	MAP_TILE,
+	TILESET
 };
 
 typedef struct grid_component {
@@ -33,9 +34,21 @@ typedef struct map_tile_component {
 	int y;
 	int tile_id;
 	sf_engine_t *engine;
+	sfSprite *sprite_none;
+	sfSprite *sprite_tileset;
 } sf_map_tile_t;
 
 sf_map_tile_t *create_map_tile_comp(gameobject_t *parent);
 int map_tile_update(gameobject_t *go, UNUSED int delta_time);
+
+typedef struct tileset_component {
+	void (*destroy)();
+	gameobject_t *parent;
+	gameobject_t *grid_go;
+	int selected_tile_id;
+} sf_tileset_t;
+
+int update_tileset_comp(gameobject_t *go, UNUSED int delta_time);
+sf_tileset_t *create_tileset_comp(gameobject_t *go);
 
 #endif

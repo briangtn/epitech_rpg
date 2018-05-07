@@ -20,6 +20,8 @@ static int setup_components(sf_engine_t *engine, gameobject_t *go, int x, int y)
 	tile->engine = engine;
 	tile->x = x;
 	tile->y = y;
+	tile->sprite_none = get_sprite(engine, "assets/grid.png");
+	tile->sprite_tileset = get_sprite(engine, "assets/tilesets/outside_b.png");
 	return (0);
 }
 
