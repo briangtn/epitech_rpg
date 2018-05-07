@@ -29,6 +29,30 @@ NPC_IDS[info->npc_id - 1].npc_visual));
 NPC_IDS[info->npc_id - 1].npc_face);
 }
 
+void create_invisible_walls(sf_engine_t *engine, game_info_t *info)
+{
+	gameobject_t *wall = NULL;
+	sf_transform_t *tr = NULL;
+	sf_collider_2d_t *col = NULL;
+
+	for (int i = 0; i < 4; i++) {
+		wall = create_gameobject("invisible wall");
+		if (wall == NULL)
+			continue;
+		tr = wall->add_component(wall, TRANSFORM);
+		wall->add_component(wall, RIGIDBODY_2D);
+		col = wall->add_component(wall, COLLIDER_2D);
+		col->hitbox = (sfIntRect){0, 0, TILE_SIZE * info->\
+tile_per_scene.x * (i % 2), TILE_SIZE * info->tile_per_scene.y * !(i % 2)};
+		tr->position.x = TILE_SIZE * (info->tile_per_scene.x) * \
+(i == 2);
+		tr->position.y = TILE_SIZE * (info->tile_per_scene.y) * \
+(i == 3);
+		engine->add_gameobject(engine, wall);
+		engine->add_physic_object(engine, wall);
+	}
+}
+
 void load_parsing_to_game_scene(parser_to_game_t *ptg, sf_engine_t *engine)
 {
 	sf_camera_t *camera = engine->current_scene->camera;
@@ -46,4 +70,5 @@ ptg->game_info->tile_per_scene.y * TILE_SIZE};
 	for (int i = 0; scene->npc != NULL && scene->npc[i] != NULL; i++) {
 		create_npc(engine, scene->npc[i]);
 	}
+	create_invisible_walls(engine, ptg->game_info);
 }

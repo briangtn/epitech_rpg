@@ -27,6 +27,7 @@ data->player_start_pos;
 (sfVector2f){data->player_start_pos.x, data->player_start_pos.y});
 	camera->target = player;
 	camera->follow_target = true;
+	camera->view_size = (sfVector2f){WINDOW_SIZE_X / 2, WINDOW_SIZE_Y / 2};
 	initialize_physic_state(engine);
 	load_parsing_to_game_scene(data, engine);
 	return (0);

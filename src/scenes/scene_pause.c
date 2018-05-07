@@ -44,13 +44,13 @@ int load_pause_scene(sf_engine_t *engine, UNUSED void *data)
 	border = create_prefab_image(engine, SPRITE_BORDER, 0);
 	calc_go_to_old_camera(engine, border);
 	res = create_prefab_button(engine, "resume button", \
-BUTTON_RESUME, (sfIntRect){center.x - 150, center.y - 225, 300, 150});
+BUTTON_RESUME, (sfIntRect){center.x - 75, center.y - 112.5, 150, 75});
 	((sf_button_t *)get_component(res, BUTTON))->on_clicked = &button_res;
 	menu = create_prefab_button(engine, "menu button", \
-BUTTON_MENU, (sfIntRect){center.x - 150, center.y - 75, 300, 150});
+BUTTON_MENU, (sfIntRect){center.x - 75, center.y - 37.5, 150, 75});
 	((sf_button_t *)get_component(menu, BUTTON))->on_clicked = &goto_menu;
 	quit = create_prefab_button(engine, "quit button", \
-BUTTON_QUIT, (sfIntRect){center.x - 150, center.y + 75, 300, 150});
+BUTTON_QUIT, (sfIntRect){center.x - 75, center.y + 37.5, 150, 75});
 	((sf_button_t *)get_component(quit, BUTTON))->on_clicked = &quit_app;
 	return (0);
 }

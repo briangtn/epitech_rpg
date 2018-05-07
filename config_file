@@ -1,21 +1,37 @@
-NB_SCENE : "2"
+NB_SCENE : "4"
 TILE_PER_SCENE (COL x LINES) : "32" x "32"
 
 SCENE 1:
 TILESET : "assets/tilesets/outside_b.png"
-BACKGROUND : "assets/tilesets/outside_c.png"
+BACKGROUND : "assets/backgrounds/hero_house.png"
 
-NPC_ID : "1" ; NPC_POS : "100" x "100" ; EVENT : "2" : "Hello World1"
-NPC_ID : "1" ; NPC_POS : "200" x "200" ; EVENT : "2" : "Hello World2"
+NPC_ID : "2" ; NPC_POS : "448" x "64" ; EVENT : "2" : "To the town. (UP)"
+NPC_ID : "2" ; NPC_POS : "480" x "704" ; EVENT : "2" : "Rare frogs\nDo NOT enter!"
 
-TILE_ID : "2" ; TILE_POS : "1" x "2" ; EVENT : "0" ; TILE_TYPE : "1" ; LAYER : "1"
-TILE_ID : "177" ; TILE_POS : "1" x "1" ; EVENT : "1" : "2" "100" x "50" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "16" x "1" ; EVENT : "1" : "2" "16" x "31" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "17" x "1" ; EVENT : "1" : "2" "17" x "31" ; TILE_TYPE : "1" ; LAYER : "1"
 
 SCENE 2:
-TILESET : "assets/tilesets/outside_c.png"
-BACKGROUND : "assets/tilesets/outside_b.png"
+TILESET : "assets/tilesets/outside_b.png"
+BACKGROUND : "assets/backgrounds/path_to_capital.png"
 
-NPC_ID : "1" ; NPC_POS : "100" x "100" ; EVENT : "2" : "Hello World1"
+TILE_ID : "1" ; TILE_POS : "16" x "32" ; EVENT : "1" : "1" "16" x "2" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "17" x "32" ; EVENT : "1" : "1" "17" x "2" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "17" x "1" ; EVENT : "1" : "3" "17" x "31" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "16" x "1" ; EVENT : "1" : "3" "16" x "31" ; TILE_TYPE : "1" ; LAYER : "1"
 
-TILE_ID : "2" ; TILE_POS : "1" x "2" ; EVENT : "0" ; TILE_TYPE : "1" ; LAYER : "1"
-TILE_ID : "177" ; TILE_POS : "1" x "1" ; EVENT : "1" : "1" "50" x "100" ; TILE_TYPE : "1" ; LAYER : "1"
+SCENE 3:
+TILESET : "assets/tilesets/outside_b.png"
+BACKGROUND : "assets/backgrounds/capitale.png"
+
+TILE_ID : "1" ; TILE_POS : "16" x "32" ; EVENT : "1" : "2" "16" x "2" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "17" x "32" ; EVENT : "1" : "2" "17" x "2" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "17" x "8" ; EVENT : "1" : "4" "17" x "30" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "16" x "8" ; EVENT : "1" : "4" "16" x "30" ; TILE_TYPE : "1" ; LAYER : "1"
+
+SCENE 4:
+TILESET : "assets/tilesets/outside_b.png"
+BACKGROUND : "assets/backgrounds/castle.png"
+
+TILE_ID : "1" ; TILE_POS : "16" x "31" ; EVENT : "1" : "3" "16" x "9" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "17" x "31" ; EVENT : "1" : "3" "17" x "9" ; TILE_TYPE : "1" ; LAYER : "1"

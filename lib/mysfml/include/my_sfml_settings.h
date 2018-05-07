@@ -20,7 +20,7 @@
 
 	/* Display the bounds of cameras (inner and outer) */
 	/* Scene bounds: blue/Camera bounds: white/Camera center: yellow point*/
-	#define DISPLAY_CAMERA_DEBUG false
+	#define DISPLAY_CAMERA_DEBUG true
 	/* Gravity force on axis Y */
 	#define GRAVITY_FORCE 0
 

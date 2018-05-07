@@ -11,6 +11,7 @@
 	#define __ASSETS__H_
 
 	#pragma region Spritesheets
+	#define SPRITESHEET_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
 	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
@@ -32,6 +33,7 @@
 	#pragma endregion
 
 	#pragma region Face
+	#define FACE_SIGN "assets/faces/sign.png"
 	#define FACE_SOLDIER "assets/faces/guard.png"
 	#pragma endregion
 
@@ -45,7 +47,7 @@
 		char *npc_face;
 	} npc_id_info_t;
 
-	#define NB_NPC_ID 1
+	#define NB_NPC_ID 2
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 

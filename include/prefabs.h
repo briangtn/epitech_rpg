@@ -23,6 +23,7 @@
 	#define PLAYER_LEFT_ANIM 1
 	#define PLAYER_RIGHT_ANIM 2
 	#define PLAYER_UP_ANIM 3
+	#define PLAYER_SPRINT_MUL 2
 	#define PLAYER_SPRITE_SHEET SPRITESHEET_PLAYER
 
 	gameobject_t *create_prefab_player(sf_engine_t *engine);
