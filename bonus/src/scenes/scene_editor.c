@@ -7,6 +7,7 @@
 
 #include "my.h"
 #include "my_sfml.h"
+#include "prefabs.h"
 #include "config.h"
 
 static int unload_editor_scene(sf_engine_t *engine, UNUSED void *data)
@@ -27,9 +28,8 @@ static int loop_editor_scene(sf_engine_t *engine, UNUSED void *data)
 
 static int load_editor_scene(sf_engine_t *engine, UNUSED void *data)
 {
-	create_prefab_grid(engine, (sfIntRect){20, 20, MAP_WIDTH, MAP_HEIGHT},\
-	"map_grid");
-	create_tileset_prefab(engine);
+	gameobject_t *tileset_go = create_tileset_prefab(engine);
+	create_map_prefab(engine, tileset_go);
 	return (0);
 }
 

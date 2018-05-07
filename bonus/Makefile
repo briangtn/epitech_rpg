@@ -18,12 +18,14 @@ SRC_PREFABS_DIR	=	$(realpath src/prefabs)
 SRC_PREFABS_FILES	=	prefab_grid.c		\
 				prefab_map_tile.c	\
 				prefab_tileset.c	\
+				map_prefab.c		\
 
 SRC_COMPONENTS_DIR	=	$(realpath src/components)
 
 SRC_COMPONENTS_FILES	=	grid_component.c	\
 				map_tile_component.c	\
 				tileset_component.c	\
+				map_component.c		\
 				tileset_updater.c	\
 
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))\

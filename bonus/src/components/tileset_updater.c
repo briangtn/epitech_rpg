@@ -35,7 +35,8 @@ static int click_detection_update(sf_grid_t *grid, sf_tileset_t *tileset)
 	if (!sfMouse_isButtonPressed(0))
 		return (0);
 	while (copy) {
-		mouse_pos = sfMouse_getPosition((sfWindow *)grid->engine->window);
+		mouse_pos = sfMouse_getPosition(\
+		(sfWindow *)grid->engine->window);
 		go = (gameobject_t *)copy->data;
 		if (select_tile(go, mouse_pos, tileset) == 84)
 			return (84);
