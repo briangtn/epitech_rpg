@@ -10,6 +10,7 @@
 #include "my_sfml.h"
 #include "prefabs.h"
 #include "parser.h"
+#include "rpg.h"
 
 int teleport(gameobject_t *tile, UNUSED gameobject_t *player)
 {
@@ -18,8 +19,8 @@ int teleport(gameobject_t *tile, UNUSED gameobject_t *player)
 
 	if (effect == NULL || ptg == NULL)
 		return (84);
-	ptg->player_start_pos = (sf_vector_3d_t){effect->teleport_coords.x, \
-effect->teleport_coords.y, 0};
+	ptg->player_start_pos = (sf_vector_3d_t){(effect->teleport_coords.x - 1\
+) * TILE_SIZE, (effect->teleport_coords.y - 1) * TILE_SIZE, 0};
 	ptg->active_scene = effect->teleport_scene;
 	effect->engine->change_scene(effect->engine, "game", ptg);
 	return (0);
