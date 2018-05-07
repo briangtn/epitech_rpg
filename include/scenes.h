@@ -12,6 +12,11 @@
 
 	#include "my_sfml.h"
 
+	typedef struct id_to_fight {
+		int id;
+		int (*first_fight)();
+	} id_to_fight_t;
+
 	sf_scene_t *create_game_scene(sf_engine_t *engine);
 	void load_parsing_to_game_scene(parser_to_game_t *ptg, \
 sf_engine_t *engine);
@@ -29,5 +34,7 @@ sf_engine_t *engine);
 	sf_scene_t *create_pause_scene(sf_engine_t *engine);
 
 	sf_scene_t *create_speak_scene(sf_engine_t *engine);
+
+	int run_fight(int id);
 
 #endif /* !__SCENES__H_ */
