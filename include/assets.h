@@ -19,10 +19,7 @@
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
 	#pragma endregion
 
-	#pragma region Tilesets
-	#define TILESET_OUTSIDE_B "assets/tilesets/outside_b.png"
-	#define TILESET_OUTSIDE_C "assets/tilesets/outside_c.png"
-	#pragma endregion
+	#define BACKGROUND_WORLDMAP "assets/backgrounds/worldmap.png"
 
 	#pragma region Particles
 	#define PARTICLE_DEFAULT "assets/particles/particle_default.png"
