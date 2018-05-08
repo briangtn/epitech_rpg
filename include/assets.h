@@ -14,6 +14,7 @@
 	#define SPRITESHEET_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
 	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
+	#define SPRITESHEET_KING "assets/spritesheets/king.png"
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#define SPRITE_SPEAK_BORDER "assets/spritesheets/speak_border.png"
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
@@ -41,6 +42,7 @@
 	#pragma region Face
 	#define FACE_SIGN "assets/faces/sign.png"
 	#define FACE_SOLDIER "assets/faces/guard.png"
+	#define FACE_KING "assets/faces/king.png"
 	#pragma endregion
 
 	#pragma region Font
@@ -53,7 +55,7 @@
 		char *npc_face;
 	} npc_id_info_t;
 
-	#define NB_NPC_ID 2
+	#define NB_NPC_ID 3
 	#define NB_PARTICLE_ID 2
 	#define NB_FIGHTS_ID 1
 
