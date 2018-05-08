@@ -25,3 +25,7 @@ const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 {{42, 80, 88, 133}, {42, 80, 88, 0}}, BURST, 1000, 20, \
 {200, 200, 0}, {0, 0, 0, 0}, {10, 20}},
 };
+
+int (*const FIGHTS_ID[NB_FIGHTS_ID])() = {
+	&first_fight
+};

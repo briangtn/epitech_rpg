@@ -8,13 +8,9 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-int (*fights[])() = {
-	&first_fight
-};
-
 int run_fight(int id, sf_engine_t *engine)
 {
-	return (fights[id - 1](engine));
+	return (FIGHTS_ID[id - 1](engine));
 }
 
 int first_fight(sf_engine_t *engine)
@@ -36,10 +32,6 @@ int first_fight(sf_engine_t *engine)
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy1", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	enemy = create_enemy(10, "assets/dragon.png", "Enemy2", eattacks);
-	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy3", eattacks);
-	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy4", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	engine->change_scene(engine, "fight", fight);
 	return (0);
