@@ -48,7 +48,6 @@ game_info_t *game_info, char **buffer)
 {
 	int i = 0;
 
-	scene->npc = NULL;
 	*buffer = get_next_line(fd);
 	while (*buffer != NULL && *buffer[0] != '\0') {
 		scene->npc = realloc_npc(scene->npc, i + 1);
@@ -57,18 +56,15 @@ game_info_t *game_info, char **buffer)
 			return (NULL);
 		}
 		scene->npc[i] = get_npc(scene->npc[i], *buffer);
-		if (scene->npc[i] == NULL) {
+		if (scene->npc[i++] == NULL) {
 			scene->npc = NULL;
 			return (scene);
 		}
-		i++;
 		free(*buffer);
 		*buffer = get_next_line(fd);
 	}
-	if (*buffer != NULL) {
-		free(*buffer);
-		*buffer = NULL;
-	}
+	free(*buffer);
+	*buffer = NULL;
 	return (scene);
 }
 
@@ -88,7 +84,6 @@ game_info_t *game_info, char **buffer)
 {
 	int i = 0;
 
-	scene->loot = NULL;
 	if (scene->npc != NULL)
 		*buffer = get_next_line(fd);
 	while (*buffer != NULL && *buffer[0] != '\0') {
@@ -98,17 +93,14 @@ game_info_t *game_info, char **buffer)
 			return (NULL);
 		}
 		scene->loot[i] = get_loot(scene->loot[i], *buffer);
-		if (scene->loot[i] == NULL) {
+		if (scene->loot[i++] == NULL) {
 			scene->loot = NULL;
 			return (scene);
 		}
-		i++;
 		free(*buffer);
 		*buffer = get_next_line(fd);
 	}
-	if (*buffer != NULL) {
-		free(*buffer);
-		*buffer = NULL;
-	}
+	free(*buffer);
+	*buffer = NULL;
 	return (scene);
 }
