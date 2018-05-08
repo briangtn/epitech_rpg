@@ -147,6 +147,8 @@ fight_player_t *player);
 	gameobject_t *create_prefab_tile(sf_engine_t *engine, \
 tile_info_t *info, char *tileset);
 
+	void set_teleport_tile(sf_collider_2d_t *col, sf_tile_effect_t *effect,\
+tile_info_t *info);
 	int teleport(gameobject_t *tile, gameobject_t *player);
 
 	#pragma endregion
