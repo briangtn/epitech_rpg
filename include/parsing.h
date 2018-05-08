@@ -31,7 +31,8 @@ enum tile_interactions {
 enum event_id {
 	TELEPORT = 1,
 	DIALOG = 2,
-	FIGHT = 3
+	FIGHT = 3,
+	PARTICLES = 4
 };
 
 typedef struct event_info event_info_t;
@@ -41,6 +42,7 @@ struct event_info {
 	int teleport[3];
 	char *text;
 	int fight_id;
+	int particles_id;
 };
 
 typedef struct npc_info npc_info_t;
@@ -156,6 +158,7 @@ event_info_t *get_event(char *buffer);
 event_info_t *get_teleport_id(event_info_t *event, char *buffer);
 event_info_t *get_text_id(event_info_t *event, char *buffer);
 event_info_t *get_fight_id(event_info_t *event, char *buffer);
+event_info_t *get_particles_id(event_info_t *event, char *buffer);
 
 /*check.c*/
 

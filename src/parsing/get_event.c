@@ -11,8 +11,24 @@
 const struct functions functions [] = {
 	{&get_teleport_id},
 	{&get_text_id},
-	{&get_fight_id}
+	{&get_fight_id},
+	{&get_particles_id}
 };
+
+event_info_t *get_particles_id(event_info_t *event, char *buffer)
+{
+	int n = 0;
+
+	for (int i = 0; buffer[i] != '\0'; i++) {
+		if (buffer[i] == '"')
+			n++;
+		if (buffer[i] == '"' && n == 9) {
+			event->particles_id = my_getnbr(&buffer[i + 1]);
+			break;
+		}
+	}
+	return (event);
+}
 
 event_info_t *get_fight_id(event_info_t *event, char *buffer)
 {
@@ -87,9 +103,9 @@ event_info_t *get_event(char *buffer)
 			break;
 		}
 	}
-	if (event->event_id > 0 && event->event_id <= 3)
+	if (event->event_id > 0 && event->event_id <= 4)
 		event = (functions[event->event_id - 1].ptrfunc)(event, buffer);
-	if (event->event_id <= 0 || event->event_id > 3)
+	if (event->event_id <= 0 || event->event_id > 4)
 		event->event_id = 0;
 	return (event);
 }

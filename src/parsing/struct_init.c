@@ -19,6 +19,7 @@ event_info_t *init_event(event_info_t *event)
 		event->teleport[i] = 0;
 	event->text = NULL;
 	event->fight_id = 0;
+	event->particles_id = 0;
 	return (event);
 }
 
