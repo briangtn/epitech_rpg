@@ -49,6 +49,7 @@ event_info_t *get_text_id(event_info_t *event, char *buffer)
 			break;
 		}
 	}
+	event->text = replace_new_line(event->text);
 	return (event);
 }
 

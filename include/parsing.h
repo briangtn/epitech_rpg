@@ -159,6 +159,7 @@ event_info_t *get_fight_id(event_info_t *event, char *buffer);
 
 /*check.c*/
 
+char *replace_new_line(char *str);
 int check_tile(tile_info_t *tile);
 int check_npc(npc_info_t *npc);
 int check_loot(loot_info_t *loot);
