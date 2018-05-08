@@ -131,7 +131,7 @@ struct my_sfml_system_settings {
 	int max_particle;
 	sf_vector_3d_t position;
 	sfIntRect bounding_box;
-	float time_between_burst;
+	sf_vector_2d_t time_between_burst;
 };
 
 struct my_sfml_particle_system {

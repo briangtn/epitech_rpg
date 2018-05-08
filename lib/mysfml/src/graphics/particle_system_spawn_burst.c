@@ -15,10 +15,12 @@ int spawn_burst(sf_particle_system_t *sys, float dt)
 	static float elapsed = 0;
 	sf_linked_list_t *particle_list = NULL;
 	int rate = sys->settings->emission_rate;
+	float random_nb = get_randomf_vector_2d(\
+sys->settings->time_between_burst);
 
 	elapsed += dt;
-	if (elapsed >= sys->settings->time_between_burst) {
-		elapsed -= sys->settings->time_between_burst;
+	if (elapsed >= random_nb) {
+		elapsed -= random_nb;
 		particle_list = create_particles(sys, rate);
 		return (sys->add_particles(sys, particle_list));
 	}
