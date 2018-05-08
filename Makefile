@@ -54,6 +54,7 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			tiles/prefab_tile_core.c		\
 			tiles/tile_teleport.c			\
 			tiles/tile_particles.c			\
+			tiles/tile_fight.c			\
 			ui/loadbar_prefab.c			\
 			ui/loadbar_back_prefab.c		\
 

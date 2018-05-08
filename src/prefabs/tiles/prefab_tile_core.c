@@ -49,7 +49,7 @@ tile_info_t *info, sf_engine_t *engine)
 		break;
 	case DIALOG:
 		break;
-	case FIGHT:
+	case FIGHT: set_fight_tile(col, effect, info);
 		break;
 	case PARTICLES: set_tile_particles(col, effect, info);
 		break;
