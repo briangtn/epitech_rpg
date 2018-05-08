@@ -59,11 +59,9 @@ static int spawn_required_particles(sf_particle_system_t *sys, float dt)
 	if (!sys->is_playing)
 		return (0);
 	switch (sys->settings->emission_type) {
-	case BURST: particle_list = create_particles(sys, rate);
-		sys->is_playing = false;
-		return (sys->add_particles(sys, particle_list));
+	case BURST: return (spawn_burst(sys, dt));
 	case OVERTIME: return (spawn_overtime(sys, dt));
-	case SINGLE: particle_list = create_particles(sys, 1);
+	case SINGLE: particle_list = create_particles(sys, rate);
 		sys->is_playing = false;
 		return (sys->add_particles(sys, particle_list));
 	default: return (84);

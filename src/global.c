@@ -20,5 +20,8 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 	{PARTICLE_DEFAULT, ADD, {45.0, 90.0}, {30, 60}, {.1, .1}, {1, 1}, \
 {{255, 51, 51, 255}, {255, 51, 51, 0}}, OVERTIME, 20, 20, \
-{0, 0, 0}, {0, 0, 0, 0}},
+{0, 0, 0}, {0, 0, 0, 0}, 0},
+	{PARTICLE_DEFAULT, ALPHA, {0, 360.0}, {20, 20}, {.03, .03}, {.5, .5}, \
+{{0, 0, 255, 255}, {0, 0, 255, 255}}, BURST, 1000, 20, \
+{200, 200, 0}, {0, 0, 0, 0}, 3},
 };

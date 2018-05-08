@@ -19,7 +19,7 @@ tile_info_t *info)
 	sf_particle_system_t *sys = NULL;
 	sfVector2i sys_pos = info->tile_pos;
 
-	if (info->event->particles_id > 1)
+	if (info->event->particles_id > NB_PARTICLE_ID)
 		return;
 	sys = create_particle_system(\
 &(PARTICLE_IDS[info->event->particles_id - 1]), "particle");

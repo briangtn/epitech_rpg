@@ -16,8 +16,7 @@ const sf_system_settings_t *set)
 	sys->settings = malloc(sizeof(*(sys->settings)));
 	if (sys->settings == NULL)
 		return (84);
-	sys->settings->texture_name = my_strdup(set->texture_name);
-	if (sys->settings->texture_name == NULL) {
+	if ((sys->settings->texture_name = my_strdup(set->texture_name)) == 0) {
 		free(sys->settings);
 		return (84);
 	}
@@ -33,6 +32,7 @@ const sf_system_settings_t *set)
 	sys->settings->max_particle = set->max_particle;
 	sys->settings->position = set->position;
 	sys->settings->bounding_box = set->bounding_box;
+	sys->settings->time_between_burst = set->time_between_burst;
 	return (0);
 }
 

@@ -131,6 +131,7 @@ struct my_sfml_system_settings {
 	int max_particle;
 	sf_vector_3d_t position;
 	sfIntRect bounding_box;
+	float time_between_burst;
 };
 
 struct my_sfml_particle_system {
@@ -185,6 +186,8 @@ sf_linked_list_t *particles);
 
 int particle_system_update(sf_particle_system_t *sys, float delta_time);
 int particle_system_render(sfRenderWindow *window, sf_particle_system_t *sys);
+
+int spawn_burst(sf_particle_system_t *sys, float dt);
 
 /* particles */
 sf_particle_t *create_particle(sf_particle_system_t *parent);
