@@ -19,6 +19,7 @@
 
 	#define TILE_SIZE 32
 
+	#include "my_sfml.h"
 	#include "assets.h"
 	#include "fight.h"
 	#include "parser.h"

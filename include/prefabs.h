@@ -151,6 +151,9 @@ tile_info_t *info, char *tileset);
 tile_info_t *info);
 	int teleport(gameobject_t *tile, gameobject_t *player);
 
+	void set_tile_particles(sf_collider_2d_t *col, \
+sf_tile_effect_t *effect, tile_info_t *info);
+
 	#pragma endregion
 
 #endif /* !__PREFABS__H_ */

@@ -51,7 +51,7 @@ tile_info_t *info, sf_engine_t *engine)
 		break;
 	case FIGHT:
 		break;
-	case PARTICLES:
+	case PARTICLES: set_tile_particles(col, effect, info);
 		break;
 	};
 }

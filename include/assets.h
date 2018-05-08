@@ -24,6 +24,10 @@
 	#define TILESET_OUTSIDE_C "assets/tilesets/outside_c.png"
 	#pragma endregion
 
+	#pragma region Particles
+	#define PARTICLE_DEFAULT "assets/particles/particle_default.png"
+	#pragma endregion
+
 	#pragma region Buttons
 	#define BUTTON_GAME "assets/buttons/button_game.png"
 	#define BUTTON_FIGHT "assets/buttons/button_fight.png"
@@ -48,7 +52,9 @@
 	} npc_id_info_t;
 
 	#define NB_NPC_ID 2
+	#define NB_PARTICLE_ID 1
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
+	extern const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID];
 
 #endif /* !__ASSETS__H_ */
