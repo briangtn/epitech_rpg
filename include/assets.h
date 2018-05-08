@@ -20,9 +20,14 @@
 	#pragma endregion
 
 	#define BACKGROUND_WORLDMAP "assets/backgrounds/worldmap.png"
+	#define BACKGROUND_FIGHT_PATH "assets/backgrounds/fight_path.png"
 
 	#pragma region Particles
 	#define PARTICLE_DEFAULT "assets/particles/particle_default.png"
+	#pragma endregion
+
+	#pragma region Enemys
+	#define ENEMY_ROGUE "assets/enemys/rogue.png"
 	#pragma endregion
 
 	#pragma region Buttons

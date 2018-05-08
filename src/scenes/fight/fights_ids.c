@@ -21,17 +21,13 @@ int first_fight(sf_engine_t *engine)
 	sf_linked_list_t *attacks = NULL;
 	sf_linked_list_t *eattacks = NULL;
 
-	add_attack(&attacks, "AttaqueKiTuTou", 10, 10);
-	add_attack(&attacks, "MegaAttack", 4, 5);
-	add_attack(&attacks, "SuperAttack", 2, 1);
+	add_attack(&attacks, "SwordAttack", 1, 1);
 	player = create_fight_player("assets/faces/player.png", attacks);
-	fight = create_fight("assets/test.png", player);
-	add_attack(&eattacks, "EnnemyAttack3", 3, 3);
-	add_attack(&eattacks, "EnnemyAttack2", 2, 2);
-	add_attack(&eattacks, "EnnemyAttack1", 1, 1);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy1", eattacks);
+	fight = create_fight(BACKGROUND_FIGHT_PATH, player);
+	add_attack(&eattacks, "SwordAttack", 1, 1);
+	enemy = create_enemy(5, ENEMY_ROGUE, "Rogue1", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
-	enemy = create_enemy(10, "assets/dragon.png", "Enemy2", eattacks);
+	enemy = create_enemy(5, ENEMY_ROGUE, "Rogue2", eattacks);
 	fight->ennemies = sf_push(enemy, my_strdup("enemy"), fight->ennemies);
 	engine->change_scene(engine, "fight", fight);
 	return (0);
