@@ -24,9 +24,11 @@ TILE_SIZE, TILE_SIZE};
 static int setup_components(sf_engine_t *engine, gameobject_t *player)
 {
 	sf_animation_2d_t *anim = get_component(player, ANIMATION_2D);
+	sf_collider_2d_t *col = get_component(player, COLLIDER_2D);
 
 	setup_animation(engine, anim);
 	register_animation(engine, anim, 10);
+	col->hitbox = (sfIntRect){9, 22, 14, 10};
 	engine->add_gameobject(engine, player);
 	engine->add_physic_object(engine, player);
 	engine->add_update(engine, player, (UPDATER)&player_movement);
