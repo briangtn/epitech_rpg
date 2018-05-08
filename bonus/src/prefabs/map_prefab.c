@@ -9,7 +9,8 @@
 #include "my_sfml.h"
 #include "config.h"
 
-static int setup_components(sf_engine_t *engine, gameobject_t *go, gameobject_t *tileset_go)
+static int setup_components(sf_engine_t *engine, gameobject_t *go, \
+gameobject_t *tileset_go)
 {
 	sf_map_t *map = get_component(go, MAP);
 	gameobject_t *grid_go = NULL;
@@ -42,6 +43,7 @@ gameobject_t *create_map_prefab(sf_engine_t *engine, gameobject_t *tileset_go)
 	if (add_components(go) == 84 ||\
 	setup_components(engine, go, tileset_go) == 84)
 		return (NULL);
-	engine->add_update(engine, get_component(go, MAP), (UPDATER)&update_map_comp);
+	engine->add_update(engine, get_component(go, MAP), \
+(UPDATER)&update_map_comp);
 	return (go);
 }

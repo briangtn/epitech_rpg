@@ -43,9 +43,11 @@ int map_tile_update(gameobject_t *go, UNUSED int delta_time)
 		anim->sprite = tile->sprite_none;
 		sfSprite_setScale(anim->sprite, (sfVector2f){scale, scale});
 	} else {
-		anim->sprite = get_sprite(tile->engine, "assets/tilesets/outside_b.png");
+		anim->sprite = get_sprite(tile->engine, \
+"assets/tilesets/outside_b.png");
 		tile_pos = tile_id_to_pos(tile->tile_id, anim->sprite);
-		sfSprite_setTextureRect(anim->sprite, (sfIntRect){tile_pos.x * TILE_SIZE, tile_pos.y * TILE_SIZE, TILE_SIZE, TILE_SIZE});
+		sfSprite_setTextureRect(anim->sprite, (sfIntRect){tile_pos.x * \
+TILE_SIZE, tile_pos.y * TILE_SIZE, TILE_SIZE, TILE_SIZE});
 	}
 	sfSprite_setPosition(anim->sprite,\
 	(sfVector2f){off.x + tile->x * TILE_SIZE, off.y + tile->y * TILE_SIZE});
