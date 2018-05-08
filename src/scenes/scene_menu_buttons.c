@@ -42,3 +42,10 @@ void goto_menu(sf_button_t *button)
 	quit_pause(engine);
 	engine->change_scene(engine, "menu", engine->data);
 }
+
+void end_menu(sf_button_t *button)
+{
+	sf_engine_t *engine = button->engine;
+
+	engine->change_scene(engine, "menu", engine->data);
+}

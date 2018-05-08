@@ -57,23 +57,21 @@ WINDOW_SIZE_Y, 32}, WINDOW_NAME, sfClose, NULL);
 int load_scenes(sf_engine_t *engine)
 {
 	if (create_game_scene(engine) == NULL) {
-		my_puterror("[ERROR]Could not create game scene!\n");
 		return (84);
 	}
 	if (create_fight_scene(engine, NULL) == NULL) {
-		my_puterror("[ERROR]Could not create fight scene!\n");
 		return (84);
 	}
 	if (create_menu_scene(engine) == NULL) {
-		my_puterror("[ERROR]Could not create menu scene!\n");
 		return (84);
 	}
 	if (create_pause_scene(engine) == NULL) {
-		my_puterror("[ERROR]Could not create pause scene!\n");
 		return (84);
 	}
 	if (create_speak_scene(engine) == NULL) {
-		my_puterror("[ERROR]Could not create speak scene!\n");
+		return (84);
+	}
+	if (create_end_scene(engine) == NULL) {
 		return (84);
 	}
 	return (0);
