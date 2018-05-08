@@ -26,11 +26,12 @@ void setup_buttons(sf_engine_t *engine)
 &quit_app;
 }
 
-int load_menu_scene(sf_engine_t *engine, UNUSED void *data)
+int load_menu_scene(sf_engine_t *engine, parser_to_game_t *data)
 {
 	if (engine == NULL)
 		return (84);
 	setup_buttons(engine);
+	data->player_start_pos = (sf_vector_3d_t){736, 352, 0};
 	return (0);
 }
 
