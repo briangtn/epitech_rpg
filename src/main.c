@@ -86,7 +86,7 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	engine->change_scene(engine, "intro", ptg);
+	engine->change_scene(engine, "menu", ptg);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)
