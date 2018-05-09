@@ -56,25 +56,23 @@ WINDOW_SIZE_Y, 32}, WINDOW_NAME, sfClose, NULL);
 
 int load_scenes(sf_engine_t *engine)
 {
-	if (create_game_scene(engine) == NULL) {
-		return (84);
-	}
-	if (create_fight_scene(engine, NULL) == NULL) {
-		return (84);
-	}
-	if (create_menu_scene(engine) == NULL) {
-		return (84);
-	}
-	if (create_pause_scene(engine) == NULL) {
-		return (84);
-	}
-	if (create_speak_scene(engine) == NULL) {
-		return (84);
-	}
-	if (create_end_scene(engine) == NULL) {
-		return (84);
-	}
-	return (0);
+	int ret = 0;
+
+	if (create_game_scene(engine) == NULL)
+		ret = (84);
+	if (create_fight_scene(engine, NULL) == NULL)
+		ret = (84);
+	if (create_menu_scene(engine) == NULL)
+		ret = (84);
+	if (create_pause_scene(engine) == NULL)
+		ret = (84);
+	if (create_speak_scene(engine) == NULL)
+		ret = (84);
+	if (create_end_scene(engine) == NULL)
+		ret = (84);
+	if (create_intro_scene(engine) == NULL)
+		ret = (84);
+	return (ret);
 }
 
 int main(UNUSED int ac, UNUSED char **av, char **env)
@@ -88,7 +86,7 @@ int main(UNUSED int ac, UNUSED char **av, char **env)
 		engine->destroy(engine);
 		return (84);
 	}
-	engine->change_scene(engine, "menu", ptg);
+	engine->change_scene(engine, "intro", ptg);
 	while (sfRenderWindow_isOpen(engine->window)) {
 		engine->update(engine);
 		if (engine->current_scene)

@@ -20,9 +20,12 @@
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
 	#pragma endregion
 
+	#pragma region Background
 	#define BACKGROUND_WORLDMAP "assets/backgrounds/worldmap.png"
 	#define BACKGROUND_FIGHT_PATH "assets/backgrounds/fight_path.png"
 	#define BACKGROUND_END "assets/backgrounds/end.png"
+	#define BACKGROUND_INTRO "assets/backgrounds/intro.png"
+	#pragma endregion
 
 	#pragma region Particles
 	#define PARTICLE_DEFAULT "assets/particles/particle_default.png"

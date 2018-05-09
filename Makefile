@@ -22,7 +22,8 @@ SRC_SCENES_FILES=	scene_game.c					\
 			scene_menu_buttons.c				\
 			scene_pause.c					\
 			scene_speak.c					\
-			scene_end.c
+			scene_end.c					\
+			scene_intro.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
