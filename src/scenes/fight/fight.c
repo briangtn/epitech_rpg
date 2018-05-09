@@ -52,6 +52,10 @@ sf_fight_arrow_t *arrow) {
 		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
+	if (my_sf_list_size(fight->ennemies) == 0) {
+		end_fight(fight, engine);
+		return (0);
+	}
 	if (fight->player->mana > 0)
 		select_attack(engine, fight, false);
 	else
