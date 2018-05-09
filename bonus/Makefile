@@ -28,6 +28,11 @@ SRC_COMPONENTS_FILES	=	grid_component.c	\
 				map_component.c		\
 				tileset_updater.c	\
 
+SRC_UTILS_DIR		=	$(realpath src/utils)
+
+SRC_UTILS_FILES		=	linked_list_utils.c	\
+				keyboard_utils.c	\
+
 SRC		=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))\
 			$(addprefix $(SRC_SCENES_DIR)/, $(SRC_SCENES_FILES))\
 			$(addprefix $(SRC_PREFABS_DIR)/, $(SRC_PREFABS_FILES))\
