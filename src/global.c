@@ -24,7 +24,7 @@ const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 {0, 0, 0}, {0, 0, 0, 0}, {0, 0}},
 	{PARTICLE_DEFAULT, ALPHA, {0, 360.0}, {20, 20}, {.01, .01}, {.8, .8}, \
 {{42, 80, 88, 133}, {42, 80, 88, 0}}, BURST, 1000, 20, \
-{200, 200, 0}, {0, 0, 0, 0}, {10, 20}},
+{200, 200, 0}, {0, 0, 0, 0}, {3, 6}},
 };
 
 int (*const FIGHTS_ID[NB_FIGHTS_ID])() = {

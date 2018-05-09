@@ -14,12 +14,13 @@
 static int load_game_scene(sf_engine_t *engine, parser_to_game_t *data)
 {
 	sf_camera_t *camera = engine->current_scene->camera;
-	gameobject_t *player = NULL;
+	gameobject_t *player = engine->get_gameobject(engine, "player");
 	sf_animation_2d_t *anim = NULL;
 
 	if (engine == NULL || camera == NULL || data == NULL)
 		return (84);
-	player = create_prefab_player(engine);
+	if (player == NULL)
+		player = create_prefab_player(engine);
 	((sf_transform_t *)get_component(player, TRANSFORM))->position = \
 data->player_start_pos;
 	anim = ((sf_animation_2d_t *)get_component(player, ANIMATION_2D));
@@ -66,9 +67,24 @@ static int loop_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 
 static int unload_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 {
+	sf_linked_list_t *curr_go = engine->current_scene->gameobjects;
+	sf_linked_list_t *next = NULL;
+	gameobject_t *go = NULL;
+
 	if (engine == NULL)
 		return (84);
-	reset_scene(engine->current_scene);
+	while (curr_go != NULL) {
+		next = curr_go->next;
+		go = curr_go->data;
+		if (my_strcmp(go->name, "player"))
+			engine->destroy_gameobject(engine, go);
+		curr_go = next;
+	}
+	engine->current_scene->graphical_engine->particle_manager->destroy(\
+engine->current_scene->graphical_engine->particle_manager);
+	engine->current_scene->graphical_engine->particle_manager = \
+create_manager();
+	engine->remove_update(engine, engine->current_scene->physic_engine);
 	return (0);
 }
 
