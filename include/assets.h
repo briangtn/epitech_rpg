@@ -47,7 +47,7 @@
 	#pragma endregion
 
 	#pragma region Font
-	#define FONT_SPEAK "assets/crazy_krabs.otf"
+	#define FONT_SPEAK "assets/fonts/proggyclean.ttf"
 	#pragma endregion
 
 	typedef struct npc_id_info {
