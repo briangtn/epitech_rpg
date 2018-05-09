@@ -84,3 +84,6 @@ re:		fclean all
 debug:		CFLAGS += -g
 debug:		fclean make_libs_debug $(OBJ)
 		$(CC) -o $(NAME) $(OBJ) $(LIB_FLAGS)
+
+hitbox_helper:
+		$(CC) -o hitbox_helper src/hitbox_helper.c

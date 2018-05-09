@@ -43,17 +43,15 @@ tile_info_t *info, sf_engine_t *engine)
 	sf_tile_effect_t *effect = go->add_custom_component(go, \
 (void *(*)(gameobject_t *))&create_tile_effect, TILE_EFFECT);
 
+	effect->engine = engine;
 	switch (info->event->event_id) {
-	case TELEPORT:
-		col->triggered_func = &teleport;
-		effect->engine = engine;
-		effect->teleport_scene = info->event->teleport[0];
-		effect->teleport_coords = (sfVector2i){info->event->teleport[1]\
-, info->event->teleport[2]};
+	case TELEPORT: set_teleport_tile(col, effect, info);
 		break;
 	case DIALOG:
 		break;
-	case FIGHT:
+	case FIGHT: set_fight_tile(col, effect, info);
+		break;
+	case PARTICLES: set_tile_particles(col, effect, info);
 		break;
 	};
 }

@@ -63,7 +63,8 @@ SRC_FILES_GRAPH	=	graphical_engine_add_to_layer.c			\
 			particle_system_add_particle.c			\
 			particle_system_core.c				\
 			particle_system_render.c			\
-			particle_system_update.c
+			particle_system_update.c			\
+			particle_system_spawn_burst.c
 
 SRC_DIR_ENGINE	=	$(realpath src/main_engine)
 

@@ -25,8 +25,8 @@ static void set_info(sf_speak_t *speak, const char *text, const char *portrait)
 	speak->portrait = my_strdup(portrait);
 	if (speak->text != NULL) {
 		sfText_setString(speak->text_comp, speak->text);
-		sfText_setColor(speak->text_comp, sfBlack);
-		sfText_setCharacterSize(speak->text_comp, 20);
+		sfText_setColor(speak->text_comp, sfWhite);
+		sfText_setCharacterSize(speak->text_comp, 32);
 	}
 }
 
@@ -46,7 +46,7 @@ static void set_font(sf_speak_t *speak, const char *font)
 static void show(sf_speak_t *speak, sf_engine_t *engine)
 {
 	sfVector2f pos_world_pos = sfRenderWindow_mapPixelToCoords(\
-engine->window, (sfVector2i){350, 775}, sfRenderWindow_getView(engine->window));
+engine->window, (sfVector2i){350, 750}, sfRenderWindow_getView(engine->window));
 	sfVector2f face_pos = {80, 400};
 	gameobject_t *face = NULL;
 	sfSprite *sp = NULL;

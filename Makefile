@@ -21,7 +21,9 @@ SRC_SCENES_FILES=	scene_game.c					\
 			scene_menu.c					\
 			scene_menu_buttons.c				\
 			scene_pause.c					\
-			scene_speak.c
+			scene_speak.c					\
+			scene_end.c					\
+			scene_intro.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
@@ -53,6 +55,8 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			npc/prefab_npc_core.c			\
 			tiles/prefab_tile_core.c		\
 			tiles/tile_teleport.c			\
+			tiles/tile_particles.c			\
+			tiles/tile_fight.c			\
 			ui/loadbar_prefab.c			\
 			ui/loadbar_back_prefab.c		\
 

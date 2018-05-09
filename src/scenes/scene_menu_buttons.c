@@ -20,12 +20,13 @@ void launch_game(sf_button_t *button)
 	if (ptg == NULL)
 		return;
 	ptg->active_scene = 1;
-	engine->change_scene(engine, "game", ptg);
+	engine->change_scene(engine, "intro", ptg);
 }
 
 void launch_fight(sf_button_t *button)
 {
 	sf_engine_t *engine = button->engine;
+
 	run_fight(1, engine);
 }
 
@@ -39,5 +40,12 @@ void goto_menu(sf_button_t *button)
 	sf_engine_t *engine = button->engine;
 
 	quit_pause(engine);
+	engine->change_scene(engine, "menu", engine->data);
+}
+
+void end_menu(sf_button_t *button)
+{
+	sf_engine_t *engine = button->engine;
+
 	engine->change_scene(engine, "menu", engine->data);
 }

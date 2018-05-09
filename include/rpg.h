@@ -10,7 +10,7 @@
 #ifndef __RPG__H_
 	#define __RPG__H_
 
-	#define FPS_LIMIT 60
+	#define FPS_LIMIT 30
 
 	#define WINDOW_SIZE_X 1600
 	#define WINDOW_SIZE_Y 960
@@ -19,6 +19,7 @@
 
 	#define TILE_SIZE 32
 
+	#include "my_sfml.h"
 	#include "assets.h"
 	#include "fight.h"
 	#include "parser.h"

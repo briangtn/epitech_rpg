@@ -29,6 +29,7 @@ static int loop_editor_scene(sf_engine_t *engine, UNUSED void *data)
 static int load_editor_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	gameobject_t *tileset_go = create_tileset_prefab(engine);
+
 	create_map_prefab(engine, tileset_go);
 	return (0);
 }

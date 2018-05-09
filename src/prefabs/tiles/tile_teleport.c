@@ -25,3 +25,12 @@ int teleport(gameobject_t *tile, UNUSED gameobject_t *player)
 	effect->engine->change_scene(effect->engine, "game", ptg);
 	return (0);
 }
+
+void set_teleport_tile(sf_collider_2d_t *col, sf_tile_effect_t *effect, \
+tile_info_t *info)
+{
+	col->triggered_func = &teleport;
+	effect->teleport_scene = info->event->teleport[0];
+	effect->teleport_coords = (sfVector2i){info->event->teleport[1]\
+, info->event->teleport[2]};
+}
