@@ -53,10 +53,12 @@ engine->current_scene->updaters);
 static void update_current_scene(sf_engine_t *engine, int delta_time)
 {
 	sf_linked_list_t *curr_index = NULL;
+	sf_scene_t *start_scene = engine->current_scene;
 
 	if (engine->current_scene)
 		curr_index = engine->current_scene->updaters;
-	while (curr_index != NULL && engine->scene_changed == false) {
+	while (curr_index != NULL && engine->scene_changed == false && \
+engine->current_scene == start_scene) {
 		((updater_t *)curr_index->data)->update(\
 ((updater_t *)curr_index->data)->object, delta_time);
 		if (engine->scene_changed)
