@@ -60,7 +60,7 @@
 	} npc_id_info_t;
 
 	#define NB_NPC_ID 3
-	#define NB_PARTICLE_ID 3
+	#define NB_PARTICLE_ID 4
 	#define NB_FIGHTS_ID 1
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
