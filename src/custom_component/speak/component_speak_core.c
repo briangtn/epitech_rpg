@@ -96,5 +96,6 @@ sf_speak_t *create_speak_component(gameobject_t *parent)
 	speak->set_font = &set_font;
 	speak->set_info = &set_info;
 	speak->show = &show;
+	speak->end_func = NULL;
 	return (speak);
 }

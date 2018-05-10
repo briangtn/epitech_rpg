@@ -12,10 +12,11 @@
 #include "assets.h"
 
 const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
-	{1, SPRITESHEET_GUARD, FACE_SOLDIER},
-	{2, SPRITESHEET_SIGN, FACE_SIGN},
-	{3, SPRITESHEET_KING, FACE_KING},
-	{0, NULL, NULL}
+{1, SS_GUARD, FACE_SOLDIER, NULL, {0, 0, 32, 32}, {0, 0, 32, 32}},
+{2, SS_SIGN, FACE_SIGN, NULL, {0, 0, 32, 32}, {0, 0, 32, 32}},
+{3, SS_KING, FACE_KING, &king_end_game, {0, 0, 32, 32}, {0, 0, 32, 32}},
+{4, SS_BOSS, FACE_EVILKING, &evil_king_fight, {0, 0, 64, 64}, {0, 0, 128, 64}},
+{0, NULL, NULL, NULL, {0, 0, 0, 0}, {0, 0, 0, 0}}
 };
 
 const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
@@ -34,5 +35,6 @@ const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 };
 
 int (*const FIGHTS_ID[NB_FIGHTS_ID])() = {
-	&first_fight
+	&first_fight,
+	&boss_fight
 };

@@ -15,8 +15,9 @@ void create_npc(sf_engine_t *engine, npc_info_t *info)
 	sf_animation_2d_t *anim = get_component(new_npc, ANIMATION_2D);
 	sf_transform_t *tr = get_component(new_npc, TRANSFORM);
 	sf_npc_t *npc = get_component(new_npc, NPC);
+	sf_collider_2d_t *col = get_component(new_npc, COLLIDER_2D);
 
-	if (new_npc == NULL || anim == NULL || tr == NULL || npc == NULL)
+	if (new_npc == NULL || anim == NULL || tr == NULL || !npc || !col)
 		return;
 	if (info->npc_id > NB_NPC_ID) {
 		engine->destroy_gameobject(engine, new_npc);
@@ -27,6 +28,10 @@ NPC_IDS[info->npc_id - 1].npc_visual));
 	tr->position = (sf_vector_3d_t){info->npc_pos.x, info->npc_pos.y, 0};
 	npc->speak->set_info(npc->speak, info->event->text, \
 NPC_IDS[info->npc_id - 1].npc_face);
+	npc->speak->end_func = NPC_IDS[info->npc_id - 1].end_func;
+	anim->max_rect = NPC_IDS[info->npc_id - 1].max_rect;
+	anim->view_rect = NPC_IDS[info->npc_id - 1].frame;
+	col->hitbox = anim->view_rect;
 }
 
 void create_invisible_walls(sf_engine_t *engine, game_info_t *info)

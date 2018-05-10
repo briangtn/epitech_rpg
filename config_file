@@ -546,6 +546,7 @@ TILESET : "assets/tilesets/enemies.png"
 BACKGROUND : "assets/backgrounds/castle.png"
 
 NPC_ID : "3" ; NPC_POS : "96" x "192" ; EVENT : "2" : "You saved me!\nYou deserve my kingdom."
+NPC_ID : "4" ; NPC_POS : "464" x "288" ; EVENT : "2" : "Prepare yourself hero!"
 
 TILE_ID : "1" ; TILE_POS : "16" x "31" ; EVENT : "1" : "3" "16" x "9" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "1" ; TILE_POS : "17" x "31" ; EVENT : "1" : "3" "17" x "9" ; TILE_TYPE : "1" ; LAYER : "1"

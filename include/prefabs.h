@@ -36,9 +36,9 @@
 	#pragma region NpcPrefab
 
 	#define NPC_MOVEMENT_SPEED_MUL 3
-	#define NPC_ANIMATION_SPEED .2
+	#define NPC_ANIMATION_SPEED .5
 	#define NPC_NB_FRAME_ANIMATION 4
-	#define NPC_SPRITE_SHEET SPRITESHEET_GUARD
+	#define NPC_SPRITE_SHEET SS_GUARD
 
 	gameobject_t *create_prefab_npc(sf_engine_t *engine);
 	void npc_interaction(gameobject_t *npc, sf_engine_t *engine);
@@ -84,6 +84,7 @@
 		sfText *text_comp;
 		sfFont *font;
 		char *portrait;
+		int (*end_func)(sf_engine_t *engine, gameobject_t *parent);
 		void (*show)(struct speak_s *speak, sf_engine_t *engine);
 		void (*set_font)(struct speak_s *speak, const char *font);
 		void (*set_info)(struct speak_s *speak, const char *text, \
