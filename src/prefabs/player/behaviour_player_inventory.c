@@ -12,25 +12,25 @@
 void move_window_mouse(sf_inventory_t *inv)
 {
 	static bool is_hold = false;
-	static sfVector2i offset = {0, 0};
-	sfVector2i m_pos = sfMouse_getPositionRenderWindow(inv->engine->window);
-	sfIntRect move_box = {inv->screen_pos.x, inv->screen_pos.y, 32, 32};
+	static sfVector2i off = {0, 0};
+	static sfVector2i last = {0, 0};
+	sfVector2i pos = sfMouse_getPositionRenderWindow(inv->engine->window);
+	sfIntRect box = {inv->screen_pos.x, inv->screen_pos.y, 32, 32};
 
 	if (!sfMouse_isButtonPressed(sfMouseLeft)) {
+		if (box.left >= WINDOW_SIZE_X || box.top >= WINDOW_SIZE_Y)
+			inv->screen_pos = last;
 		is_hold = false;
 		return;
 	}
-	if (m_pos.x >= move_box.left && m_pos.y >= move_box.top && \
-m_pos.x <= move_box.left + move_box.width && \
-m_pos.y <= move_box.top + move_box.height && !is_hold) {
-		offset.x = move_box.left - m_pos.x;
-		offset.y = move_box.top - m_pos.y;
+	if (pos.x >= box.left && pos.y >= box.top && pos.x <= box.left + \
+box.width && pos.y <= box.top + box.height && !is_hold) {
+		last = (sfVector2i){box.left, box.top};
+		off = (sfVector2i){box.left - pos.x, box.top - pos.y};
 		is_hold = true;
 	}
-	if (is_hold) {
-		inv->screen_pos.x = m_pos.x + offset.x;
-		inv->screen_pos.y = m_pos.y + offset.y;
-	}
+	if (is_hold)
+		inv->screen_pos = (sfVector2i){pos.x + off.x, pos.y + off.y};
 }
 
 int player_inventory(gameobject_t *player, UNUSED int delta_time)
