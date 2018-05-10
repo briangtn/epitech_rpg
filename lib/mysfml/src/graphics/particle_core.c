@@ -23,21 +23,22 @@ static sf_vector_3d_t get_velocity(sf_system_settings_t *param, float rotation)
 
 sf_particle_t *create_particle(sf_particle_system_t *parent)
 {
-	sf_particle_t *particle = NULL;
-	sf_system_settings_t *param = NULL;
+	sf_particle_t *particle = particle = malloc(sizeof(*particle));
+	sf_system_settings_t *param = parent->settings;
 
-	if (parent == NULL)
-		return (NULL);
-	param = parent->settings;
-	particle = malloc(sizeof(*particle));
 	if (particle == NULL)
 		return (NULL);
 	particle->parent = parent;
 	particle->life_time = get_randomf_vector_2d(param->starting_life_time);
 	particle->s_life_time = particle->life_time;
 	particle->size = get_randomf_vector_2d(param->starting_size);
-	particle->position = param->position;
-	particle->old_pos = param->position;
+	particle->position.x = param->position.x + param->bounding_box.left;
+	if (param->bounding_box.width)
+		particle->position.x += rand() % param->bounding_box.width;
+	particle->position.y = param->position.y + param->bounding_box.top;
+	if (param->bounding_box.height)
+		particle->position.y += rand() % param->bounding_box.height;
+	particle->old_pos = particle->position;
 	particle->rotation = get_randomf_vector_2d(param->starting_rotation);
 	particle->rotation = particle->rotation * M_PI / 180.0;
 	particle->velocity = get_velocity(param, particle->rotation);

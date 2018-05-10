@@ -308,6 +308,7 @@ TILE_ID : "1" ; TILE_POS : "17" x "32" ; EVENT : "1" : "2" "17" x "2" ; TILE_TYP
 TILE_ID : "1" ; TILE_POS : "18" x "32" ; EVENT : "1" : "2" "18" x "2" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "1" ; TILE_POS : "17" x "8" ; EVENT : "1" : "4" "17" x "30" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "1" ; TILE_POS : "16" x "8" ; EVENT : "1" : "4" "16" x "30" ; TILE_TYPE : "1" ; LAYER : "1"
+TILE_ID : "1" ; TILE_POS : "10" x "25" ; EVENT : "4" : "3" ; TILE_TYPE : "1" ; LAYER : "1"
 TILE_ID : "1" ; TILE_POS : "1" x "31" ; EVENT : "0" ; TILE_TYPE : "2" ; LAYER : "1"
 TILE_ID : "1" ; TILE_POS : "2" x "31" ; EVENT : "0" ; TILE_TYPE : "2" ; LAYER : "1"
 TILE_ID : "1" ; TILE_POS : "3" x "31" ; EVENT : "0" ; TILE_TYPE : "2" ; LAYER : "1"

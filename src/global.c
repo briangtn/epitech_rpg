@@ -25,6 +25,9 @@ const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 	{PARTICLE_DEFAULT, ALPHA, {0, 360.0}, {20, 20}, {.01, .01}, {.8, .8}, \
 {{42, 80, 88, 133}, {42, 80, 88, 0}}, BURST, 1000, 20, \
 {200, 200, 0}, {0, 0, 0, 0}, {3, 6}},
+	{PARTICLE_DEFAULT, ALPHA, {45.0, 90.0}, {30, 60}, {.1, .1}, {1, 1}, \
+{{50, 50, 50, 255}, {50, 50, 50, 0}}, OVERTIME, 20, 20, \
+{0, 0, 0}, {10, -10, 0, 0}, {0, 0}},
 };
 
 int (*const FIGHTS_ID[NB_FIGHTS_ID])() = {
