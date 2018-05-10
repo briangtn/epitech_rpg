@@ -4,7 +4,6 @@
 ** File description:
 ** inventory test
 */
-
 #include "my_sfml.h"
 #include "my.h"
 #include "prefabs.h"

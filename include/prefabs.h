@@ -183,14 +183,6 @@ tile_info_t *info);
 
 	extern const items_t ITEM_LIST[ITEM_NULL + 1];
 
-	typedef struct sf_item {
-		void (*destroy)();
-		gameobject_t *parent;
-		e_itemtype_t type;
-		gameobject_t *target;
-		float value;
-	} sf_item_t;
-
 	typedef struct s_inventory_comp {
 		void (*destroy)();
 		gameobject_t *parent;
@@ -199,10 +191,15 @@ tile_info_t *info);
 		bool is_opened;
 		float hp;
 		float s_atk;
+		gameobject_t *prgbar_atk;
 		float s_def;
+		gameobject_t *prgbar_def;
 		float s_dex;
+		gameobject_t *prgbar_dex;
 		float s_int;
+		gameobject_t *prgbar_int;
 		items_t backpack[INV_SIZE];
+		sfSprite *bp_sprite[INV_SIZE];
 		void (*toggle)(struct s_inventory_comp *);
 	} sf_inventory_t;
 
@@ -210,5 +207,4 @@ tile_info_t *info);
 	int player_inventory(gameobject_t *player, int delta_time);
 
 	#pragma endregion
-
 #endif /* !__PREFABS__H_ */

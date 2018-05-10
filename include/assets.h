@@ -38,6 +38,7 @@
 	#define BUTTON_QUIT "assets/buttons/button_quit.png"
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#define BUTTON_MENU "assets/buttons/button_menu.png"
+	#define PANEL_INVENTORY "assets/buttons/inventory.png"
 	#pragma endregion
 
 	#pragma region Face
