@@ -56,6 +56,7 @@ sf_fight_arrow_t *arrow) {
 		sf_remove_node(elem, &fight->ennemies);
 	}
 	if (my_sf_list_size(fight->ennemies) == 0) {
+		engine->destroy_gameobject(engine, arrow->parent);
 		end_fight(fight, engine);
 		return (0);
 	}
