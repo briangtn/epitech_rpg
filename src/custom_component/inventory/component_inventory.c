@@ -69,6 +69,7 @@ sf_inventory_t *create_inventory(gameobject_t *parent)
 	new->destroy = &destroy_inventory;
 	new->parent = parent;
 	new->engine = NULL;
+	new->screen_pos = (sfVector2i){200, 300};
 	new->sprite = NULL;
 	new->is_opened = false;
 	new->hp = 1.0f;

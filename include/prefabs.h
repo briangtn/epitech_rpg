@@ -187,6 +187,7 @@ tile_info_t *info);
 		void (*destroy)();
 		gameobject_t *parent;
 		sf_engine_t *engine;
+		sfVector2i screen_pos;
 		sfSprite *sprite;
 		bool is_opened;
 		float hp;
@@ -205,6 +206,7 @@ tile_info_t *info);
 
 	sf_inventory_t *create_inventory(gameobject_t *parent);
 	int player_inventory(gameobject_t *player, int delta_time);
+	void inventory_toggle(sf_inventory_t *self);
 
 	#pragma endregion
 #endif /* !__PREFABS__H_ */
