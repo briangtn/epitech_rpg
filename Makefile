@@ -37,12 +37,14 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			ui/load_bar_component.c				\
 			speak/component_speak_core.c			\
 			speak/speak_update.c				\
-			tiles/tile_effect_component.c
+			tiles/tile_effect_component.c			\
+			inventory/component_inventory.c			\
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
 SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			player/behaviour_player_movement.c	\
+			player/behaviour_player_inventory.c	\
 			fight/prefab_fight_background.c		\
 			fight/prefab_fight_player.c		\
 			fight/prefab_fight_enemy.c		\

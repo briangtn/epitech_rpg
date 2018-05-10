@@ -55,7 +55,8 @@
 		FENEMY,
 		LOADBAR,
 		FPLAYER,
-		TILE_EFFECT
+		TILE_EFFECT,
+		INVENTORY
 	};
 
 	#pragma region Interaction
@@ -157,6 +158,56 @@ sf_tile_effect_t *effect, tile_info_t *info);
 
 	void set_fight_tile(sf_collider_2d_t *col, sf_tile_effect_t *effect, \
 tile_info_t *info);
+
+	#pragma endregion
+
+	#pragma region Inventory
+
+	#define INV_SIZE (10)
+
+	typedef enum e_items {
+		ITEM_POTION_S,
+		ITEM_POTION_L,
+		ITEM_SPELL_A,
+		ITEM_SPELL_B,
+		ITEM_SPELL_C,
+		ITEM_NULL
+	} e_itemtype_t;
+
+	typedef struct s_items {
+		char *name;
+		char *sprite_path;
+		float value;
+		bool self_use;
+	} items_t;
+
+	extern const items_t ITEM_LIST[ITEM_NULL + 1];
+
+	typedef struct sf_item {
+		void (*destroy)();
+		gameobject_t *parent;
+		e_itemtype_t type;
+		gameobject_t *target;
+		float value;
+	} sf_item_t;
+
+	typedef struct s_inventory_comp {
+		void (*destroy)();
+		gameobject_t *parent;
+		sf_engine_t *engine;
+		sfSprite *sprite;
+		bool is_opened;
+		float hp;
+		float s_atk;
+		float s_def;
+		float s_dex;
+		float s_int;
+		items_t backpack[INV_SIZE];
+		void (*toggle)(struct s_inventory_comp *);
+	} sf_inventory_t;
+
+	sf_inventory_t *create_inventory(gameobject_t *parent);
+	int player_inventory(gameobject_t *player, int delta_time);
 
 	#pragma endregion
 

@@ -10,12 +10,22 @@
 #include <stdlib.h>
 #include "my_sfml.h"
 #include "assets.h"
+#include "prefabs.h"
 
 const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 	{1, SPRITESHEET_GUARD, FACE_SOLDIER},
 	{2, SPRITESHEET_SIGN, FACE_SIGN},
 	{3, SPRITESHEET_KING, FACE_KING},
 	{0, NULL, NULL}
+};
+
+const items_t ITEM_LIST[ITEM_NULL + 1] = {
+	{"Small potion", FACE_SIGN, .2f, true},
+	{"Large potion", FACE_SIGN, .5f, true},
+	{"Spell A", FACE_SIGN, .15f, false},
+	{"Spell B", FACE_SIGN, .25f, false},
+	{"Spell C", FACE_SIGN, .35f, false},
+	{NULL, NULL, .0f, false}
 };
 
 const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
