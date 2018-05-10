@@ -13,11 +13,11 @@
 	#include "fight.h"
 
 	#pragma region Spritesheets
-	#define SPRITESHEET_SIGN "assets/spritesheets/sign.png"
+	#define SS_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
-	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
-	#define SPRITESHEET_KING "assets/spritesheets/king.png"
-	#define SPRITESHEET_BOSS "assets/spritesheets/evilking.png"
+	#define SS_GUARD "assets/spritesheets/guard.png"
+	#define SS_KING "assets/spritesheets/king.png"
+	#define SS_BOSS "assets/spritesheets/evilking.png"
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#define SPRITE_SPEAK_BORDER "assets/spritesheets/speak_border.png"
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
@@ -65,6 +65,8 @@
 		char *npc_visual;
 		char *npc_face;
 		int (*end_func)(sf_engine_t *engine, gameobject_t *parent);
+		sfIntRect frame;
+		sfIntRect max_rect;
 	} npc_id_info_t;
 
 	#define NB_NPC_ID 4

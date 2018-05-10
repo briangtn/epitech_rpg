@@ -36,9 +36,9 @@
 	#pragma region NpcPrefab
 
 	#define NPC_MOVEMENT_SPEED_MUL 3
-	#define NPC_ANIMATION_SPEED .2
+	#define NPC_ANIMATION_SPEED .5
 	#define NPC_NB_FRAME_ANIMATION 4
-	#define NPC_SPRITE_SHEET SPRITESHEET_GUARD
+	#define NPC_SPRITE_SHEET SS_GUARD
 
 	gameobject_t *create_prefab_npc(sf_engine_t *engine);
 	void npc_interaction(gameobject_t *npc, sf_engine_t *engine);
