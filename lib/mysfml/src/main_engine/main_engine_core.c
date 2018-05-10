@@ -84,6 +84,7 @@ sf_engine_t *create_engine(sfRenderWindow *window)
 	engine->main_clock = sfClock_create();
 	engine->pause.is_paused = false;
 	engine->pause.scene_before_pause = NULL;
+	engine->scene_changed = false;
 	if (engine->main_clock == NULL) {
 		engine->destroy(engine);
 		return (NULL);

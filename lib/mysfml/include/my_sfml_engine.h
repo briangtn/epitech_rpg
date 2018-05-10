@@ -64,6 +64,7 @@ struct main_engine {
 	sfRenderWindow *window; /**< Window used by the engine */
 	sfClock *main_clock;
 	sf_scene_t *current_scene; /**< Current playing scene */
+	bool scene_changed; /**< Was the scene just changed */
 	char *next_scene; /**< Next scene name to be loaded */
 	void *data; /**< The data to give to the next scene */
 	pause_data_t pause; /**< Data used to pause a scene */

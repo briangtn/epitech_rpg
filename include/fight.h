@@ -15,6 +15,8 @@
 	#define FIGHT_ENEMY_SPACE 50
 	#define AMENU_SELECTOR "assets/spritesheets/arrow_mattack.png"
 
+	typedef struct logs_comp sf_logs_t;
+
 	typedef enum direction {
 		HORIZONTAL,
 		VERTICAL
@@ -51,6 +53,7 @@
 		fight_player_t *player;
 		sf_linked_list_t *ennemies;
 		attack_t *last_attack;
+		sf_logs_t *logs;
 		void *end_datas;
 		int (*end_callback)(struct my_fight *fight, void *datas,\
 bool win, sf_engine_t *engine);
@@ -106,6 +109,13 @@ struct fight_arrow *);
 		gameobject_t *mana_text_go;
 	} sf_player_t;
 
+	struct logs_comp {
+		void (*destroy)();
+		gameobject_t *parent;
+		sf_linked_list_t *messages;
+		sf_engine_t *engine;
+	};
+
 	typedef struct fight_id {
 		int id;
 	} fight_id_t;
@@ -126,6 +136,11 @@ sf_fight_arrow_t *arrow);
 	sf_player_t *create_player_comp(gameobject_t *parent);
 	int update_player(void *datas, UNUSED int delta_time);
 
+	int update_logs_component(gameobject_t *go, UNUSED int delta_time);
+	void init_log_messages(sf_logs_t *logs, int count);
+	void add_log_message(sf_logs_t *logs, char *message);
+	sf_logs_t *create_log_comp(gameobject_t *parent);
+
 	#pragma endregion
 
 	int get_enemy_center_position(sf_engine_t *engine, int enemy_count);
@@ -136,5 +151,7 @@ sf_fight_arrow_t *arrow);
 	void select_attack(sf_engine_t *engine, fight_t *fight, bool new_round);
 	void select_enemy(sf_engine_t *engine, fight_t *fight);
 	void end_fight(fight_t *fight, sf_engine_t *engine);
+	void ennemy_attack_message(fight_t *fight, fight_enemy_t *enemy);
+	void player_attack_message(fight_t *fight, fight_enemy_t *enemy);
 
 #endif /* !__FIGHT__H_ */

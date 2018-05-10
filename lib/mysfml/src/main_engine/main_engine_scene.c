@@ -47,9 +47,8 @@ int update_selected_scene(sf_engine_t *engine)
 
 	if (engine == NULL || engine->next_scene == NULL || new_scene == NULL) {
 		if (new_scene == NULL) {
-			my_putdebug("[ERROR]Requested scene:");
+			my_putdebug("[ERROR]Requested scene not found:");
 			my_putdebug(engine->next_scene);
-			my_putdebug(" not found!\n");
 		}
 		return (84);
 	}
@@ -63,6 +62,7 @@ int update_selected_scene(sf_engine_t *engine)
 	set_camera_scene(engine);
 	free(engine->next_scene);
 	engine->next_scene = NULL;
+	engine->scene_changed = true;
 	return (0);
 }
 

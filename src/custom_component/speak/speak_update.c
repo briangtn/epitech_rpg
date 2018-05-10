@@ -31,8 +31,8 @@ void display_next_line(sf_speak_t *new_speak, sf_engine_t *engine)
 		my_free_array((void **)tab);
 		speak->line = -1;
 		quit_pause(engine);
-		if (strcmp(speak->portrait, FACE_KING) == 0)
-			engine->change_scene(engine, "end", engine->data);
+		if (speak->end_func != NULL)
+			speak->end_func(engine, speak->parent);
 		return;
 	}
 	my_free_array((void **)tab);

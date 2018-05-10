@@ -15,7 +15,7 @@
 	#define WINDOW_SIZE_X 1600
 	#define WINDOW_SIZE_Y 960
 
-	#define WINDOW_NAME "RPG"
+	#define WINDOW_NAME "RPG [free trial]"
 
 	#define TILE_SIZE 32
 

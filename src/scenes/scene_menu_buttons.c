@@ -20,7 +20,7 @@ void launch_game(sf_button_t *button)
 	if (ptg == NULL)
 		return;
 	ptg->active_scene = 1;
-	engine->change_scene(engine, "game", ptg);
+	engine->change_scene(engine, "intro", ptg);
 }
 
 void launch_fight(sf_button_t *button)

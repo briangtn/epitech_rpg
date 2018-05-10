@@ -57,9 +57,12 @@ static void update_current_scene(sf_engine_t *engine, int delta_time)
 
 	if (engine->current_scene)
 		curr_index = engine->current_scene->updaters;
-	while (curr_index != NULL && engine->current_scene == start_scene) {
+	while (curr_index != NULL && engine->scene_changed == false && \
+engine->current_scene == start_scene) {
 		((updater_t *)curr_index->data)->update(\
 ((updater_t *)curr_index->data)->object, delta_time);
+		if (engine->scene_changed)
+			return;
 		curr_index = curr_index->next;
 	}
 	if (engine->current_scene->graphical_engine && \
@@ -84,4 +87,5 @@ void update_main_engine(sf_engine_t *engine)
 sfClock_restart(engine->main_clock));
 	if (engine->current_scene)
 		update_current_scene(engine, delta_time);
+	engine->scene_changed = false;
 }

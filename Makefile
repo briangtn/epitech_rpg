@@ -16,13 +16,15 @@ SRC_SCENES_FILES=	scene_game.c					\
 			scene_game_load_scene.c				\
 			scene_fight.c					\
 			fight/fight.c					\
+			fight/fight_messages.c				\
 			fight/end_fight.c				\
 			fight/fights_ids.c				\
 			scene_menu.c					\
 			scene_menu_buttons.c				\
 			scene_pause.c					\
 			scene_speak.c					\
-			scene_end.c
+			scene_end.c					\
+			scene_intro.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
@@ -33,10 +35,12 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/fight_attack_menu_component.c		\
 			fight/enemy_component.c				\
 			fight/player_component.c			\
+			fight/logs.c					\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
 			speak/component_speak_core.c			\
 			speak/speak_update.c				\
+			speak/end_speak_func.c				\
 			tiles/tile_effect_component.c			\
 			inventory/component_inventory.c			\
 			inventory/component_inventory_toggle.c		\
@@ -53,6 +57,8 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			fight/prefab_fight_attacks_menu.c	\
 			fight/prefab_fight_mana_text.c		\
 			fight/fight_text_prefab.c		\
+			fight/prefab_logs.c			\
+			fight/prefab_log_message.c		\
 			npc/npc_interaction.c			\
 			npc/prefab_npc_core.c			\
 			tiles/prefab_tile_core.c		\

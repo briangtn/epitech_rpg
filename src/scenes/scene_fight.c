@@ -7,11 +7,14 @@
 
 #include "rpg.h"
 
-static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
+static int load_fight_scene(sf_engine_t *engine, parser_to_game_t *ptg)
 {
+	fight_t *fight = ptg->fight;
 	sf_linked_list_t *current = fight->ennemies;
 	int pos = 0;
+	sf_vector_3d_t log_pos = {WINDOW_SIZE_X - 400, WINDOW_SIZE_Y - 175, 0};
 
+	create_prefab_log(engine, log_pos, fight);
 	create_prefab_fbackground(engine, fight);
 	create_prefab_fplayer(engine, fight);
 	select_attack(engine, fight, true);
@@ -24,7 +27,7 @@ create_prefab_fenemy(engine, current->data, pos, fight);
 	return (0);
 }
 
-static int loop_fight_scene(sf_engine_t *engine, UNUSED void *data)
+static int loop_fight_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 {
 	sfEvent evt;
 
@@ -37,13 +40,12 @@ static int loop_fight_scene(sf_engine_t *engine, UNUSED void *data)
 	return (0);
 }
 
-static int unload_fight_scene(sf_engine_t *engine, UNUSED void *data)
+static int unload_fight_scene(sf_engine_t *engine, parser_to_game_t *data)
 {
-	fight_t *fight = (fight_t *)data;
-
-	if (engine == NULL || fight == NULL)
+	if (engine == NULL)
 		return (84);
 	reset_scene(engine->current_scene);
+	data->fight = NULL;
 	return (0);
 }
 
