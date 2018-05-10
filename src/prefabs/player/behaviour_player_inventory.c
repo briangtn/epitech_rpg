@@ -18,7 +18,8 @@ void move_window_mouse(sf_inventory_t *inv)
 	sfIntRect box = {inv->screen_pos.x, inv->screen_pos.y, 32, 32};
 
 	if (!sfMouse_isButtonPressed(sfMouseLeft)) {
-		if (box.left >= WINDOW_SIZE_X || box.top >= WINDOW_SIZE_Y)
+		if (box.left >= WINDOW_SIZE_X || box.top >= WINDOW_SIZE_Y || \
+box.left < 0 || box.top < 0)
 			inv->screen_pos = last;
 		is_hold = false;
 		return;
