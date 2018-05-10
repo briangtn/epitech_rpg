@@ -34,6 +34,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/fight_attack_menu_component.c		\
 			fight/enemy_component.c				\
 			fight/player_component.c			\
+			fight/logs.c					\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
 			speak/component_speak_core.c			\
@@ -51,6 +52,8 @@ SRC_PREFAB_FILES=	player/prefab_player_core.c		\
 			fight/prefab_fight_attacks_menu.c	\
 			fight/prefab_fight_mana_text.c		\
 			fight/fight_text_prefab.c		\
+			fight/prefab_logs.c			\
+			fight/prefab_log_message.c		\
 			npc/npc_interaction.c			\
 			npc/prefab_npc_core.c			\
 			tiles/prefab_tile_core.c		\

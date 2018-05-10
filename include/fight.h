@@ -106,6 +106,13 @@ struct fight_arrow *);
 		gameobject_t *mana_text_go;
 	} sf_player_t;
 
+	typedef struct logs_comp {
+		void (*destroy)();
+		gameobject_t *parent;
+		sf_linked_list_t *messages;
+		sf_engine_t *engine;
+	} sf_logs_t;
+
 	typedef struct fight_id {
 		int id;
 	} fight_id_t;
@@ -125,6 +132,11 @@ sf_fight_arrow_t *arrow);
 
 	sf_player_t *create_player_comp(gameobject_t *parent);
 	int update_player(void *datas, UNUSED int delta_time);
+
+	int update_logs_component(gameobject_t *go, UNUSED int delta_time);
+	void init_log_messages(sf_logs_t *logs, int count);
+	void add_log_message(sf_logs_t *logs, char *message);
+	sf_logs_t *create_log_comp(gameobject_t *parent);
 
 	#pragma endregion
 

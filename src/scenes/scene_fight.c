@@ -12,6 +12,7 @@ static int load_fight_scene(sf_engine_t *engine, fight_t *fight)
 	sf_linked_list_t *current = fight->ennemies;
 	int pos = 0;
 
+	create_prefab_log(engine, (sf_vector_3d_t){400, 300, 0});
 	create_prefab_fbackground(engine, fight);
 	create_prefab_fplayer(engine, fight);
 	select_attack(engine, fight, true);
