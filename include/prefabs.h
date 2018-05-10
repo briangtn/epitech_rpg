@@ -130,7 +130,8 @@ sfFloatRect rect, float max);
 sfFloatRect rect, sfColor color);
 	gameobject_t *create_prefab_mana_text(sf_engine_t *engine,\
 fight_player_t *player);
-	gameobject_t *create_prefab_log(sf_engine_t *, sf_vector_3d_t);
+	gameobject_t *create_prefab_log(sf_engine_t *, sf_vector_3d_t,\
+fight_t *);
 	gameobject_t *create_prefab_log_message(sf_engine_t *engine);
 
 	#pragma endregion

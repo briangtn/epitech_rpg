@@ -19,7 +19,9 @@ enemy->attacks);
 
 	if (elem == NULL)
 		return;
-	fight->player->life -= ((attack_t *)elem->data)->damage;
+	fight->last_attack = (attack_t *)elem->data;
+	fight->player->life -= fight->last_attack->damage;
+	ennemy_attack_message(fight, enemy);
 }
 
 void enemy_turn(sf_engine_t *engine, fight_t *fight)
@@ -48,11 +50,13 @@ sf_fight_arrow_t *arrow) {
 	engine = arrow->engine;
 	enemy->life -= fight->last_attack->damage;
 	fight->player->mana -= fight->last_attack->mana_cost;
+	player_attack_message(fight, enemy);
 	if (enemy->life <= 0) {
 		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
 	if (my_sf_list_size(fight->ennemies) == 0) {
+		engine->destroy_gameobject(engine, arrow->parent);
 		end_fight(fight, engine);
 		return (0);
 	}
