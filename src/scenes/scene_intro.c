@@ -46,6 +46,8 @@ int loop_intro_scene(sf_engine_t *engine, void *data)
 		}
 		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeySpace)
 			return (space_pressed(engine, data));
+		if (evt.type == sfEvtKeyPressed && evt.key.code == sfKeyEscape)
+			return (engine->change_scene(engine, "game", data));
 	}
 	return (0);
 }
