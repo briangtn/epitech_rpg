@@ -57,6 +57,7 @@
 		int npc_id;
 		char *npc_visual;
 		char *npc_face;
+		int (*end_func)(sf_engine_t *engine, gameobject_t *parent);
 	} npc_id_info_t;
 
 	#define NB_NPC_ID 3
@@ -68,5 +69,7 @@
 	extern int (*const FIGHTS_ID[NB_FIGHTS_ID])();
 
 	int first_fight(sf_engine_t *engine);
+
+	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 
 #endif /* !__ASSETS__H_ */

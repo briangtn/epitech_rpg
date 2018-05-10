@@ -38,6 +38,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			ui/load_bar_component.c				\
 			speak/component_speak_core.c			\
 			speak/speak_update.c				\
+			speak/end_speak_func.c				\
 			tiles/tile_effect_component.c
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)

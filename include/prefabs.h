@@ -83,6 +83,7 @@
 		sfText *text_comp;
 		sfFont *font;
 		char *portrait;
+		int (*end_func)(sf_engine_t *engine, gameobject_t *parent);
 		void (*show)(struct speak_s *speak, sf_engine_t *engine);
 		void (*set_font)(struct speak_s *speak, const char *font);
 		void (*set_info)(struct speak_s *speak, const char *text, \

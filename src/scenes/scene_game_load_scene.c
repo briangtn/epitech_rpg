@@ -27,6 +27,7 @@ NPC_IDS[info->npc_id - 1].npc_visual));
 	tr->position = (sf_vector_3d_t){info->npc_pos.x, info->npc_pos.y, 0};
 	npc->speak->set_info(npc->speak, info->event->text, \
 NPC_IDS[info->npc_id - 1].npc_face);
+	npc->speak->end_func = NPC_IDS[info->npc_id - 1].end_func;
 }
 
 void create_invisible_walls(sf_engine_t *engine, game_info_t *info)
