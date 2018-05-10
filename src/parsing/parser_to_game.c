@@ -21,6 +21,7 @@ parser_to_game_t *create_parser_to_game(char *file_to_parse)
 11 * TILE_SIZE, 0};
 	ptg->dont_destroy_on_unload = NULL;
 	ptg->game_info = parse_config(file_to_parse);
+	ptg->fight = NULL;
 	if (ptg->game_info == NULL) {
 		destroy_parser_to_game(ptg);
 		return (NULL);

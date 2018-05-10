@@ -69,16 +69,39 @@
 		sfIntRect max_rect;
 	} npc_id_info_t;
 
+	typedef struct attack_info {
+		char *name;
+		int damage;
+		int cost;
+	} attack_info_t;
+
+	typedef struct monster_info {
+		int life;
+		char *sprite;
+		char *name;
+		int nb_attacks;
+		int *attacks;
+	} monster_info_t;
+
+	typedef struct fight_info {
+		int nb_monsters;
+		int *monsters;
+	} fight_info_t;
+
 	#define NB_NPC_ID 4
 	#define NB_PARTICLE_ID 4
+	#define NB_ATTACKS_ID 3
+	#define NB_ENEMY_ID 3
 	#define NB_FIGHTS_ID 2
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 	extern const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID];
-	extern int (*const FIGHTS_ID[NB_FIGHTS_ID])();
+	extern const attack_info_t ATTACKS_IDS[NB_ATTACKS_ID];
+	extern const monster_info_t MONSTERS_IDS[NB_ENEMY_ID];
+	extern const fight_info_t FIGHTS_ID[NB_FIGHTS_ID];
 
-	int first_fight(sf_engine_t *engine, fight_player_t *player);
-	int boss_fight(sf_engine_t *engine, fight_player_t *player);
+	fight_t *first_fight(sf_engine_t *engine, fight_player_t *player);
+	fight_t *boss_fight(sf_engine_t *engine, fight_player_t *player);
 
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);
