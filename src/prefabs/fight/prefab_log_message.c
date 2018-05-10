@@ -32,7 +32,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *go)
 		return (84);
 	text->font = sfFont_createFromFile("assets/fonts/crazy_krabs.otf");
 	sfText_setCharacterSize(text->text, 30);
-	sfText_setColor(text->text, sfBlue);
+	sfText_setColor(text->text, sfRed);
 	sfText_setString(text->text, "");
 	sfText_setFont(text->text, text->font);
 	transform->position = (sf_vector_3d_t){0, 0, 0};
