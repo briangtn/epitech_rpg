@@ -13,3 +13,8 @@ int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent)
 {
 	return (engine->change_scene(engine, "end", engine->data));
 }
+
+int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent)
+{
+	return (0);
+}

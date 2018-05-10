@@ -15,6 +15,7 @@
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
 	#define SPRITESHEET_GUARD "assets/spritesheets/guard.png"
 	#define SPRITESHEET_KING "assets/spritesheets/king.png"
+	#define SPRITESHEET_BOSS "assets/spritesheets/evilking.png"
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#define SPRITE_SPEAK_BORDER "assets/spritesheets/speak_border.png"
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
@@ -47,6 +48,7 @@
 	#define FACE_SIGN "assets/faces/sign.png"
 	#define FACE_SOLDIER "assets/faces/guard.png"
 	#define FACE_KING "assets/faces/king.png"
+	#define FACE_EVILKING "assets/faces/evilking.png"
 	#pragma endregion
 
 	#pragma region Font
@@ -60,7 +62,7 @@
 		int (*end_func)(sf_engine_t *engine, gameobject_t *parent);
 	} npc_id_info_t;
 
-	#define NB_NPC_ID 3
+	#define NB_NPC_ID 4
 	#define NB_PARTICLE_ID 4
 	#define NB_FIGHTS_ID 1
 
@@ -71,5 +73,6 @@
 	int first_fight(sf_engine_t *engine);
 
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
+	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);
 
 #endif /* !__ASSETS__H_ */
