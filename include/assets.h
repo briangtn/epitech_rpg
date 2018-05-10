@@ -10,6 +10,8 @@
 #ifndef __ASSETS__H_
 	#define __ASSETS__H_
 
+	#include "fight.h"
+
 	#pragma region Spritesheets
 	#define SPRITESHEET_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
@@ -24,6 +26,7 @@
 	#pragma region Background
 	#define BACKGROUND_WORLDMAP "assets/backgrounds/worldmap.png"
 	#define BACKGROUND_FIGHT_PATH "assets/backgrounds/fight_path.png"
+	#define BACKGROUND_CASTLE_FIGHT "assets/backgrounds/castle_fight.png"
 	#define BACKGROUND_END "assets/backgrounds/end.png"
 	#define BACKGROUND_INTRO "assets/backgrounds/intro.png"
 	#pragma endregion
@@ -34,6 +37,8 @@
 
 	#pragma region Enemys
 	#define ENEMY_ROGUE "assets/enemys/rogue.png"
+	#define ENEMY_BOSS "assets/enemys/evilking.png"
+	#define ENEMY_FANATIC "assets/enemys/fanatic.png"
 	#pragma endregion
 
 	#pragma region Buttons
@@ -64,13 +69,14 @@
 
 	#define NB_NPC_ID 4
 	#define NB_PARTICLE_ID 4
-	#define NB_FIGHTS_ID 1
+	#define NB_FIGHTS_ID 2
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 	extern const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID];
 	extern int (*const FIGHTS_ID[NB_FIGHTS_ID])();
 
-	int first_fight(sf_engine_t *engine);
+	int first_fight(sf_engine_t *engine, fight_player_t *player);
+	int boss_fight(sf_engine_t *engine, fight_player_t *player);
 
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);

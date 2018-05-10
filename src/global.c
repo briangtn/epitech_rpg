@@ -35,5 +35,6 @@ const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 };
 
 int (*const FIGHTS_ID[NB_FIGHTS_ID])() = {
-	&first_fight
+	&first_fight,
+	&boss_fight
 };
