@@ -12,6 +12,8 @@ void end_fight(fight_t *fight, sf_engine_t *engine)
 {
 	bool win = true;
 
+	if (fight == NULL)
+		return;
 	if (fight->player->life <= 0)
 		win = false;
 	if (fight->end_callback != NULL)

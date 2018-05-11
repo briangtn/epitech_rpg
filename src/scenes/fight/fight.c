@@ -55,11 +55,8 @@ sf_fight_arrow_t *arrow) {
 		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
-	enemy_is_dead(fight, engine, arrow);
-	if (fight->player->mana > 0)
-		select_attack(engine, fight, false);
-	else
-		enemy_turn(engine, fight);
+	if (enemy_is_dead(fight, engine, arrow))
+		return (0);
 	engine->destroy_gameobject(engine, arrow->parent);
 	return (0);
 }
