@@ -60,6 +60,7 @@
 	#define FACE_SOLDIER "assets/faces/guard.png"
 	#define FACE_KING "assets/faces/king.png"
 	#define FACE_EVILKING "assets/faces/evilking.png"
+	#define FACE_HERO "assets/faces/player.png"
 	#pragma endregion
 
 	#pragma region Font

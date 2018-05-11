@@ -19,11 +19,16 @@ int end_fight_win(sf_engine_t *engine, gameobject_t *enemy)
 int end_fight_lose(sf_engine_t *engine, UNUSED gameobject_t *enemy, \
 parser_to_game_t *ptg)
 {
+	sf_speak_t *dead = create_speak_component(NULL);
+
+	dead->set_info(dead, "Fortunately i managed to escape!", FACE_HERO);
+	dead->set_font(dead, FONT_SPEAK);
 	ptg->active_scene = 1;
 	ptg->player_start_pos = (sf_vector_3d_t){23 * TILE_SIZE, \
 11 * TILE_SIZE, 0};
 	engine->change_scene(engine, "game", ptg);
 	update_selected_scene(engine);
+	dead->show(dead, engine);
 	return (0);
 }
 
