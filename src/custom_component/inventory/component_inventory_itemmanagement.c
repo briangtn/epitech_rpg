@@ -12,7 +12,7 @@
 int inventory_additem(sf_inventory_t *self, items_t *item)
 {
 	for (int i = 0; i < INV_SIZE; i++) {
-		if (self->backpack[i].name != NULL) {
+		if (self->backpack[i].name == NULL) {
 			self->backpack[i] = *item;
 			return (i);
 		}
