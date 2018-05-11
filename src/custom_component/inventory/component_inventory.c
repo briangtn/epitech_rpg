@@ -92,6 +92,7 @@ sf_inventory_t *create_inventory(gameobject_t *parent)
 		return (NULL);
 	new->destroy = &destroy_inventory;
 	new->toggle = &inventory_toggle;
+	new->add_exp = &inventory_addexp;
 	new->add_item = &inventory_additem;
 	new->remove_item = &inventory_removeitem;
 	new->retrieve_item = &inventory_retrieveitem;

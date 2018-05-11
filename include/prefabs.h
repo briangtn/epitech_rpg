@@ -209,6 +209,7 @@ tile_info_t *info);
 		items_t backpack[INV_SIZE];
 		sfSprite *bp_sprite[INV_SIZE];
 		void (*toggle)(struct s_inventory_comp *);
+		int (*add_exp)(struct s_inventory_comp *, float amount);
 		int (*add_item)(struct s_inventory_comp *, const items_t *);
 		int (*remove_item)(struct s_inventory_comp *, const items_t *);
 		int (*retrieve_item)(struct s_inventory_comp *, const items_t*);
@@ -221,6 +222,7 @@ tile_info_t *info);
 	int inventory_additem(sf_inventory_t *self, const items_t *item);
 	int inventory_removeitem(sf_inventory_t *self, const items_t *item);
 	int inventory_retrieveitem(sf_inventory_t *self, const items_t *item);
+	int inventory_addexp(sf_inventory_t *self, float amount);
 
 	#pragma endregion
 #endif /* !__PREFABS__H_ */
