@@ -53,13 +53,13 @@ static int setup_prgbar(sf_inventory_t *self)
 self->prgbar_int))
 		return (1);
 	self->prgbar_atk->add_custom_component(self->prgbar_atk, \
-&create_loadbar_comp, LOADBAR);
+(void *(*)(gameobject_t *))&create_loadbar_comp, LOADBAR);
 	self->prgbar_def->add_custom_component(self->prgbar_def, \
-&create_loadbar_comp, LOADBAR);
+(void *(*)(gameobject_t *))&create_loadbar_comp, LOADBAR);
 	self->prgbar_dex->add_custom_component(self->prgbar_dex, \
-&create_loadbar_comp, LOADBAR);
+(void *(*)(gameobject_t *))&create_loadbar_comp, LOADBAR);
 	self->prgbar_int->add_custom_component(self->prgbar_int, \
-&create_loadbar_comp, LOADBAR);
+(void *(*)(gameobject_t *))&create_loadbar_comp, LOADBAR);
 	return (setup_prgbar_settings(self->prgbar_atk) + \
 setup_prgbar_settings(self->prgbar_def) + \
 setup_prgbar_settings(self->prgbar_dex) + \
