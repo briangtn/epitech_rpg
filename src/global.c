@@ -26,6 +26,7 @@ const items_t ITEM_LIST[ITEM_NULL + 1] = {
 	{"Spell A", ITEMTEX_SPELL_A, .15f, false},
 	{"Spell B", ITEMTEX_SPELL_B, .25f, false},
 	{"Spell C", ITEMTEX_SPELL_C, .35f, false},
+	{"Sword", ITEMTEX_SWORD, 0.0f, false},
 	{NULL, NULL, .0f, false}
 };
 

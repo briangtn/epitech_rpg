@@ -62,6 +62,7 @@
 	#define ITEMTEX_SPELL_A "assets/items/spell_a.png"
 	#define ITEMTEX_SPELL_B "assets/items/spell_b.png"
 	#define ITEMTEX_SPELL_C "assets/items/spell_c.png"
+	#define ITEMTEX_SWORD "assets/items/sword.png"
 	#pragma endregion
 
 	#pragma region Face
