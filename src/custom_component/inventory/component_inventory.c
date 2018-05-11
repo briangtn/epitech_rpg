@@ -62,21 +62,18 @@ static void initialise_pgrbar(sf_inventory_t *self)
 int inventory_setup_progressbar(sf_inventory_t *self)
 {
 	self->prgbar_atk = create_prefab_loadbar(self->engine, \
-(sfFloatRect){1.0f, 1.0f, 20.0f, 15.0f}, 2.0f);
-	/*self->prgbar_def = create_prefab_loadbar(self->engine, \
-(sfFloatRect){.0f, .0f, 20.0f, 15.0f}, 2.0f);
+(sfFloatRect){1.0f, 1.0f, 40.0f, 15.0f}, 2.0f);
+	self->prgbar_def = create_prefab_loadbar(self->engine, \
+(sfFloatRect){.0f, .0f, 40.0f, 15.0f}, 2.0f);
 	self->prgbar_dex = create_prefab_loadbar(self->engine, \
-(sfFloatRect){.0f, .0f, 20.0f, 15.0f}, 2.0f);
+(sfFloatRect){.0f, .0f, 40.0f, 15.0f}, 2.0f);
 	self->prgbar_int = create_prefab_loadbar(self->engine, \
-(sfFloatRect){.0f, .0f, 20.0f, 15.0f}, 2.0f);
+(sfFloatRect){.0f, .0f, 40.0f, 15.0f}, 2.0f);
 	if (!(self->prgbar_int && self->prgbar_dex && self->prgbar_def &&\
 self->prgbar_atk))
 		return (1);
 	initialise_pgrbar(self);
 	return (0);
-(sfFloatRect){.0f, .0f, 20.0f, 15.0f}, 2.0f);*/
-// 	return (!(self->prgbar_int && self->prgbar_dex && self->prgbar_def &&\
-// self->prgbar_atk));
 }
 
 sf_inventory_t *create_inventory(gameobject_t *parent)
