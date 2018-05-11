@@ -16,22 +16,20 @@ void create_npc(sf_engine_t *engine, npc_info_t *info)
 	sf_transform_t *tr = get_component(new_npc, TRANSFORM);
 	sf_npc_t *npc = get_component(new_npc, NPC);
 	sf_collider_2d_t *col = get_component(new_npc, COLLIDER_2D);
+	npc_id_info_t info_npc = NPC_IDS[info->npc_id - 1];
 
-	if (new_npc == NULL || anim == NULL || tr == NULL || !npc || !col)
+	if (!new_npc || !anim || !tr || !npc || !col)
 		return;
-	if (info->npc_id > NB_NPC_ID) {
-		engine->destroy_gameobject(engine, new_npc);
-		return;
-	}
-	anim->set_sprite(anim, engine->get_sprite(engine, \
-NPC_IDS[info->npc_id - 1].npc_visual));
+	anim->set_sprite(anim, engine->get_sprite(engine, info_npc.npc_visual));
 	tr->position = (sf_vector_3d_t){info->npc_pos.x, info->npc_pos.y, 0};
-	npc->speak->set_info(npc->speak, info->event->text, \
-NPC_IDS[info->npc_id - 1].npc_face);
-	npc->speak->end_func = NPC_IDS[info->npc_id - 1].end_func;
-	anim->max_rect = NPC_IDS[info->npc_id - 1].max_rect;
-	anim->view_rect = NPC_IDS[info->npc_id - 1].frame;
+	npc->speak->set_info(npc->speak, info->event->text, info_npc.npc_face);
+	npc->speak->end_func = info_npc.end_func;
+	anim->max_rect = info_npc.max_rect;
+	anim->view_rect = info_npc.frame;
 	col->hitbox = anim->view_rect;
+	sfSprite_setPosition(anim->sprite, (sfVector2f){info->npc_pos.x, \
+info->npc_pos.y});
+	sfSprite_setTextureRect(anim->sprite, anim->view_rect);
 }
 
 void create_invisible_walls(sf_engine_t *engine, game_info_t *info)
@@ -73,7 +71,8 @@ ptg->game_info->tile_per_scene.y * TILE_SIZE};
 		create_prefab_tile(engine, scene->tile[i], scene->tileset);
 	}
 	for (int i = 0; scene->npc != NULL && scene->npc[i] != NULL; i++) {
-		create_npc(engine, scene->npc[i]);
+		if (scene->npc[i]->npc_id <= NB_NPC_ID)
+			create_npc(engine, scene->npc[i]);
 	}
 	create_invisible_walls(engine, ptg->game_info);
 }

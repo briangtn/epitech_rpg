@@ -39,6 +39,7 @@
 	#define ENEMY_ROGUE "assets/enemys/rogue.png"
 	#define ENEMY_BOSS "assets/enemys/evilking.png"
 	#define ENEMY_FANATIC "assets/enemys/fanatic.png"
+	#define ENEMY_PLAYER "assets/enemys/player.png"
 	#pragma endregion
 
 	#pragma region Buttons
@@ -60,11 +61,14 @@
 	#define FACE_SOLDIER "assets/faces/guard.png"
 	#define FACE_KING "assets/faces/king.png"
 	#define FACE_EVILKING "assets/faces/evilking.png"
+	#define FACE_HERO "assets/faces/player.png"
 	#pragma endregion
 
 	#pragma region Font
 	#define FONT_SPEAK "assets/fonts/proggyclean.ttf"
 	#pragma endregion
+
+	#define DEATH_MESSAGE "Fortunately i managed to escape!"
 
 	typedef struct npc_id_info {
 		int npc_id;
@@ -92,6 +96,7 @@
 	typedef struct fight_info {
 		int nb_monsters;
 		int *monsters;
+		char *background;
 	} fight_info_t;
 
 	#define NB_NPC_ID 4
@@ -111,5 +116,8 @@
 
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);
+
+	int end_callback_fight(fight_t *fight, void *datas,\
+bool win, sf_engine_t *engine);
 
 #endif /* !__ASSETS__H_ */

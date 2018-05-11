@@ -29,10 +29,17 @@ void player_attack_message(fight_t *fight, fight_enemy_t *enemy)
 	add_log_message(fight->logs, res);
 }
 
-void enemy_is_dead(fight_t *fight, sf_engine_t *engine, sf_fight_arrow_t *arrow)
+int enemy_is_dead(fight_t *fight, sf_engine_t *engine, sf_fight_arrow_t *arrow)
 {
 	if (my_sf_list_size(fight->ennemies) == 0) {
-		engine->destroy_gameobject(engine, arrow->parent);
+		if (fight->end_callback == NULL)
+			engine->destroy_gameobject(engine, arrow->parent);
 		end_fight(fight, engine);
+		return (1);
 	}
+	if (fight->player->mana > 0)
+		select_attack(engine, fight, false);
+	else
+		enemy_turn(engine, fight);
+	return (0);
 }

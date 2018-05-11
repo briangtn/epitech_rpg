@@ -19,6 +19,7 @@ SRC_SCENES_FILES=	scene_game.c					\
 			fight/fight_messages.c				\
 			fight/end_fight.c				\
 			fight/fights_ids.c				\
+			fight/fight_callback.c				\
 			scene_menu.c					\
 			scene_menu_buttons.c				\
 			scene_pause.c					\
