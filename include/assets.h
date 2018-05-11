@@ -78,6 +78,8 @@
 	#pragma endregion
 
 	#define DEATH_MESSAGE "Fortunately i managed to escape!"
+	#define DISCARD_MESSAGE "I should find a sword before going further!\n\
+the guard at my door could help me."
 
 	typedef struct npc_id_info {
 		int npc_id;
