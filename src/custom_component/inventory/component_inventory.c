@@ -46,6 +46,19 @@ static void setup_vars(sf_inventory_t *self)
 	self->s_dex = (float)(rand() % 2000) / 1000.0f;
 }
 
+static void initialise_pgrbar(sf_inventory_t *self)
+{
+	sf_loadbar_t *p_atk = get_component(self->prgbar_atk, LOADBAR);
+	sf_loadbar_t *p_def = get_component(self->prgbar_def, LOADBAR);
+	sf_loadbar_t *p_dex = get_component(self->prgbar_dex, LOADBAR);
+	sf_loadbar_t *p_int = get_component(self->prgbar_int, LOADBAR);
+
+	p_atk->current_value = self->s_atk;
+	p_def->current_value = self->s_def;
+	p_dex->current_value = self->s_dex;
+	p_int->current_value = self->s_int;
+}
+
 int inventory_setup_progressbar(sf_inventory_t *self)
 {
 	self->prgbar_atk = create_prefab_loadbar(self->engine, \
@@ -56,8 +69,11 @@ int inventory_setup_progressbar(sf_inventory_t *self)
 (sfFloatRect){.0f, .0f, 20.0f, 15.0f}, 2.0f);
 	self->prgbar_int = create_prefab_loadbar(self->engine, \
 (sfFloatRect){.0f, .0f, 20.0f, 15.0f}, 2.0f);
-	return (!(self->prgbar_int && self->prgbar_dex && self->prgbar_def &&\
-self->prgbar_atk));
+	if (!(self->prgbar_int && self->prgbar_dex && self->prgbar_def &&\
+self->prgbar_atk))
+		return (1);
+	initialise_pgrbar(self);
+	return (0);
 }
 
 sf_inventory_t *create_inventory(gameobject_t *parent)
