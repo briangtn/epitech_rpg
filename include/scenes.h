@@ -25,7 +25,7 @@ sf_engine_t *engine);
 
 	sf_scene_t *create_menu_scene(sf_engine_t *engine);
 	void launch_game(sf_button_t *button);
-	void launch_fight(sf_button_t *button);
+	void launch_help(sf_button_t *button);
 	void end_menu(sf_button_t *button);
 	void goto_menu(sf_button_t *button);
 	void quit_app(sf_button_t *button);
@@ -41,5 +41,7 @@ sf_engine_t *engine);
 	sf_scene_t *create_end_scene(sf_engine_t *engine);
 
 	sf_scene_t *create_intro_scene(sf_engine_t *engine);
+
+	sf_scene_t *create_help_scene(sf_engine_t *engine);
 
 #endif /* !__SCENES__H_ */

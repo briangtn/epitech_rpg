@@ -23,11 +23,9 @@ void launch_game(sf_button_t *button)
 	engine->change_scene(engine, "intro", ptg);
 }
 
-void launch_fight(sf_button_t *button)
+void launch_help(sf_button_t *button)
 {
-	sf_engine_t *engine = button->engine;
-
-	run_fight(1, engine, NULL);
+	goto_pause(button->engine, "help");
 }
 
 void quit_app(sf_button_t *button)

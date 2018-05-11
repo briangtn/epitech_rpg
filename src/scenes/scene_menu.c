@@ -13,15 +13,20 @@
 void setup_buttons(sf_engine_t *engine)
 {
 	gameobject_t *button_start = NULL;
+	gameobject_t *button_help = NULL;
 	gameobject_t *button_quit = NULL;
 
 	create_prefab_image(engine, BACKGROUND_WORLDMAP, -1);
 	button_start = create_prefab_button(engine, "start button", BUTTON_GAME\
-, (sfIntRect){WINDOW_SIZE_X - 350, WINDOW_SIZE_Y / 2 - 150, 300, 150});
+, (sfIntRect){WINDOW_SIZE_X - 350, WINDOW_SIZE_Y / 2 - 225, 300, 150});
 	((sf_button_t *)get_component(button_start, BUTTON))->on_clicked = \
 &launch_game;
+	button_help = create_prefab_button(engine, "help button", BUTTON_HELP\
+, (sfIntRect){WINDOW_SIZE_X - 350, WINDOW_SIZE_Y / 2 - 75, 300, 150});
+	((sf_button_t *)get_component(button_help, BUTTON))->on_clicked = \
+&launch_help;
 	button_quit = create_prefab_button(engine, "quit button", BUTTON_QUIT, \
-(sfIntRect){WINDOW_SIZE_X - 350, WINDOW_SIZE_Y / 2, 300, 150});
+(sfIntRect){WINDOW_SIZE_X - 350, WINDOW_SIZE_Y / 2 + 75, 300, 150});
 	((sf_button_t *)get_component(button_quit, BUTTON))->on_clicked = \
 &quit_app;
 }

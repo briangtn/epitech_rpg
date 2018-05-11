@@ -29,6 +29,7 @@
 	#define BACKGROUND_CASTLE_FIGHT "assets/backgrounds/castle_fight.png"
 	#define BACKGROUND_END "assets/backgrounds/end.png"
 	#define BACKGROUND_INTRO "assets/backgrounds/intro.png"
+	#define BACKGROUND_HELP "assets/backgrounds/how_to_play.png"
 	#pragma endregion
 
 	#pragma region Particles
@@ -44,7 +45,7 @@
 
 	#pragma region Buttons
 	#define BUTTON_GAME "assets/buttons/button_game.png"
-	#define BUTTON_FIGHT "assets/buttons/button_fight.png"
+	#define BUTTON_HELP "assets/buttons/button_help.png"
 	#define BUTTON_QUIT "assets/buttons/button_quit.png"
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#define BUTTON_MENU "assets/buttons/button_menu.png"
