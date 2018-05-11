@@ -38,6 +38,15 @@ static void remove_items(sf_inventory_t *self)
 	}
 }
 
+static void hide_pgrbar(sf_inventory_t *self)
+{
+	move_loadbar(self->prgbar_atk, (sfVector2f){-500.0f, -500.0f});
+	move_loadbar(self->prgbar_def, (sfVector2f){-500.0f, -500.0f});
+	move_loadbar(self->prgbar_dex, (sfVector2f){-500.0f, -500.0f});
+	move_loadbar(self->prgbar_int, (sfVector2f){-500.0f, -500.0f});
+	move_loadbar(self->prgbar_exp, (sfVector2f){-500.0f, -500.0f});
+}
+
 void inventory_toggle(sf_inventory_t *self)
 {
 	self->is_opened = !self->is_opened;
@@ -54,5 +63,6 @@ PANEL_INVENTORY);
 		self->engine->remove_from_layers(self->engine, \
 (void **)&(self->sprite));
 		remove_items(self);
+		hide_pgrbar(self);
 	}
 }
