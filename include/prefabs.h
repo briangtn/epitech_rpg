@@ -214,6 +214,7 @@ tile_info_t *info);
 
 	sf_inventory_t *create_inventory(gameobject_t *parent);
 	int player_inventory(gameobject_t *player, int delta_time);
+	int inventory_setup_progressbar(sf_inventory_t *self);
 	void inventory_toggle(sf_inventory_t *self);
 	int inventory_additem(sf_inventory_t *self, const items_t *item);
 	int inventory_removeitem(sf_inventory_t *self, const items_t *item);

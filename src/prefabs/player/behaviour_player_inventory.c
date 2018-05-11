@@ -8,6 +8,7 @@
 #include "my.h"
 #include "prefabs.h"
 #include "rpg.h"
+#include "ui.h"
 
 void move_window_mouse(sf_inventory_t *inv)
 {
@@ -48,6 +49,18 @@ sfRenderWindow_getView(self->engine->window)));
 	}
 }
 
+static void render_skills(sf_inventory_t *self)
+{
+	move_loadbar(self->prgbar_atk, \
+(sfVector2i){self->screen_pos.x + 200, self->screen_pos.y + 260});
+	move_loadbar(self->prgbar_atk, \
+(sfVector2i){self->screen_pos.x + 200, self->screen_pos.y + 360});
+	move_loadbar(self->prgbar_atk, \
+(sfVector2i){self->screen_pos.x + 350, self->screen_pos.y + 260});
+	move_loadbar(self->prgbar_atk, \
+(sfVector2i){self->screen_pos.x + 350, self->screen_pos.y + 360});
+}
+
 int player_inventory(gameobject_t *player, UNUSED int delta_time)
 {
 	static bool was_pressed = false;
@@ -66,6 +79,7 @@ int player_inventory(gameobject_t *player, UNUSED int delta_time)
 sfRenderWindow_mapPixelToCoords(inv->engine->window, inv->screen_pos, \
 sfRenderWindow_getView(inv->engine->window)));
 		render_items(inv);
+		render_skills(inv);
 	}
 	return (0);
 }
