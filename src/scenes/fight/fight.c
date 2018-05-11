@@ -79,6 +79,7 @@ fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 	sf_fight_arrow_t *arrow = get_component(go, FARROW);
 	sf_animation_2d_t *anim = NULL;
 	fight_enemy_t *enemy = fight->ennemies->data;
+	sfFloatRect sp_bounds;
 
 	if (arrow == NULL)
 		return;
@@ -86,5 +87,6 @@ fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 	arrow->callback_param = fight;
 	if (anim == NULL)
 		return;
-	arrow->elem_size = sfSprite_getGlobalBounds(anim->sprite).width;
+	sp_bounds = sfSprite_getGlobalBounds(anim->sprite);
+	arrow->elem_size = sp_bounds.width;
 }
