@@ -21,6 +21,8 @@ static int load_game_scene(sf_engine_t *engine, parser_to_game_t *data)
 		return (84);
 	if (player == NULL)
 		player = create_prefab_player(engine);
+	if (data->come_from_fight)
+		return (data->come_from_fight = false);
 	((sf_transform_t *)get_component(player, TRANSFORM))->position = \
 data->player_start_pos;
 	anim = ((sf_animation_2d_t *)get_component(player, ANIMATION_2D));
@@ -71,10 +73,10 @@ static int unload_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 	sf_linked_list_t *next = NULL;
 	gameobject_t *go = NULL;
 
-	if (my_strcmp(engine->next_scene, "menu") == 0) {
-		reset_scene(engine->current_scene);
+	if (my_strcmp(engine->next_scene, "menu") == 0 || my_strcmp(engine->next_scene, "end") == 0)
+		return (reset_scene(engine->current_scene));
+	if (my_strcmp(engine->next_scene, "game"))
 		return (0);
-	}
 	while (curr_go != NULL) {
 		next = curr_go->next;
 		go = curr_go->data;

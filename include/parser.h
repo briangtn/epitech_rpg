@@ -21,6 +21,7 @@
 		game_info_t *game_info;
 		sf_vector_3d_t player_start_pos;
 		fight_t *fight;
+		bool come_from_fight;
 	};
 
 	parser_to_game_t *create_parser_to_game(char *file_to_parse);

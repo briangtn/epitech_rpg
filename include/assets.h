@@ -60,11 +60,14 @@
 	#define FACE_SOLDIER "assets/faces/guard.png"
 	#define FACE_KING "assets/faces/king.png"
 	#define FACE_EVILKING "assets/faces/evilking.png"
+	#define FACE_HERO "assets/faces/player.png"
 	#pragma endregion
 
 	#pragma region Font
 	#define FONT_SPEAK "assets/fonts/proggyclean.ttf"
 	#pragma endregion
+
+	#define DEATH_MESSAGE "Fortunately i managed to escape!"
 
 	typedef struct npc_id_info {
 		int npc_id;
@@ -92,6 +95,7 @@
 	typedef struct fight_info {
 		int nb_monsters;
 		int *monsters;
+		char *background;
 	} fight_info_t;
 
 	#define NB_NPC_ID 4

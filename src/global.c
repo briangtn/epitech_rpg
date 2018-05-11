@@ -60,6 +60,6 @@ const monster_info_t MONSTERS_IDS[NB_ENEMY_ID] = {
 
 /* {Nb monsters, {monster id}} */
 const fight_info_t FIGHTS_ID[NB_FIGHTS_ID] = {
-	{2, (int [2]){0, 0}},
-	{1, (int [1]){2}}
+	{2, (int [2]){0, 0}, BACKGROUND_FIGHT_PATH},
+	{1, (int [1]){2}, BACKGROUND_CASTLE_FIGHT}
 };
