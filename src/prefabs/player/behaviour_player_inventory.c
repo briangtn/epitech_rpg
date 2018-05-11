@@ -60,6 +60,13 @@ int player_inventory(gameobject_t *player, UNUSED int delta_time)
 	if (was_pressed && !sfKeyboard_isKeyPressed(sfKeyI))
 		inv->toggle(inv);
 	was_pressed = sfKeyboard_isKeyPressed(sfKeyI);
+	if (sfKeyboard_isKeyPressed(sfKeyL))
+		inv->remove_item(inv, &(ITEM_LIST[ITEM_POTION_L]));
+	else if (sfKeyboard_isKeyPressed(sfKeyK))
+		if (inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_L])) != -1)
+			dprintf(2, "Success !\n");
+		else
+			dprintf(2, "Failed :'( !\n");
 	if (inv->is_opened) {
 		move_window_mouse(inv);
 		sfSprite_setPosition(inv->sprite, \
