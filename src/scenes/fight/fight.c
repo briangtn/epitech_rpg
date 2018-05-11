@@ -78,13 +78,13 @@ void select_enemy(sf_engine_t *engine, fight_t *fight)
 fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 	sf_fight_arrow_t *arrow = get_component(go, FARROW);
 	sf_animation_2d_t *anim = NULL;
+	fight_enemy_t *enemy = fight->ennemies->data;
 
 	if (arrow == NULL)
 		return;
-	anim = get_component((gameobject_t *)fight->ennemies, ANIMATION_2D);
+	anim = get_component(enemy->go, ANIMATION_2D);
+	arrow->callback_param = fight;
 	if (anim == NULL)
 		return;
-	my_putstr("yolo");
 	arrow->elem_size = sfSprite_getGlobalBounds(anim->sprite).width;
-	arrow->callback_param = fight;
 }
