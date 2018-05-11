@@ -16,9 +16,9 @@ fight_player_t *get_player_fight(sf_engine_t *engine)
 	sf_linked_list_t *attacks = NULL;
 
 	if (player_go != NULL) {
-		add_attack(&attacks, "Sword Attack", 1 * inv->s_atk, 1);
-		add_attack(&attacks, "Heavy Attack", 4 * inv->s_atk, 3);
 		add_attack(&attacks, "Ultima Attack", 10 * inv->s_atk, 6);
+		add_attack(&attacks, "Heavy Attack", 4 * inv->s_atk, 3);
+		add_attack(&attacks, "Sword Attack", 1 * inv->s_atk, 1);
 	}
 	player = create_fight_player("assets/faces/player.png", attacks);
 	if (player_go != NULL)
