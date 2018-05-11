@@ -40,7 +40,8 @@ void enemy_turn(sf_engine_t *engine, fight_t *fight)
 }
 
 static int when_enemy_selected(void *data, sf_linked_list_t *elem,\
-sf_fight_arrow_t *arrow) {
+sf_fight_arrow_t *arrow)
+{
 	fight_t *fight = (fight_t *)data;
 	fight_enemy_t *enemy = (fight_enemy_t *)elem->data;
 	sf_engine_t *engine = NULL;
