@@ -15,13 +15,10 @@
 int fight(gameobject_t *tile, UNUSED gameobject_t *player)
 {
 	sf_tile_effect_t *effect = get_component(tile, TILE_EFFECT);
-	sf_engine_t *engine = NULL;
 
 	if (effect == NULL)
 		return (84);
-	engine = effect->engine;
 	run_fight(effect->fight_id, effect->engine, tile);
-	engine->destroy_gameobject(engine, tile);
 	return (0);
 }
 

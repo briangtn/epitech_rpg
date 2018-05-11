@@ -73,9 +73,9 @@ static int unload_game_scene(sf_engine_t *engine, UNUSED parser_to_game_t *data)
 	sf_linked_list_t *next = NULL;
 	gameobject_t *go = NULL;
 
-	if (my_strcmp(engine->next_scene, "menu") == 0)
+	if (my_strcmp(engine->next_scene, "menu") == 0 || my_strcmp(engine->next_scene, "end") == 0)
 		return (reset_scene(engine->current_scene));
-	if (my_strcmp(engine->next_scene, "game") != 0)
+	if (my_strcmp(engine->next_scene, "game"))
 		return (0);
 	while (curr_go != NULL) {
 		next = curr_go->next;
