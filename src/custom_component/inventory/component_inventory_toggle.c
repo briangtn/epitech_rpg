@@ -52,11 +52,3 @@ PANEL_INVENTORY);
 		remove_items(self);
 	}
 }
-
-void initialize_items(sf_inventory_t *self)
-{
-	for (int i = 0; i < INV_SIZE; i++) {
-		self->engine->add_to_layer(self->engine, GAME + 12, \
-(void **)&(self->bp_sprite[i]));
-	}
-}
