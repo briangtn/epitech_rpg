@@ -81,10 +81,5 @@ fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 
 	if (arrow == NULL)
 		return;
-	anim = get_component((gameobject_t *)fight->ennemies, ANIMATION_2D);
-	if (anim == NULL)
-		return;
-	my_putstr("yolo");
-	arrow->elem_size = sfSprite_getGlobalBounds(anim->sprite).width;
 	arrow->callback_param = fight;
 }
