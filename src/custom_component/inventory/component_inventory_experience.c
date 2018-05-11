@@ -33,7 +33,7 @@ int inventory_addexp(sf_inventory_t *self, float amount)
 {
 	self->exp += amount;
 	if (100.0f <= self->exp) {
-		self->exp = .0f;
+		self->exp -= 100.0f;
 		inventory_increaseskillpoint(&(self->s_atk), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_def), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_dex), .2f, 2.0f);
