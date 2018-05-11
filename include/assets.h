@@ -12,6 +12,13 @@
 
 	#include "fight.h"
 
+	#pragma region Sounds
+	#define MUSIC_MENU "assets/sounds/menu.ogg"
+	#define MUSIC_FIGHT "assets/sounds/fight.ogg"
+	#define MUSIC_INTRO "assets/sounds/intro.ogg"
+	#define MUSIC_GAME "assets/sounds/game.ogg"
+	#pragma endregion
+
 	#pragma region Spritesheets
 	#define SS_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
@@ -29,6 +36,7 @@
 	#define BACKGROUND_CASTLE_FIGHT "assets/backgrounds/castle_fight.png"
 	#define BACKGROUND_END "assets/backgrounds/end.png"
 	#define BACKGROUND_INTRO "assets/backgrounds/intro.png"
+	#define BACKGROUND_HELP "assets/backgrounds/how_to_play.png"
 	#pragma endregion
 
 	#pragma region Particles
@@ -44,7 +52,7 @@
 
 	#pragma region Buttons
 	#define BUTTON_GAME "assets/buttons/button_game.png"
-	#define BUTTON_FIGHT "assets/buttons/button_fight.png"
+	#define BUTTON_HELP "assets/buttons/button_help.png"
 	#define BUTTON_QUIT "assets/buttons/button_quit.png"
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#define BUTTON_MENU "assets/buttons/button_menu.png"

@@ -15,6 +15,8 @@ int load_intro_scene(sf_engine_t *engine, UNUSED void *data)
 	if (engine == NULL)
 		return (84);
 	create_prefab_image(engine, BACKGROUND_INTRO, 0);
+	engine->add_audio(engine, MUSIC_INTRO, true);
+	engine->play(engine, MUSIC_INTRO);
 	return (0);
 }
 
@@ -56,6 +58,7 @@ int unload_intro_scene(sf_engine_t *engine, UNUSED void *data)
 {
 	if (engine == NULL)
 		return (84);
+	engine->stop(engine, MUSIC_INTRO);
 	reset_scene(engine->current_scene);
 	return (0);
 }

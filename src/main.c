@@ -72,6 +72,8 @@ int load_scenes(sf_engine_t *engine)
 		ret = (84);
 	if (create_intro_scene(engine) == NULL)
 		ret = (84);
+	if (create_help_scene(engine) == NULL)
+		ret = (84);
 	return (ret);
 }
 
