@@ -76,7 +76,7 @@ struct scene {
 
 sf_scene_t *create_scene(char *name);
 void destroy_scene(sf_scene_t *scene);
-void reset_scene(sf_scene_t *scene);
+int reset_scene(sf_scene_t *scene);
 
 /* ------------------------------END-SCENES------------------------------ */
 

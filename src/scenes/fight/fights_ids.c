@@ -26,7 +26,8 @@ fight_player_t *get_player_fight(sf_engine_t *engine)
 	return (player);
 }
 
-fight_t *create_fight_enemys(fight_info_t info, sf_engine_t *engine)
+fight_t *create_fight_enemys(fight_info_t info, sf_engine_t *engine, \
+gameobject_t *enemy_go)
 {
 	fight_t *fight = NULL;
 	fight_player_t *player_fight = get_player_fight(engine);
@@ -36,7 +37,7 @@ fight_t *create_fight_enemys(fight_info_t info, sf_engine_t *engine)
 	attack_info_t att;
 
 	fight = create_fight(BACKGROUND_FIGHT_PATH, player_fight);
-	fight->end_datas = engine->get_gameobject(engine, "player");
+	fight->end_datas = enemy_go;
 	fight->end_callback = &end_callback_fight;
 	for (int i = 0; i < info.nb_monsters; i++) {
 		monster = MONSTERS_IDS[info.monsters[i]];
@@ -53,14 +54,14 @@ fight->ennemies);
 	return (fight);
 }
 
-int run_fight(int id, sf_engine_t *engine)
+int run_fight(int id, sf_engine_t *engine, gameobject_t *enemy)
 {
 	fight_t *fight = NULL;
 	parser_to_game_t *ptg = engine->data;
 
 	if (id > NB_FIGHTS_ID)
 		return (84);
-	fight = create_fight_enemys((FIGHTS_ID[id - 1]), engine);
+	fight = create_fight_enemys((FIGHTS_ID[id - 1]), engine, enemy);
 	ptg->fight = fight;
 	return (engine->change_scene(engine, "fight", ptg));
 }

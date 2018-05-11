@@ -27,7 +27,7 @@ void launch_fight(sf_button_t *button)
 {
 	sf_engine_t *engine = button->engine;
 
-	run_fight(1, engine);
+	run_fight(1, engine, NULL);
 }
 
 void quit_app(sf_button_t *button)
