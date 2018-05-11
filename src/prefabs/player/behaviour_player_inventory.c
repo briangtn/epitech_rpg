@@ -50,14 +50,16 @@ sfRenderWindow_getView(self->engine->window)));
 
 int player_inventory(gameobject_t *player, UNUSED int delta_time)
 {
+	static bool was_pressed = false;
 	sf_inventory_t *inv = get_component(player, INVENTORY);
 
 	if (player == NULL || inv == NULL) {
 		my_puterror("Error in player inventory, component not found\n");
 		return (84);
 	}
-	if (sfKeyboard_isKeyPressed(sfKeyI))
+	if (was_pressed && !sfKeyboard_isKeyPressed(sfKeyI))
 		inv->toggle(inv);
+	was_pressed = sfKeyboard_isKeyPressed(sfKeyI);
 	if (inv->is_opened) {
 		move_window_mouse(inv);
 		sfSprite_setPosition(inv->sprite, \
