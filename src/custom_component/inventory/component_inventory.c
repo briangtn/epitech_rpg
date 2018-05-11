@@ -22,10 +22,10 @@ static void destroy_inventory(sf_inventory_t *obj)
 	if (obj->prgbar_int)
 		obj->prgbar_int->destroy(obj->prgbar_int);
 	for (int i = 0; i < INV_SIZE; i++) {
-		obj->engine->remove_from_layers(obj->engine, \
-(void **)&(obj->bp_sprite[i]));
-		if (obj->bp_sprite[i] != NULL)
+		if (obj->bp_sprite[i] != NULL) {
 			sfSprite_destroy(obj->bp_sprite[i]);
+			obj->bp_sprite[i] = NULL;
+		}
 	}
 	free(obj);
 }

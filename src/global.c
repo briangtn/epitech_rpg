@@ -17,6 +17,7 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 {2, SS_SIGN, FACE_SIGN, NULL, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {3, SS_KING, FACE_KING, &king_end_game, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {4, SS_BOSS, FACE_EVILKING, &evil_king_fight, {0, 0, 64, 64}, {0, 0, 128, 64}},
+{5, SS_GUARD, FACE_SOLDIER, &give_sword, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {0, NULL, NULL, NULL, {0, 0, 0, 0}, {0, 0, 0, 0}}
 };
 
