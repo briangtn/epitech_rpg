@@ -44,6 +44,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			tiles/tile_effect_component.c			\
 			inventory/component_inventory.c			\
 			inventory/component_inventory_toggle.c		\
+			inventory/component_inventory_itemmanagement.c	\
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 
