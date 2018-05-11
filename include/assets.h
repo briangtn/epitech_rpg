@@ -67,6 +67,8 @@
 	#define FONT_SPEAK "assets/fonts/proggyclean.ttf"
 	#pragma endregion
 
+	#define DEATH_MESSAGE "Fortunately i managed to escape!"
+
 	typedef struct npc_id_info {
 		int npc_id;
 		char *npc_visual;

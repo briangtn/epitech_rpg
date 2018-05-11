@@ -21,7 +21,7 @@ parser_to_game_t *ptg)
 {
 	sf_speak_t *dead = create_speak_component(NULL);
 
-	dead->set_info(dead, "Fortunately i managed to escape!", FACE_HERO);
+	dead->set_info(dead, DEATH_MESSAGE, FACE_HERO);
 	dead->set_font(dead, FONT_SPEAK);
 	ptg->active_scene = 1;
 	ptg->player_start_pos = (sf_vector_3d_t){23 * TILE_SIZE, \
