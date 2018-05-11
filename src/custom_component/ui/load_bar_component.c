@@ -40,6 +40,23 @@ static void destroy_loadbar_comp(sf_loadbar_t *comp)
 	free(comp);
 }
 
+int move_loadbar(gameobject_t *go, sfVector2i pos)
+{
+	sf_loadbar_t *loadbar = get_component(go, LOADBAR);
+	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
+	sf_animation_2d_t *back_anim = NULL;
+	sfVector2f position = {pos.x, pos.y};
+
+	if (loadbar == NULL || anim == NULL)
+		return (84);
+	back_anim = get_component(loadbar->back_go, ANIMATION_2D);
+	if (back_anim == NULL)
+		return (84);
+	sfSprite_setPosition(anim->sprite, position);
+	sfSprite_setPosition(back_anim->sprite, position);
+	return (0);
+}
+
 sf_loadbar_t *create_loadbar_comp(gameobject_t *go)
 {
 	sf_loadbar_t *loadbar = malloc(sizeof(*loadbar));
