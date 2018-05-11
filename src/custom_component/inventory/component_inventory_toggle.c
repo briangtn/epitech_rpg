@@ -11,6 +11,8 @@
 
 static void add_items(sf_inventory_t *self)
 {
+	sf_loadbar_t *ld_bar = get_component(self->prgbar_exp, LOADBAR);
+
 	for (int i = 0; i < INV_SIZE; i++) {
 		if (self->backpack[i].sprite_path)
 			self->bp_sprite[i] = \
@@ -20,6 +22,8 @@ self->engine->get_sprite(self->engine, self->backpack[i].sprite_path);
 		self->engine->add_to_layer(self->engine, GAME + 12, \
 (void **)&(self->bp_sprite[i]));
 	}
+	if (ld_bar != NULL)
+		ld_bar->current_value = self->exp;
 }
 
 static void remove_items(sf_inventory_t *self)

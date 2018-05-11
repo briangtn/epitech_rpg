@@ -67,6 +67,10 @@ sfRenderWindow_getView(self->engine->window)));
 sfRenderWindow_mapPixelToCoords(self->engine->window, \
 (sfVector2i){self->screen_pos.x + 400, self->screen_pos.y + 350}, \
 sfRenderWindow_getView(self->engine->window)));
+	move_loadbar(self->prgbar_exp,\
+sfRenderWindow_mapPixelToCoords(self->engine->window, \
+(sfVector2i){self->screen_pos.x + 50, self->screen_pos.y + 400}, \
+sfRenderWindow_getView(self->engine->window)));
 }
 
 int player_inventory(gameobject_t *player, UNUSED int delta_time)

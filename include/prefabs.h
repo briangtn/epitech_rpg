@@ -196,6 +196,8 @@ tile_info_t *info);
 		sfSprite *sprite;
 		bool is_opened;
 		float hp;
+		float exp;
+		gameobject_t *prgbar_exp;
 		float s_atk;
 		gameobject_t *prgbar_atk;
 		float s_def;

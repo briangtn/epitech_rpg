@@ -21,6 +21,8 @@ static void destroy_inventory(sf_inventory_t *obj)
 		obj->prgbar_dex->destroy(obj->prgbar_dex);
 	if (obj->prgbar_int != NULL)
 		obj->prgbar_int->destroy(obj->prgbar_int);
+	if (obj->prgbar_exp != NULL)
+		obj->prgbar_exp->destroy(obj->prgbar_exp);
 	for (int i = 0; i < INV_SIZE; i++) {
 		obj->engine->remove_from_layers(obj->engine, \
 (void **)&(obj->bp_sprite[i]));
@@ -36,6 +38,7 @@ static void setup_vars(sf_inventory_t *self)
 	self->sprite = NULL;
 	self->is_opened = false;
 	self->hp = 1.0f;
+	self->exp = .0f;
 	for (int i = 0; i < INV_SIZE; i++) {
 		self->backpack[i] = ITEM_LIST[ITEM_NULL];
 		self->bp_sprite[i] = NULL;
@@ -52,11 +55,14 @@ static void initialise_pgrbar(sf_inventory_t *self)
 	sf_loadbar_t *p_def = get_component(self->prgbar_def, LOADBAR);
 	sf_loadbar_t *p_dex = get_component(self->prgbar_dex, LOADBAR);
 	sf_loadbar_t *p_int = get_component(self->prgbar_int, LOADBAR);
+	sf_loadbar_t *p_exp = get_component(self->prgbar_exp, LOADBAR);
 
 	p_atk->current_value = self->s_atk;
 	p_def->current_value = self->s_def;
 	p_dex->current_value = self->s_dex;
 	p_int->current_value = self->s_int;
+	p_exp->fore_color = sfYellow;
+	p_exp->back_color = sfBlack;
 }
 
 int inventory_setup_progressbar(sf_inventory_t *self)
@@ -69,8 +75,10 @@ int inventory_setup_progressbar(sf_inventory_t *self)
 (sfFloatRect){.0f, .0f, 40.0f, 15.0f}, 2.0f);
 	self->prgbar_int = create_prefab_loadbar(self->engine, \
 (sfFloatRect){.0f, .0f, 40.0f, 15.0f}, 2.0f);
+	self->prgbar_exp = create_prefab_loadbar(self->engine, \
+(sfFloatRect){.0f, .0f, 220.0f, 3.0f}, 100.0f);
 	if (!(self->prgbar_int && self->prgbar_dex && self->prgbar_def &&\
-self->prgbar_atk))
+self->prgbar_atk && self->prgbar_exp))
 		return (1);
 	initialise_pgrbar(self);
 	return (0);
