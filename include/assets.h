@@ -39,6 +39,7 @@
 	#define ENEMY_ROGUE "assets/enemys/rogue.png"
 	#define ENEMY_BOSS "assets/enemys/evilking.png"
 	#define ENEMY_FANATIC "assets/enemys/fanatic.png"
+	#define ENEMY_PLAYER "assets/enemys/player.png"
 	#pragma endregion
 
 	#pragma region Buttons
