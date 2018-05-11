@@ -33,7 +33,6 @@ fight_enemy_t *fenemy, fight_t *fight)
 	anim->update = fenemy_animation_update;
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 fenemy->sprite_path));
-	scale_elem_to_size(anim->sprite);
 	register_animation(engine, anim, GAME);
 	enemy_comp->datas = fenemy;
 	enemy_comp->fight = fight;
