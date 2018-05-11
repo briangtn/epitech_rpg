@@ -12,6 +12,10 @@
 
 	#include "fight.h"
 
+	#pragma region Sounds
+	#define MUSIC_MENU "assets/sounds/menu.ogg"
+	#pragma endregion
+
 	#pragma region Spritesheets
 	#define SS_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"

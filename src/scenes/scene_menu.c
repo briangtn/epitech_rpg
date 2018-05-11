@@ -37,6 +37,8 @@ int load_menu_scene(sf_engine_t *engine, parser_to_game_t *data)
 		return (84);
 	setup_buttons(engine);
 	data->player_start_pos = (sf_vector_3d_t){736, 352, 0};
+	engine->add_audio(engine, MUSIC_MENU, true);
+	engine->play(engine, MUSIC_MENU);
 	return (0);
 }
 
@@ -55,6 +57,7 @@ int loop_menu_scene(sf_engine_t *engine, UNUSED void *data)
 
 int unload_menu_scene(sf_engine_t *engine, UNUSED void *data)
 {
+	engine->stop(engine, MUSIC_MENU);
 	reset_scene(engine->current_scene);
 	return (0);
 }
