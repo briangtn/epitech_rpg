@@ -34,6 +34,20 @@ box.width && pos.y <= box.top + box.height && !is_hold) {
 		inv->screen_pos = (sfVector2i){pos.x + off.x, pos.y + off.y};
 }
 
+static void render_items(sf_inventory_t *self)
+{
+	sfVector2i pos = self->screen_pos;
+
+	for (int i = 0; i < INV_SIZE; i++) {
+		pos.x = self->screen_pos.x + 55 + (96 * (i % 5));
+		pos.y = self->screen_pos.y + 60 + (90 * (i / 5));
+		if (self->bp_sprite[i])
+			sfSprite_setPosition(self->bp_sprite[i], \
+sfRenderWindow_mapPixelToCoords(self->engine->window, pos, \
+sfRenderWindow_getView(self->engine->window)));
+	}
+}
+
 int player_inventory(gameobject_t *player, UNUSED int delta_time)
 {
 	sf_inventory_t *inv = get_component(player, INVENTORY);
@@ -49,6 +63,7 @@ int player_inventory(gameobject_t *player, UNUSED int delta_time)
 		sfSprite_setPosition(inv->sprite, \
 sfRenderWindow_mapPixelToCoords(inv->engine->window, inv->screen_pos, \
 sfRenderWindow_getView(inv->engine->window)));
+		render_items(inv);
 	}
 	return (0);
 }

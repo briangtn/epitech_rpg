@@ -212,6 +212,7 @@ tile_info_t *info);
 	sf_inventory_t *create_inventory(gameobject_t *parent);
 	int player_inventory(gameobject_t *player, int delta_time);
 	void inventory_toggle(sf_inventory_t *self);
+	void initialize_items(sf_inventory_t *self);
 
 	#pragma endregion
 #endif /* !__PREFABS__H_ */

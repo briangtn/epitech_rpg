@@ -21,11 +21,11 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 };
 
 const items_t ITEM_LIST[ITEM_NULL + 1] = {
-	{"Small potion", FACE_SIGN, .2f, true},
-	{"Large potion", FACE_SIGN, .5f, true},
-	{"Spell A", FACE_SIGN, .15f, false},
-	{"Spell B", FACE_SIGN, .25f, false},
-	{"Spell C", FACE_SIGN, .35f, false},
+	{"Small potion", ITEMTEX_POTION_S, .2f, true},
+	{"Large potion", ITEMTEX_POTION_L, .5f, true},
+	{"Spell A", ITEMTEX_SPELL_A, .15f, false},
+	{"Spell B", ITEMTEX_SPELL_B, .25f, false},
+	{"Spell C", ITEMTEX_SPELL_C, .35f, false},
 	{NULL, NULL, .0f, false}
 };
 

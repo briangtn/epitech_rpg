@@ -21,6 +21,12 @@ static void destroy_inventory(sf_inventory_t *obj)
 		obj->prgbar_dex->destroy(obj->prgbar_dex);
 	if (obj->prgbar_int)
 		obj->prgbar_int->destroy(obj->prgbar_int);
+	for (int i = 0; i < INV_SIZE; i++) {
+		obj->engine->remove_from_layers(obj->engine, \
+(void **)&(obj->bp_sprite[i]));
+		if (obj->bp_sprite[i] != NULL)
+			sfSprite_destroy(obj->bp_sprite[i]);
+	}
 	free(obj);
 }
 
@@ -60,6 +66,22 @@ setup_prgbar_settings(self->prgbar_dex) + \
 setup_prgbar_settings(self->prgbar_int));
 }
 
+static void setup_vars(sf_inventory_t *self)
+{
+	self->screen_pos = (sfVector2i){200, 300};
+	self->sprite = NULL;
+	self->is_opened = false;
+	self->hp = 1.0f;
+	for (int i = 0; i < INV_SIZE; i++) {
+		self->backpack[i] = ITEM_LIST[ITEM_NULL];
+		self->bp_sprite[i] = NULL;
+	}
+	self->s_atk = 1.0f;
+	self->s_def = 1.0f;
+	self->s_int = 1.0f;
+	self->s_dex = 1.0f;
+}
+
 sf_inventory_t *create_inventory(gameobject_t *parent)
 {
 	sf_inventory_t *new = malloc(sizeof(*new));
@@ -67,19 +89,10 @@ sf_inventory_t *create_inventory(gameobject_t *parent)
 	if (new == NULL)
 		return (NULL);
 	new->destroy = &destroy_inventory;
+	new->toggle = &inventory_toggle;
 	new->parent = parent;
 	new->engine = NULL;
-	new->screen_pos = (sfVector2i){200, 300};
-	new->sprite = NULL;
-	new->is_opened = false;
-	new->hp = 1.0f;
-	for (int i = 0; i < INV_SIZE; i++)
-		new->backpack[i] = ITEM_LIST[ITEM_NULL];
-	new->toggle = &inventory_toggle;
-	new->s_atk = 1.0f;
-	new->s_def = 1.0f;
-	new->s_int = 1.0f;
-	new->s_dex = 1.0f;
+	setup_vars(new);
 	setup_prgbar(new);
 	return (new);
 }

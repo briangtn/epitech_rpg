@@ -28,6 +28,7 @@ static int setup_components(sf_engine_t *engine, gameobject_t *player)
 	sf_inventory_t *inv = get_component(player, INVENTORY);
 
 	inv->engine = engine;
+	initialize_items(inv);
 	setup_animation(engine, anim);
 	register_animation(engine, anim, 10);
 	col->hitbox = (sfIntRect){8, 22, 17, 10};
