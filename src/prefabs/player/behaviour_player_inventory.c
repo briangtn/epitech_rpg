@@ -51,14 +51,18 @@ sfRenderWindow_getView(self->engine->window)));
 
 static void render_skills(sf_inventory_t *self)
 {
-	move_loadbar(self->prgbar_atk, \
-(sfVector2i){self->screen_pos.x + 200, self->screen_pos.y + 260});
-	move_loadbar(self->prgbar_atk, \
+
+	sfVector2i pos = {self->screen_pos.x + 200, self->screen_pos.y + 260};
+
+	move_loadbar(self->prgbar_atk,\
+	sfRenderWindow_mapPixelToCoords(self->engine->window, pos, \
+sfRenderWindow_getView(self->engine->window)));
+	/*move_loadbar(self->prgbar_atk, \
 (sfVector2i){self->screen_pos.x + 200, self->screen_pos.y + 360});
 	move_loadbar(self->prgbar_atk, \
 (sfVector2i){self->screen_pos.x + 350, self->screen_pos.y + 260});
 	move_loadbar(self->prgbar_atk, \
-(sfVector2i){self->screen_pos.x + 350, self->screen_pos.y + 360});
+(sfVector2i){self->screen_pos.x + 350, self->screen_pos.y + 360});*/
 }
 
 int player_inventory(gameobject_t *player, UNUSED int delta_time)
