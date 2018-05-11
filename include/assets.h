@@ -95,6 +95,7 @@
 	typedef struct fight_info {
 		int nb_monsters;
 		int *monsters;
+		char *background;
 	} fight_info_t;
 
 	#define NB_NPC_ID 4

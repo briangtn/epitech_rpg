@@ -36,7 +36,7 @@ gameobject_t *enemy_go)
 	monster_info_t monster;
 	attack_info_t att;
 
-	fight = create_fight(BACKGROUND_FIGHT_PATH, player_fight);
+	fight = create_fight(info.background, player_fight);
 	fight->end_datas = enemy_go;
 	fight->end_callback = &end_callback_fight;
 	for (int i = 0; i < info.nb_monsters; i++) {
