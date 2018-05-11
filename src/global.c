@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include "my_sfml.h"
 #include "assets.h"
+#include "prefabs.h"
 
 const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 {1, SS_GUARD, FACE_SOLDIER, NULL, {0, 0, 32, 32}, {0, 0, 32, 32}},
@@ -17,6 +18,15 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 {3, SS_KING, FACE_KING, &king_end_game, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {4, SS_BOSS, FACE_EVILKING, &evil_king_fight, {0, 0, 64, 64}, {0, 0, 128, 64}},
 {0, NULL, NULL, NULL, {0, 0, 0, 0}, {0, 0, 0, 0}}
+};
+
+const items_t ITEM_LIST[ITEM_NULL + 1] = {
+	{"Small potion", ITEMTEX_POTION_S, .2f, true},
+	{"Large potion", ITEMTEX_POTION_L, .5f, true},
+	{"Spell A", ITEMTEX_SPELL_A, .15f, false},
+	{"Spell B", ITEMTEX_SPELL_B, .25f, false},
+	{"Spell C", ITEMTEX_SPELL_C, .35f, false},
+	{NULL, NULL, .0f, false}
 };
 
 const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {

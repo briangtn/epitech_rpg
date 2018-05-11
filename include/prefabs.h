@@ -56,7 +56,8 @@
 		LOADBAR,
 		FPLAYER,
 		TILE_EFFECT,
-		LOGS
+		LOGS,
+		INVENTORY
 	};
 
 	#pragma region Interaction
@@ -165,4 +166,58 @@ tile_info_t *info);
 
 	#pragma endregion
 
+	#pragma region Inventory
+
+	#define INV_SIZE (10)
+
+	typedef enum e_items {
+		ITEM_POTION_S,
+		ITEM_POTION_L,
+		ITEM_SPELL_A,
+		ITEM_SPELL_B,
+		ITEM_SPELL_C,
+		ITEM_NULL
+	} e_itemtype_t;
+
+	typedef struct s_items {
+		char *name;
+		char *sprite_path;
+		float value;
+		bool self_use;
+	} items_t;
+
+	extern const items_t ITEM_LIST[ITEM_NULL + 1];
+
+	typedef struct s_inventory_comp {
+		void (*destroy)();
+		gameobject_t *parent;
+		sf_engine_t *engine;
+		sfVector2i screen_pos;
+		sfSprite *sprite;
+		bool is_opened;
+		float hp;
+		float s_atk;
+		gameobject_t *prgbar_atk;
+		float s_def;
+		gameobject_t *prgbar_def;
+		float s_dex;
+		gameobject_t *prgbar_dex;
+		float s_int;
+		gameobject_t *prgbar_int;
+		items_t backpack[INV_SIZE];
+		sfSprite *bp_sprite[INV_SIZE];
+		void (*toggle)(struct s_inventory_comp *);
+		int (*add_item)(struct s_inventory_comp *, const items_t *);
+		int (*remove_item)(struct s_inventory_comp *, const items_t *);
+		int (*retrieve_item)(struct s_inventory_comp *, const items_t*);
+	} sf_inventory_t;
+
+	sf_inventory_t *create_inventory(gameobject_t *parent);
+	int player_inventory(gameobject_t *player, int delta_time);
+	void inventory_toggle(sf_inventory_t *self);
+	int inventory_additem(sf_inventory_t *self, const items_t *item);
+	int inventory_removeitem(sf_inventory_t *self, const items_t *item);
+	int inventory_retrieveitem(sf_inventory_t *self, const items_t *item);
+
+	#pragma endregion
 #endif /* !__PREFABS__H_ */

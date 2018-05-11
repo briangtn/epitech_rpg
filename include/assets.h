@@ -47,6 +47,12 @@
 	#define BUTTON_QUIT "assets/buttons/button_quit.png"
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#define BUTTON_MENU "assets/buttons/button_menu.png"
+	#define PANEL_INVENTORY "assets/buttons/inventory.png"
+	#define ITEMTEX_POTION_S "assets/items/potion_small.png"
+	#define ITEMTEX_POTION_L "assets/items/potion_large.png"
+	#define ITEMTEX_SPELL_A "assets/items/spell_a.png"
+	#define ITEMTEX_SPELL_B "assets/items/spell_b.png"
+	#define ITEMTEX_SPELL_C "assets/items/spell_c.png"
 	#pragma endregion
 
 	#pragma region Face

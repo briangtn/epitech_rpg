@@ -25,13 +25,16 @@ static int setup_components(sf_engine_t *engine, gameobject_t *player)
 {
 	sf_animation_2d_t *anim = get_component(player, ANIMATION_2D);
 	sf_collider_2d_t *col = get_component(player, COLLIDER_2D);
+	sf_inventory_t *inv = get_component(player, INVENTORY);
 
+	inv->engine = engine;
 	setup_animation(engine, anim);
 	register_animation(engine, anim, 10);
 	col->hitbox = (sfIntRect){8, 22, 17, 10};
 	engine->add_gameobject(engine, player);
 	engine->add_physic_object(engine, player);
 	engine->add_update(engine, player, (UPDATER)&player_movement);
+	engine->add_update(engine, player, (UPDATER)&player_inventory);
 	return (0);
 }
 
@@ -51,6 +54,11 @@ static int add_components(gameobject_t *player)
 	}
 	if (player->add_component(player, COLLIDER_2D) == NULL) {
 		my_puterror("[ERROR]Player: Could not add collider!\n");
+		return (84);
+	}
+	if (player->add_custom_component(player, \
+(void *(*)(gameobject_t *))&create_inventory, INVENTORY) == NULL) {
+		my_puterror("[ERROR]Player: Could not add inventory!\n");
 		return (84);
 	}
 	return (0);
