@@ -153,5 +153,7 @@ sf_fight_arrow_t *arrow);
 	void end_fight(fight_t *fight, sf_engine_t *engine);
 	void ennemy_attack_message(fight_t *fight, fight_enemy_t *enemy);
 	void player_attack_message(fight_t *fight, fight_enemy_t *enemy);
+	void enemy_is_dead(fight_t *, sf_engine_t *, sf_fight_arrow_t *);
+
 
 #endif /* !__FIGHT__H_ */

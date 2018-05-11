@@ -28,3 +28,12 @@ void player_attack_message(fight_t *fight, fight_enemy_t *enemy)
 	my_strdupcat(&res, enemy->name);
 	add_log_message(fight->logs, res);
 }
+
+void enemy_is_dead(fight_t *fight, sf_engine_t *engine, sf_fight_arrow_t *arrow)
+{
+	if (my_sf_list_size(fight->ennemies) == 0) {
+		engine->destroy_gameobject(engine, arrow->parent);
+		end_fight(fight, engine);
+		return (0);
+	}
+}
