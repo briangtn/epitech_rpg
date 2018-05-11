@@ -112,4 +112,7 @@
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);
 
+	int end_callback_fight(fight_t *fight, void *datas,\
+bool win, sf_engine_t *engine);
+
 #endif /* !__ASSETS__H_ */
