@@ -44,4 +44,8 @@ sf_engine_t *engine);
 
 	sf_scene_t *create_help_scene(sf_engine_t *engine);
 
+	void reset_scene_except_go(sf_engine_t *engine);
+	gameobject_t *init_scene_game_player(sf_engine_t *engine);
+	int comming_from_fight(sf_engine_t *engine, parser_to_game_t *data);
+
 #endif /* !__SCENES__H_ */

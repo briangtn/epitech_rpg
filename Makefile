@@ -13,6 +13,7 @@ SRC_FILES	=	main.c						\
 SRC_SCENES_DIR	=	$(realpath src/scenes)
 
 SRC_SCENES_FILES=	scene_game.c					\
+			scene_game_player.c				\
 			scene_game_load_scene.c				\
 			scene_fight.c					\
 			fight/fight.c					\
