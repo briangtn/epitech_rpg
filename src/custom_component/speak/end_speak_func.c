@@ -16,7 +16,6 @@ int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent)
 
 int evil_king_fight(sf_engine_t *engine, gameobject_t *parent)
 {
-	run_fight(2, engine);
-	engine->destroy_gameobject(engine, parent);
+	run_fight(2, engine, parent);
 	return (0);
 }

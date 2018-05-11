@@ -20,7 +20,7 @@ int fight(gameobject_t *tile, UNUSED gameobject_t *player)
 	if (effect == NULL)
 		return (84);
 	engine = effect->engine;
-	run_fight(effect->fight_id, effect->engine);
+	run_fight(effect->fight_id, effect->engine, tile);
 	engine->destroy_gameobject(engine, tile);
 	return (0);
 }
