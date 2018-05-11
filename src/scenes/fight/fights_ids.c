@@ -20,7 +20,7 @@ fight_player_t *get_player_fight(sf_engine_t *engine)
 		add_attack(&attacks, "Heavy Attack", 4 * inv->s_atk, 3);
 		add_attack(&attacks, "Sword Attack", 1 * inv->s_atk, 1);
 	}
-	player = create_fight_player("assets/faces/player.png", attacks);
+	player = create_fight_player(ENEMY_PLAYER, attacks);
 	if (player_go != NULL)
 		(player->life) *= inv->hp;
 	return (player);
