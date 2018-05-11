@@ -57,6 +57,8 @@ int loop_menu_scene(sf_engine_t *engine, UNUSED void *data)
 
 int unload_menu_scene(sf_engine_t *engine, UNUSED void *data)
 {
+	if (engine == NULL)
+		return (84);
 	engine->stop(engine, MUSIC_MENU);
 	reset_scene(engine->current_scene);
 	return (0);

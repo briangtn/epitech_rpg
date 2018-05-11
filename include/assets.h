@@ -14,6 +14,9 @@
 
 	#pragma region Sounds
 	#define MUSIC_MENU "assets/sounds/menu.ogg"
+	#define MUSIC_FIGHT "assets/sounds/fight.ogg"
+	#define MUSIC_INTRO "assets/sounds/intro.ogg"
+	#define MUSIC_GAME "assets/sounds/game.ogg"
 	#pragma endregion
 
 	#pragma region Spritesheets
