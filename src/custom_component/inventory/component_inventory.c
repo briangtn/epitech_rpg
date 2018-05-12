@@ -81,6 +81,11 @@ int inventory_setup_progressbar(sf_inventory_t *self)
 self->prgbar_atk && self->prgbar_exp))
 		return (1);
 	initialise_pgrbar(self);
+	hide_load_bar(self->prgbar_atk, self->engine);
+	hide_load_bar(self->prgbar_def, self->engine);
+	hide_load_bar(self->prgbar_dex, self->engine);
+	hide_load_bar(self->prgbar_int, self->engine);
+	hide_load_bar(self->prgbar_exp, self->engine);
 	return (0);
 }
 
