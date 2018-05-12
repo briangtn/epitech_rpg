@@ -81,8 +81,7 @@
 
 	#define LEVEL_UP_MESSAGE "Yay! I feel stronger\n(level up)"
 	#define DEATH_MESSAGE "Fortunately i managed to escape!"
-	#define DISCARD_MESSAGE "I should find a sword before going further!\n\
-the guard at my door could help me."
+	#define DISCARD_MESSAGE "I should help the guard at my door!"
 
 	typedef struct npc_id_info {
 		int npc_id;
@@ -117,7 +116,7 @@ the guard at my door could help me."
 	#define NB_PARTICLE_ID 4
 	#define NB_ATTACKS_ID 3
 	#define NB_ENEMY_ID 3
-	#define NB_FIGHTS_ID 2
+	#define NB_FIGHTS_ID 4
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 	extern const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID];

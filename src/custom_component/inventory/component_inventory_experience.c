@@ -40,7 +40,7 @@ int inventory_addexp(sf_inventory_t *self, float amount)
 		inventory_increaseskillpoint(&(self->s_def), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_dex), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_int), .2f, 2.0f);
-		inventory_increaseskillpoint(&(self->hp), 5.0f, 100.0f);
+		inventory_increaseskillpoint(&(self->hp), 1.0f, 20.0f);
 		update_prgbar(self);
 		self->toggle(self);
 		self->toggle(self);
