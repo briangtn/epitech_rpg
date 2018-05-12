@@ -38,6 +38,10 @@ npc_info_t *get_npc(npc_info_t *npc, char *buffer)
 		return (NULL);
 	}
 	npc->npc_id = get_id(buffer);
+	if (npc->npc_id <= 0) {
+		free(npc);
+		return (NULL);
+	}
 	npc->npc_pos = get_pos(buffer);
 	npc->event = get_event(buffer);
 	return (npc);
