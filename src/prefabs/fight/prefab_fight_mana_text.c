@@ -41,7 +41,7 @@ fight_player_t *player)
 	sfText_setString(text->text, content);
 	free(content);
 	sfText_setFont(text->text, text->font);
-	transform->position = (sf_vector_3d_t){10, 10, 0};
+	transform->position = (sf_vector_3d_t){150, 800, 0};
 	engine->add_to_layer(engine, UI_TEXT, (void **)&text->text);
 	engine->add_update(engine, text, &text_update);
 	return (0);

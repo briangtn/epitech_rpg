@@ -38,7 +38,7 @@ int update_player(void *datas, UNUSED int delta_time)
 	sf_player_t *player = get_component(go, FPLAYER);
 	sf_loadbar_t *life_bar = NULL;
 	sf_text_t *mana_text = NULL;
-	char *mana_content = "";
+	char *mana_content = my_strdup("Energy: ");
 
 	if (player == NULL)
 		return (84);
@@ -47,7 +47,7 @@ int update_player(void *datas, UNUSED int delta_time)
 	if (life_bar == NULL || mana_text == NULL)
 		return (84);
 	life_bar->current_value = player->datas->life;
-	mana_content = my_int_to_str(player->datas->mana);
+	my_strdupcat(&mana_content, my_int_to_str(player->datas->mana));
 	my_strdupcat(&mana_content, "/");
 	my_strdupcat(&mana_content, my_int_to_str(player->datas->max_mana));
 	sfText_setString(mana_text->text, mana_content);
