@@ -40,7 +40,7 @@ static void destroy_loadbar_comp(sf_loadbar_t *comp)
 	free(comp);
 }
 
-int move_loadbar(gameobject_t *go, sfVector2i pos)
+int move_loadbar(gameobject_t *go, sfVector2f pos)
 {
 	sf_loadbar_t *loadbar = get_component(go, LOADBAR);
 	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);

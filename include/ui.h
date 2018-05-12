@@ -29,7 +29,9 @@
 
 	sf_loadbar_t *create_loadbar_comp(gameobject_t *go);
 	int loadbar_update(void *obj, UNUSED int delta_time);
-	int move_loadbar(gameobject_t *go, sfVector2i pos);
+	int move_loadbar(gameobject_t *go, sfVector2f pos);
+	void show_load_bar(gameobject_t *loadbar, sf_engine_t *engine);
+	void hide_load_bar(gameobject_t *loadbar, sf_engine_t *engine);
 
 	#pragma endregion
 

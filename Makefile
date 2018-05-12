@@ -41,6 +41,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/logs.c					\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
+			ui/load_bar_hide_show.c				\
 			speak/component_speak_core.c			\
 			speak/speak_update.c				\
 			speak/end_speak_func.c				\
@@ -48,6 +49,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			inventory/component_inventory.c			\
 			inventory/component_inventory_toggle.c		\
 			inventory/component_inventory_itemmanagement.c	\
+			inventory/component_inventory_experience.c	\
 
 SRC_PREFAB_DIR	=	$(realpath src/prefabs)
 

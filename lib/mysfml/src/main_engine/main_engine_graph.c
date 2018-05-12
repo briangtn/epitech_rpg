@@ -39,6 +39,8 @@ int add_to_layer_main_engine(sf_engine_t *engine, int layer, void **data)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	if (engine->current_scene == NULL)
+		return (84);
 	return (engine->current_scene->graphical_engine->add_to_layer(\
 engine->current_scene->graphical_engine, layer, data));
 }
@@ -50,6 +52,8 @@ int load_texture_main_engine(sf_engine_t *engine, char const *path)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	if (engine->current_scene == NULL)
+		return (84);
 	return (engine->current_scene->graphical_engine->load_texture(\
 engine->current_scene->graphical_engine, path));
 }
@@ -61,6 +65,8 @@ sfTexture *get_texture_main_engine(sf_engine_t *engine, char const *id)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (NULL);
 	}
+	if (engine->current_scene == NULL)
+		return (NULL);
 	return (engine->current_scene->graphical_engine->get_texture(\
 engine->current_scene->graphical_engine, id));
 }
@@ -73,6 +79,8 @@ layer_render_type_t new_type)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	if (engine->current_scene == NULL)
+		return (84);
 	return (engine->current_scene->graphical_engine->set_type(\
 engine->current_scene->graphical_engine, priority, new_type));
 }
