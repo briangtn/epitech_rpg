@@ -79,6 +79,7 @@
 	#define FONT_FIGHT FONT_SPEAK
 	#pragma endregion
 
+	#define LEVEL_UP_MESSAGE "Yay! I feel stronger\n(level up)"
 	#define DEATH_MESSAGE "Fortunately i managed to escape!"
 	#define DISCARD_MESSAGE "I should find a sword before going further!\n\
 the guard at my door could help me."

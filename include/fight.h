@@ -57,6 +57,7 @@
 		void *end_datas;
 		int (*end_callback)(struct my_fight *fight, void *datas,\
 bool win, sf_engine_t *engine);
+		float xp_given;
 	} fight_t;
 
 	#pragma region components

@@ -37,6 +37,7 @@ fight_t *create_fight(char *path, fight_player_t *player)
 	fight->end_callback = NULL;
 	fight->end_datas = NULL;
 	fight->logs = NULL;
+	fight->xp_given = 0.0f;
 	return (fight);
 }
 

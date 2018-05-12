@@ -43,10 +43,10 @@ static void setup_vars(sf_inventory_t *self)
 		self->backpack[i] = ITEM_LIST[ITEM_NULL];
 		self->bp_sprite[i] = NULL;
 	}
-	self->s_atk = (float)(rand() % 2000) / 1000.0f;
-	self->s_def = (float)(rand() % 2000) / 1000.0f;
-	self->s_int = (float)(rand() % 2000) / 1000.0f;
-	self->s_dex = (float)(rand() % 2000) / 1000.0f;
+	self->s_atk = (float)(rand() % 400 + 600) / 1000.0f;
+	self->s_def = (float)(rand() % 400 + 600) / 1000.0f;
+	self->s_int = (float)(rand() % 400 + 600) / 1000.0f;
+	self->s_dex = (float)(rand() % 400 + 600) / 1000.0f;
 }
 
 static void initialise_pgrbar(sf_inventory_t *self)
@@ -61,8 +61,16 @@ static void initialise_pgrbar(sf_inventory_t *self)
 	p_def->current_value = self->s_def;
 	p_dex->current_value = self->s_dex;
 	p_int->current_value = self->s_int;
-	p_exp->fore_color = sfYellow;
-	p_exp->back_color = sfBlack;
+	p_exp->fore_color = (sfColor){255, 255, 0, 255};
+	p_atk->fore_color = (sfColor){255, 0, 0, 255};
+	p_def->fore_color = (sfColor){0, 0, 255, 255};
+	p_dex->fore_color = (sfColor){0, 255, 0, 255};
+	p_int->fore_color = (sfColor){255, 0, 255, 255};
+	p_exp->back_color = (sfColor){150, 150, 0, 255};
+	p_atk->back_color = (sfColor){150, 0, 0, 255};
+	p_def->back_color = (sfColor){0, 0, 150, 255};
+	p_dex->back_color = (sfColor){0, 150, 0, 255};
+	p_int->back_color = (sfColor){150, 0, 150, 255};
 }
 
 int inventory_setup_progressbar(sf_inventory_t *self)

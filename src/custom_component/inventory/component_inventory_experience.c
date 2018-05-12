@@ -27,13 +27,15 @@ static void update_prgbar(sf_inventory_t *self)
 	b_def->current_value = self->s_def;
 	b_dex->current_value = self->s_dex;
 	b_int->current_value = self->s_int;
+	self->toggle(self);
+	self->toggle(self);
 }
 
 int inventory_addexp(sf_inventory_t *self, float amount)
 {
 	self->exp += amount;
-	if (100.0f <= self->exp) {
-		self->exp -= 100.0f;
+	if (50.0f <= self->exp) {
+		self->exp -= 50.0f;
 		inventory_increaseskillpoint(&(self->s_atk), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_def), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_dex), .2f, 2.0f);
