@@ -65,6 +65,7 @@ fight_t *create_fight_enemys(fight_info_t info, sf_engine_t *engine)
 att.cost);
 		}
 		add_enemy(monster, eattacks, fight);
+		(fight->xp_given) += monster.life;
 		eattacks = NULL;
 	}
 	return (fight);

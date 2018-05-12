@@ -10,9 +10,24 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-int end_fight_win(sf_engine_t *engine, gameobject_t *enemy)
+int end_fight_win(sf_engine_t *engine, gameobject_t *enemy, fight_t *fight)
 {
+	gameobject_t *player = engine->get_gameobject(engine, "player");
+	sf_inventory_t *inv = get_component(player, INVENTORY);
+	int level_up = 0;
+	sf_speak_t *speak = NULL;
+
 	engine->destroy_gameobject(engine, enemy);
+	if (inv != NULL)
+		level_up = inv->add_exp(inv, fight->xp_given * inv->s_int);
+	if (level_up) {
+		speak = create_speak_component(NULL);
+		if (speak != NULL) {
+			speak->set_info(speak, LEVEL_UP_MESSAGE, FACE_HERO);
+			speak->set_font(speak, FONT_SPEAK);
+			speak->show(speak, engine);
+		}
+	}
 	return (0);
 }
 
@@ -32,7 +47,7 @@ parser_to_game_t *ptg)
 	return (0);
 }
 
-int end_callback_fight(UNUSED fight_t *fight, void *datas,\
+int end_callback_fight(fight_t *fight, void *datas,\
 bool win, sf_engine_t *engine)
 {
 	parser_to_game_t *ptg = engine->data;
@@ -43,7 +58,7 @@ bool win, sf_engine_t *engine)
 	engine->change_scene(engine, "game", ptg);
 	update_selected_scene(engine);
 	if (win) {
-		end_fight_win(engine, datas);
+		end_fight_win(engine, datas, fight);
 	} else {
 		end_fight_lose(engine, datas, ptg);
 	}
