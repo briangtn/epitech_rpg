@@ -40,11 +40,20 @@ static void remove_items(sf_inventory_t *self)
 
 static void hide_pgrbar(sf_inventory_t *self)
 {
-	move_loadbar(self->prgbar_atk, (sfVector2f){-500.0f, -500.0f});
-	move_loadbar(self->prgbar_def, (sfVector2f){-500.0f, -500.0f});
-	move_loadbar(self->prgbar_dex, (sfVector2f){-500.0f, -500.0f});
-	move_loadbar(self->prgbar_int, (sfVector2f){-500.0f, -500.0f});
-	move_loadbar(self->prgbar_exp, (sfVector2f){-500.0f, -500.0f});
+	hide_load_bar(self->prgbar_atk, self->engine);
+	hide_load_bar(self->prgbar_def, self->engine);
+	hide_load_bar(self->prgbar_dex, self->engine);
+	hide_load_bar(self->prgbar_int, self->engine);
+	hide_load_bar(self->prgbar_exp, self->engine);
+}
+
+static void show_pgrbar(sf_inventory_t *self)
+{
+	show_load_bar(self->prgbar_atk, self->engine);
+	show_load_bar(self->prgbar_def, self->engine);
+	show_load_bar(self->prgbar_dex, self->engine);
+	show_load_bar(self->prgbar_int, self->engine);
+	show_load_bar(self->prgbar_exp, self->engine);
 }
 
 void inventory_toggle(sf_inventory_t *self)
@@ -59,6 +68,7 @@ PANEL_INVENTORY);
 		self->engine->add_to_layer(self->engine, GAME + 11, \
 (void **)&(self->sprite));
 		add_items(self);
+		show_pgrbar(self);
 	} else {
 		self->engine->remove_from_layers(self->engine, \
 (void **)&(self->sprite));

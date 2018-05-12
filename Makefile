@@ -38,6 +38,7 @@ SRC_COMP_FILES	=	interaction/component_interaction_core.c	\
 			fight/logs.c					\
 			interaction/interact.c				\
 			ui/load_bar_component.c				\
+			ui/load_bar_hide_show.c				\
 			speak/component_speak_core.c			\
 			speak/speak_update.c				\
 			speak/end_speak_func.c				\
