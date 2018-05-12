@@ -117,7 +117,7 @@
 	#define NB_PARTICLE_ID 4
 	#define NB_ATTACKS_ID 3
 	#define NB_ENEMY_ID 3
-	#define NB_FIGHTS_ID 4
+	#define NB_FIGHTS_ID 6
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 	extern const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID];
