@@ -41,7 +41,6 @@ parser_to_game_t *ptg, fight_t *fight)
 {
 	sf_speak_t *dead = create_speak_component(NULL);
 
-	give_xp(engine, fight->xp_given / 2);
 	dead->set_info(dead, DEATH_MESSAGE, FACE_HERO);
 	dead->set_font(dead, FONT_SPEAK);
 	ptg->active_scene = 1;
