@@ -46,6 +46,7 @@
 	#pragma endregion
 
 	#pragma region Enemys
+	#define ENEMY_SLIME "assets/enemys/slime.png"
 	#define ENEMY_ROGUE "assets/enemys/rogue.png"
 	#define ENEMY_BOSS "assets/enemys/evilking.png"
 	#define ENEMY_FANATIC "assets/enemys/fanatic.png"
@@ -81,7 +82,7 @@
 	#pragma endregion
 
 	#define LEVEL_UP_MESSAGE "Yay! I feel stronger\n(level up)"
-	#define DEATH_MESSAGE "Fortunately i managed to escape!"
+	#define DEATH_MESSAGE "Fortunately I managed to escape!"
 	#define DISCARD_MESSAGE "I should help the guard at my door!"
 
 	typedef struct npc_id_info {
@@ -95,7 +96,7 @@
 
 	typedef struct attack_info {
 		char *name;
-		int damage;
+		float damage;
 		int cost;
 	} attack_info_t;
 
@@ -115,9 +116,9 @@
 
 	#define NB_NPC_ID 5
 	#define NB_PARTICLE_ID 4
-	#define NB_ATTACKS_ID 3
-	#define NB_ENEMY_ID 3
-	#define NB_FIGHTS_ID 6
+	#define NB_ATTACKS_ID 4
+	#define NB_ENEMY_ID 4
+	#define NB_FIGHTS_ID 7
 
 	extern const npc_id_info_t NPC_IDS[NB_NPC_ID + 1];
 	extern const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID];

@@ -50,14 +50,16 @@ const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {
 const attack_info_t ATTACKS_IDS[NB_ATTACKS_ID] = {
 	{"Sword attack", 1, 1},
 	{"Spear attack", 2, 1},
-	{"Heavy sword attack", 8, 2},
+	{"Heavy sword attack", 20, 2},
+	{"Slime jet", .5f, 1}
 };
 
 /* {Life, Sprite path, Name, Nb attacks, {attacks}} */
 const monster_info_t MONSTERS_IDS[NB_ENEMY_ID] = {
 	{5, ENEMY_ROGUE, "Rogue", 1, (int [1]){0}},
 	{10, ENEMY_FANATIC, "Fanatic", 1, (int [1]){1}},
-	{40, ENEMY_BOSS, "Evil King", 2, (int [2]){0, 2}},
+	{60, ENEMY_BOSS, "Evil King", 2, (int [2]){0, 2}},
+	{8, ENEMY_SLIME, "Slime", 1, (int [1]){3}}
 };
 
 /* {Nb monsters, {monster id}} */
@@ -65,6 +67,7 @@ const fight_info_t FIGHTS_ID[NB_FIGHTS_ID] = {
 	{2, (int [2]){0, 0}, BACKGROUND_FIGHT_PATH},
 	{1, (int [1]){2}, BACKGROUND_CASTLE_FIGHT},
 	{2, (int [2]){1, 1}, BACKGROUND_CASTLE_FIGHT},
+	{3, (int [3]){3, 3, 3}, BACKGROUND_FIGHT_PATH},
 	{3, (int [3]){0, 1, 0}, BACKGROUND_FIGHT_CAPITAL},
 	{4, (int [4]){0, 0, 0, 0}, BACKGROUND_FIGHT_CAPITAL},
 	{4, (int [4]){0, 0, 1, 0}, BACKGROUND_FIGHT_CAPITAL}

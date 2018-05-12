@@ -43,10 +43,10 @@ static void setup_vars(sf_inventory_t *self)
 		self->backpack[i] = ITEM_LIST[ITEM_NULL];
 		self->bp_sprite[i] = NULL;
 	}
-	self->s_atk = (float)(rand() % 400 + 600) / 1000.0f;
-	self->s_def = (float)(rand() % 400 + 600) / 1000.0f;
-	self->s_int = (float)(rand() % 400 + 600) / 1000.0f;
-	self->s_dex = (float)(rand() % 400 + 600) / 1000.0f;
+	self->s_atk = (float)(rand() % 300 + 700) / 1000.0f;
+	self->s_def = (float)(rand() % 300 + 700) / 1000.0f;
+	self->s_int = (float)(rand() % 300 + 700) / 1000.0f;
+	self->s_dex = (float)(rand() % 300 + 700) / 1000.0f;
 }
 
 static void initialise_pgrbar(sf_inventory_t *self)
