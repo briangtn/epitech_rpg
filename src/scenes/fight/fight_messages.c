@@ -34,9 +34,9 @@ void ennemy_attack_message(fight_t *fight, fight_enemy_t *enemy)
 
 	my_strdupcat(&res, my_float_to_str(fight->last_attack->damage));
 	if (fight->last_attack->damage == 1)
-		my_strdupcat(&res, " damage from ");
+		my_strdupcat(&res, " dmg from ");
 	else
-		my_strdupcat(&res, " damages from ");
+		my_strdupcat(&res, " dmgs from ");
 	my_strdupcat(&res, enemy->name);
 	add_log_message(fight->logs, res);
 }
@@ -47,9 +47,9 @@ void player_attack_message(fight_t *fight, fight_enemy_t *enemy)
 
 	my_strdupcat(&res, my_float_to_str(fight->last_attack->damage));
 	if (fight->last_attack->damage == 1)
-		my_strdupcat(&res, " damage from ");
+		my_strdupcat(&res, " dmg from ");
 	else
-		my_strdupcat(&res, " damages from ");
+		my_strdupcat(&res, " dmgs from ");
 	my_strdupcat(&res, enemy->name);
 	add_log_message(fight->logs, res);
 }
