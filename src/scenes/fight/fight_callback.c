@@ -37,7 +37,7 @@ int end_fight_win(sf_engine_t *engine, gameobject_t *enemy, fight_t *fight)
 }
 
 int end_fight_lose(sf_engine_t *engine, UNUSED gameobject_t *enemy, \
-parser_to_game_t *ptg, fight_t *fight)
+parser_to_game_t *ptg, UNUSED fight_t *fight)
 {
 	sf_speak_t *dead = create_speak_component(NULL);
 
