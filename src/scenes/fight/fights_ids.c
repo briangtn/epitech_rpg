@@ -21,16 +21,37 @@ fight_player_t *get_player_fight(sf_engine_t *engine)
 		add_attack(&attacks, "Sword Attack", 1 * inv->s_atk, 1);
 	}
 	player = create_fight_player(ENEMY_PLAYER, attacks);
-	if (player_go != NULL)
+	if (player_go != NULL) {
 		(player->life) *= inv->hp;
+		(player->max_mana) = inv->s_dex * 10;
+	}
 	return (player);
+}
+
+float get_dmg(attack_info_t att, sf_engine_t *engine)
+{
+	gameobject_t *player = engine->get_gameobject(engine, "player");
+	sf_inventory_t *inv = get_component(player, INVENTORY);
+
+	if (player == NULL || inv == NULL)
+		return (att.damage);
+	return (att.damage / inv->s_def);
+}
+
+void add_enemy(monster_info_t enemy, sf_linked_list_t *attacks, fight_t *fight)
+{
+	fight_enemy_t *fight_enemy = NULL;
+
+	fight_enemy = create_enemy(enemy.life, enemy.sprite, \
+enemy.name, attacks);
+	fight->ennemies = sf_push(fight_enemy, my_strdup("enemy"), \
+fight->ennemies);
 }
 
 fight_t *create_fight_enemys(fight_info_t info, sf_engine_t *engine)
 {
 	fight_t *fight = NULL;
 	fight_player_t *player_fight = get_player_fight(engine);
-	fight_enemy_t *enemy = NULL;
 	sf_linked_list_t *eattacks = NULL;
 	monster_info_t monster;
 	attack_info_t att;
@@ -40,12 +61,10 @@ fight_t *create_fight_enemys(fight_info_t info, sf_engine_t *engine)
 		monster = MONSTERS_IDS[info.monsters[i]];
 		for (int j = 0; j < monster.nb_attacks; j++) {
 			att = ATTACKS_IDS[monster.attacks[j]];
-			add_attack(&eattacks, att.name, att.damage, att.cost);
+			add_attack(&eattacks, att.name, get_dmg(att, engine), \
+att.cost);
 		}
-		enemy = create_enemy(monster.life, monster.sprite, \
-monster.name, eattacks);
-		fight->ennemies = sf_push(enemy, my_strdup("enemy"), \
-fight->ennemies);
+		add_enemy(monster, eattacks, fight);
 		eattacks = NULL;
 	}
 	return (fight);

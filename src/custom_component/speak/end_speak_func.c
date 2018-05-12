@@ -19,7 +19,8 @@ int give_sword(sf_engine_t *engine, UNUSED gameobject_t *parent)
 		return (0);
 	if (inv && inv->retrieve_item(inv, &(ITEM_LIST[ITEM_SWORD])) == -1) {
 		inv->add_item(inv, &(ITEM_LIST[ITEM_SWORD]));
-		guard->set_info(guard, "Here take my sword", FACE_SOLDIER);
+		guard->set_info(guard, "It's dangerous to go alone! \
+Take this.", FACE_SOLDIER);
 		guard->set_font(guard, FONT_SPEAK);
 		guard->show(guard, engine);
 	} else {
