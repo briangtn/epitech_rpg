@@ -17,6 +17,8 @@ int add_gameobject(sf_engine_t *engine, gameobject_t *object)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	if (engine->current_scene == NULL)
+		return (84);
 	engine->current_scene->gameobjects = sf_push(object, \
 my_strdup(object->id), engine->current_scene->gameobjects);
 	return (0);
@@ -27,6 +29,10 @@ int remove_gameobject(sf_engine_t *engine, gameobject_t *object)
 	char *curr_id = my_strdup(object->id);
 
 	object->destroy(object);
+	if (engine->current_scene == NULL) {
+		free(curr_id);
+		return (84);
+	}
 	sf_remove(curr_id, &engine->current_scene->gameobjects);
 	free(curr_id);
 	return (0);
@@ -37,6 +43,8 @@ gameobject_t *get_gameobject(sf_engine_t *engine, const char *name)
 	sf_linked_list_t *curr_obj = NULL;
 
 	if (engine == NULL || name == NULL)
+		return (NULL);
+	if (engine->current_scene == NULL)
 		return (NULL);
 	curr_obj = engine->current_scene->gameobjects;
 	while (curr_obj != NULL) {

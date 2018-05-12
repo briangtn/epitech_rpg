@@ -20,6 +20,7 @@ void destroy_engine(sf_engine_t *engine)
 
 	if (engine == NULL)
 		return;
+	engine->current_scene = NULL;
 	while (engine->scenes != NULL) {
 		curr_id = my_strdup(engine->scenes->id);
 		destroy_scene(engine->scenes->data);

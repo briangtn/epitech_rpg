@@ -18,6 +18,8 @@ int remove_from_layers_main_engine(sf_engine_t *engine, void **data)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	if (engine->current_scene == NULL)
+		return (84);
 	return (engine->current_scene->graphical_engine->remove_from_layers(\
 engine->current_scene->graphical_engine, data));
 }
@@ -30,6 +32,8 @@ sf_particle_system_t *p_sys)
 		my_putdebug(MSG_MY_SFML_ERR_NULL);
 		return (84);
 	}
+	if (engine->current_scene == NULL)
+		return (84);
 	return (engine->current_scene->graphical_engine->particle_manager->\
 add_system(engine->current_scene->graphical_engine->particle_manager, p_sys));
 }

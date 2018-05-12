@@ -23,6 +23,8 @@ int (*update)(void *object, int time))
 	}
 	new_updater->object = object;
 	new_updater->update = update;
+	if (engine->current_scene == NULL)
+		return (84);
 	engine->current_scene->updaters = sf_push(\
 new_updater, my_int_to_str((long)object), \
 engine->current_scene->updaters);

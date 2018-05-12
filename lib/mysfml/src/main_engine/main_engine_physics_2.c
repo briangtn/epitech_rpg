@@ -11,7 +11,9 @@
 
 int remove_physic_object_main_engine(sf_engine_t *engine, gameobject_t *object)
 {
-	if (engine == NULL || object == NULL || engine->current_scene == NULL)
+	if (engine == NULL || object == NULL)
+		return (84);
+	if (engine->current_scene == NULL)
 		return (84);
 	return (engine->current_scene->physic_engine->remove_object(\
 engine->current_scene->physic_engine, object));

@@ -9,7 +9,9 @@
 
 int add_physic_object_main_engine(sf_engine_t *engine, gameobject_t *object)
 {
-	if (engine == NULL || object == NULL || engine->current_scene == NULL)
+	if (engine == NULL || object == NULL)
+		return (84);
+	if (engine->current_scene == NULL)
 		return (84);
 	return (engine->current_scene->physic_engine->add_object(\
 engine->current_scene->physic_engine, object));
@@ -18,8 +20,9 @@ engine->current_scene->physic_engine, object));
 gameobject_t **get_collisions_rect_main_engine(sf_engine_t *engine, \
 sfIntRect rect, int *size_buff, void *ignore)
 {
-	if (engine == NULL || size_buff == NULL || \
-engine->current_scene == NULL)
+	if (engine == NULL || size_buff == NULL)
+		return (NULL);
+	if (engine->current_scene == NULL)
 		return (NULL);
 	return (engine->current_scene->physic_engine->get_collisions_rect(\
 engine->current_scene->physic_engine, rect, size_buff, ignore));
@@ -28,8 +31,9 @@ engine->current_scene->physic_engine, rect, size_buff, ignore));
 gameobject_t **get_collisions_point_main_engine(sf_engine_t *engine, \
 sf_vector_3d_t point, int *size_buff)
 {
-	if (engine == NULL || size_buff == NULL || \
-engine->current_scene == NULL)
+	if (engine == NULL || size_buff == NULL)
+		return (NULL);
+	if (engine->current_scene == NULL)
 		return (NULL);
 	return (engine->current_scene->physic_engine->get_collisions_point(\
 engine->current_scene->physic_engine, point, size_buff));
@@ -38,8 +42,9 @@ engine->current_scene->physic_engine, point, size_buff));
 gameobject_t **get_collisions_go_main_engine(sf_engine_t *engine, \
 gameobject_t *obj, int *size_buff)
 {
-	if (engine == NULL || size_buff == NULL || \
-engine->current_scene == NULL)
+	if (engine == NULL || size_buff == NULL)
+		return (NULL);
+	if (engine->current_scene == NULL)
 		return (NULL);
 	return (engine->current_scene->physic_engine->get_collisions_go(\
 engine->current_scene->physic_engine, obj, size_buff));
