@@ -13,6 +13,7 @@
 
 int load_speak_scene(sf_engine_t *engine, UNUSED void *data)
 {
+	sfEvent evt;
 	gameobject_t *border = NULL;
 	gameobject_t *background = NULL;
 
@@ -22,6 +23,10 @@ int load_speak_scene(sf_engine_t *engine, UNUSED void *data)
 	calc_go_to_old_camera(engine, border);
 	background = create_prefab_image(engine, SPRITE_SPEAK_BG, UI_IMAGE - 2);
 	calc_go_to_old_camera(engine, background);
+	while (sfRenderWindow_pollEvent(engine->window, &evt)) {
+		if (evt.type == sfEvtClosed)
+			sfRenderWindow_close(engine->window);
+	}
 	return (0);
 }
 
