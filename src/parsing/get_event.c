@@ -107,7 +107,8 @@ event_info_t *get_event(char *buffer)
 	}
 	if (event->event_id > 0 && event->event_id <= 4)
 		event = (functions[event->event_id - 1].ptrfunc)(event, buffer);
-	if (event->event_id <= 0 || event->event_id > 4)
-		event->event_id = 0;
+	if (event != NULL)
+		if (event->event_id <= 0 || event->event_id > 4)
+			event->event_id = 0;
 	return (event);
 }

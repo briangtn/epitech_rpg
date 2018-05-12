@@ -26,34 +26,16 @@ int check_tile(tile_info_t *tile)
 		return (tile->tile_id * -1);
 	if (tile->tile_pos.x < 0)
 		return (tile->tile_pos.x * -1);
-	if (tile->event->event_id < 0)
-		return (tile->event->event_id * -1);
+	if (tile->event != NULL) {
+		if (tile->event->event_id < 0)
+			return (tile->event->event_id * -1);
+		else
+			return (-10);
+	}
 	if (tile->tile_type < 0)
 		return (tile->tile_type * -1);
 	if (tile->layer < 0)
 		return (tile->tile_type * -1);
-	return (0);
-}
-
-int check_npc(npc_info_t *npc)
-{
-	if (npc->npc_id < 0)
-		return (npc->npc_id * -1);
-	if (npc->npc_pos.x < 0)
-		return (npc->npc_pos.x * -1);
-	if (npc->event->event_id < 0)
-		return (npc->event->event_id * -1);
-	return (0);
-}
-
-int check_loot(loot_info_t *loot)
-{
-	if (loot->loot_id < 0)
-		return (loot->loot_id * -1);
-	if (loot->loot_pos.x < 0)
-		return (loot->loot_pos.x * -1);
-	if (loot->event->event_id < 0)
-		return (loot->event->event_id * -1);
 	return (0);
 }
 

@@ -44,6 +44,8 @@ npc_info_t *get_npc(npc_info_t *npc, char *buffer)
 	}
 	npc->npc_pos = get_pos(buffer);
 	npc->event = get_event(buffer);
+	if (npc->event == NULL)
+		return (NULL);
 	return (npc);
 }
 
@@ -80,6 +82,8 @@ loot_info_t *get_loot(loot_info_t *loot, char *buffer)
 	loot->loot_id = get_id(buffer);
 	loot->loot_pos = get_pos(buffer);
 	loot->event = get_event(buffer);
+	if (loot->event == NULL)
+		return (NULL);
 	return (loot);
 }
 

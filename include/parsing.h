@@ -164,8 +164,6 @@ event_info_t *get_particles_id(event_info_t *event, char *buffer);
 
 char *replace_new_line(char *str);
 int check_tile(tile_info_t *tile);
-int check_npc(npc_info_t *npc);
-int check_loot(loot_info_t *loot);
 scene_info_t *get_scene_info(scene_info_t *scene, int fd, \
 game_info_t *game_info);
 
