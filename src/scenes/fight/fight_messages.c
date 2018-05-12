@@ -11,10 +11,13 @@
 
 void ennemy_attack_message(fight_t *fight, fight_enemy_t *enemy)
 {
-	char *res = my_strdup("You take ");
+	char *res = my_strdup("You took ");
 
 	my_strdupcat(&res, my_int_to_str(fight->last_attack->damage));
-	my_strdupcat(&res, " damage from ");
+	if (fight->last_attack->damage == 1)
+		my_strdupcat(&res, " damage from ");
+	else
+		my_strdupcat(&res, " damages from ");
 	my_strdupcat(&res, enemy->name);
 	add_log_message(fight->logs, res);
 }
@@ -24,7 +27,10 @@ void player_attack_message(fight_t *fight, fight_enemy_t *enemy)
 	char *res = my_strdup("You did ");
 
 	my_strdupcat(&res, my_int_to_str(fight->last_attack->damage));
-	my_strdupcat(&res, " damage to ");
+	if (fight->last_attack->damage == 1)
+		my_strdupcat(&res, " damage from ");
+	else
+		my_strdupcat(&res, " damages from ");
 	my_strdupcat(&res, enemy->name);
 	add_log_message(fight->logs, res);
 }

@@ -28,6 +28,7 @@
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#define SPRITE_SPEAK_BORDER "assets/spritesheets/speak_border.png"
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
+	#define SPRITE_FIGHTBOX "assets/spritesheets/attack_menu.png"
 	#pragma endregion
 
 	#pragma region Background

@@ -31,8 +31,7 @@ UNUSED sf_linked_list_t *attacks, gameobject_t *arrow_go)
 
 	if (anim == NULL || transform == NULL || menu == NULL)
 		return (84);
-	anim->set_sprite(anim, engine->get_sprite(engine,\
-"assets/spritesheets/attack_menu.png"));
+	anim->set_sprite(anim, engine->get_sprite(engine, SPRITE_FIGHTBOX));
 	anim->update = &animation_update;
 	transform->position = (sf_vector_3d_t){100, WINDOW_SIZE_Y - 400, 0};
 	sfSprite_setScale(anim->sprite, (sfVector2f){2, 2});

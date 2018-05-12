@@ -75,6 +75,6 @@ sf_vector_3d_t pos, attack_t *attack, fight_t *fight)
 	if (text == NULL)
 		return (NULL);
 	if (fight->player->mana < attack->mana_cost)
-		sfText_setColor(text->text, sfBlack);
+		sfText_setColor(text->text, sfWhite);
 	return (new_text);
 }
