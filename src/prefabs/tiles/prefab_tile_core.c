@@ -23,7 +23,8 @@ tile_info_t *info, char *tileset)
 
 	if (anim == NULL || tr == NULL)
 		return (84);
-	if (anim->set_sprite(anim, engine->get_sprite(engine, tileset)) == 84)
+	if (anim->set_sprite(anim, engine->get_sprite(engine, tileset)) == 84 \
+|| sfSprite_getTexture(anim->sprite) == NULL)
 		return (84);
 	tileset_size = sfTexture_getSize(sfSprite_getTexture(anim->sprite));
 	tileset_size.x /= TILE_SIZE;
