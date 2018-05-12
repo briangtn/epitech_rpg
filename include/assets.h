@@ -35,6 +35,7 @@
 	#define BACKGROUND_WORLDMAP "assets/backgrounds/worldmap.png"
 	#define BACKGROUND_FIGHT_PATH "assets/backgrounds/fight_path.png"
 	#define BACKGROUND_CASTLE_FIGHT "assets/backgrounds/castle_fight.png"
+	#define BACKGROUND_FIGHT_CAPITAL "assets/backgrounds/fight_capital.png"
 	#define BACKGROUND_END "assets/backgrounds/end.png"
 	#define BACKGROUND_INTRO "assets/backgrounds/intro.png"
 	#define BACKGROUND_HELP "assets/backgrounds/how_to_play.png"
