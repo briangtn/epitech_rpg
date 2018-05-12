@@ -10,16 +10,15 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-int end_fight_win(sf_engine_t *engine, gameobject_t *enemy, fight_t *fight)
+void give_xp(sf_engine_t *engine, float amount)
 {
 	gameobject_t *player = engine->get_gameobject(engine, "player");
 	sf_inventory_t *inv = get_component(player, INVENTORY);
 	int level_up = 0;
 	sf_speak_t *speak = NULL;
 
-	engine->destroy_gameobject(engine, enemy);
 	if (inv != NULL)
-		level_up = inv->add_exp(inv, fight->xp_given * inv->s_int);
+		level_up = inv->add_exp(inv, amount * inv->s_int);
 	if (level_up) {
 		speak = create_speak_component(NULL);
 		if (speak != NULL) {
@@ -28,14 +27,21 @@ int end_fight_win(sf_engine_t *engine, gameobject_t *enemy, fight_t *fight)
 			speak->show(speak, engine);
 		}
 	}
+}
+
+int end_fight_win(sf_engine_t *engine, gameobject_t *enemy, fight_t *fight)
+{
+	engine->destroy_gameobject(engine, enemy);
+	give_xp(engine, fight->xp_given);
 	return (0);
 }
 
 int end_fight_lose(sf_engine_t *engine, UNUSED gameobject_t *enemy, \
-parser_to_game_t *ptg)
+parser_to_game_t *ptg, fight_t *fight)
 {
 	sf_speak_t *dead = create_speak_component(NULL);
 
+	give_xp(engine, fight->xp_given / 2);
 	dead->set_info(dead, DEATH_MESSAGE, FACE_HERO);
 	dead->set_font(dead, FONT_SPEAK);
 	ptg->active_scene = 1;
@@ -60,7 +66,7 @@ bool win, sf_engine_t *engine)
 	if (win) {
 		end_fight_win(engine, datas, fight);
 	} else {
-		end_fight_lose(engine, datas, ptg);
+		end_fight_lose(engine, datas, ptg, fight);
 	}
 	return (0);
 }
