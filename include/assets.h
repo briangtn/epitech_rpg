@@ -75,6 +75,7 @@
 
 	#pragma region Font
 	#define FONT_SPEAK "assets/fonts/proggyclean.ttf"
+	#define FONT_FIGHT FONT_SPEAK
 	#pragma endregion
 
 	#define DEATH_MESSAGE "Fortunately i managed to escape!"

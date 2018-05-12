@@ -31,8 +31,8 @@ sf_vector_3d_t pos, attack_t *attack)
 
 	if (text == NULL || transform == NULL)
 		return (84);
-	text->font = sfFont_createFromFile("assets/fonts/crazy_krabs.otf");
-	sfText_setCharacterSize(text->text, 30);
+	text->font = sfFont_createFromFile(FONT_FIGHT);
+	sfText_setCharacterSize(text->text, 32);
 	sfText_setColor(text->text, sfGreen);
 	sfText_setString(text->text, attack->name);
 	sfText_setFont(text->text, text->font);

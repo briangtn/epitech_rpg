@@ -35,8 +35,8 @@ fight_player_t *player)
 	content = my_int_to_str(player->mana);
 	my_strdupcat(&content, "/");
 	my_strdupcat(&content, my_int_to_str(player->max_mana));
-	text->font = sfFont_createFromFile("assets/fonts/crazy_krabs.otf");
-	sfText_setCharacterSize(text->text, 30);
+	text->font = sfFont_createFromFile(FONT_FIGHT);
+	sfText_setCharacterSize(text->text, 32);
 	sfText_setColor(text->text, sfBlue);
 	sfText_setString(text->text, content);
 	free(content);

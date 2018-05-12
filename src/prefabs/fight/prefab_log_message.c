@@ -30,8 +30,8 @@ static int setup_components(sf_engine_t *engine, gameobject_t *go)
 
 	if (text == NULL || transform == NULL)
 		return (84);
-	text->font = sfFont_createFromFile("assets/fonts/crazy_krabs.otf");
-	sfText_setCharacterSize(text->text, 30);
+	text->font = sfFont_createFromFile(FONT_FIGHT);
+	sfText_setCharacterSize(text->text, 32);
 	sfText_setColor(text->text, sfRed);
 	sfText_setString(text->text, "");
 	sfText_setFont(text->text, text->font);
