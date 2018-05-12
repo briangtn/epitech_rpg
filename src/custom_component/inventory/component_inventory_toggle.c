@@ -40,6 +40,11 @@ static void remove_items(sf_inventory_t *self)
 
 static void hide_pgrbar(sf_inventory_t *self)
 {
+	loadbar_update(self->prgbar_atk, 0);
+	loadbar_update(self->prgbar_def, 0);
+	loadbar_update(self->prgbar_dex, 0);
+	loadbar_update(self->prgbar_int, 0);
+	loadbar_update(self->prgbar_exp, 0);
 	hide_load_bar(self->prgbar_atk, self->engine);
 	hide_load_bar(self->prgbar_def, self->engine);
 	hide_load_bar(self->prgbar_dex, self->engine);
@@ -49,6 +54,11 @@ static void hide_pgrbar(sf_inventory_t *self)
 
 static void show_pgrbar(sf_inventory_t *self)
 {
+	loadbar_update(self->prgbar_atk, 0);
+	loadbar_update(self->prgbar_def, 0);
+	loadbar_update(self->prgbar_dex, 0);
+	loadbar_update(self->prgbar_int, 0);
+	loadbar_update(self->prgbar_exp, 0);
 	show_load_bar(self->prgbar_atk, self->engine);
 	show_load_bar(self->prgbar_def, self->engine);
 	show_load_bar(self->prgbar_dex, self->engine);

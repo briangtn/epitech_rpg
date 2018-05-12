@@ -84,7 +84,7 @@ int inventory_setup_progressbar(sf_inventory_t *self)
 	self->prgbar_int = create_prefab_loadbar(self->engine, \
 (sfFloatRect){.0f, .0f, 40.0f, 15.0f}, 2.0f);
 	self->prgbar_exp = create_prefab_loadbar(self->engine, \
-(sfFloatRect){.0f, .0f, 220.0f, 3.0f}, 100.0f);
+(sfFloatRect){.0f, .0f, 220.0f, 3.0f}, 50.0f);
 	if (!(self->prgbar_int && self->prgbar_dex && self->prgbar_def &&\
 self->prgbar_atk && self->prgbar_exp))
 		return (1);
