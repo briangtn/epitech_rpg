@@ -17,6 +17,7 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 {2, SS_SIGN, FACE_SIGN, NULL, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {3, SS_KING, FACE_KING, &king_end_game, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {4, SS_BOSS, FACE_EVILKING, &evil_king_fight, {0, 0, 64, 64}, {0, 0, 128, 64}},
+{5, SS_GUARD, FACE_SOLDIER, &give_sword, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {0, NULL, NULL, NULL, {0, 0, 0, 0}, {0, 0, 0, 0}}
 };
 
@@ -26,6 +27,7 @@ const items_t ITEM_LIST[ITEM_NULL + 1] = {
 	{"Spell A", ITEMTEX_SPELL_A, .15f, false},
 	{"Spell B", ITEMTEX_SPELL_B, .25f, false},
 	{"Spell C", ITEMTEX_SPELL_C, .35f, false},
+	{"Sword", ITEMTEX_SWORD, 0.0f, false},
 	{NULL, NULL, .0f, false}
 };
 
@@ -60,6 +62,6 @@ const monster_info_t MONSTERS_IDS[NB_ENEMY_ID] = {
 
 /* {Nb monsters, {monster id}} */
 const fight_info_t FIGHTS_ID[NB_FIGHTS_ID] = {
-	{2, (int [2]){0, 0}},
-	{1, (int [1]){2}}
+	{2, (int [2]){0, 0}, BACKGROUND_FIGHT_PATH},
+	{1, (int [1]){2}, BACKGROUND_CASTLE_FIGHT}
 };

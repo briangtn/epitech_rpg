@@ -20,11 +20,11 @@ sf_vector_3d_t pos, fight_t *fight)
 		return (84);
 	tr->position = pos;
 	logs->engine = engine;
-	anim->sprite = get_sprite(engine, WHITE_SPRITE);
-	sfSprite_setScale(anim->sprite, (sfVector2f){400, 175});
+	anim->sprite = get_sprite(engine, SPRITE_FIGHTBOX);
+	sfSprite_setScale(anim->sprite, (sfVector2f){450 / 150, 450 / 150});
 	sfSprite_setPosition(anim->sprite, (sfVector2f){pos.x, pos.y});
 	register_animation(engine, anim, GAME + 3);
-	init_log_messages(logs, 5);
+	init_log_messages(logs, 12);
 	fight->logs = logs;
 	return (0);
 }

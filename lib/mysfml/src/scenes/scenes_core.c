@@ -54,10 +54,10 @@ void clean_updaters(sf_scene_t *scene)
 	}
 }
 
-void reset_scene(sf_scene_t *scene)
+int reset_scene(sf_scene_t *scene)
 {
 	if (scene == NULL)
-		return;
+		return (84);
 	clean_updaters(scene);
 	clean_gameobjects(scene);
 	if (scene->graphical_engine)
@@ -69,6 +69,7 @@ void reset_scene(sf_scene_t *scene)
 	scene->graphical_engine = create_graphical_engine();
 	scene->audio_engine = create_audio_engine();
 	scene->physic_engine = create_physics_engine();
+	return (0);
 }
 
 void destroy_scene(sf_scene_t *scene)

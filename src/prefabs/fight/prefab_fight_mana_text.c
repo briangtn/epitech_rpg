@@ -35,13 +35,13 @@ fight_player_t *player)
 	content = my_int_to_str(player->mana);
 	my_strdupcat(&content, "/");
 	my_strdupcat(&content, my_int_to_str(player->max_mana));
-	text->font = sfFont_createFromFile("assets/fonts/crazy_krabs.otf");
-	sfText_setCharacterSize(text->text, 30);
+	text->font = sfFont_createFromFile(FONT_FIGHT);
+	sfText_setCharacterSize(text->text, 32);
 	sfText_setColor(text->text, sfBlue);
 	sfText_setString(text->text, content);
 	free(content);
 	sfText_setFont(text->text, text->font);
-	transform->position = (sf_vector_3d_t){10, 10, 0};
+	transform->position = (sf_vector_3d_t){150, 800, 0};
 	engine->add_to_layer(engine, UI_TEXT, (void **)&text->text);
 	engine->add_update(engine, text, &text_update);
 	return (0);

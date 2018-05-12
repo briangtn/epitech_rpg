@@ -19,6 +19,9 @@ static void destroy_farrow_comp(sf_fight_arrow_t *comp)
 
 sf_linked_list_t *get_arrow_elem(sf_fight_arrow_t *arrow)
 {
+
+	if (arrow == NULL)
+		return (NULL);
 	return (get_elem_at_index(arrow->elem_index, arrow->list));
 }
 

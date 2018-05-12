@@ -33,7 +33,6 @@ fight_enemy_t *fenemy, fight_t *fight)
 	anim->update = fenemy_animation_update;
 	anim->set_sprite(anim, engine->get_sprite(engine,\
 fenemy->sprite_path));
-	scale_elem_to_size(anim->sprite);
 	register_animation(engine, anim, GAME);
 	enemy_comp->datas = fenemy;
 	enemy_comp->fight = fight;
@@ -59,9 +58,10 @@ static int add_components(gameobject_t *enemy)
 static void after_init(gameobject_t *go, sf_engine_t *engine,\
 fight_enemy_t *enemy, int pos_x)
 {
-	const int offset = (100 - FIGHT_ELEMENT_SIZE) / 2;
 	sf_transform_t *tr = NULL;
 	sf_enemy_t *enemy_comp = NULL;
+	sf_animation_2d_t *anim = get_component(go, ANIMATION_2D);
+	sfFloatRect sprite_bounds = sfSprite_getGlobalBounds(anim->sprite);
 	sfFloatRect rect = {0, 0, 0, 0};
 
 	tr = get_component(go, TRANSFORM);
@@ -70,8 +70,8 @@ fight_enemy_t *enemy, int pos_x)
 		return;
 	tr->position =\
 (sf_vector_3d_t){pos_x, 300, 0};
-	rect = (sfFloatRect){tr->position.x - offset, tr->position.y - 15,\
-100, 10};
+	rect = (sfFloatRect){tr->position.x, tr->position.y - 15,\
+sprite_bounds.width, 10};
 	enemy_comp->life_bar_go = create_prefab_loadbar(engine, rect,\
 enemy->life);
 }

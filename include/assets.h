@@ -12,6 +12,13 @@
 
 	#include "fight.h"
 
+	#pragma region Sounds
+	#define MUSIC_MENU "assets/sounds/menu.ogg"
+	#define MUSIC_FIGHT "assets/sounds/fight.ogg"
+	#define MUSIC_INTRO "assets/sounds/intro.ogg"
+	#define MUSIC_GAME "assets/sounds/game.ogg"
+	#pragma endregion
+
 	#pragma region Spritesheets
 	#define SS_SIGN "assets/spritesheets/sign.png"
 	#define SPRITESHEET_PLAYER "assets/spritesheets/player.png"
@@ -21,6 +28,7 @@
 	#define SPRITE_BORDER "assets/spritesheets/border.png"
 	#define SPRITE_SPEAK_BORDER "assets/spritesheets/speak_border.png"
 	#define SPRITE_SPEAK_BG "assets/spritesheets/speak_background.png"
+	#define SPRITE_FIGHTBOX "assets/spritesheets/attack_menu.png"
 	#pragma endregion
 
 	#pragma region Background
@@ -29,6 +37,7 @@
 	#define BACKGROUND_CASTLE_FIGHT "assets/backgrounds/castle_fight.png"
 	#define BACKGROUND_END "assets/backgrounds/end.png"
 	#define BACKGROUND_INTRO "assets/backgrounds/intro.png"
+	#define BACKGROUND_HELP "assets/backgrounds/how_to_play.png"
 	#pragma endregion
 
 	#pragma region Particles
@@ -39,11 +48,12 @@
 	#define ENEMY_ROGUE "assets/enemys/rogue.png"
 	#define ENEMY_BOSS "assets/enemys/evilking.png"
 	#define ENEMY_FANATIC "assets/enemys/fanatic.png"
+	#define ENEMY_PLAYER "assets/enemys/player.png"
 	#pragma endregion
 
 	#pragma region Buttons
 	#define BUTTON_GAME "assets/buttons/button_game.png"
-	#define BUTTON_FIGHT "assets/buttons/button_fight.png"
+	#define BUTTON_HELP "assets/buttons/button_help.png"
 	#define BUTTON_QUIT "assets/buttons/button_quit.png"
 	#define BUTTON_RESUME "assets/buttons/button_resume.png"
 	#define BUTTON_MENU "assets/buttons/button_menu.png"
@@ -53,6 +63,7 @@
 	#define ITEMTEX_SPELL_A "assets/items/spell_a.png"
 	#define ITEMTEX_SPELL_B "assets/items/spell_b.png"
 	#define ITEMTEX_SPELL_C "assets/items/spell_c.png"
+	#define ITEMTEX_SWORD "assets/items/sword.png"
 	#pragma endregion
 
 	#pragma region Face
@@ -60,11 +71,17 @@
 	#define FACE_SOLDIER "assets/faces/guard.png"
 	#define FACE_KING "assets/faces/king.png"
 	#define FACE_EVILKING "assets/faces/evilking.png"
+	#define FACE_HERO "assets/faces/player.png"
 	#pragma endregion
 
 	#pragma region Font
 	#define FONT_SPEAK "assets/fonts/proggyclean.ttf"
+	#define FONT_FIGHT FONT_SPEAK
 	#pragma endregion
+
+	#define DEATH_MESSAGE "Fortunately i managed to escape!"
+	#define DISCARD_MESSAGE "I should find a sword before going further!\n\
+the guard at my door could help me."
 
 	typedef struct npc_id_info {
 		int npc_id;
@@ -92,9 +109,10 @@
 	typedef struct fight_info {
 		int nb_monsters;
 		int *monsters;
+		char *background;
 	} fight_info_t;
 
-	#define NB_NPC_ID 4
+	#define NB_NPC_ID 5
 	#define NB_PARTICLE_ID 4
 	#define NB_ATTACKS_ID 3
 	#define NB_ENEMY_ID 3
@@ -109,7 +127,11 @@
 	fight_t *first_fight(sf_engine_t *engine, fight_player_t *player);
 	fight_t *boss_fight(sf_engine_t *engine, fight_player_t *player);
 
+	int give_sword(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);
+
+	int end_callback_fight(fight_t *fight, void *datas,\
+bool win, sf_engine_t *engine);
 
 #endif /* !__ASSETS__H_ */

@@ -40,7 +40,8 @@ void enemy_turn(sf_engine_t *engine, fight_t *fight)
 }
 
 static int when_enemy_selected(void *data, sf_linked_list_t *elem,\
-sf_fight_arrow_t *arrow) {
+sf_fight_arrow_t *arrow)
+{
 	fight_t *fight = (fight_t *)data;
 	fight_enemy_t *enemy = (fight_enemy_t *)elem->data;
 	sf_engine_t *engine = NULL;
@@ -55,15 +56,8 @@ sf_fight_arrow_t *arrow) {
 		destroy_enemy(engine, enemy->go);
 		sf_remove_node(elem, &fight->ennemies);
 	}
-	if (my_sf_list_size(fight->ennemies) == 0) {
-		engine->destroy_gameobject(engine, arrow->parent);
-		end_fight(fight, engine);
+	if (enemy_is_dead(fight, engine, arrow))
 		return (0);
-	}
-	if (fight->player->mana > 0)
-		select_attack(engine, fight, false);
-	else
-		enemy_turn(engine, fight);
 	engine->destroy_gameobject(engine, arrow->parent);
 	return (0);
 }
@@ -83,8 +77,16 @@ void select_enemy(sf_engine_t *engine, fight_t *fight)
 	gameobject_t *go = create_prefab_farrow(engine,\
 fight->ennemies, &when_enemy_selected, "assets/spritesheets/arrow.png");
 	sf_fight_arrow_t *arrow = get_component(go, FARROW);
+	sf_animation_2d_t *anim = NULL;
+	fight_enemy_t *enemy = fight->ennemies->data;
+	sfFloatRect sp_bounds;
 
 	if (arrow == NULL)
 		return;
+	anim = get_component(enemy->go, ANIMATION_2D);
 	arrow->callback_param = fight;
+	if (anim == NULL)
+		return;
+	sp_bounds = sfSprite_getGlobalBounds(anim->sprite);
+	arrow->elem_size = sp_bounds.width;
 }

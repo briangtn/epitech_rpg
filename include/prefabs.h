@@ -176,6 +176,7 @@ tile_info_t *info);
 		ITEM_SPELL_A,
 		ITEM_SPELL_B,
 		ITEM_SPELL_C,
+		ITEM_SWORD,
 		ITEM_NULL
 	} e_itemtype_t;
 

@@ -59,7 +59,6 @@ static int add_components(gameobject_t *player)
 	}
 	if (player->add_custom_component(player, \
 (void *(*)(gameobject_t *))&create_inventory, INVENTORY) == NULL) {
-		my_puterror("[ERROR]Player: Could not add inventory!\n");
 		return (84);
 	}
 	return (0);

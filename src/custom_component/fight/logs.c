@@ -25,6 +25,7 @@ int update_logs_component(gameobject_t *go, UNUSED int delta_time)
 		if (cur_tr == NULL)
 			return (84);
 		cur_tr->position = tr->position;
+		cur_tr->position.x += 10;
 		cur_tr->position.y += pos;
 		pos += 35;
 		copy = copy->next;

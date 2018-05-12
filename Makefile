@@ -13,18 +13,21 @@ SRC_FILES	=	main.c						\
 SRC_SCENES_DIR	=	$(realpath src/scenes)
 
 SRC_SCENES_FILES=	scene_game.c					\
+			scene_game_player.c				\
 			scene_game_load_scene.c				\
 			scene_fight.c					\
 			fight/fight.c					\
 			fight/fight_messages.c				\
 			fight/end_fight.c				\
 			fight/fights_ids.c				\
+			fight/fight_callback.c				\
 			scene_menu.c					\
 			scene_menu_buttons.c				\
 			scene_pause.c					\
 			scene_speak.c					\
 			scene_end.c					\
-			scene_intro.c
+			scene_intro.c					\
+			scene_help.c
 
 SRC_COMP_DIR	=	$(realpath src/custom_component)
 
