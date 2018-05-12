@@ -64,6 +64,9 @@
 	#define ITEMTEX_SPELL_B "assets/items/spell_b.png"
 	#define ITEMTEX_SPELL_C "assets/items/spell_c.png"
 	#define ITEMTEX_SWORD "assets/items/sword.png"
+	#define ITEMTEX_POTION_STR "assets/items/potion_str.png"
+	#define ITEMTEX_POTION_DEX "assets/items/potion_dex.png"
+	#define ITEMTEX_POTION_EXP "assets/items/potion_exp.png"
 	#pragma endregion
 
 	#pragma region Face

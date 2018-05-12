@@ -177,19 +177,26 @@ tile_info_t *info);
 		ITEM_SPELL_B,
 		ITEM_SPELL_C,
 		ITEM_SWORD,
+		ITEM_POTION_STR,
+		ITEM_POTION_DEX,
+		ITEM_POTION_EXP,
 		ITEM_NULL
 	} e_itemtype_t;
 
-	typedef struct s_items {
+	typedef struct s_inventory_comp sf_inventory_t;
+	typedef struct s_items items_t;
+
+	struct s_items {
 		char *name;
 		char *sprite_path;
 		float value;
 		bool self_use;
-	} items_t;
+		void (*use)(items_t *, sf_inventory_t *);
+	};
 
 	extern const items_t ITEM_LIST[ITEM_NULL + 1];
 
-	typedef struct s_inventory_comp {
+	struct s_inventory_comp {
 		void (*destroy)();
 		gameobject_t *parent;
 		sf_engine_t *engine;
@@ -214,7 +221,7 @@ tile_info_t *info);
 		int (*add_item)(struct s_inventory_comp *, const items_t *);
 		int (*remove_item)(struct s_inventory_comp *, const items_t *);
 		int (*retrieve_item)(struct s_inventory_comp *, const items_t*);
-	} sf_inventory_t;
+	};
 
 	sf_inventory_t *create_inventory(gameobject_t *parent);
 	int player_inventory(gameobject_t *player, int delta_time);
@@ -224,6 +231,10 @@ tile_info_t *info);
 	int inventory_removeitem(sf_inventory_t *self, const items_t *item);
 	int inventory_retrieveitem(sf_inventory_t *self, const items_t *item);
 	int inventory_addexp(sf_inventory_t *self, float amount);
+	void potion_exp_use(items_t *self, sf_inventory_t *inv);
+	void potion_str_use(items_t *self, sf_inventory_t *inv);
+	void potion_dex_use(items_t *self, sf_inventory_t *inv);
+	void inventory_increaseskillpoint(float *, float, float);
 
 	#pragma endregion
 #endif /* !__PREFABS__H_ */

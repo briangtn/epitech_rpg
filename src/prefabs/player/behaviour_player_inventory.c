@@ -36,6 +36,26 @@ box.width && pos.y <= box.top + box.height && !is_hold) {
 		inv->screen_pos = (sfVector2i){pos.x + off.x, pos.y + off.y};
 }
 
+static void mouse_item_select(sf_inventory_t *inv)
+{
+	sfVector2i pos = sfMouse_getPositionRenderWindow(inv->engine->window);
+	sfIntRect box = {inv->screen_pos.x, inv->screen_pos.y, 60, 60};
+
+	if (!sfMouse_isButtonPressed(sfMouseLeft))
+		return;
+	for (int i = 0; i < INV_SIZE; i++) {
+		box.left = inv->screen_pos.x + 55 + (96 * (i % 5));
+		box.top = inv->screen_pos.y + 60 + (90 * (i / 5));
+		if (inv->backpack[i].use == NULL)
+			continue;
+		if (box.left <= pos.x && pos.x <= box.left + box.width && \
+box.top <= pos.y && pos.y <= box.top + box.height) {
+			inv->backpack[i].use(&(inv->backpack[i]), inv);
+			return;
+		}
+	}
+}
+
 static void render_items(sf_inventory_t *self)
 {
 	sfVector2i pos = self->screen_pos;
@@ -88,6 +108,7 @@ int player_inventory(gameobject_t *player, UNUSED int delta_time)
 	was_pressed = sfKeyboard_isKeyPressed(sfKeyI);
 	if (inv->is_opened) {
 		move_window_mouse(inv);
+		mouse_item_select(inv);
 		sfSprite_setPosition(inv->sprite, \
 sfRenderWindow_mapPixelToCoords(inv->engine->window, inv->screen_pos, \
 sfRenderWindow_getView(inv->engine->window)));

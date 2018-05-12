@@ -22,13 +22,16 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 };
 
 const items_t ITEM_LIST[ITEM_NULL + 1] = {
-	{"Small potion", ITEMTEX_POTION_S, .2f, true},
-	{"Large potion", ITEMTEX_POTION_L, .5f, true},
-	{"Spell A", ITEMTEX_SPELL_A, .15f, false},
-	{"Spell B", ITEMTEX_SPELL_B, .25f, false},
-	{"Spell C", ITEMTEX_SPELL_C, .35f, false},
-	{"Sword", ITEMTEX_SWORD, 0.0f, false},
-	{NULL, NULL, .0f, false}
+	{"Small potion", ITEMTEX_POTION_S, .2f, true, NULL},
+	{"Large potion", ITEMTEX_POTION_L, .5f, true, NULL},
+	{"Spell A", ITEMTEX_SPELL_A, .15f, false, NULL},
+	{"Spell B", ITEMTEX_SPELL_B, .25f, false, NULL},
+	{"Spell C", ITEMTEX_SPELL_C, .35f, false, NULL},
+	{"Sword", ITEMTEX_SWORD, 0.0f, false, NULL},
+	{"Strength potion", ITEMTEX_POTION_STR, .15f, true, &potion_str_use},
+	{"Dexterity potion", ITEMTEX_POTION_DEX, .15f, true, &potion_dex_use},
+	{"Experience potion", ITEMTEX_POTION_EXP, .1f, true, &potion_exp_use},
+	{NULL, NULL, .0f, false, NULL}
 };
 
 const sf_system_settings_t PARTICLE_IDS[NB_PARTICLE_ID] = {

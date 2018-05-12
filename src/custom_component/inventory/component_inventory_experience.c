@@ -9,7 +9,7 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-static void inventory_increaseskillpoint(float *skill, float amount, float flr)
+void inventory_increaseskillpoint(float *skill, float amount, float flr)
 {
 	*skill += amount;
 	if (flr <= *skill)
