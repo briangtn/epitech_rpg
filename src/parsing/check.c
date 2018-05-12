@@ -29,8 +29,8 @@ int check_tile(tile_info_t *tile)
 	if (tile->event != NULL) {
 		if (tile->event->event_id < 0)
 			return (tile->event->event_id * -1);
-		else
-			return (-10);
+	} else {
+		return (-10);
 	}
 	if (tile->tile_type < 0)
 		return (tile->tile_type * -1);
