@@ -13,6 +13,7 @@
 	#include "my_sfml.h"
 	#include "fight.h"
 	#include "parsing.h"
+	#include "parser.h"
 
 	#pragma region Player
 
@@ -152,7 +153,7 @@ fight_t *);
 	void destroy_tile_effect(sf_tile_effect_t *effect);
 
 	gameobject_t *create_prefab_tile(sf_engine_t *engine, \
-tile_info_t *info, char *tileset);
+tile_info_t *info, char *tileset, parser_to_game_t *ptg);
 
 	void set_teleport_tile(sf_collider_2d_t *col, sf_tile_effect_t *effect,\
 tile_info_t *info);

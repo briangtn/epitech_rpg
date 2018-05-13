@@ -57,7 +57,8 @@ tile_info_t *info, sf_engine_t *engine)
 	};
 }
 
-static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info)
+static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info,\
+parser_to_game_t *ptg)
 {
 	sf_rigidbody_2d_t *rb = NULL;
 	sf_collider_2d_t *col = NULL;
@@ -66,7 +67,8 @@ static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info)
 		return (0);
 	rb = go->add_component(go, RIGIDBODY_2D);
 	col = go->add_component(go, COLLIDER_2D);
-	if (rb == NULL || col == NULL)
+	if (rb == NULL || col == NULL ||(info->event->event_id == FIGHT && \
+ptg->has_killed_boss))
 		return (84);
 	if (info->event->event_id != 0) {
 		col->trigger = 1;
@@ -78,7 +80,7 @@ static int setup_type(gameobject_t *go, sf_engine_t *engine, tile_info_t *info)
 }
 
 gameobject_t *create_prefab_tile(sf_engine_t *engine, tile_info_t *info, \
-char *tileset)
+char *tileset, parser_to_game_t *ptg)
 {
 	gameobject_t *go = NULL;
 	sf_animation_2d_t *anim = NULL;
@@ -89,7 +91,7 @@ char *tileset)
 	if (go == NULL)
 		return (NULL);
 	if (setup_image(go, engine, info, tileset) || \
-setup_type(go, engine, info)) {
+setup_type(go, engine, info, ptg)) {
 		go->destroy(go);
 		return (NULL);
 	}

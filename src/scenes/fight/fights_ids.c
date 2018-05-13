@@ -81,6 +81,7 @@ int run_fight(int id, sf_engine_t *engine, gameobject_t *enemy)
 	fight = create_fight_enemys((FIGHTS_ID[id - 1]), engine);
 	fight->end_datas = enemy;
 	fight->end_callback = &end_callback_fight;
+	fight->id = id;
 	ptg->fight = fight;
 	return (engine->change_scene(engine, "fight", ptg));
 }

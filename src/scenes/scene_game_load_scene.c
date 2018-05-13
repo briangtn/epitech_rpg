@@ -68,9 +68,11 @@ ptg->game_info->tile_per_scene.y * TILE_SIZE};
 	camera->scene_size = (sfIntRect){0, 0, size.x, size.y};
 	create_prefab_image(engine, scene->background, 0);
 	for (int i = 0; scene->tile != NULL && scene->tile[i] != NULL; i++) {
-		create_prefab_tile(engine, scene->tile[i], scene->tileset);
+		create_prefab_tile(engine, scene->tile[i], scene->tileset, ptg);
 	}
 	for (int i = 0; scene->npc != NULL && scene->npc[i] != NULL; i++) {
+		if (ptg->has_killed_boss && scene->npc[i]->npc_id == 4)
+			continue;
 		if (scene->npc[i]->npc_id <= NB_NPC_ID)
 			create_npc(engine, scene->npc[i]);
 	}

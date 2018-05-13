@@ -23,6 +23,7 @@ parser_to_game_t *create_parser_to_game(char *file_to_parse)
 	ptg->game_info = parse_config(file_to_parse);
 	ptg->fight = NULL;
 	ptg->come_from_fight = false;
+	ptg->has_killed_boss = false;
 	if (ptg->game_info == NULL) {
 		destroy_parser_to_game(ptg);
 		return (NULL);

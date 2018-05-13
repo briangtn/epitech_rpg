@@ -31,6 +31,10 @@ void give_xp(sf_engine_t *engine, float amount)
 
 int end_fight_win(sf_engine_t *engine, gameobject_t *enemy, fight_t *fight)
 {
+	parser_to_game_t *ptg = engine->data;
+
+	if (fight->id == 2)
+		ptg->has_killed_boss = true;
 	engine->destroy_gameobject(engine, enemy);
 	give_xp(engine, fight->xp_given);
 	return (0);

@@ -85,7 +85,8 @@
 	#pragma endregion
 
 	#define LEVEL_UP_MESSAGE "Yay! I feel stronger\n(level up)"
-	#define DEATH_MESSAGE "Fortunately I managed to escape!"
+	#define DEATH_MESSAGE "Fortunately I managed to escape!\nI need to get \
+stronger"
 	#define DISCARD_MESSAGE "I should help the guard at my door!"
 	#define POTION_DIALOG "I found some potions!\nI can use them by \
 clicking on it!\n(+1 potion of dexterity)\n(+1 potion of strenght)\n\
