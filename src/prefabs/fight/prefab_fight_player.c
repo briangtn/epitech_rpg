@@ -9,19 +9,19 @@
 #include "my_sfml.h"
 #include "rpg.h"
 
-static int fplayer_animation_update(sf_animation_2d_t *anim,\
+static int fplayer_animation_update(sf_animation_2d_t *anim, \
 UNUSED int elapsed_milliseconds)
 {
 	sf_transform_t *transform = get_component(anim->parent, TRANSFORM);
 
 	if (anim == NULL || transform == NULL)
 		return (84);
-	sfSprite_setPosition(anim->sprite,\
+	sfSprite_setPosition(anim->sprite, \
 (sfVector2f){transform->position.x, transform->position.y});
 	return (0);
 }
 
-static int setup_components(sf_engine_t *engine, gameobject_t *player,\
+static int setup_components(sf_engine_t *engine, gameobject_t *player, \
 fight_t *fight)
 {
 	sf_animation_2d_t *anim = get_component(player, ANIMATION_2D);
@@ -31,7 +31,7 @@ fight_t *fight)
 	if (anim == NULL || transform == NULL || player_comp == NULL)
 		return (84);
 	anim->update = fplayer_animation_update;
-	anim->set_sprite(anim, engine->get_sprite(engine,\
+	anim->set_sprite(anim, engine->get_sprite(engine, \
 fight->player->sprite_path));
 	register_animation(engine, anim, GAME);
 	scale_elem_to_size(anim->sprite);
@@ -39,12 +39,12 @@ fight->player->sprite_path));
 (sf_vector_3d_t){fight->player->position.x, fight->player->position.y, 0};
 	player_comp->datas = fight->player;
 	player_comp->fight = fight;
-	player_comp->mana_text_go = create_prefab_mana_text(engine,\
+	player_comp->mana_text_go = create_prefab_mana_text(engine, \
 fight->player);
 	return (0);
 }
 
-static void after_init(gameobject_t *go, sf_engine_t *engine,\
+static void after_init(gameobject_t *go, sf_engine_t *engine, \
 fight_player_t *player)
 {
 	const int offset = (100 - FIGHT_ELEMENT_SIZE) / 2;
@@ -56,9 +56,9 @@ fight_player_t *player)
 	player_comp = get_component(go, FPLAYER);
 	if (tr == NULL || player_comp == NULL)
 		return;
-	rect = (sfFloatRect){tr->position.x - offset, tr->position.y + 70,\
+	rect = (sfFloatRect){tr->position.x - offset, tr->position.y + 70, \
 100, 10};
-	player_comp->life_bar_go = create_prefab_loadbar(engine, rect,\
+	player_comp->life_bar_go = create_prefab_loadbar(engine, rect, \
 player->life);
 }
 

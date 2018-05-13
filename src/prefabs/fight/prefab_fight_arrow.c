@@ -10,7 +10,7 @@
 #include "rpg.h"
 #include "utils.h"
 
-static int setup_components(sf_engine_t *engine, gameobject_t *enemy,\
+static int setup_components(sf_engine_t *engine, gameobject_t *enemy, \
 sf_linked_list_t *list, char *sprite)
 {
 	sf_animation_2d_t *anim = get_component(enemy, ANIMATION_2D);
@@ -20,7 +20,7 @@ sf_linked_list_t *list, char *sprite)
 	if (anim == NULL || transform == NULL || arrow == NULL)
 		return (84);
 	anim->update = arrow->display_update;
-	anim->set_sprite(anim, engine->get_sprite(engine,\
+	anim->set_sprite(anim, engine->get_sprite(engine, \
 sprite));
 	register_animation(engine, anim, GAME + 1);
 	arrow->list = list;

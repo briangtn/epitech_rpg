@@ -72,23 +72,23 @@ sfRenderWindow_getView(self->engine->window)));
 
 static void render_skills(sf_inventory_t *self)
 {
-	move_loadbar(self->prgbar_atk,\
+	move_loadbar(self->prgbar_atk, \
 sfRenderWindow_mapPixelToCoords(self->engine->window, \
 (sfVector2i){self->screen_pos.x + 180, self->screen_pos.y + 275}, \
 sfRenderWindow_getView(self->engine->window)));
-	move_loadbar(self->prgbar_def,\
+	move_loadbar(self->prgbar_def, \
 sfRenderWindow_mapPixelToCoords(self->engine->window, \
 (sfVector2i){self->screen_pos.x + 180, self->screen_pos.y + 350}, \
 sfRenderWindow_getView(self->engine->window)));
-	move_loadbar(self->prgbar_dex,\
+	move_loadbar(self->prgbar_dex, \
 sfRenderWindow_mapPixelToCoords(self->engine->window, \
 (sfVector2i){self->screen_pos.x + 400, self->screen_pos.y + 275}, \
 sfRenderWindow_getView(self->engine->window)));
-	move_loadbar(self->prgbar_int,\
+	move_loadbar(self->prgbar_int, \
 sfRenderWindow_mapPixelToCoords(self->engine->window, \
 (sfVector2i){self->screen_pos.x + 400, self->screen_pos.y + 350}, \
 sfRenderWindow_getView(self->engine->window)));
-	move_loadbar(self->prgbar_exp,\
+	move_loadbar(self->prgbar_exp, \
 sfRenderWindow_mapPixelToCoords(self->engine->window, \
 (sfVector2i){self->screen_pos.x + 50, self->screen_pos.y + 400}, \
 sfRenderWindow_getView(self->engine->window)));

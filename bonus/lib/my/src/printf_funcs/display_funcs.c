@@ -73,22 +73,5 @@ void put_zero(int *disp, int fake)
 
 int display_str_show(char *str, int fake)
 {
-	int disp = 0;
-
-	for (int i = 0; str[i] != '\0'; i++) {
-		if (str[i] < 32 || str[i] > 126) {
-			my_putchar_cond('\\', fake);
-			disp += 1;
-			if (str[i] < 8)
-				put_zero(&disp, fake);
-			if (str[i] < 16)
-				put_zero(&disp, fake);
-			disp += display_int_base(str[i], "01234567", fake);
-		}
-		else {
-			my_putchar_cond(str[i], fake);
-			disp += 1;
-		}
-	}
-	return (disp);
+	return (0);
 }

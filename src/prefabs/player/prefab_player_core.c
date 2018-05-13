@@ -58,9 +58,8 @@ static int add_components(gameobject_t *player)
 		return (84);
 	}
 	if (player->add_custom_component(player, \
-(void *(*)(gameobject_t *))&create_inventory, INVENTORY) == NULL) {
+(void *(*)(gameobject_t *))&create_inventory, INVENTORY) == NULL)
 		return (84);
-	}
 	return (0);
 }
 

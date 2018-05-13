@@ -10,8 +10,7 @@
 #include "rpg.h"
 #include "utils.h"
 
-static int text_update(void *data,\
-UNUSED int elapsed_milliseconds)
+static int text_update(void *data, UNUSED int elapsed_milliseconds)
 {
 	sf_text_t *text = (sf_text_t *)data;
 	sf_transform_t *transform = get_component(text->parent, TRANSFORM);

@@ -12,8 +12,8 @@
 #include "parser.h"
 #include "rpg.h"
 
-void set_tile_particles(UNUSED sf_collider_2d_t *col, sf_tile_effect_t *effect,\
-tile_info_t *info)
+void set_tile_particles(UNUSED sf_collider_2d_t *col, \
+sf_tile_effect_t *effect, tile_info_t *info)
 {
 	sf_engine_t *engine = effect->engine;
 	sf_particle_system_t *sys = NULL;

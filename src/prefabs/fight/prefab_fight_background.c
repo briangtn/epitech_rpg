@@ -20,11 +20,11 @@ fight_t *fight)
 
 	if (anim == NULL)
 		return (84);
-	anim->set_sprite(anim, engine->get_sprite(engine,\
+	anim->set_sprite(anim, engine->get_sprite(engine, \
 fight->background_path));
 	sprite_size = sfSprite_getGlobalBounds(anim->sprite);
-	sfSprite_setScale(anim->sprite,\
-(sfVector2f){window_sizes.x / sprite_size.width,\
+	sfSprite_setScale(anim->sprite, \
+(sfVector2f){window_sizes.x / sprite_size.width, \
 window_sizes.y / sprite_size.height});
 	engine->add_to_layer(engine, GAME - 1, (void **)&(anim->sprite));
 	return (0);
