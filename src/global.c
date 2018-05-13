@@ -71,7 +71,7 @@ const monster_info_t MONSTERS_IDS[NB_ENEMY_ID] = {
 const fight_info_t FIGHTS_ID[NB_FIGHTS_ID] = {
 	{2, (int [2]){0, 0}, BACKGROUND_FIGHT_PATH},
 	{1, (int [1]){2}, BACKGROUND_CASTLE_FIGHT},
-	{2, (int [2]){1, 1}, BACKGROUND_CASTLE_FIGHT},
+	{4, (int [2]){1, 1, 1, 1}, BACKGROUND_CASTLE_FIGHT},
 	{3, (int [3]){3, 3, 3}, BACKGROUND_FIGHT_PATH},
 	{3, (int [3]){0, 1, 0}, BACKGROUND_FIGHT_CAPITAL},
 	{4, (int [4]){0, 0, 0, 0}, BACKGROUND_FIGHT_CAPITAL},
