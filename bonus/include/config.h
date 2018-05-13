@@ -21,6 +21,9 @@
 
 #define MAX_SIZE 500
 
+#define ASSET_GRID "../assets/grid.png"
+#define ASSET_TILESET "../assets/tilesets/outside_b.png"
+
 #include "scenes.h"
 #include "prefabs.h"
 #include "components.h"

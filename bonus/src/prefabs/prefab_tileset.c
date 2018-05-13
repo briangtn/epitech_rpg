@@ -29,7 +29,7 @@ static int setup_grid(sf_grid_t *grid)
 static int setup_components(gameobject_t *go, sf_engine_t *engine)
 {
 	sf_tileset_t *tileset = get_component(go, TILESET);
-	sfSprite *sprite = get_sprite(engine, "assets/tilesets/outside_b.png");
+	sfSprite *sprite = get_sprite(engine, ASSET_TILESET);
 	sf_grid_t *grid = NULL;
 	sfFloatRect bounds;
 

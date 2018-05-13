@@ -7,6 +7,7 @@
 
 #include "my_sfml.h"
 #include "components.h"
+#include "config.h"
 
 static int setup_components(sf_engine_t *engine, gameobject_t *go, int x, int y)
 {
@@ -15,14 +16,13 @@ static int setup_components(sf_engine_t *engine, gameobject_t *go, int x, int y)
 
 	if (anim == NULL || tile == NULL)
 		return (84);
-	anim->sprite = get_sprite(engine, "assets/grid.png");
+	anim->sprite = get_sprite(engine, ASSET_GRID);
 	register_animation(engine, anim, GAME);
 	tile->engine = engine;
 	tile->x = x;
 	tile->y = y;
-	tile->sprite_none = get_sprite(engine, "assets/grid.png");
-	tile->sprite_tileset = get_sprite(engine, \
-"assets/tilesets/outside_b.png");
+	tile->sprite_none = get_sprite(engine, ASSET_GRID);
+	tile->sprite_tileset = get_sprite(engine, ASSET_TILESET);
 	return (0);
 }
 
