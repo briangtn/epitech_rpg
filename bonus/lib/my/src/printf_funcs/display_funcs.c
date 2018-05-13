@@ -71,7 +71,7 @@ void put_zero(int *disp, int fake)
 	*disp += 1;
 }
 
-int display_str_show(char *str, int fake)
+int display_str_show(UNUSED char *str, UNUSED int fake)
 {
 	return (0);
 }
