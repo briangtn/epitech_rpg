@@ -31,6 +31,21 @@ Take this.", FACE_SOLDIER);
 	return (0);
 }
 
+int give_potions(sf_engine_t *engine, UNUSED gameobject_t *parent)
+{
+	static bool potion_given = false;
+	gameobject_t *player = engine->get_gameobject(engine, "player");
+	sf_inventory_t *inv = get_component(player, INVENTORY);
+
+	if (inv != NULL && potion_given == false) {
+		inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_STR]));
+		inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_DEX]));
+		inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_EXP]));
+		potion_given = true;
+	}
+	return (0);
+}
+
 int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent)
 {
 	return (engine->change_scene(engine, "end", engine->data));

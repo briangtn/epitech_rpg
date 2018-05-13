@@ -41,13 +41,14 @@ parser_to_game_t *ptg, UNUSED fight_t *fight)
 {
 	sf_speak_t *dead = create_speak_component(NULL);
 
-	dead->set_info(dead, DEATH_MESSAGE, FACE_HERO);
-	dead->set_font(dead, FONT_SPEAK);
 	ptg->active_scene = 1;
 	ptg->player_start_pos = (sf_vector_3d_t){23 * TILE_SIZE, \
 11 * TILE_SIZE, 0};
 	engine->change_scene(engine, "game", ptg);
 	update_selected_scene(engine);
+	engine->current_scene->camera->update(engine->current_scene->camera, 0);
+	dead->set_info(dead, DEATH_MESSAGE, FACE_HERO);
+	dead->set_font(dead, FONT_SPEAK);
 	dead->show(dead, engine);
 	return (0);
 }

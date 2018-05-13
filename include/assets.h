@@ -117,9 +117,9 @@
 		char *background;
 	} fight_info_t;
 
-	#define NB_NPC_ID 5
+	#define NB_NPC_ID 6
 	#define NB_PARTICLE_ID 4
-	#define NB_ATTACKS_ID 4
+	#define NB_ATTACKS_ID 5
 	#define NB_ENEMY_ID 4
 	#define NB_FIGHTS_ID 7
 
@@ -135,6 +135,7 @@
 	int give_sword(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int king_end_game(sf_engine_t *engine, UNUSED gameobject_t *parent);
 	int evil_king_fight(sf_engine_t *engine, UNUSED gameobject_t *parent);
+	int give_potions(sf_engine_t *engine, gameobject_t *parent);
 
 	int end_callback_fight(fight_t *fight, void *datas,\
 bool win, sf_engine_t *engine);

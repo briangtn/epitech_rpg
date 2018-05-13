@@ -46,7 +46,7 @@ static void setup_vars(sf_inventory_t *self)
 	self->s_atk = (float)(rand() % 300 + 700) / 1000.0f;
 	self->s_def = (float)(rand() % 300 + 700) / 1000.0f;
 	self->s_int = (float)(rand() % 300 + 700) / 1000.0f;
-	self->s_dex = (float)(rand() % 300 + 700) / 1000.0f;
+	self->s_dex = (float)(rand() % 300 + 300) / 1000.0f;
 }
 
 static void initialise_pgrbar(sf_inventory_t *self)
@@ -112,9 +112,5 @@ sf_inventory_t *create_inventory(gameobject_t *parent)
 	new->parent = parent;
 	new->engine = NULL;
 	setup_vars(new);
-	new->backpack[0] = ITEM_LIST[ITEM_POTION_EXP];
-	new->backpack[1] = ITEM_LIST[ITEM_POTION_EXP];
-	new->backpack[2] = ITEM_LIST[ITEM_POTION_STR];
-	new->backpack[3] = ITEM_LIST[ITEM_POTION_DEX];
 	return (new);
 }

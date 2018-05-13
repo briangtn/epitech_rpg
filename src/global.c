@@ -18,6 +18,7 @@ const npc_id_info_t NPC_IDS[NB_NPC_ID + 1] = {
 {3, SS_KING, FACE_KING, &king_end_game, {0, 0, 32, 32}, {0, 0, 32, 32}},
 {4, SS_BOSS, FACE_EVILKING, &evil_king_fight, {0, 0, 64, 64}, {0, 0, 128, 64}},
 {5, SS_GUARD, FACE_SOLDIER, &give_sword, {0, 0, 32, 32}, {0, 0, 32, 32}},
+{6, SS_SIGN, FACE_HERO, &give_potions, {0, 0, 32, 32}, {32, 0, 32, 32}},
 {0, NULL, NULL, NULL, {0, 0, 0, 0}, {0, 0, 0, 0}}
 };
 
@@ -54,14 +55,15 @@ const attack_info_t ATTACKS_IDS[NB_ATTACKS_ID] = {
 	{"Sword attack", 1, 1},
 	{"Spear attack", 2, 1},
 	{"Heavy sword attack", 20, 2},
-	{"Slime jet", .5f, 1}
+	{"Slime jet", .5f, 1},
+	{"Swing attack", 10, 1}
 };
 
 /* {Life, Sprite path, Name, Nb attacks, {attacks}} */
 const monster_info_t MONSTERS_IDS[NB_ENEMY_ID] = {
 	{5, ENEMY_ROGUE, "Rogue", 1, (int [1]){0}},
 	{10, ENEMY_FANATIC, "Fanatic", 1, (int [1]){1}},
-	{60, ENEMY_BOSS, "Evil King", 2, (int [2]){0, 2}},
+	{60, ENEMY_BOSS, "Evil King", 2, (int [2]){4, 2}},
 	{8, ENEMY_SLIME, "Slime", 1, (int [1]){3}}
 };
 
