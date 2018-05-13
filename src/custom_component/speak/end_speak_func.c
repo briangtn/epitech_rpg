@@ -36,12 +36,19 @@ int give_potions(sf_engine_t *engine, UNUSED gameobject_t *parent)
 	static bool potion_given = false;
 	gameobject_t *player = engine->get_gameobject(engine, "player");
 	sf_inventory_t *inv = get_component(player, INVENTORY);
+	sf_speak_t *speak = create_speak_component(NULL);
 
+	speak->set_font(speak, FONT_SPEAK);
 	if (inv != NULL && potion_given == false) {
 		inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_STR]));
 		inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_DEX]));
 		inv->add_item(inv, &(ITEM_LIST[ITEM_POTION_EXP]));
 		potion_given = true;
+		speak->set_info(speak, POTION_DIALOG, FACE_HERO);
+		speak->show(speak, engine);
+	} else {
+		speak->set_info(speak, "There is nothing in it", FACE_HERO);
+		speak->show(speak, engine);
 	}
 	return (0);
 }

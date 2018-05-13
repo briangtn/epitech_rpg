@@ -87,6 +87,9 @@
 	#define LEVEL_UP_MESSAGE "Yay! I feel stronger\n(level up)"
 	#define DEATH_MESSAGE "Fortunately I managed to escape!"
 	#define DISCARD_MESSAGE "I should help the guard at my door!"
+	#define POTION_DIALOG "I found some potions!\nI can use them by \
+clicking on it!\n(+1 potion of dexterity)\n(+1 potion of strenght)\n\
+(+1 potion of experience)"
 
 	typedef struct npc_id_info {
 		int npc_id;
