@@ -112,5 +112,9 @@ sf_inventory_t *create_inventory(gameobject_t *parent)
 	new->parent = parent;
 	new->engine = NULL;
 	setup_vars(new);
+	new->backpack[0] = ITEM_LIST[ITEM_POTION_EXP];
+	new->backpack[1] = ITEM_LIST[ITEM_POTION_EXP];
+	new->backpack[2] = ITEM_LIST[ITEM_POTION_STR];
+	new->backpack[3] = ITEM_LIST[ITEM_POTION_DEX];
 	return (new);
 }
