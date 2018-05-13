@@ -33,21 +33,23 @@ static void update_prgbar(sf_inventory_t *self)
 
 int inventory_addexp(sf_inventory_t *self, float amount)
 {
+	int has_level_up = 0;
+
 	self->exp += amount;
-	if (50.0f <= self->exp) {
+	while (50.0f <= self->exp) {
 		self->exp -= 50.0f;
 		inventory_increaseskillpoint(&(self->s_atk), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_def), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_dex), .2f, 2.0f);
 		inventory_increaseskillpoint(&(self->s_int), .2f, 2.0f);
-		inventory_increaseskillpoint(&(self->hp), 1.0f, 20.0f);
+		inventory_increaseskillpoint(&(self->hp), .5f, 5.0f);
 		update_prgbar(self);
 		self->toggle(self);
 		self->toggle(self);
-		return (1);
+		has_level_up = 1;
 	}
 	update_prgbar(self);
 	self->toggle(self);
 	self->toggle(self);
-	return (0);
+	return (has_level_up);
 }
