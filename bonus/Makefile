@@ -56,7 +56,10 @@ LIB_FLAGS	=	-L $(LIB_DIR)my -lmy				\
 
 CC		=	gcc
 
-all:		$(NAME)
+all:		unzip_assets $(NAME)
+
+unzip_assets:
+		unzip assets.zip
 
 $(NAME):	make_libs $(OBJ)
 		$(CC) -o $(NAME) $(OBJ) $(LIB_FLAGS)
